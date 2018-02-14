@@ -31,3 +31,6 @@ Route::get('/informasjon', 'PagesController@informasjon');
         Route::get('/oppdragSammarbeid', 'PagesController@oppdragSammarbeid');
         Route::get('/oppdragBedrift', 'PagesController@oppdragBedrift');
         Route::get('/oppdragKontakt', 'PagesController@oppdragKontakt');
+
+Route::get('/login', 'LoginController@visLoggInn')->name('login');
+Route::post('/login', 'LoginController@loggInn');
