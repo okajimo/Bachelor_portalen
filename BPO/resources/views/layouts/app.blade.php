@@ -7,6 +7,9 @@
     <link href="https://student.hioa.no/hioa-theme/images/favicon.ico" rel="Shortcut Icon">
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
     <title>{{config('app.name', 'BPO')}}</title>
+
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 <body>
     @include('inc.navbar')

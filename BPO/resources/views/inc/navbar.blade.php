@@ -14,7 +14,8 @@
             <section class="info">Bachelorprosjekt i informasjonsteknologi</section>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
-            <ul class="nav navbar-nav">
+            <!-- Venstre side av navbar -->
+            <ul class="nav navbar-nav navbar-left">
                 <li><a href="/informasjon">Informasjon</a></li>
                 <li><a href="/prosjektforslag">Prosjektforslag</a></li>
                 <li><a href="/tidligere_prosjekter">Tidligere Prosjekter</a></li>
@@ -22,6 +23,35 @@
                 <li><a href="/kontakt_info">Kontakt oss</a></li>
             </ul>
         </div><!--/.nav-collapse --><!--
+
+//stian og martin 
+            <!-- Høyre side av navbar -->
+            <ul class="nav navbar-nav navbar-right">
+                @if (Auth::guest())
+                    <li><a href="{{ route('login') }}">Logg inn</a></li>
+                @else
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
+                            {{ Auth::user()->name }} <span class="caret"></span>
+                        </a>
+
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();
+                                             document.getElementById('logout-form').submit();">
+                                    Logout
+                                </a>
+
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    {{ csrf_field() }}
+                                </form>
+                            </li>
+                        </ul>
+                    </li>
+                @endif
+            <ul>
+        </div>
     </div>
 </nav>-->
 
