@@ -7,22 +7,21 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="/informasjon">Informasjon <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/prosjektforslag">Prosjektforslag</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/tidligere_prosjekter">Tidligere Prosjekter</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/grupper">Grupper</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/kontakt_info">Kontakt oss</a>
-            </li>
-            
+                <li class="nav-item">
+                    <a class="nav-link" href="/informasjon">Informasjon <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/prosjektforslag">Prosjektforslag</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/tidligere_prosjekter">Tidligere Prosjekter</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/grupper">Grupper</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/kontakt_info">Kontakt oss</a>
+                </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 @if (Auth::guest())

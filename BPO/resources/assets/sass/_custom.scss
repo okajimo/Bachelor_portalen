@@ -1,41 +1,19 @@
-.navbar-inverse{
-    background-color: #f1f1f2;
-    border-bottom: 1px solid #bbbdbf;
-    border-left: none;
-    border-right: none;
-    border-top: none;
-    margin-bottom: 24px;
-}
-
-.info {
-    color: black;
-    padding-left: 2em;
-    padding-right: 2em;
-    margin-left: 8.89em;
-    margin-top: 1em;
-    min-width: 209.55px;
-}
-
 .navbar {
     min-height: 8.5em;
 }
 
-.navbar-nav{
-    margin-left: 3em;
+.nav-link{
+    color: black !important;
 }
 
-.navbar-inverse .navbar-nav > li > a {
-    color: black;
+.nav-link:hover{
+    color:#0096c0 !important;
 }
 
-.navbar-inverse .navbar-nav > li > a:hover {
-    color: #0096c0;
+.navbar-light{
+    background-color: #F1F1F2 !important;
 }
 
-.navbar-inverse .navbar-brand {
-    color: black;
-}
-
-.navbar-inverse .navbar-brand:hover {
-    color: black;
+.jumbotron{
+    background-color: #FFF !important;
 }
