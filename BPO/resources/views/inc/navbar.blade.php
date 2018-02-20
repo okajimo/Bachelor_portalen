@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light" style="border-bottom:1px solid #bbbdbf;"><!-- Stian lagt inn style -->
     <div class="container">
         <a class="navbar-brand" href="/"><img src="https://student.hioa.no/hioa-theme/images/hioa-logo-no.svg" alt="Student" height="75" width="80"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -30,8 +30,6 @@
                             {{ session('navn') }}
                         </button>
                         <div class="dropdown-menu">
-                          <a class="dropdown-item" href="{{ route('logout') }}">Logout</a>
-                          <div class="dropdown-divider"></div>
                           <a class="dropdown-item" href="{{ route('logout') }}">Vedlikehold brukere</a>
                           <a class="dropdown-item" href="{{ route('logout') }}">Simuler student</a>
                           <a class="dropdown-item" href="{{ route('logout') }}">Les dokumenter</a>
@@ -39,22 +37,24 @@
                           <a class="dropdown-item" href="{{ route('logout') }}">Vedlikehold prosjektforslag</a>
                           <a class="dropdown-item" href="{{ route('logout') }}">Datoer</a>
                           <a class="dropdown-item" href="{{ route('logout') }}">Vedlikehold grupper</a>
+                          <div class="dropdown-divider"></div>
+                          <a class="dropdown-item" href="{{ route('logout') }}">Logout</a>
                         </div>
-                      </div>
+                </div>
                 @elseif(session('levell') == 1)
                 <div class="dropdown open">
                         <button class="btn btn-secondary dropdown-toggle"
                                 type="button" id="dropdownMenu4" data-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false">
+                                aria-haspopup="true" aria-expanded="false" style="color: black; background-color: #F1F1F2; border-color: #6c757d;">
                             {{ session('navn') }}
                         </button>
                         <div class="dropdown-menu">
-                          <a class="dropdown-item" href="{{ route('logout') }}">Logout</a>
-                          <div class="dropdown-divider"></div>
                           <a class="dropdown-item" href="{{ route('logout') }}">Vedlikehold gruppe</a>
                           <a class="dropdown-item" href="{{ route('logout') }}">Statusrapport</a>
                           <a class="dropdown-item" href="{{ route('logout') }}">Prosjektskisse</a>
                           <a class="dropdown-item" href="{{ route('logout') }}">Bachelorprosjekttittel</a>
+                          <div class="dropdown-divider"></div>
+                          <a class="dropdown-item" href="{{ route('logout') }}">Logout</a>
                         </div>
                       </div>
                 @else
