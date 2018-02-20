@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light" style="border-bottom:1px solid #bbbdbf;"><!-- Stian lagt inn style -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light" style="border-bottom:1px solid #bbbdbf;"><!-- Lagt til av Stian, fiks css Ivo!  -->
     <div class="container">
         <a class="navbar-brand" href="/"><img src="https://student.hioa.no/hioa-theme/images/hioa-logo-no.svg" alt="Student" height="75" width="80"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -26,7 +26,9 @@
             <ul class="nav navbar-nav navbar-right">
                 @if(session('levell') > 1)
                 <div class="dropdown open">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: black; background-color: #F1F1F2; border-color: #6c757d;">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu4" 
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" 
+                        style="color: black; background-color: #F1F1F2; border-color: #6c757d;"> <!-- Lagt til av Stian, Ivo fiks css -->
                             {{ session('navn') }}
                         </button>
                         <div class="dropdown-menu">
@@ -58,7 +60,7 @@
                         </div>
                       </div>
                 @else
-                    <li><a href="{{ route('login') }}">Login</a></li>
+                    <li><a class="btn btn-secondary" href="{{ route('login') }}" style="color: black; background-color: #F1F1F2; border-color: #6c757d;">Login</a></li>
                 @endif
                 
             <ul>
