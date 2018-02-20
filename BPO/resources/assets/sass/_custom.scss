@@ -1,5 +1,6 @@
 .navbar {
     min-height: 8.5em;
+    /*Stian lagt inn*/border-bottom:1px solid #bbbdbf;
 }
 
 .nav-link{
@@ -16,4 +17,8 @@
 
 .jumbotron{
     background-color: #FFF !important;
+}
+.nav-item
+{
+    border-bottom:1px solidd #bbbdbf;
 }

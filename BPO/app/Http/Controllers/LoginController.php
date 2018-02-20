@@ -34,11 +34,54 @@ class LoginController extends Controller
             return $pw;
         }*/
 
-        if (Auth::attempt(['username'=>$innData->username, 'password'=>$innData->password])){
+        /*if (Auth::attempt(['username'=>$innData->username, 'password'=>$innData->password])){
             return 'OK';
         }
         else{
             return 'Feil';
+        }*/
+
+        if(DB::table('users')->where('username' , $innData->username)->value('password') == $innData->password)
+        {
+            Session(['navn' => $innData->username]);
+            $level = DB::table('users')->where('username' , $innData->username)->value('level');
+
+            Session(['level' => $level]);
+            if($level == "1")
+            {
+                $lvl=1;
+                Session(['levell' => $lvl]);
+                return redirect('/');
+            }
+            elseif($level == "2")
+            {
+                $lvl=2;
+                Session(['levell' => $lvl]);
+                return redirect('/');
+            }
+            elseif($level == "3")
+            {
+                $lvl=3;
+                Session(['levell' => $lvl]);
+                return redirect('/');
+            }
+            elseif($level == "4")
+            {
+                $lvl=4;
+                Session(['levell' => $lvl]);
+                return redirect('/');
+            }
         }
+        else
+        {
+            return "feil";
+        }
+    }
+    
+    public function logout(Request $request)
+    {
+        $request->session()->flush();
+
+        return redirect('/login');
     }
 }

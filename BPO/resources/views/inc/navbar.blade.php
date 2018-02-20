@@ -24,31 +24,44 @@
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                @if (Auth::guest())
-                    <li><a href="{{ route('login') }}">Logg inn</a></li>
+                @if(session('levell') > 1)
+                <div class="dropdown open">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: black; background-color: #F1F1F2; border-color: #6c757d;">
+                            {{ session('navn') }}
+                        </button>
+                        <div class="dropdown-menu">
+                          <a class="dropdown-item" href="{{ route('logout') }}">Logout</a>
+                          <div class="dropdown-divider"></div>
+                          <a class="dropdown-item" href="{{ route('logout') }}">Vedlikehold brukere</a>
+                          <a class="dropdown-item" href="{{ route('logout') }}">Simuler student</a>
+                          <a class="dropdown-item" href="{{ route('logout') }}">Les dokumenter</a>
+                          <a class="dropdown-item" href="{{ route('logout') }}">Send E-post</a>
+                          <a class="dropdown-item" href="{{ route('logout') }}">Vedlikehold prosjektforslag</a>
+                          <a class="dropdown-item" href="{{ route('logout') }}">Datoer</a>
+                          <a class="dropdown-item" href="{{ route('logout') }}">Vedlikehold grupper</a>
+                        </div>
+                      </div>
+                @elseif(session('levell') == 1)
+                <div class="dropdown open">
+                        <button class="btn btn-secondary dropdown-toggle"
+                                type="button" id="dropdownMenu4" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                            {{ session('navn') }}
+                        </button>
+                        <div class="dropdown-menu">
+                          <a class="dropdown-item" href="{{ route('logout') }}">Logout</a>
+                          <div class="dropdown-divider"></div>
+                          <a class="dropdown-item" href="{{ route('logout') }}">Vedlikehold gruppe</a>
+                          <a class="dropdown-item" href="{{ route('logout') }}">Statusrapport</a>
+                          <a class="dropdown-item" href="{{ route('logout') }}">Prosjektskisse</a>
+                          <a class="dropdown-item" href="{{ route('logout') }}">Bachelorprosjekttittel</a>
+                        </div>
+                      </div>
                 @else
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
-                            {{ Auth::user()->name }} <span class="caret"></span>
-                        </a>
-
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a href="{{ route('logout') }}"
-                                    onclick="event.preventDefault();
-                                                document.getElementById('logout-form').submit();">
-                                    Logout
-                                </a>
-
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                    {{ csrf_field() }}
-                                </form>
-                            </li>
-                        </ul>
-                    </li>
+                    <li><a href="{{ route('login') }}">Login</a></li>
                 @endif
+                
             <ul>
         </div>
     </div>
 </nav>
-
