@@ -14,7 +14,7 @@
 <body>
     @include('inc.navbar')
     <div class="container">
-        <h3>{{$title}}</h3>
+        <h3 style="border-bottom: 2px solid #ffe01d; float: left; padding-bottom: 5px">{{$title}}</h3>
         @yield('content')
     </div>
     <script src="{{asset('js/app.js')}}"></script>
