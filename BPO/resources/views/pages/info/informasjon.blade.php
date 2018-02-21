@@ -8,7 +8,21 @@
             <li><a href="/oppdragsgivere"><h4>Oppdragsgivere</h4></a></li>
         </ul>
     </div>
-</nav>    
+</nav>
+
+  <div class="dropdown open">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Dropdown
+  </button>
+  <div class="dropdown-menu">
+    <a class="dropdown-item" href="#!">Separated link</a>
+    <div class="dropdown-divider"></div>
+    <a class="dropdown-item" href="#!">Action</a>
+    <a class="dropdown-item" href="#!">Another action</a>
+  </div>
+</div>
+
+
     <div class="jumbotron">
         <div class="container">
             <p>Her finner du nødvendig informasjon til studenter, sensorer og oppdragsgivere.</p>
