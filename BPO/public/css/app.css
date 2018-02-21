@@ -9998,6 +9998,22 @@ body {
   background-color: #F5F5F5;
 }
 
+.spacing_header {
+  margin-top: 1em;
+  margin-bottom: 5em;
+}
+
+.nav-adjust {
+  min-height: 0 !important;
+}
+
+.btn-togg-overide {
+  border-color: #0096C0;
+  border-width: 1.5px;
+  background: #FFFFFF !important;
+  text-align: left;
+}
+
 .navbar {
   min-height: 8.5em;
 }
@@ -10016,5 +10032,9 @@ body {
 
 .jumbotron {
   background-color: #FFF !important;
+}
+
+.nav-item {
+  border-bottom: 1px solidd #bbbdbf;
 }
 

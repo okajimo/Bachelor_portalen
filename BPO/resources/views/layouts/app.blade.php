@@ -13,6 +13,7 @@
 </head>
 <body>
     @include('inc.navbar')
+    @include('inc.nav_header')
     <div class="container">
         <h3 style="border-bottom: 2px solid #ffe01d; float: left; padding-bottom: 5px">{{$title}}</h3>
         @yield('content')
