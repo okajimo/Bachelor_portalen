@@ -41,5 +41,7 @@ Route::post('/vgruppe', 'GruppeController@lag_gruppe');
 
 Route::put('/vgruppe', 'GruppeController@sett_leder');
 
+Route::get('/lastOppDok', 'GruppeController@showUploadForm')->name('lastopp');
+Route::post('/lastOppDok', 'GruppeController@lastOppDok');
 
 
