@@ -19,28 +19,6 @@ class LoginController extends Controller
             'password' => 'required|max:45',
         ]);
 
-        /*$pw = DB::table('users')->where('username' , $innData->username)->value('password');
-
-        if( \Hash::needsRehash($pw) ) {
-            $pw = \Hash::make($pw);
-        }
-
-        /*if($innData->password == $pw)
-        {
-            return 'ok';
-        }
-        else
-        {
-            return $pw;
-        }*/
-
-        /*if (Auth::attempt(['username'=>$innData->username, 'password'=>$innData->password])){
-            return 'OK';
-        }
-        else{
-            return 'Feil';
-        }*/
-
         if(DB::table('users')->where('username' , $innData->username)->value('password') == $innData->password)
         {
             Session(['navn' => $innData->username]);
@@ -74,10 +52,10 @@ class LoginController extends Controller
         }
         else
         {
-            return "feil";
+            return redirect('/login');
         }
     }
-    
+
     public function logout(Request $request)
     {
         $request->session()->flush();

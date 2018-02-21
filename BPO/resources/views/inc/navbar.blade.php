@@ -51,7 +51,7 @@
                             {{ session('navn') }}
                         </button>
                         <div class="dropdown-menu">
-                          <a class="dropdown-item" href="{{ route('logout') }}">Vedlikehold gruppe</a>
+                          <a class="dropdown-item" href="{{ route('group') }}">Vedlikehold gruppe</a>
                           <a class="dropdown-item" href="{{ route('logout') }}">Statusrapport</a>
                           <a class="dropdown-item" href="{{ route('logout') }}">Prosjektskisse</a>
                           <a class="dropdown-item" href="{{ route('logout') }}">Bachelorprosjekttittel</a>

@@ -35,3 +35,9 @@ Route::get('/informasjon', 'PagesController@informasjon');
 Route::get('/login', 'LoginController@visLoggInn')->name('login');
 Route::post('/login', 'LoginController@loggInn');
 Route::get('/inc/navbar', 'LoginController@logout')->name('logout');
+
+Route::get('/vgruppe', 'GruppeController@vedlikehold_gruppe')->name('group');
+Route::post('/vgruppe', 'GruppeController@lag_gruppe');
+
+
+
