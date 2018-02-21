@@ -31,7 +31,7 @@ class LoginController extends Controller
                 Session(['levell' => $lvl]);
                 return redirect('/');
             }
-            elseif($level == "2")
+            /*elseif($level == "2")
             {
                 $lvl=2;
                 Session(['levell' => $lvl]);
@@ -48,7 +48,7 @@ class LoginController extends Controller
                 $lvl=4;
                 Session(['levell' => $lvl]);
                 return redirect('/');
-            }
+            }*/
             elseif($level >= 2)
             {
                 $lvl=$level;

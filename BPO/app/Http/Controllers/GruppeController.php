@@ -14,13 +14,7 @@ class GruppeController extends Controller
         {
             $title = "Vedlikehold av gruppe";
             $groups = DB::table('groups')->get();
-
-            //$student = DB::table('student_groups')->where('student' ,'student_groups_number')->value('student');
-            $student = DB::table('groups')->join('student_groups', 'student_groups_year', '=', 'groups.year')
-            ->join('student_groups', 'student_groups_number', '=', 'groups.group_number')
-            ->select('groups.student')->get();
-
-            return view('pages.gruppe.vgruppe')->with(['title' => $title, 'groups' => $groups, 'student' => $student]);
+            return view('pages.gruppe.vgruppe')->with(['title' => $title, 'groups' => $groups]);
         }
         else
         {
@@ -32,14 +26,8 @@ class GruppeController extends Controller
     {   
         $gruppe = new Group;
         $gruppe->leader = session('navn');
-        //$gruppe->year = $request->input('year');
-        
-        //$number1 = DB::table('groups')->value('group_number')->first();
 
-        //$gruppe->group_number = 5;
-        
-
-        if (date('m') >= '01') 
+        if (date('m') >= '04') 
         {
             $year = date('Y') + 1;
             $gruppe->year = $year;
@@ -64,5 +52,13 @@ class GruppeController extends Controller
 
         $gruppe->save();
         return redirect('/')->with('success', 'gruppe lagret');
+    }
+
+    public function sett_leder(Request $request)
+    {   
+        $set_leader2 = session('navn');
+        $set_leader = session('navn');
+        DB::update('UPDATE groups SET leader = :set_leader WHERE leader = (SELECT groups.leader FROM student, student_groups WHERE student.username = student_groups.student AND student_groups.student_groups_number = groups.group_number AND student_groups.student_groups_year = groups.year AND student.username = :set_leader2)', [ 'set_leader' => $set_leader, 'set_leader2' => $set_leader2]);
+        return redirect('/');
     }
 }

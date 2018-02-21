@@ -39,5 +39,7 @@ Route::get('/inc/navbar', 'LoginController@logout')->name('logout');
 Route::get('/vgruppe', 'GruppeController@vedlikehold_gruppe')->name('group');
 Route::post('/vgruppe', 'GruppeController@lag_gruppe');
 
+Route::put('/vgruppe', 'GruppeController@sett_leder');
+
 
 
