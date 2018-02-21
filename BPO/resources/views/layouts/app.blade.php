@@ -16,7 +16,7 @@
     @include('inc.nav_header')
     @include('inc.feilmld') <!-- Legger ut feilmeldinger på siden, eks: prøver å laste opp dokument, men manger fil -->
     <div class="container">
-        <h3 style="border-bottom: 2px solid #ffe01d; float: left; padding-bottom: 5px">{{$title}}</h3> <!-- Lagt til av Stian, fiks css Ivo! -->
+        <h3>{{$title}}</h3>
         @yield('content')
     </div>
     <script src="{{asset('js/app.js')}}"></script>
