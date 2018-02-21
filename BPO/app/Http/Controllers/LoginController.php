@@ -19,28 +19,6 @@ class LoginController extends Controller
             'password' => 'required|max:45',
         ]);
 
-        /*$pw = DB::table('users')->where('username' , $innData->username)->value('password');
-
-        if( \Hash::needsRehash($pw) ) {
-            $pw = \Hash::make($pw);
-        }
-
-        /*if($innData->password == $pw)
-        {
-            return 'ok';
-        }
-        else
-        {
-            return $pw;
-        }*/
-
-        /*if (Auth::attempt(['username'=>$innData->username, 'password'=>$innData->password])){
-            return 'OK';
-        }
-        else{
-            return 'Feil';
-        }*/
-
         if(DB::table('users')->where('username' , $innData->username)->value('password') == $innData->password)
         {
             Session(['navn' => $innData->username]);
@@ -68,6 +46,12 @@ class LoginController extends Controller
             elseif($level == "4")
             {
                 $lvl=4;
+                Session(['levell' => $lvl]);
+                return redirect('/');
+            }
+            elseif($level >= 2)
+            {
+                $lvl=$level;
                 Session(['levell' => $lvl]);
                 return redirect('/');
             }

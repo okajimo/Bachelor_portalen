@@ -2,6 +2,8 @@
 @section('content')
     <div class="jumbotron">
         <div class="container">
+            
+
             <h2>Ta kontakt med oss!</h2>
             Her er våre adresser: 
             <br/><br/>
