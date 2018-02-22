@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-  <div class="card">
+  <div class="card" style="border: 0; background-color: transparent !important;">
     <img class="card-img" src="https://www.cs.hioa.no/data/bachelorprosjekt/studbilde.png" alt="Card image">
     <div class="card-img-overlay">
       <p class="card-text text-light">Bachelorprosjekt</p>
