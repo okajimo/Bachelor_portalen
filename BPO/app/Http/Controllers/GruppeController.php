@@ -61,7 +61,7 @@ class GruppeController extends Controller
         $set_leader2 = session('navn');
         $set_leader = session('navn');
         DB::update('UPDATE groups SET leader = :set_leader WHERE leader = (SELECT groups.leader FROM student, student_groups WHERE student.username = student_groups.student AND student_groups.student_groups_number = groups.group_number AND student_groups.student_groups_year = groups.year AND student.username = :set_leader2)', [ 'set_leader' => $set_leader, 'set_leader2' => $set_leader2]);
-        return redirect('/');
+        return redirect('/vgruppe');
     }  
 
     public function showUploadForm()
