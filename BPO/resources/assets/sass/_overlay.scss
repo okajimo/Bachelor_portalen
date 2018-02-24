@@ -12,11 +12,13 @@ body{
 }
 
 .btn-togg-overide{
-    border-color: #0096C0 !important;
+    border-color: transparent !important;
     border-width: 1.5px;
     background: #FFFFFF !important;
+    margin: 0 !important;
+
 }
 
-.btn-togg-overide:hover{
-    border-color: #0096C0 !important;
+.nav-link-padding {
+    padding-left: 0 !important;
 }
