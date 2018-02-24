@@ -10035,6 +10035,8 @@ body {
 
 .jumbotron {
   background-color: #FFF !important;
+  padding-top: 1.5em;
+  padding-bottom: 1.5em;
 }
 
 .nav-item {
