@@ -6,7 +6,7 @@
     <div class="card-img-overlay">
       <p class="card-text text-light">Bachelorprosjekt</p>
       <p class="card-text text-light">Institutt for informasjonsteknologi</p> 
-      <p class="card-text text-light">2017/2018</p>
+      <p class="card-text text-light">{{ $year['year'] }}/{{ $year['year1'] }}</p>
     </div>
   </div>
   <p></p>

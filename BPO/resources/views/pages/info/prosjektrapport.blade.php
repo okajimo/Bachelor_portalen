@@ -8,19 +8,19 @@
             Prosjektarbeidet skjer i samarbeid med oppdragsgiver og intern veileder. Du har også anledning til å spørre
             de andre datalærerne hvis du har problemer som går inn på områder der andre datalærere har spesialkunnskap.
             Prosjektgruppen har selv ansvaret for prosjektets fremdrift og resultater og for at prosjektrapporten leveres
-            innen fristen.
+            innen fristen.</br></br>
 
         <h3>Prosjektdokumentasjonen</h3>
 
             På Institutt for Informasjonsteknologi er det fastsatt en dokumentasjonsstandard for bachelorprosjekter.
-            Denne standarden skal normalt følges. Prosjektgruppen avtaler med sin veileder eventuelle endringer til denne.                 
+            Denne standarden skal normalt følges. Prosjektgruppen avtaler med sin veileder eventuelle endringer til denne.</br></br>             
         
         <h3>Oppdragsgiver</h3>
 
             Prosjektgruppen bestemmer selv utformingen av den dokumentasjonen som oppdragsgiver skal ha.
             Hva den skal inneholde og hvilket format den skal ha, blir en sak mellom prosjektgruppen og oppdragsgiver.
             Men det normale er at oppdragsgiver får minimum produktdokumentasjonen.
-            Overlevering av hele rapporten, eller deler av denne til oppdragsgiver må prosjektgruppen ordne med selv.
+            Overlevering av hele rapporten, eller deler av denne til oppdragsgiver må prosjektgruppen ordne med selv.</br></br>
 
         <h3>Elektronisk format</h3>
 
@@ -44,7 +44,7 @@
             skal ikke være sperret. Men de linkene som fører videre til "hemmelige ting" kan sperres med passord.
             Hvis dette ikke skulle være god nok løsning, kan det vurderes at "det hemmelige" overhodet
             ikke er tilgjengelig på nett. Men alt som ønskes vurdert ved karaktersettingen, må være tilgjengelig
-            for sensorene via det som er levert inn i eksamenssystemet.
+            for sensorene via det som er levert inn i eksamenssystemet.</br></br>
 
         <h3>Hva skal leveres?</h3>
             <ol>
@@ -105,10 +105,10 @@
         <h3>Frister</h3>
             <ul>
                 <li>
-                Elektronisk innlevering skal skje innen 23.5.2018 kl. 12.00. <!-- Dato må hentes fra db -->
+                Elektronisk innlevering skal skje innen {{ \DateHelper::instance()->date('project_report') }} kl. 12.00.
                 </li>
                 <li>
-                    Prosjektets hjemmeside skal være oppdatert innen 23.5.2018 kl. 12.00.. Det vil være anledning <!-- Dato må hentes fra db -->
+                    Prosjektets hjemmeside skal være oppdatert innen {{ \DateHelper::instance()->date('project_report') }} kl. 12.00.. Det vil være anledning
                     til å gjøre endringer på hjemmesiden helt frem til presentasjonsdagen, men eventuelle endringer
                     i den elektroniske versjonen av prosjektrapporten vil ikke bli tatt hensyn til under sensureringen.
                     Dokumentasjonen må være flyttet til det faste området (http://student.cs.hioa.no/hovedprosjekter/data/20yy/xx/)

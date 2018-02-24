@@ -15,7 +15,7 @@
     <div class="jumbotron">
         <div class="container">
             <h2>Informasjon for oppdragsgivere</h2>
-            <h2>Studieåret 2017/2018<!--Dato fra db --></h2>
+            <h2>Studieåret {{ $year['year'] }}/{{ $year['year1'] }}</h2>
             <h3>Prosjektet</h3>
                 Datastudiene (dataingeniør, informasjonsteknologi og anvendt datateknologi) ved
                 Høgskolen i Oslo og Akershus er 3-årige og avsluttes i siste semester
@@ -34,10 +34,10 @@
                 rammebetingelser må derfor være på plass i god tid før jul.
 
             <h3>Tidsplan</h3>
-                Studentene velger et prosjekt - frist 1.12.2017<!--Dato fra db -->.<br/>
+                Studentene velger et prosjekt - frist {{ \DateHelper::instance()->date('project_sketch') }}.<br/>
                 Prosjektarbeidet starter for fullt - begynnelsen av januar.<br/>
                 Oppdragsgiver og høgskolen lager en avtale - desember/januar <br/>
-                Studentene leverer sitt prosjektresultat - frist 23.5.2018<!--Dato fra db -->.<br/><br/>
+                Studentene leverer sitt prosjektresultat - frist {{ \DateHelper::instance()->date('project_report') }}.<br/><br/>
                 Ta kontakt med oss. Mer detaljert informasjon finner du under de ulike menyvalgene i venstre spalte.
         </div>
     </div>

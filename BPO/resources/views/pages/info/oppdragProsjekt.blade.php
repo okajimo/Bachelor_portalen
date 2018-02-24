@@ -3,7 +3,6 @@
 @include('inc.nav_header')
     <div class="jumbotron">
         <div class="container">
-            <h2>Hva er et bachelorprosjekt?</h2>
             <h3>De enkelte fagene</h3>
             Datastudiene (dataingeniør, informasjonsteknologi og anvendt datateknologi) ved
             Høgskolen i Oslo og Akershus er 3-årige. Studieplanen inneholder emner som programmering,
@@ -11,7 +10,7 @@
             datamodellering og systemering, nettverk og systemadministrasjon, applikasjonsutvikling,
             datasikkerhet, grafikk, kunnskapsteknologi - samt en samling valgfag.
             I tillegg inneholder enkelte studier en serie emner i matematikk, statistikk
-            og samfunnsfag (kommunikasjon, økonomi).
+            og samfunnsfag (kommunikasjon, økonomi).</br></br>
 
             <h3>Hovedprosjektet</h3>
             I siste semester (6. semester) skal studentene gjennomføre et større praktisk dataprosjekt.
@@ -30,18 +29,18 @@
             implementasjon og i grensesnitt og dokumentasjon. De skal kunne produsere tilfredstillende
             dokumentasjon for dataprogrammer og datasystemer både når det gjelder produkt, drift og bruk
             med tilpasning til de ulike mottakerne av denne dokumentasjonen, og de skal kunne beskrive
-            sin egen arbeidsprosess hensiktsmessig etter gitte standarder."
+            sin egen arbeidsprosess hensiktsmessig etter gitte standarder."</br></br>
 
             <h3>Oppdragsgiver</h3>
             I omtalen står det at prosjektet skal være ". . basert på en oppdragsgivers krav ." Hovedprosjektet
             skal derfor i størst mulig grad gjennomføres i samarbeid med næringslivet. Dvs. at problemstillingen
-            bak prosjektet blir gitt av en bedrift, en organisasjon eller annen ekstern institusjon.
+            bak prosjektet blir gitt av en bedrift, en organisasjon eller annen ekstern institusjon.</br></br>
 
             <h3>Tidsperspektiv</h3>
             Studentenes arbeid med bachelorprosjektet starter om høsten. Første skritt er å få kontakt med en
             oppdragsgiver. Det lages deretter en prosjektskisse. Prosjektskissen formulerer problemet, beskriver
             rammebetingelser, antyder aktuelle dataverktøy og omgivelser, og setter problemet inn i en sammenheng.
-            Dette skal være ferdig innen 1.12.2017.<!--Dato fra db -->
+            Dette skal være ferdig innen {{ \DateHelper::instance()->date('project_sketch') }}.
         </div>
     </div>
 @endsection

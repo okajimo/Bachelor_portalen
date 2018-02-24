@@ -8,7 +8,7 @@
             <h3>Først til mølla får først male!</h3>
             Mange studenter er allerede igang med å finne frem til prosjekter. De oppdragsgiverne som er tidlig ute
             vil derfor kunne verve de beste studentene. Uansett må eventuelle prosjekter være presentert for
-            studentene i god tid før fristen for studentenes innlevering av prosjektskisser den 1.12.2017.<!-- Dato fra db -->
+            studentene i god tid før fristen for studentenes innlevering av prosjektskisser den {{ \DateHelper::instance()->date('project_sketch') }}.
             <br/><br/>
             Du kan ringe, sende brev, E-post eller komme på besøk. Her er våre adresser:
             <br/><br/>
