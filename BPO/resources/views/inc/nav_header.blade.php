@@ -1,8 +1,9 @@
-<div class="spacing_header " style="padding:0 !important">
+<div style="padding:0 !important">
     <nav class="nav-adjust navbar navbar-expand-lg" style="padding:0 !important">
-        <button class="navbar-toggler navbar-toggler-right btn btn-primary btn-lg btn-block btn-togg-overide" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+        <button style="box-shadow:none"class="text-left navbar-toggler navbar-toggler-right btn btn-primary btn-lg btn-block btn-togg-overide" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
             <span style="width:100%; color: #0096C0;"><h4>Content</h4></span>
         </button>
+        <span class="glyphicon glyphicon-menu-down"></span> <!-- fikse for BS4 -->
 
         <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
             <ul class="navbar-nav mr-auto mt-2 mt-md-0">
@@ -19,4 +20,4 @@
         </div>
     </nav>
 </div>
-
+<p></p>

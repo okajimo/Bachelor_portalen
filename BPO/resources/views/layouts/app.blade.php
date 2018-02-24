@@ -19,6 +19,7 @@
             <h3>{{$title}}</h3>
         @endif
 
+        <div class="spacing_header"></div>
         @yield('content')
     </div>
     <script src="{{asset('js/app.js')}}"></script>

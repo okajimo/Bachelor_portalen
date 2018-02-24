@@ -10008,10 +10008,13 @@ body {
 }
 
 .btn-togg-overide {
-  border-color: #0096C0;
+  border-color: #0096C0 !important;
   border-width: 1.5px;
   background: #FFFFFF !important;
-  text-align: left;
+}
+
+.btn-togg-overide:hover {
+  border-color: #0096C0 !important;
 }
 
 .navbar {
