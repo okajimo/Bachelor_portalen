@@ -1,6 +1,12 @@
 @extends('layouts.app')
 @section('content')
-@include('inc.nav_header')
+<div class="row">
+    <div class="col-12">
+        <div class="jumbotron" style="padding-top:0; padding-bottom:0;">
+            <h5>@include('inc.nav_header')</h5>
+        </div>
+    </div>
+</div>
 <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 order-lg-4 order-xl-4">
         @include('inc.nav_side') 
