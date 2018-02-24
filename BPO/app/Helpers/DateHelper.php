@@ -11,7 +11,7 @@ Class DateHelper
         $date = DB::table('dates')->get();
         if ($date == NULL)
         {
-            return "Dato mangler"; 
+            return "dato mangler"; 
         }
         $date = \Carbon\Carbon::parse($date[0]->$data)->format('d/m/Y');
         return $date;
@@ -20,6 +20,10 @@ Class DateHelper
     public function year()
     {
         $getYear = DB::table('dates')->get();
+        if ($getYear == NULL)
+        {
+            return "årstall mangler"; 
+        }
         $getYear = \Carbon\Carbon::parse($getYear[0]->start)->format('Y');
         $year = array('year' => $getYear, 'year1' => $getYear + 1); 
         return $year;
