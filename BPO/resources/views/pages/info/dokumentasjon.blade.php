@@ -1,5 +1,6 @@
 @extends('layouts.app')
-@section('content')    
+@section('content')
+@include('inc.nav_header')    
 <div class="jumbotron">
     <div class="container">
         <a href="{{ asset('files/dokumentasjonsstandard-2.pdf')}}"><h4>Dokumentasjonsforslag for bachelorprosjekter (kun veiledende)</h4></a>

@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')   
+@include('inc.nav_header')
     <div class="jumbotron">
         <div class="container">
             <h2>Hva er et bachelorprosjekt?</h2>

@@ -41,6 +41,11 @@ Route::post('/vgruppe', 'GruppeController@lag_gruppe');
 
 Route::put('/vgruppe', 'GruppeController@sett_leder');
 
+//dashboard
+Route::get('/Dashboard/student', 'DashboardController@Admin'); //disse skal kun vise dashboard i urlen -ivo
+Route::get('/Dashboard/admin', 'DashboardController@Student'); //disse skal kun vise dashboard i urlen -ivo
+Route::get('/Dashboard/group', 'DashboardController@Group');
+
 Route::get('/lastOppDok', 'GruppeController@showUploadForm')->name('lastopp');
 Route::post('/lastOppDok', 'GruppeController@lastOppDok');
 

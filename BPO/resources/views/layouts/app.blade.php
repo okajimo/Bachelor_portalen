@@ -13,10 +13,12 @@
 </head>
 <body>
     @include('inc.navbar')
-    @include('inc.nav_header')
     @include('inc.feilmld') <!-- Legger ut feilmeldinger på siden, eks: prøver å laste opp dokument, men manger fil -->
     <div class="container">
-        <h3>{{$title}}</h3>
+        @if ($title != null)
+            <h3>{{$title}}</h3>
+        @endif
+
         @yield('content')
     </div>
     <script src="{{asset('js/app.js')}}"></script>

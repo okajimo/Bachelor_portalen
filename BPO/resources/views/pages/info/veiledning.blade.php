@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')    
+@include('inc.nav_header')
 <div class="jumbotron">
     <div class="container">
         Hver gruppe blir tildelt en intern veileder. Det vil fremgå av prosjektoversikten hvem det er.

@@ -1,5 +1,6 @@
 @extends('layouts.app')
-@section('content')   
+@section('content')  
+@include('inc.nav_header') 
     <nav class="navbar navbar-inverse">       
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
