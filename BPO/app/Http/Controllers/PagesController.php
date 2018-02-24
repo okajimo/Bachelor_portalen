@@ -17,7 +17,7 @@ class PagesController extends Controller
     }
 
     public function informasjon(){
-        //Henter årtallø for bruk på siden
+        //Henter årstall for bruk på siden
         $year = \DateHelper::instance()->year();
         $title = "Informasjon";
         return view('pages.info.informasjon')->with(['title' => $title, 'year' => $year]);
@@ -83,7 +83,7 @@ class PagesController extends Controller
     }
 
     public function oppdragsgivere(){
-        //Henter årtallø for bruk på siden
+        //Henter årstall for bruk på siden
         $year = \DateHelper::instance()->year();
         $title = "Informasjon for oppdragsgivere";
         return view('pages.info.oppdragsgivere')->with(['title' => $title, 'year' => $year]);

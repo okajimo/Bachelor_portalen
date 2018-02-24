@@ -19,17 +19,17 @@
 
                 Prosjektene skal først godkjennes og deretter blir hvert prosjekt tildelt en intern veileder. Det normale 
                 er at hver av de aktuelle interne veilederne har ansvaret for 3-4 prosjekter. Veilederens plikter
-                er beskrevet her. Prosjektperioden går fra begynnelsen av januar til innlevering den 23.05.2018 <!--Dato fra db -->
-                og presentasjon i juni <!--Dato fra db -->. Prosjektarbeidet er forøvrig delt opp i ulike faser.
+                er beskrevet her. Prosjektperioden går fra begynnelsen av januar til innlevering den {{ \DateHelper::instance()->date('project_report') }}
+                og presentasjon i perioden {{ \DateHelper::instance()->date('pres_start') }} til {{ \DateHelper::instance()->date('pres_end') }}. Prosjektarbeidet er forøvrig delt opp i ulike faser.
                 Mer om dette finner du på studentenes informasjonssider.
             <br/><br/>
 
                 De fleste studentene tar andre fag parallelt med bachelorprosjektet. Derfor har avdelingen innført en ordning
                 med tidlig eksamensavvikling for øvrige 6. semestersfag. Dermed kan studentene arbeide full tid på
-                bachelorprosjektet fra og med slutten av april.
+                bachelorprosjektet fra og med slutten av april.<br/><br/>
 
             <h3>Prosjektdokumentasjon</h3>
-                Innleveringsfrist for bachelorprosjektene er 23.05.2018<!--Dato fra db -->. Da skal studentene ha levert inn
+                Innleveringsfrist for bachelorprosjektene er {{ \DateHelper::instance()->date('project_report') }}. Da skal studentene ha levert inn
                 papirversjoner av prosjektdokumentasjonen og ha prosjektenes hjemmesider komplette og ferdig oppdatert.
                 Et eksemplar av papirversjonen vil bli sendt til sensor så snart det lar seg gjøre. 
             <br/><br/>
@@ -42,7 +42,7 @@
                 vil normalt være doc-filer (eller pdf-filer). Dette er også fullt akseptabelt. Noen prosjektgrupper har valgt
                 - uten at det er et krav - å lage to versjoner av dokumentasjonen, en optimalisert for papir og en annen
                 optimalisert for web. Informasjon om hvilke valg prosjektgruppene har gjort vil en finne i
-                prosjektdokumentasjonen, og ved sensur skal vi rette oss etter det valget som er gjort.
+                prosjektdokumentasjonen, og ved sensur skal vi rette oss etter det valget som er gjort.<br/><br/>
 
             <h3>Dokumentasjonsstandard</h3>
                 Dokumentasjonsstandarden deler grovt sett dokumentasjonen inn i tre hoveddeler. Det er
@@ -66,15 +66,15 @@
 
                 Hvis sensor skulle oppdage at det er ting som mangler, ikke virker eller har andre problemer med
                 prosjektet, så ber vi om at sensor tar kontakt med prosjektets interne veileder. Hvem det er vil fremgå
-                av dokumentasjonen, og kan også finnes på prosjektoversikten.
+                av dokumentasjonen, og kan også finnes på prosjektoversikten.<br/><br/>
 
             <h3>Presentasjonene</h3>
-                Prosjektgruppene/studentene skal gi en audiovisuell presentasjon av prosjektene sine. Dette skjer i perioden 6-14 juni<!--Dato fra db --> og hvert prosjekt får tildelt 30 minutter. Det vil bli satt opp en
+                Prosjektgruppene/studentene skal gi en audiovisuell presentasjon av prosjektene sine. Dette skjer i perioden {{ \DateHelper::instance()->date('pres_start') }} - {{ \DateHelper::instance()->date('pres_end') }} og hvert prosjekt får tildelt 30 minutter. Det vil bli satt opp en
                 timeplan for dette. Presentasjonene starter hver av dagene kl. 09.00. Alle prosjektene som presenteres på
                 en og samme dag har samme sensor, og det er en del av avtalen mellom avdelingen og sensor at han/hun er
                 tilstede ved presentasjonene. De siste minuttene av hver presentasjon er avsatt til spørsmål, og vi ber
                 sensor om å forberede spørsmål til hvert prosjekt. Det holdes et sensormøte hver av dagene - etter at
-                siste presentasjon for dagen er ferdig.
+                siste presentasjon for dagen er ferdig.<br/><br/>
 
             <h3>Evalueringskriterier</h3>
                 Se skjemaet under. Sluttkarakteren blir et veiet gjenommsnitt av de karakterene som settes på de
@@ -120,7 +120,7 @@
                 Vi ber om at sensor har ferdig et karakterforslag på hvert prosjekt før diskusjonene på sensormøtet starter.
                 Karakterskalaen for bachelorprosjekter har tradisjonelt vært noe annerledes enn for ordinære eksamener.
                 Den har blitt en del innskrenket og forskjøvet mot venstre (A). Flg. tabell viser karalterfordelingen
-                de siste årene:<br/Dette ønsker undervisningsmyndighetene å gjøre noe med og har derfor kommet med nye endrede krav><br/>
+                de siste årene:<br/>Dette ønsker undervisningsmyndighetene å gjøre noe med og har derfor kommet med nye endrede krav<br/>
             <table class="table">
                 <tr>
                     <th>År</th><th>A</th><th>B</th><th>C</th><th>D</th><th>E</th><th>Sum</th>
@@ -162,13 +162,13 @@
                 men det er også ønskelig at flest mulig av de andre veilederne deltar. Formelt fastsettes karakteren
                 på et prosjekt i felleskap av sensor og prosjektets veileder. På sensormøtet blir imidlertid alle
                 prosjektene diskutert i plenum og målet er å komme frem til en felles konsensus for karaktersettingen
-                av alle prosjektene.
+                av alle prosjektene.<br/><br/>
 
             <h3>Spørsmål</h3>
                 Ta kontakt med undertegnede hvis det skulle være uklarheter eller hvis dere skulle ha spørsmål
                 som det ikke gis svar på her.<br/><br/>
                 Tor Krattebøl <br/>
-                E-post: tor.krattebol(a)hioa.no
+                E-post: tor.krattebol@hioa.no
         </div>
     </div>
 @endsection
