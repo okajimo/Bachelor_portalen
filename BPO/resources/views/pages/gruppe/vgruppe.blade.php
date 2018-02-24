@@ -2,14 +2,42 @@
 @section('content')
     <div class="jumbotron">
         <div class="container">
-            {!! Form::open(['action' => 'GruppeController@lag_gruppe', 'method' => 'POST'])!!}
-                {{Form::submit('Registrer gruppe', ['class'=>'btn btn-primary'])}}
-            {!! Form::close() !!}
-        </br>
-            {!! Form::open(['action' => 'GruppeController@sett_leder', 'method' => 'POST'])!!}
-                {{form::hidden('_method', 'PUT')}}
-                {{Form::submit('Sett leder', ['class'=>'btn btn-primary'])}}
-            {!! Form::close() !!}
+            <?php
+                $studentIGruppe = session('navn');
+                $bruker = session('navn');
+                $iGruppe = DB::select('SELECT student_groups.student FROM student_groups WHERE student_groups.student = :iGruppe', ['iGruppe' => $studentIGruppe]);
+            ?>
+            @if($iGruppe == null)
+                {!! Form::open(['action' => 'GruppeController@lag_gruppe', 'method' => 'POST'])!!}
+                    {{Form::submit('Registrer gruppe', ['class'=>'btn btn-primary'])}}
+                {!! Form::close() !!}
+            </br>
+            @endif
+
+            <?php 
+                $brukerS = DB::select('SELECT student_groups.student FROM student_groups WHERE student_groups.student LIKE :bruker',['bruker' => $bruker]);
+            ?>
+            @foreach($brukerS as $brukerF)
+                @if($brukerF->student == $bruker)
+                <?php $break = 0; ?>
+                @foreach($groups as $group2)
+
+                    @if($bruker == $group2->leader)
+                        Du er allerede leder!
+                        <?php $break = 1; ?>
+                    @endif
+
+                @endforeach
+
+                @if($break == 0)
+                    {!! Form::open(['action' => 'GruppeController@sett_leder', 'method' => 'POST'])!!}
+                        {{form::hidden('_method', 'PUT')}}
+                        {{Form::submit('Sett leder', ['class'=>'btn btn-primary'])}}
+                    {!! Form::close() !!}
+                @endif
+
+            @endif
+            @endforeach
             </br>
             <table class="table">
                     <tr style="border: solid;">
@@ -31,7 +59,9 @@
                                     where groups.group_number = student_groups.student_groups_number and groups.year = student_groups_year 
                                     and student_groups.student_groups_number LIKE :number and student_groups.student_groups_year LIKE :year', 
                                     ['number' => $group->group_number, 'year' => $group->year]);
-                                    $leader = DB::SELECT('SELECT groups.leader FROM student, student_groups, groups WHERE student.username = student_groups.student AND student_groups.student_groups_number = groups.group_number AND student_groups.student_groups_year = groups.year AND student.username = groups.leader');
+                                    $leader = DB::SELECT('SELECT groups.leader FROM student, student_groups, groups WHERE student.username = student_groups.student 
+                                    AND student_groups.student_groups_number = groups.group_number 
+                                    AND student_groups.student_groups_year = groups.year AND student.username = groups.leader');
                                     ?>
                                     @foreach($student as $students)
                                         @if($students->student == $group->leader)

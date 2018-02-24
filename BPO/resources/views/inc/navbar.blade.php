@@ -29,7 +29,7 @@
                         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu4" 
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" 
                         style="color: black; background-color: #F1F1F2; border-color: #6c757d;"> <!-- Lagt til av Stian, Ivo fiks css -->
-                            {{ session('navn') }}
+                            Meny
                         </button>
                         <div class="dropdown-menu">
                           <a class="dropdown-item" href="{{ route('logout') }}">Vedlikehold brukere</a>
@@ -48,13 +48,11 @@
                         <button class="btn btn-secondary dropdown-toggle"
                                 type="button" id="dropdownMenu4" data-toggle="dropdown"
                                 aria-haspopup="true" aria-expanded="false" style="color: black; background-color: #F1F1F2; border-color: #6c757d;">
-                            {{ session('navn') }}
+                            Meny
                         </button>
                         <div class="dropdown-menu">
                           <a class="dropdown-item" href="{{ route('group') }}">Vedlikehold gruppe</a>
-                          <a class="dropdown-item" href="{{ route('lastopp') }}">Statusrapport</a>
-                          <a class="dropdown-item" href="{{ route('logout') }}">Prosjektskisse</a>
-                          <a class="dropdown-item" href="{{ route('logout') }}">Bachelorprosjekttittel</a>
+                          <a class="dropdown-item" href="{{ route('lastopp') }}">Last opp dokumenter</a>
                           <div class="dropdown-divider"></div>
                           <a class="dropdown-item" href="{{ route('logout') }}">Logout</a>
                         </div>

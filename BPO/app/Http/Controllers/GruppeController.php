@@ -27,6 +27,7 @@ class GruppeController extends Controller
     {   
         $gruppe = new Group;
         $gruppe->leader = session('navn');
+        $leder = session('navn');
 
         if (date('m') >= '06') 
         {
@@ -47,12 +48,24 @@ class GruppeController extends Controller
         }
         else 
         {
-            $antallGrupper = DB::table('groups')->where('year', '=', $year)->count();
-            $test = $antallGrupper + 1;
-            $gruppe->group_number = $test;
+            $tommeGrupper = DB::select('SELECT * FROM groups WHERE groups.leader = ""');
+            foreach($tommeGrupper as $tomme)
+            {
+                if($tomme->group_number == "")
+                {
+                    $antallGrupper = DB::table('groups')->where('year', '=', $year)->count();
+                    $test = $antallGrupper + 1;
+                    $gruppe->group_number = $test;
+                    $gruppe->save();
+                    break;
+                }
+                else
+                {
+                    DB::update('UPDATE groups SET leader = :leder WHERE groups.group_number = :nummer AND groups.year = :ar',['leder' => $leder, 'nummer' => $tomme->group_number,'ar' => $tomme->year]);
+                }
+                break;
+            }
         }
-
-        $gruppe->save();
         return redirect('/')->with('success', 'gruppe lagret');
     }
 
