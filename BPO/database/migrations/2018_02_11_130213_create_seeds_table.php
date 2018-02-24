@@ -95,12 +95,12 @@ class CreateSeedsTable extends Migration
 		Schema::create('dates', function(Blueprint $table) {
 		    $table->engine = 'InnoDB';
 		
-		    $table->dateTime('start');
-		    $table->dateTime('status_report');
-		    $table->dateTime('project_sketch');
-		    $table->dateTime('preproject');
-		    $table->dateTime('project_report');
-		    $table->dateTime('end');
+		    $table->date('start');
+		    $table->date('status_report');
+		    $table->date('project_sketch');
+		    $table->date('preproject');
+		    $table->date('project_report');
+		    $table->date('end');
 		
 		
 		});
