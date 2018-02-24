@@ -37,7 +37,9 @@ class PagesController extends Controller
     }
 
     public function studenter(){
-        $title = "Studenter";
+        // henter året fra prosjeket start og legger til 1 for å få året som avlsutter prosjektet.
+        $year = \DateHelper::instance()->year();
+        $title = "Huskeliste for studenter ". $year['year'] ."/". $year['year1'];
         return view('pages.info.studenter')->with('title', $title);
     }
     
@@ -72,7 +74,9 @@ class PagesController extends Controller
     }
 
     public function sensorer(){
-        $title = "Informasjon for sensorer 2017/2018"; //år bør komme fra db
+        // henter året fra prosjeket start og legger til 1 for å få året som avlsutter prosjektet.
+        $year = \DateHelper::instance()->year();
+        $title = "Informasjon for sensorer ". $year['year'] ."/". $year['year1'];
         return view('pages.info.sensorer')->with('title', $title);
     }
 
