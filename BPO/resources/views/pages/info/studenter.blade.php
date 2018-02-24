@@ -18,7 +18,7 @@
                     Selve prosjektarbeidet pågår frem til innleveringsfristen <b>{{ \DateHelper::instance()->date('project_report') }}</b></br>
                     Til slutt må dere forberede presentasjonen som vil foregå <b>{{ \DateHelper::instance()->date('pres_start') }} - {{ \DateHelper::instance()->date('pres_end') }}</b></br>
                 </p></br> 
-                <table class="table">
+                <table class="table table-responsive">
                     <tr>
                         <th>Nr</th><th>Oppgave</th><th>Hvor</th><th>Frist</th>
                     </tr>
@@ -37,7 +37,7 @@
                     <tr>
                         <td>5</td><td>Presentasjon</td><td>Auditorium</td><td>{{ \DateHelper::instance()->date('pres_start') }} - {{ \DateHelper::instance()->date('pres_end') }}</td>
                     </tr>
-                </table>
+                </table>                    
             </div>
         </div>
     </div>
