@@ -102,7 +102,6 @@ class CreateSeedsTable extends Migration
 			$table->date('project_report');
 			$table->date('pres_start');
 			$table->date('pres_end');
-		    $table->date('end'); //trenger vi denne?
 		
 		
 		});
