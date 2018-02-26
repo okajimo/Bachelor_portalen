@@ -36,7 +36,7 @@ class CreateForeignKeysTable extends Migration
 
         Schema::table('documents', function (Blueprint $table) {
 
-            $table->foreign(['documents_year','documents_groups_number'])
+            $table->foreign(['documents_groups_number','documents_year'])
                 ->references(['group_number','year'])->on('groups');
         });
 

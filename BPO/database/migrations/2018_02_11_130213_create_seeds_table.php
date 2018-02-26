@@ -83,8 +83,8 @@ class CreateSeedsTable extends Migration
 		    $table->engine = 'InnoDB';
 		
 		    $table->increments('id');
-		    $table->integer('documents_year');
-		    $table->integer('documents_groups_number');
+			$table->integer('documents_groups_number');
+			$table->integer('documents_year');
 		    $table->string('file_name', 127);
 		    $table->string('title', 45);
 		
