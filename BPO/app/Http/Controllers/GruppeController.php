@@ -99,16 +99,21 @@ class GruppeController extends Controller
 
         //lagre data
         $dok = new Document;
-        $dok->title = $request->input('type');
-        $dok->file_name = $filnavn;
         
         $name = session('navn');
         $nummer = DB::table('student_groups')->where('student', '=', $name)->value('student_groups_number');
-        $dok->documents_groups_number = $name;
+        $dok->documents_groups_number = $nummer;
+
         $year = DB::table('groups')->where('group_number', '=', $nummer)->value('year');
+        $year = (int)$year;
         $dok->documents_year = $year;
 
+        $dok->file_name = $filnavn;
+
+        $dok->title = $request->input('type');
+        
         $dok->save();
         return redirect('/')->with('success', 'Dokument opplastet');
+        //return dd($year);
     }
 }
