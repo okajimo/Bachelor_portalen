@@ -40,6 +40,7 @@ Route::get('/vgruppe', 'GruppeController@vedlikehold_gruppe')->name('group');
 Route::post('/vgruppe', 'GruppeController@lag_gruppe');
 
 Route::put('/vgruppe', 'GruppeController@sett_leder');
+Route::delete('/vgruppe', 'GruppeController@fjern_student');
 
 //dashboard
 Route::get('/dashboard/student', 'DashboardController@Admin'); //disse skal kun vise dashboard i urlen -ivo
