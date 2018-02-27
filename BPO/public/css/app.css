@@ -1,6 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);@charset "UTF-8";
-
-/*!
+@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);/*!
  * Bootstrap v4.0.0 (https://getbootstrap.com)
  * Copyright 2011-2018 The Bootstrap Authors
  * Copyright 2011-2018 Twitter, Inc.
@@ -9996,9 +9994,9 @@ a.text-dark:focus {
   }
 }
 
-/*
-    Dvs endring av bootstrap og klasser som har noe å si for hele siden
-*/
+html {
+  overflow-y: scroll;
+}
 
 body {
   background-color: #F5F5F5;

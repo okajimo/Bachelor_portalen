@@ -1,6 +1,8 @@
-/*
-    Dvs endring av bootstrap og klasser som har noe å si for hele siden
-*/
+//Dvs endring av bootstrap og klasser som har noe å si for hele siden
+
+html {
+    overflow-y:scroll;
+}
 
 body{
     background-color: #F5F5F5;
