@@ -229,6 +229,7 @@ return [
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
         'DateHelper' => App\Helpers\DateHelper::class,
+        'UploadHelper' => App\Helpers\UploadHelper::class,
 
     ],
 

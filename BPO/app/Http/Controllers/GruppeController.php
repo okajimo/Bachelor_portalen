@@ -133,35 +133,6 @@ class GruppeController extends Controller
 
     public function lastOppDok(request $request)
     {
-        $this->validate($request, [
-            'type' => 'required|max:127',
-            'dok' => 'required|mimes:pdf|max:1999'
-        ]);
-        
-        // Håndterer fil opplasting
-        if($request->hasFile('dok')){
-            $filnavn = $request->file('dok')->getClientOriginalName();
-
-            $path = $request->file('dok')->storeAs('public/filer', $filnavn);
-        }
-
-        //lagre data
-        $dok = new Document;
-        
-        $name = session('navn');
-        $nummer = DB::table('student_groups')->where('student', '=', $name)->value('student_groups_number');
-        $dok->documents_groups_number = $nummer;
-
-        $year = DB::table('groups')->where('group_number', '=', $nummer)->value('year');
-        $year = (int)$year;
-        $dok->documents_year = $year;
-
-        $dok->file_name = $filnavn;
-
-        $dok->title = $request->input('type');
-        
-        $dok->save();
-        return redirect('/')->with('success', 'Dokument opplastet');
-        //return dd($year);
+        $upload = \UploadHelper::instance()->upload($request);
     }
 }
