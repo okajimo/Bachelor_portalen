@@ -1,24 +1,41 @@
+/*
+    Dvs endring av bootstrap og klasser som har noe å si for hele siden
+*/
+
 body{
     background-color: #F5F5F5;
 }
 
-.spacing_header {
-    margin-top: 1em;
-    margin-bottom: 4em;
+//hoved nav
+.navbar {
+    min-height: 8.5em;
 }
 
+.nav-link{
+    color: black !important;
+}
+
+.nav-link:hover{
+    color:#0096c0 !important;
+}
+
+.navbar-light{
+    background-color: #F1F1F2 !important;
+}
+
+.nav-item
+{
+    border-bottom:1px solidd #bbbdbf;   //trengs denne koden? -ivo
+}
+
+//endring av top navbar (eks informasjon -> student)
 .nav-adjust{
     min-height: 0 !important;
 }
 
-.btn-togg-overide{
-    border-color: transparent !important;
-    border-width: 1.5px;
-    background: #FFFFFF !important;
-    margin: 0 !important;
-
+// jumbotron klassen
+.jumbotron{
+    background-color: #FFF !important;
+    padding-top: 2em !important;
 }
 
-.nav-link-padding {
-    padding-left: 0 !important;
-}
