@@ -10046,3 +10046,10 @@ body {
   margin-bottom: 4em;
 }
 
+.btn-nice {
+  margin: 0;
+  width: 100%;
+  display: block;
+  height: 100%;
+}
+
