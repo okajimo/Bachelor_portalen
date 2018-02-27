@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app') <!-- Må oppdateres -->
 @section('content')
 @include('inc.nav_header')
   <div class="card" style="border: 0; background-color: transparent !important;">
