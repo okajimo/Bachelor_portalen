@@ -6,6 +6,7 @@ use Auth;
 use Illuminate\Support\Facades\DB;
 use App\Group;
 use App\document;
+use Illuminate\Support\Facades\Input;
 
 class GruppeController extends Controller
 {
@@ -65,7 +66,6 @@ class GruppeController extends Controller
         }
         return redirect('/vgruppe');
     }
-
     public function lag_gruppe(Request $request)
     {   
         $gruppe = new Group;
@@ -89,7 +89,7 @@ class GruppeController extends Controller
         {
             $gruppe->group_number = 1;
             $gruppe->save();
-            //DB::insert('INSERT INTO student_groups (student, student_groups_number, student_groups_year) VALUES (:Snavn, :Sgruppe, :Syear)',['Snavn' => $leder,'Sgruppe' => $gruppe->group_number,'Syear' => $gruppe->year]);
+            DB::insert('INSERT INTO student_groups (student, student_groups_number, student_groups_year) VALUES (:Snavn, :Sgruppe, :Syear)',['Snavn' => $leder,'Sgruppe' => $gruppe->group_number,'Syear' => $gruppe->year]);
         }
         else 
         {
@@ -111,7 +111,17 @@ class GruppeController extends Controller
                 DB::insert('INSERT INTO student_groups (student, student_groups_number, student_groups_year) VALUES (:Snavn, :Sgruppe, :Syear)',['Snavn' => $leder,'Sgruppe' => $gruppe->group_number,'Syear' => $gruppe->year]);
             }
         }
-        return redirect('/vgruppe')->with('success', 'gruppe lagret');
+        return redirect('/vgruppe');
+    }
+
+    public function meld_inn(Request $request)
+    {
+        if(Input::get('meld'))
+        {
+            $stud = session('navn');
+            DB::insert('INSERT INTO student_groups (student, student_groups_number, student_groups_year) VALUES (:student, :group, :year)',['student' => $stud,'group'=> $request->number,'year' => $request->year]);
+            return redirect('/vgruppe');
+        }
     }
 
     public function sett_leder(Request $request)

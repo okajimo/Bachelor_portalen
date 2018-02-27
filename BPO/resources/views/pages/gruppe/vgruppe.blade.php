@@ -22,7 +22,6 @@
                 @foreach($groups as $group2)
 
                     @if($bruker == $group2->leader)
-                        Du er allerede leder!
                         <?php $break = 1; ?>
                     @endif
 
@@ -52,13 +51,17 @@
                         <th>Studenter</th>
                         <th>E-postadresse</th>
                         <th>Veileder</th>
+                        @if($iGruppe == null)
+                        <th>Meld deg inn</th>
+                        @endif
                     </tr>
                         @foreach ($groups as $group)
                         @if($group->leader ==! "")
                             <?php $date = date('Y'); ?>
                             @if($group->year >= date('Y'))
                                 <tr>
-    <!-- Lagt til av stian, Ivo fiks css -->   <td style="border-bottom: thin #cc3300 solid; border-right: thin #cc3300 solid; border-left: thin #cc3300 solid;">{{ $group->group_number }}</td>
+    <!-- Lagt til av stian, Ivo fiks css -->   <td style="border-bottom: thin #cc3300 solid; border-right: thin #cc3300 solid; border-left: thin #cc3300 solid;">{{ $group->group_number }}
+                                               </td>
     <!-- Lagt til av stian, Ivo fiks css -->   <td style="border-bottom: thin #cc3300 solid; border-right: thin #cc3300 solid;"><a href="http://{{ $group->url }}" >{{ $group->title }}</a></td>
     <!-- Lagt til av stian, Ivo fiks css -->   <td style="border-bottom: thin #cc3300 solid; border-right: thin #cc3300 solid;">
 
@@ -91,6 +94,16 @@
                                         @endforeach
                                     </td>
     <!-- Lagt til av stian, Ivo fiks css -->   <td style="border-bottom: thin #cc3300 solid; border-right: thin #cc3300 solid;">{{ $group->supervisor }}</td>
+                                                 @if($iGruppe == null)
+                                                    <td style="border-bottom: thin #cc3300 solid; border-right: thin #cc3300 solid; text-align: center;">
+                                                        {!! Form::open(['action' => 'GruppeController@meld_inn', 'method' => 'POST'])!!}
+                                                        {{Form::hidden('number', $group->group_number)}}
+                                                        {{Form::hidden('year', $group->year)}}
+                                                        {{form::hidden('_method', 'options')}}
+                                                        {{Form::submit('Bli med',['class'=>'btn btn-success', 'name' => 'meld'])}}
+                                                        {!! Form::close() !!}
+                                                    </td>
+                                                @endif
                                 </tr> 
                             @endif
                         

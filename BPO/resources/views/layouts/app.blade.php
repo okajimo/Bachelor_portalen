@@ -13,7 +13,6 @@
 </head>
 <body>
     @include('inc.navbar')
-    @include('inc.feilmld') <!-- Legger ut feilmeldinger på siden, eks: prøver å laste opp dokument, men manger fil -->
     <div class="container">
         @if ($title != null)
             <h3>{{$title}}</h3>
