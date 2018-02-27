@@ -5,11 +5,7 @@
             <div class="row">
                 <div class="col-lg-offset-3 col-lg-6">
 
-                    @if (count($errors) > 0)
-                        @foreach($errors->all() as $error)
-                            <p class="alert alert-danger">{{$error}}</p>
-                        @endforeach
-                    @endif
+                    @include('inc.feilmld')
 
                     <form class="form-horizontal" action="{{route('login')}}" method="post">
                     {{csrf_field()}}

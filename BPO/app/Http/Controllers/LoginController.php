@@ -15,8 +15,8 @@ class LoginController extends Controller
 
     public function loggInn(request $innData){
         $this->validate($innData, [
-            'username' => 'required|max:15',
-            'password' => 'required|max:45',
+            'username' => 'required|max:15|alpha_num',
+            'password' => 'required|max:15|alpha_num',
         ]);
 
         if(DB::table('users')->where('username' , $innData->username)->value('password') == $innData->password)
