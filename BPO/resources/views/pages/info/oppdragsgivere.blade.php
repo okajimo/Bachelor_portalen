@@ -1,14 +1,5 @@
-@extends('layouts.info')
-@section('content')
-    <div class="jumbotron">
-        <ul class="nav navbar-nav">
-            <li><a href="/oppdragProsjekt"><h4>Hva er et bachelorprosjekt?</h4></a></li>
-            <li><a href="/oppdragStudent"><h4>Hva kan en datastudent?</h4></a></li>
-            <li><a href="/oppdragSammarbeid"><h4>Samarbeid med bedrifter</h4></a></li>
-            <li><a href="/oppdragBedrift"><h4>Har din bedrift et prosjekt?</h4></a></li>
-            <li><a href="/oppdragKontakt"><h4>Ta kontakt</h4></a></li>
-        </ul>
-    </div> 
+@extends('layouts.oppdrag')
+@section('content') 
     <div class="jumbotron">
         <div class="container">
             <h2>Informasjon for oppdragsgivere</h2>
