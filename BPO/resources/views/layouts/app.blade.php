@@ -16,6 +16,8 @@
     <div class="container">
         @if ($title != null)
             <h3>{{$title}}</h3>
+        @else
+            <h3 style="visibility:hidden">hidden</h3>
         @endif
 
         <div class="spacing_header"></div>

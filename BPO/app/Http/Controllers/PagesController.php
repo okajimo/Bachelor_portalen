@@ -90,27 +90,32 @@ class PagesController extends Controller
     }
     
     public function oppdragProsjekt(){
-        $title = "Hva er et bachelorprosjekt?";
+        //$title = "Hva er et bachelorprosjekt?";
+        $title = null;
         return view('pages.info.oppdragProsjekt')->with('title', $title);
     }
 
     public function oppdragStudent(){
-        $title = "Hva kan en datastudent utrette?";
+        //$title = "Hva kan en datastudent utrette?";
+        $title = null;
         return view('pages.info.oppdragStudent')->with('title', $title);
     }
 
     public function oppdragSammarbeid(){
-        $title = "Samarbeid med bedrifter";
+        //$title = "Samarbeid med bedrifter";
+        $title = null;
         return view('pages.info.oppdragSammarbeid')->with('title', $title);
     }
 
     public function oppdragBedrift(){
-        $title = "En samarbeidsavtale";
+        //$title = "En samarbeidsavtale";
+        $title = null;
         return view('pages.info.oppdragBedrift')->with('title', $title);
     }
 
     public function oppdragKontakt(){
-        $title = "Ta kontakt med oss!";
+        //$title = "Ta kontakt med oss!";
+        $title = null;
         return view('pages.info.oppdragKontakt')->with('title', $title);
     }
 }
