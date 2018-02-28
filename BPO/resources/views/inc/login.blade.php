@@ -17,21 +17,21 @@
                 <a class="dropdown-item" href="{{ route('logout') }}">Logout</a>
             </div>
     </div>
-@elseif(session('levell') == 1)
-    <div class="dropdown open">
-        <button class="btn btn-secondary dropdown-toggle"
-                type="button" id="dropdownMenu4" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false" style="color: black; background-color: #F1F1F2; border-color: #6c757d;">
-            Meny
-        </button>
-        <div class="dropdown-menu">
-            <a class="dropdown-item" href="{{ route('group') }}">Vedlikehold gruppe</a>
-            <a class="dropdown-item" href="{{ route('lastOppS') }}">Last opp statusrapport</a>
-            <a class="dropdown-item" href="{{ route('lastOppP') }}">Last opp prosjektskisse</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="{{ route('logout') }}">Logout</a>
+    @elseif(session('levell') == 1)
+        <div class="dropdown open">
+            <button class="btn btn-secondary dropdown-toggle"
+                    type="button" id="dropdownMenu4" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false" style="color: black; background-color: #F1F1F2; border-color: #6c757d;">
+                Meny
+            </button>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="{{ route('group') }}">Vedlikehold gruppe</a>
+                <a class="dropdown-item" href="{{ route('lastOppS') }}">Last opp statusrapport</a>
+                <a class="dropdown-item" href="{{ route('lastOppP') }}">Last opp prosjektskisse</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="{{ route('logout') }}">Logout</a>
+            </div>
         </div>
-    </div>
-@else
-    <li><a class="btn btn-secondary" href="{{ route('login') }}" style="color: black; background-color: #F1F1F2; border-color: #6c757d;">Login</a></li>
+    @else
+        <li><a class="btn btn-secondary" href="{{ route('login') }}" style="color: black; background-color: #F1F1F2; border-color: #6c757d;">Login</a></li>
 @endif
