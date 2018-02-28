@@ -24,7 +24,7 @@
                 </li>
             </ul>
         </div>
-        <div>
+        <div class="nav">
             @include('inc/login')
         </div>
     </div>
