@@ -3,17 +3,12 @@
 namespace App\Helpers;
 
 use Illuminate\Support\Facades\DB;
+use App\document;
 
 Class UploadHelper
 {
     public function upload($request)
     {
-        // Validerer filen slik at kun tillatte filtyper kan lastes opp
-        $this->validate($request, [
-            'type' => 'required|max:127',
-            'dok' => 'required|mimes:pdf|max:1999'
-        ]);
-        
         //Finner gruppenummer til opplaster
         $name = session('navn');
         $groupNumber = DB::table('student_groups')->where('student', '=', $name)->value('student_groups_number');
@@ -50,7 +45,7 @@ Class UploadHelper
         $dok->title = $request->input('type');
         
         $dok->save();
-        return redirect('/')->with('success', 'Dokument opplastet');
+        return 'Dokument opplastet';
     }
 
     public static function instance()
