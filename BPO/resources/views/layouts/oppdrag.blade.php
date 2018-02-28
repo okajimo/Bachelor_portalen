@@ -29,13 +29,15 @@
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8 col-xl-8">
                     <div class="jumbotron">
-                        <ul class="nav navbar-nav">
-                            <li><a href="/oppdragProsjekt"><h4>Hva er et bachelorprosjekt?</h4></a></li>
-                            <li><a href="/oppdragStudent"><h4>Hva kan en datastudent?</h4></a></li>
-                            <li><a href="/oppdragSammarbeid"><h4>Samarbeid med bedrifter</h4></a></li>
-                            <li><a href="/oppdragBedrift"><h4>Har din bedrift et prosjekt?</h4></a></li>
-                            <li><a href="/oppdragKontakt"><h4>Ta kontakt</h4></a></li>
-                        </ul>
+                        <div class="container">
+                            <ul class="nav navbar-nav">
+                                <li><a href="/oppdragProsjekt"><h4>Hva er et bachelorprosjekt?</h4></a></li>
+                                <li><a href="/oppdragStudent"><h4>Hva kan en datastudent?</h4></a></li>
+                                <li><a href="/oppdragSammarbeid"><h4>Samarbeid med bedrifter</h4></a></li>
+                                <li><a href="/oppdragBedrift"><h4>Har din bedrift et prosjekt?</h4></a></li>
+                                <li><a href="/oppdragKontakt"><h4>Ta kontakt</h4></a></li>
+                            </ul>
+                        </div>
                     </div>
                     
                     @yield('content')
