@@ -48,7 +48,9 @@ Route::get('/dashboard/student', 'DashboardController@Admin'); //disse skal kun 
 Route::get('/dashboard/admin', 'DashboardController@Student'); //disse skal kun vise dashboard i urlen -ivo
 Route::get('/dashboard/group', 'DashboardController@Group');
 
-Route::get('/lastOppDok', 'GruppeController@showUploadForm')->name('lastopp');
+//Opplasting av dokumenter
+Route::get('/lastOppStatus', 'GruppeController@showUploadFormS')->name('lastOppS');
+Route::get('/lastOppSkisse', 'GruppeController@showUploadFormP')->name('lastOppP');
 Route::post('/lastOppDok', 'GruppeController@lastOppDok');
 
 

@@ -26,7 +26,8 @@
         </button>
         <div class="dropdown-menu">
             <a class="dropdown-item" href="{{ route('group') }}">Vedlikehold gruppe</a>
-            <a class="dropdown-item" href="{{ route('lastopp') }}">Last opp dokumenter</a>
+            <a class="dropdown-item" href="{{ route('lastOppS') }}">Last opp statusrapport</a>
+            <a class="dropdown-item" href="{{ route('lastOppP') }}">Last opp prosjektskisse</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="{{ route('logout') }}">Logout</a>
         </div>

@@ -135,17 +135,22 @@ class GruppeController extends Controller
         return redirect('/vgruppe');
     }  
 
-    public function showUploadForm()
+    public function showUploadFormS()
     {
-        $title = "Last opp";
-        return view('pages.gruppe.lastOppDok')->with('title', $title);
+        $title = "Last opp statusrapport";
+        return view('pages.gruppe.lastOppStatus')->with('title', $title);
+    }
+
+    public function showUploadFormP()
+    {
+        $title = "Last opp prosjektskisse";
+        return view('pages.gruppe.lastOppSkisse')->with('title', $title);
     }
 
     public function lastOppDok(request $request)
     {
         // Validerer filen slik at kun tillatte filtyper kan lastes opp
         $this->validate($request, [
-            'type' => 'required|max:127',
             'dok' => 'required|mimes:pdf|max:1999'
         ]);
         $upload = \UploadHelper::instance()->upload($request);
