@@ -13,7 +13,7 @@
     @include('inc.navbar')
     <div class="container">
         @if ($title != null)
-            <h3>{{$title}}</h3>
+        <h3 class="tittel_tekst">{{$title}}</h3>
         @else
             <h3 style="visibility:hidden">hidden</h3>
         @endif
