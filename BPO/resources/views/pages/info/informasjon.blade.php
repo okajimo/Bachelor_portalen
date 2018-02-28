@@ -1,4 +1,4 @@
-@extends('layouts.info')
+@extends('layouts.student')
 @section('content')
     <div class="card" style="border: 0; background-color: transparent !important;">
         <img class="card-img" src="https://www.cs.hioa.no/data/bachelorprosjekt/studbilde.png" alt="Card image">

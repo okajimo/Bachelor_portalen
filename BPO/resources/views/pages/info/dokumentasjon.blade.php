@@ -1,4 +1,4 @@
-@extends('layouts.info')
+@extends('layouts.student')
 @section('content')
     <div class="jumbotron">
         <div class="container">
