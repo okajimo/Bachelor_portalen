@@ -55,7 +55,7 @@ return [
         'string' => ':attribute må ikke være kortere enn :max tegn.',
         'array' => ':attribute må ikke ha flere enn :max elementer.',
     ],
-    'mimes' => ':attribute må være en fil av typen: :values.',
+    'mimes' => 'Dokumentet må være en fil av typen: :values.',
     'mimetypes' => ':attribute må være en fil av typen: :values.',
     'min' => [
         'numeric' => ':attribute må være minst :min.',

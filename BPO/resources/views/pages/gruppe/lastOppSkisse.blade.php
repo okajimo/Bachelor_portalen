@@ -6,7 +6,7 @@
             {!! Form::open(['action' => 'GruppeController@lastOppDok', 'method' => 'POST', 'files' => true]) !!}  
                 <div class="form-group">
                         {{Form::hidden('type', 'prosjektskisse')}}    
-                    {{Form::label('dok', 'Velg fil for opplastning')}}
+                    {{Form::label('dok', 'Velg fil for opplastning. Kun PDF godkjent.')}}
                     </br>
                     {{Form::file('dok')}}
                 </div>
