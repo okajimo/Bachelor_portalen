@@ -137,14 +137,34 @@ class GruppeController extends Controller
 
     public function showUploadFormS()
     {
-        $title = "Last opp statusrapport";
-        return view('pages.gruppe.lastOppStatus')->with('title', $title);
+        $student = session('navn');
+        $gruppe = DB::select('SELECT student_groups_number FROM student_groups WHERE student LIKE :student', ['student' => $student]);
+        
+        if($gruppe)
+        {
+            $title = "Last opp statusrapport";
+            return view('pages.gruppe.lastOppStatus')->with('title', $title);
+        }
+        else
+        {
+            return redirect('/login');
+        }
     }
 
     public function showUploadFormP()
     {
-        $title = "Last opp prosjektskisse";
-        return view('pages.gruppe.lastOppSkisse')->with('title', $title);
+        $student = session('navn');
+        $gruppe = DB::select('SELECT student_groups_number FROM student_groups WHERE student LIKE :student', ['student' => $student]);
+        
+        if($gruppe)
+        {
+            $title = "Last opp prosjektskisse";
+            return view('pages.gruppe.lastOppSkisse')->with('title', $title);
+        }
+        else
+        {
+            return redirect('/login');
+        }
     }
 
     public function lastOppDok(request $request)
