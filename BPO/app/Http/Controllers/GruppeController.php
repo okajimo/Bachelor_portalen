@@ -143,6 +143,12 @@ class GruppeController extends Controller
 
     public function lastOppDok(request $request)
     {
+        // Validerer filen slik at kun tillatte filtyper kan lastes opp
+        $this->validate($request, [
+            'type' => 'required|max:127',
+            'dok' => 'required|mimes:pdf|max:1999'
+        ]);
         $upload = \UploadHelper::instance()->upload($request);
+        return redirect('/')->with('success', $upload);
     }
 }
