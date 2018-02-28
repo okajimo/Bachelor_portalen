@@ -114,3 +114,5 @@ class PagesController extends Controller
         return view('pages.info.oppdragKontakt')->with('title', $title);
     }
 }
+
+//test
