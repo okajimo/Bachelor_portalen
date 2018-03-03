@@ -201,7 +201,7 @@ class GruppeController extends Controller
                 $upload = \UploadHelper::instance()->upload($request);
                 return redirect('/lastOppStatus')->with('success', $upload);
             }
-            elseif ($request->input('type') == 'prosjekskisse')
+            elseif ($request->input('type') == 'prosjektskisse')
             {
                 $upload = \UploadHelper::instance()->upload($request);
                 return redirect('/lastOppSkisse')->with('success', $upload);
