@@ -109,7 +109,7 @@
                                                         {!! Form::open(['action' => 'GruppeController@meld_inn', 'method' => 'POST'])!!}
                                                         {{Form::hidden('number', $group->group_number)}}
                                                         {{Form::hidden('year', $group->year)}}
-                                                        {{form::hidden('_method', 'options')}}
+                                                        {{form::hidden('_method', 'post')}}
                                                         {{Form::submit('Bli med',['class'=>'btn btn-success btn-nice', 'name' => 'meld'])}}
                                                         {!! Form::close() !!}
                                                     </td>

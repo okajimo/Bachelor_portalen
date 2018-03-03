@@ -40,7 +40,7 @@ Route::get('/vgruppe', 'GruppeController@vedlikehold_gruppe')->name('group');
 Route::post('/vgruppe', 'GruppeController@lag_gruppe');
 Route::put('/vgruppe', 'GruppeController@sett_leder');
 Route::delete('/vgruppe', 'GruppeController@fjern_student');
-Route::options('/vgruppe', 'GruppeController@meld_inn');
+Route::post('', 'GruppeController@meld_inn');
 
 Route::get('/les_dokumenter', 'LesDokumenterController@les_dokumenter')->name('dokumenter');
 Route::put('/les_dokumenter', 'LesDokumenterController@rediger_dokument');
