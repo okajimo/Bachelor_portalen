@@ -8,11 +8,11 @@
             <div class="dropdown-menu">
                 <a class="dropdown-item" href="{{ route('logout') }}">Vedlikehold brukere</a>
                 <a class="dropdown-item" href="{{ route('logout') }}">Simuler student</a>
-                <a class="dropdown-item" href="{{ route('logout') }}">Les dokumenter</a>
+                <a class="dropdown-item" href="{{ route('dokumenter') }}">Les dokumenter</a>
                 <a class="dropdown-item" href="{{ route('logout') }}">Send E-post</a>
                 <a class="dropdown-item" href="{{ route('logout') }}">Vedlikehold prosjektforslag</a>
                 <a class="dropdown-item" href="{{ route('logout') }}">Datoer</a>
-                <a class="dropdown-item" href="{{ route('logout') }}">Vedlikehold grupper</a>
+                <a class="dropdown-item" href="{{ route('logout') }}">Gruppe innstillinger</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="{{ route('logout') }}">Logout</a>
             </div>
@@ -25,7 +25,7 @@
                 Meny
             </button>
             <div class="dropdown-menu">
-                <a class="dropdown-item" href="{{ route('group') }}">Vedlikehold gruppe</a>
+                <a class="dropdown-item" href="{{ route('group') }}">Gruppe innstillinger</a>
                 <a class="dropdown-item" href="{{ route('lastOppS') }}">Last opp statusrapport</a>
                 <a class="dropdown-item" href="{{ route('lastOppP') }}">Last opp prosjektskisse</a>
                 <div class="dropdown-divider"></div>

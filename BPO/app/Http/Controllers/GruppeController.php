@@ -12,7 +12,7 @@ class GruppeController extends Controller
 {
     public function vedlikehold_gruppe(){
 
-        if(session('levell') >= 1)
+        if(session('levell') == 1)
         {
             $title = "Vedlikehold av gruppe";
             $groups = DB::table('groups')->get();
