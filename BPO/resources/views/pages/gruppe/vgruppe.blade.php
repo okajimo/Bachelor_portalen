@@ -52,7 +52,7 @@
             </div>
                 @endif
             <table class="table"> <!-- Ivo fiks mobil vennlig. -->
-                    <thead class="thead-dark">
+                    <thead class="thead-light">
                     <tr>
                         <th>Gruppe</th>
                         <th>Prosjektside</th>

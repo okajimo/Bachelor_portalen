@@ -15,7 +15,7 @@
     @include('inc.navbar')
     <div class="container">
         @if ($title != null)
-           <u style="text-decoration-color: yellow; line-height: 10;"><h3>{{$title}}</h3></u>
+           <h3 class="tittel_tekst">{{$title}}</h3>
         @else
             <h3 style="visibility:hidden">hidden</h3>
         @endif

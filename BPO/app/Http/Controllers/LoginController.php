@@ -9,8 +9,15 @@ use Illuminate\Support\Facades\DB;
 class LoginController extends Controller
 {
     public function visLoggInn(){
-        $title = "Logg inn her";
-        return view('login.login')->with('title', $title);
+        if(session('levell') > 0)
+        {
+            return redirect('/');
+        }
+        else
+        {
+            $title = "Logg inn her";
+            return view('login.login')->with('title', $title);
+        }
     }
 
     public function loggInn(request $innData){
