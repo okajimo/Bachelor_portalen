@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use App\Group;
 use App\document;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Foundation\Validation\ValidatesRequests;
 
 class GruppeController extends Controller
 {
@@ -206,6 +207,38 @@ class GruppeController extends Controller
                 $upload = \UploadHelper::instance()->upload($request);
                 return redirect('/lastOppSkisse')->with('success', $upload);
             }
+        }
+    }
+
+    public function lastOppUrlView()
+    {
+        $student = session('navn');
+        $iGruppe = DB::select('SELECT student_groups.student FROM student_groups WHERE student_groups.student = :iGruppe', ['iGruppe' => $student]);
+        if($iGruppe == null)
+        {
+            return redirect('/');
+        }
+        else
+        {
+            $title = "Last opp url";
+            return view('pages.gruppe.lastOppUrl')->with('title' , $title);
+        }
+    }
+
+    public function lastOppUrl(request $request)
+    {
+        if(Input::get('lastOpp'))
+        {
+            $this->validate($request, [
+                'url' => 'required|'
+            ]);
+            /*regex:/^(?:(?:https?):\/\/|www\.)(?:\([-A-Z0-9+&@#\/%=~_|$?!:,.]*\)|[-A-Z0-9+&@#\/%=~_|$?!:,.])*(?:\([-A-Z0-9+&@#\/%=~_|$?!:,.]*\)|[A-Z0-9+&@#\/%=~_|$])$/*/
+            
+            $student = session('navn');
+            $finnesUrl = DB::select('SELECT groups.url FROM groups, student_groups WHERE groups.group_number = student_groups.student_groups_number AND groups.year = student_groups.student_groups_year AND student_groups.student = :stud',['stud' => $student]);
+
+            DB::update('UPDATE groups, student_groups SET groups.url = :link WHERE groups.group_number = student_groups.student_groups_number AND groups.year = student_groups.student_groups_year AND student_groups.student = :stud',['stud'=>$student,'link'=>$request->url]);
+            return redirect('/');
         }
     }
 }

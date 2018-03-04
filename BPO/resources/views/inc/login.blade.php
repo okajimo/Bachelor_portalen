@@ -28,6 +28,7 @@
                 <a class="dropdown-item" href="{{ route('group') }}">Gruppe innstillinger</a>
                 <a class="dropdown-item" href="{{ route('lastOppS') }}">Last opp statusrapport</a>
                 <a class="dropdown-item" href="{{ route('lastOppP') }}">Last opp prosjektskisse</a>
+                <a class="dropdown-item" href="{{ route('Last') }}">Last opp url</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="{{ route('logout') }}">Logout</a>
             </div>

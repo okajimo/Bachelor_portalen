@@ -41,6 +41,8 @@ Route::post('/vgruppe', 'GruppeController@lag_gruppe');
 Route::put('/vgruppe', 'GruppeController@sett_leder');
 Route::delete('/vgruppe', 'GruppeController@fjern_student');
 Route::post('', 'GruppeController@meld_inn');
+Route::get('/lastOppUrl', 'GruppeController@lastOppUrlView')->name('Last');
+Route::post('/lastOppUrl', 'GruppeController@lastOppUrl');
 
 Route::get('/les_dokumenter', 'LesDokumenterController@les_dokumenter')->name('dokumenter');
 Route::put('/les_dokumenter', 'LesDokumenterController@rediger_dokument');
