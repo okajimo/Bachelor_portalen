@@ -147,7 +147,7 @@ class GruppeController extends Controller
         }
         else
         {
-            return redirect('/login');
+            return redirect('/')->with('error', 'Du er ikke medlem av en gruppe');
         }
     }
 
@@ -163,7 +163,7 @@ class GruppeController extends Controller
         }
         else
         {
-            return redirect('/login');
+            return redirect('/')->with('error', 'Du er ikke medlem av en gruppe');
         }
     }
 

@@ -55,4 +55,7 @@ Route::get('/lastOppStatus', 'GruppeController@showUploadFormS')->name('lastOppS
 Route::get('/lastOppSkisse', 'GruppeController@showUploadFormP')->name('lastOppP');
 Route::post('/lastOppDok', 'GruppeController@lastOppDok');
 
+//Dato vedlikehold
+Route::get('/datoVedlikehold', 'Admin\AdminController@showDateMaintenance')->name('dato');
+
 

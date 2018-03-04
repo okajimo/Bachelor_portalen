@@ -11,7 +11,7 @@
                 <a class="dropdown-item" href="{{ route('dokumenter') }}">Les dokumenter</a>
                 <a class="dropdown-item" href="{{ route('logout') }}">Send E-post</a>
                 <a class="dropdown-item" href="{{ route('logout') }}">Vedlikehold prosjektforslag</a>
-                <a class="dropdown-item" href="{{ route('logout') }}">Datoer</a>
+                <a class="dropdown-item" href="{{ route('dato') }}">Datoer</a>
                 <a class="dropdown-item" href="{{ route('logout') }}">Gruppe innstillinger</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="{{ route('logout') }}">Logout</a>
