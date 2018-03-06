@@ -10,6 +10,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 <body>
+    <?php $side_nav = "student"; ?>
     @include('inc.navbar')
     <div class="container">
         @if ($title != null)
@@ -24,11 +25,11 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 order-lg-4 order-xl-4">
-                    @include('inc.nav_side') 
-                </div>
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8 col-xl-8"> 
                     @yield('content')
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 d-none d-lg-block d-xl-block">
+                    @include('inc.nav_side') 
                 </div>
             </div>
         </div>      

@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+<?php $side_nav = "annet"; ?>
 @include('inc.nav_header')
     <div class="card" style="border: 0; background-color: transparent !important;">
         <img class="card-img" src="https://www.cs.hioa.no/data/bachelorprosjekt/studbilde.png" alt="Card image">
