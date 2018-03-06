@@ -1,17 +1,13 @@
 <div class="jumbotron">
     <div class="container">
-        <div class="row">
-            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-12 col-xl-12">
-                <a class="nav-link nav-link-padding" href="{{ asset('files/Statusrapport.pdf')}}"><h4>Statusrapport</h4></a>
-                <a class="nav-link nav-link-padding" href="/dokumentasjon"><h4>Dokumetasjon</h4></a>
-                <a class="nav-link nav-link-padding" href="{{ asset('files/Prosjektskisse.pdf')}}"><h4>Prosjektskisse</h4></a>
-                <a class="nav-link nav-link-padding" href="/veiledning"><h4>Veiledning</h4></a>
-            </div>
-            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-12 col-xl-12">
-                <a class="nav-link nav-link-padding" href="/forprosjekt"><h4>Forprosjekt</h4></a>
-                <a class="nav-link nav-link-padding" href="/prosjektrapport"><h4>Prosjektrapport</h4></a>
-                <a class="nav-link nav-link-padding" href="/evaluering"><h4>Evaluering</h4></a>
-            </div>
+        <div >
+            <a class="nav-link link-overwrite" href="{{ asset('files/Statusrapport.pdf')}}"><h5 class="underline_link">Statusrapport</h5></a>
+            <a class="nav-link link-overwrite" href="/dokumentasjon"><h5 class="underline_link">Dokumetasjon</h5></a>
+            <a class="nav-link link-overwrite" href="{{ asset('files/Prosjektskisse.pdf')}}"><h5 class="underline_link">Prosjektskisse</h5></a>
+            <a class="nav-link link-overwrite" href="/veiledning"><h5 class="underline_link">Veiledning</h5></a>
+            <a class="nav-link link-overwrite" href="/forprosjekt"><h5 class="underline_link">Forprosjekt</h5></a>
+            <a class="nav-link link-overwrite" href="/prosjektrapport"><h5 class="underline_link">Prosjektrapport</h5></a>
+            <a class="nav-link link-overwrite" href="/evaluering"><h5 class="underline_link">Evaluering</h5></a>
         </div>
     </div>  
 </div>
