@@ -59,5 +59,6 @@ Route::post('/lastOppDok', 'GruppeController@lastOppDok');
 
 //Dato vedlikehold
 Route::get('/datoVedlikehold', 'Admin\AdminController@showDateMaintenance')->name('dato');
+Route::post('/datoEndring', 'Admin\AdminController@datoEndring');
 
 

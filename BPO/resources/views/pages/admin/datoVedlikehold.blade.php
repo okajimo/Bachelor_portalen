@@ -3,7 +3,8 @@
     <div class="jumbotron">
         <div class="container">
             @include('inc.feilmld')
-            {!! Form::open(['method' => 'POST']) !!}   
+            <p>Dato står i format yyyy-mm-dd</p>
+            {!! Form::open(['action' => 'Admin\AdminController@datoEndring', 'method' => 'POST']) !!}   
                 <div class="form-group">   
                     {{Form::label('start', 'Start dato')}}
                     </br>
@@ -17,7 +18,7 @@
                 <div class="form-group">   
                     {{Form::label('project_sketch', 'Dato for prosjektskisse innlevering:')}}
                     </br>
-                    {{Form::text('project_sketch', $date[0]->project_report, ['class'=>'.form-control'])}}
+                    {{Form::text('project_sketch', $date[0]->project_sketch, ['class'=>'.form-control'])}}
                 </div>
                 <div class="form-group">   
                     {{Form::label('preproject', 'Dato for førprosjekt opplasting:')}}
