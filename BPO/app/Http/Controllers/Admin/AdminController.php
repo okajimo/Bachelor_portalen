@@ -5,13 +5,10 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-<<<<<<< HEAD
 use App\Order;
 use App\Mail\OrderShipped;
 use Illuminate\Support\Facades\Mail;
-=======
 use App\Models\Date;
->>>>>>> bd7461f49265cd656449f84b575ea1dbaf6ddfcf
 
 class AdminController extends Controller
 {
@@ -29,7 +26,6 @@ class AdminController extends Controller
         }
     }
 
-<<<<<<< HEAD
     public function vedlikeholdSensorVeileder()
     {
         if(session('levell') >= 2)
@@ -68,9 +64,7 @@ class AdminController extends Controller
     }
 
     public function dateUpdater()
-=======
     public function datoEndring(request $request)
->>>>>>> bd7461f49265cd656449f84b575ea1dbaf6ddfcf
     {
         $this->validate($request, [
             'start' => 'required|date',
