@@ -21,7 +21,7 @@ class GruppeController extends Controller
         }
         else
         {
-            return redirect('/login');
+            return redirect('/login')->with('error', 'Du er ikke admin og har ikke tilgang');
         }
     }
 
@@ -138,33 +138,47 @@ class GruppeController extends Controller
 
     public function showUploadFormS()
     {
-        $student = session('navn');
-        $gruppe = DB::select('SELECT student_groups_number FROM student_groups WHERE student LIKE :student', ['student' => $student]);
-        
-        if($gruppe)
+        if(session('levell') == 1)
         {
-            $title = "Last opp statusrapport";
-            return view('pages.gruppe.lastOppStatus')->with('title', $title);
+            $student = session('navn');
+            $gruppe = DB::select('SELECT student_groups_number FROM student_groups WHERE student LIKE :student', ['student' => $student]);
+        
+            if($gruppe)
+            {
+                $title = "Last opp statusrapport";
+                return view('pages.gruppe.lastOppStatus')->with('title', $title);
+            }
+            else
+            {
+                return redirect('/')->with('error', 'Du er ikke medlem av en gruppe');
+            }
         }
         else
         {
-            return redirect('/')->with('error', 'Du er ikke medlem av en gruppe');
+            return redirect('/login')->with('error', 'Du er ikke admin og har ikke tilgang');
         }
     }
 
     public function showUploadFormP()
     {
-        $student = session('navn');
-        $gruppe = DB::select('SELECT student_groups_number FROM student_groups WHERE student LIKE :student', ['student' => $student]);
-        // Sjekker om studenten har gruppe eller ikke, skal ikke få lov til å laste opp uten gruppe
-        if($gruppe)
+        if(session('levell') == 1)
         {
-            $title = "Last opp prosjektskisse";
-            return view('pages.gruppe.lastOppSkisse')->with('title', $title);
+            $student = session('navn');
+            $gruppe = DB::select('SELECT student_groups_number FROM student_groups WHERE student LIKE :student', ['student' => $student]);
+            // Sjekker om studenten har gruppe eller ikke, skal ikke få lov til å laste opp uten gruppe
+            if($gruppe)
+            {
+                $title = "Last opp prosjektskisse";
+                return view('pages.gruppe.lastOppSkisse')->with('title', $title);
+            }
+            else
+            {
+            return redirect('/')->with('error', 'Du er ikke medlem av en gruppe');
+            }
         }
         else
         {
-            return redirect('/')->with('error', 'Du er ikke medlem av en gruppe');
+            return redirect('/login')->with('error', 'Du er ikke admin og har ikke tilgang');
         }
     }
 
@@ -212,16 +226,23 @@ class GruppeController extends Controller
 
     public function lastOppUrlView()
     {
-        $student = session('navn');
-        $iGruppe = DB::select('SELECT student_groups.student FROM student_groups WHERE student_groups.student = :iGruppe', ['iGruppe' => $student]);
-        if($iGruppe == null)
+        if(session('levell') == 1)
         {
-            return redirect('/');
+            $student = session('navn');
+            $iGruppe = DB::select('SELECT student_groups.student FROM student_groups WHERE student_groups.student = :iGruppe', ['iGruppe' => $student]);
+            if($iGruppe == null)
+            {
+                return redirect('/');
+            }
+            else
+            {
+                $title = "Last opp url";
+                return view('pages.gruppe.lastOppUrl')->with('title' , $title);
+            }
         }
         else
         {
-            $title = "Last opp url";
-            return view('pages.gruppe.lastOppUrl')->with('title' , $title);
+            return redirect('/login')->with('error', 'Du er ikke admin og har ikke tilgang');
         }
     }
 
@@ -230,9 +251,8 @@ class GruppeController extends Controller
         if(Input::get('lastOpp'))
         {
             $this->validate($request, [
-                'url' => 'required|'
+                'url' => 'required|url'
             ]);
-            /*regex:/^(?:(?:https?):\/\/|www\.)(?:\([-A-Z0-9+&@#\/%=~_|$?!:,.]*\)|[-A-Z0-9+&@#\/%=~_|$?!:,.])*(?:\([-A-Z0-9+&@#\/%=~_|$?!:,.]*\)|[A-Z0-9+&@#\/%=~_|$])$/*/
             
             $student = session('navn');
             $finnesUrl = DB::select('SELECT groups.url FROM groups, student_groups WHERE groups.group_number = student_groups.student_groups_number AND groups.year = student_groups.student_groups_year AND student_groups.student = :stud',['stud' => $student]);

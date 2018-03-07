@@ -6,13 +6,14 @@
                 Meny
             </button>
             <div class="dropdown-menu">
-                <a class="dropdown-item" href="{{ route('logout') }}">Vedlikehold brukere</a>
+                <a class="dropdown-item" href="{{ route('student') }}">Vedlikehold studenter</a>
                 <a class="dropdown-item" href="{{ route('logout') }}">Simuler student</a>
                 <a class="dropdown-item" href="{{ route('dokumenter') }}">Les dokumenter</a>
                 <a class="dropdown-item" href="{{ route('logout') }}">Send E-post</a>
                 <a class="dropdown-item" href="{{ route('logout') }}">Vedlikehold prosjektforslag</a>
                 <a class="dropdown-item" href="{{ route('dato') }}">Datoer</a>
                 <a class="dropdown-item" href="{{ route('logout') }}">Gruppe innstillinger</a>
+                <a class="dropdown-item" href="{{ route('senvei') }}">Vedlikehold sensorer/veiledere</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="{{ route('logout') }}">Logout</a>
             </div>
