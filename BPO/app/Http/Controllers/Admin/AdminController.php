@@ -64,6 +64,9 @@ class AdminController extends Controller
     }
 
     public function dateUpdater()
+    {
+        
+    }
     public function datoEndring(request $request)
     {
         $this->validate($request, [
