@@ -23,3 +23,18 @@
     display: inline-block;
     padding-bottom: 10px;
 }
+
+.underline_link{
+    border-bottom: 2px solid black;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.underline_link:hover{
+    border-bottom-color: #0096c0 !important;
+}
+
+.no-spaces{
+    padding: 0 !important;
+    margin: 0 !important;
+}

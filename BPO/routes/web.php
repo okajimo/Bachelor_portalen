@@ -59,6 +59,7 @@ Route::post('/lastOppDok', 'GruppeController@lastOppDok');
 
 //Dato vedlikehold
 Route::get('/datoVedlikehold', 'Admin\AdminController@showDateMaintenance')->name('dato');
+<<<<<<< HEAD
 Route::get('/studentVedlikehold', 'Admin\AdminController@studentVedlikehold')->name('student');
 Route::get('/vedlikeholdAvSensorOgVeileder', 'Admin\AdminController@vedlikeholdSensorVeileder')->name('senvei');
 
@@ -67,5 +68,8 @@ Route::post('/s', 'Admin\AdminController@regSensorVeileder');
 Route::post('/d', 'Admin\AdminController@endreStudPoeng');
 Route::delete('/', 'Admin\AdminController@slettSenvei');
 
+=======
+Route::post('/datoEndring', 'Admin\AdminController@datoEndring');
+>>>>>>> bd7461f49265cd656449f84b575ea1dbaf6ddfcf
 
 

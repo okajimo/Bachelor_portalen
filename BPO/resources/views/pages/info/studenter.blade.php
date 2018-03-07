@@ -4,7 +4,6 @@
         <div class="container">
             <!-- Alle datoer og årstall hentes fra db -->
             <h3><b>Gangen i arbeidet</b></h3>
-
             <p>
                 Første oppgave er å finne et prosjekt, og dere skal avlegge en statusrapport om det senest <b>{{ \DateHelper::instance()->date('status_report') }}</b></br>
                 Når oppgaven er funnet lages en prosjektskisse som beskriver detaljene i prosjektet - frist <b>{{ \DateHelper::instance()->date('project_sketch') }}</b></br>

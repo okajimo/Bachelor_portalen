@@ -10031,6 +10031,10 @@ body {
   padding-top: 2em !important;
 }
 
+.link-overwrite {
+  display: inline !important;
+}
+
 .nav-header-info {
   border: #0096C0 1.5px solid !important;
   color: black !important;
@@ -10055,5 +10059,20 @@ body {
   border-bottom: 2px solid #FFE01D;
   display: inline-block;
   padding-bottom: 10px;
+}
+
+.underline_link {
+  border-bottom: 2px solid black;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.underline_link:hover {
+  border-bottom-color: #0096c0 !important;
+}
+
+.no-spaces {
+  padding: 0 !important;
+  margin: 0 !important;
 }
 
