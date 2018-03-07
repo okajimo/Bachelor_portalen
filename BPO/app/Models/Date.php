@@ -15,7 +15,7 @@ class Date extends Model
          * @var string
          */
         protected $table = 'dates';
-    
+
         /**
          * Deaktiverer automatisk økning av primærnøkkel.
          *

@@ -19,6 +19,10 @@ class PagesController extends Controller
     public function informasjon(){
         //Henter årstall for bruk på siden
         $year = \DateHelper::instance()->year();
+        if ($year == 'årstall mangler')
+        {
+            $year = array('year' => 'mangler', 'year1' => 'mangler');
+        }
         $title = "Informasjon";
         return view('pages.info.informasjon')->with(['title' => $title, 'year' => $year]);
     }
@@ -41,7 +45,14 @@ class PagesController extends Controller
     public function studenter(){
         // henter året fra prosjeket start og legger til 1 for å få året som avlsutter prosjektet.
         $year = \DateHelper::instance()->year();
-        $title = "Huskeliste for studenter ". $year['year'] ."/". $year['year1'];
+        if ($year == 'årstall mangler')
+        {
+            $title = "Huskeliste for studenter '". $year."'";
+        }
+        else
+        {
+            $title = "Huskeliste for studenter ". $year['year'] ."/". $year['year1'];
+        }
         return view('pages.info.studenter')->with('title', $title);
     }
     
@@ -78,6 +89,10 @@ class PagesController extends Controller
     public function sensorer(){
         // henter året fra prosjeket start og legger til 1 for å få året som avlsutter prosjektet.
         $year = \DateHelper::instance()->year();
+        if ($year == 'årstall mangler')
+        {
+            $year = array('year' => 'mangler', 'year1' => 'mangler');
+        }
         $title = "Informasjon for sensorer ". $year['year'] ."/". $year['year1'];
         return view('pages.info.sensorer')->with('title', $title);
     }
@@ -85,6 +100,10 @@ class PagesController extends Controller
     public function oppdragsgivere(){
         //Henter årstall for bruk på siden
         $year = \DateHelper::instance()->year();
+        if ($year == 'årstall mangler')
+        {
+            $year = array('year' => 'mangler', 'year1' => 'mangler');
+        }
         $title = "Informasjon for oppdragsgivere";
         return view('pages.info.oppdragsgivere')->with(['title' => $title, 'year' => $year]);
     }
