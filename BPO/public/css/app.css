@@ -10071,6 +10071,10 @@ body {
   border-bottom-color: #0096c0 !important;
 }
 
+.dashboard_meny:hover {
+  color: #0096c0 !important;
+}
+
 .no-spaces {
   padding: 0 !important;
   margin: 0 !important;

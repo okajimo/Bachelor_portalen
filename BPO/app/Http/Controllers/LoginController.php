@@ -36,7 +36,7 @@ class LoginController extends Controller
             {
                 $lvl=1;
                 Session(['levell' => $lvl]);
-                return redirect('/');
+                return redirect('/dashboard/group');
             }
             /*elseif($level == "2")
             {
@@ -60,7 +60,7 @@ class LoginController extends Controller
             {
                 $lvl=$level;
                 Session(['levell' => $lvl]);
-                return redirect('/');
+                return redirect('/dashboard/admin');
             }
         }
         else

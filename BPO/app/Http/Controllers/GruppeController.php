@@ -16,7 +16,7 @@ class GruppeController extends Controller
         if(session('levell') == 1)
         {
             $title = "Vedlikehold av gruppe";
-            $groups = DB::table('groups')->get();
+            $groups = DB::table('groups')->orderBy('group_number','ASC')->get();
             return view('pages.gruppe.vgruppe')->with(['title' => $title, 'groups' => $groups]);
         }
         else
@@ -229,15 +229,25 @@ class GruppeController extends Controller
         if(session('levell') == 1)
         {
             $student = session('navn');
-            $iGruppe = DB::select('SELECT student_groups.student FROM student_groups WHERE student_groups.student = :iGruppe', ['iGruppe' => $student]);
-            if($iGruppe == null)
+            $gruppe = DB::select('SELECT student_groups_number FROM student_groups WHERE student LIKE :student', ['student' => $student]);
+            // Sjekker om studenten har gruppe eller ikke, skal ikke få lov til å laste opp uten gruppe
+            if($gruppe)
             {
-                return redirect('/');
+                $student = session('navn');
+                $iGruppe = DB::select('SELECT student_groups.student FROM student_groups WHERE student_groups.student = :iGruppe', ['iGruppe' => $student]);
+                if($iGruppe == null)
+                {
+                    return redirect('/');
+                }
+                else
+                {
+                    $title = "Last opp hjemmeside link";
+                    return view('pages.gruppe.lastOppUrl')->with('title' , $title);
+                }
             }
             else
             {
-                $title = "Last opp url";
-                return view('pages.gruppe.lastOppUrl')->with('title' , $title);
+                return redirect('/')->with('error', 'Du er ikke medlem av en gruppe');
             }
         }
         else
