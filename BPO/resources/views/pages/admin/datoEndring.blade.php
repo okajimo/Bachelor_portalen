@@ -2,7 +2,6 @@
 @section('content')
     <div class="jumbotron">
         <div class="container">
-            @include('inc.feilmld')
             {!! Form::open(['action' => 'Admin\DateController@editDate', 'method' => 'POST']) !!}   
                 {{Form::label('start', 'Start dato')}}    
                     <div class="form-group form-inline">   

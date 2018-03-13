@@ -2,7 +2,6 @@
 @section('content')
     <div class="jumbotron">
         <div class="container">
-            @include('inc.feilmld')
             <p>Fyll inn feltene under for å lagre datoer i databsen</p>
             {!! Form::open(['action' => 'Admin\DateController@createDate', 'method' => 'POST']) !!}  
                 {{Form::label('start', 'Start dato')}} 

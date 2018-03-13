@@ -2,7 +2,6 @@
 @section('content')
     <div class="jumbotron">
         <div class="container">
-            @include('inc.feilmld')
             {!! Form::open(['action' => 'GruppeController@lastOppDok', 'method' => 'POST', 'files' => true]) !!}   
                 <div class="form-group">   
                     {{Form::hidden('type', 'statusrapport')}}

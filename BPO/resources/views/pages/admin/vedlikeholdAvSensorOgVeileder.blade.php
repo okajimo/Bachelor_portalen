@@ -2,7 +2,6 @@
 @section('content')
     <div class="jumbotron">
         <div class="container">
-            @include('inc.feilmld')
             {{Form::label('dok', 'Registrer veileder eller sensor her.')}}
         </br>
             {!! Form::open(['action' => 'Admin\AdminController@regSensorVeileder', 'method' => 'POST'])!!}
