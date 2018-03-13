@@ -2,7 +2,6 @@
 @section('content')
     <div class="jumbotron">
         <div class="container">
-            @include('inc.feilmld')
             {!! Form::open(['action' => 'Admin\AdminController@importerStud', 'method' => 'POST', 'files' => true]) !!}  
                 <div class="form-group">  
                     {{Form::label('dok', 'Velg fil for opplastning av studenter.')}}

@@ -137,7 +137,8 @@ class CreateSeedsTable extends Migration
 		    $table->dateTime('start');
 		    $table->dateTime('end');
 		    $table->string('presentation_room', 45);
-            $table->integer('sensor');
+			//$table->integer('sensor');
+			$table->string('sensor', 45);
 		    
 		    $table->primary(['presentation_group_number', 'presentation_year']);
 		
