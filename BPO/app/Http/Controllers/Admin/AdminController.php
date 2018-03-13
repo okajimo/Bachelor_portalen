@@ -12,20 +12,6 @@ use App\Models\Date;
 
 class AdminController extends Controller
 {
-    public function showDateMaintenance()
-    {
-        if(session('levell') >= 2)
-        {
-            $title = "Dato vedlikehold";
-            $date = DB::select('SELECT * FROM dates');
-            return view('pages.admin.datoVedlikehold')->with(['title' => $title, 'date' => $date]);
-        }
-        else
-        {
-            return redirect('/')->with('error', 'Du er ikke admin og har ikke tilgang');
-        }
-    }
-
     public function vedlikeholdSensorVeileder()
     {
         if(session('levell') >= 2)
@@ -63,26 +49,6 @@ class AdminController extends Controller
 
     }
 
-    public function dateUpdater()
-    {
-        
-    }
-    public function datoEndring(request $request)
-    {
-        $this->validate($request, [
-            'start' => 'required|date',
-            'status_report' => 'required|date',
-            'project_sketch' => 'required|date',
-            'preproject' => 'required|date',
-            'project_report' => 'required|date',
-            'pres_start' => 'required|date',
-            'pres_end' => 'required|date',
-        ]);
-        
-        $update = \DateHelper::instance()->update($request);
-        return redirect('/datoVedlikehold')->with('success', $update);
-    }
-
     public function studentVedlikehold()
     {
         if(session('levell') >= 2)
@@ -100,8 +66,8 @@ class AdminController extends Controller
     {
         if(session('levell') >= 2)
         {  
-            $stud = session('navn');
-            $sender = DB::select('select email from users where username = :stud',['stud'=>$stud]);
+            $admin = session('navn');
+            $sender = DB::select('select email from users where username = :admin',['admin'=>$admin]);
 
             $fileHandle = fopen($request->dok, "r");
             while ( ($row = fgetcsv($fileHandle, ",")) ) 
@@ -123,6 +89,29 @@ class AdminController extends Controller
                             $melding->to($data['til']);
                             $melding->subject('Passord');
                         });
+
+                        /*
+                        $fra = $sender[0]->email;
+                        $til = $row[4];
+
+                        $headers[] = 'MIME-Version: 1.0';
+                        $headers[] = 'Content-type: text/html; charset=UTF-8';
+                        $headers[] = 'From: OsloMET Admin <'.$fra.'>';
+
+                        $emne = 'OsloMET bachelor portal';
+
+                        $melding = '
+                        <html>
+                            <body>
+                                <p>Passord til OsloMET bachelor portal er opprettet</p>
+                                <b>Passordet er: '.$passord.'</b>
+                                <p>Sent fra: '.$fra.'</p>
+                            </body>
+                        </html>
+                        ';
+
+                        mail($til, $emne, $melding, implode("\r\n", $headers));
+                        */
                     }
                     else
                     {
