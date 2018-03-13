@@ -26,6 +26,8 @@
                 Meny
             </button>
             <div class="dropdown-menu">
+                <a class="dropdown-item" href="{{ route('admin') }}">Dashboard Admin</a>
+                <a class="dropdown-item" href="{{ route('gruppe') }}">Dashboard Gruppe</a>
                 <a class="dropdown-item" href="{{ route('group') }}">Gruppe innstillinger</a>
                 <a class="dropdown-item" href="{{ route('lastOppS') }}">Last opp statusrapport</a>
                 <a class="dropdown-item" href="{{ route('lastOppP') }}">Last opp prosjektskisse</a>

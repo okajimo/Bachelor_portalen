@@ -21,6 +21,7 @@
         @endif
 
         <div class="spacing_header"></div>
+        @include('inc.feilmld')
         @yield('content')
     </div>
     <script src="{{asset('js/app.js')}}"></script>

@@ -28,7 +28,7 @@ class DashboardController extends Controller
         }
         else
         {
-            return redirect('/login')->with('error', 'Du er ikke admin og har ikke tilgang');
+            return redirect('/login')->with('error', 'Du er ikke medlem av en gruppe');
         }
     }
 }

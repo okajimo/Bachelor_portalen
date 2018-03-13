@@ -48,9 +48,8 @@ Route::get('/les_dokumenter', 'LesDokumenterController@les_dokumenter')->name('d
 Route::put('/les_dokumenter', 'LesDokumenterController@rediger_dokument');
 
 //dashboard
-Route::get('/dashboard/student', 'DashboardController@Admin'); //disse skal kun vise dashboard i urlen -ivo
-Route::get('/dashboard/admin', 'DashboardController@Student'); //disse skal kun vise dashboard i urlen -ivo
-Route::get('/dashboard/group', 'DashboardController@Group');
+Route::get('/dashboard/admin', 'DashboardController@Admin')->name('admin'); //disse skal kun vise dashboard i urlen -ivo
+Route::get('/dashboard/group', 'DashboardController@Group')->name('gruppe');
 
 //Opplasting av dokumenter
 Route::get('/lastOppStatus', 'GruppeController@showUploadFormS')->name('lastOppS');
@@ -68,5 +67,8 @@ Route::post('/d', 'Admin\AdminController@endreStudPoeng');
 Route::delete('/', 'Admin\AdminController@slettSenvei');
 
 Route::post('/datoEndring', 'Admin\AdminController@datoEndring');
+
+//room
+Route::resource('room', 'RoomController');
 
 
