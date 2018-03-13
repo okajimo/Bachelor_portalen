@@ -6,6 +6,7 @@
                 Meny
             </button>
             <div class="dropdown-menu">
+                <a class="dropdown-item" href="{{ route('admin') }}">Dashboard</a>
                 <a class="dropdown-item" href="{{ route('student') }}">Vedlikehold studenter</a>
                 <a class="dropdown-item" href="{{ route('logout') }}">Simuler student</a>
                 <a class="dropdown-item" href="{{ route('dokumenter') }}">Les dokumenter</a>
@@ -14,6 +15,7 @@
                 <a class="dropdown-item" href="{{ route('dato') }}">Datoer</a>
                 <a class="dropdown-item" href="{{ route('logout') }}">Gruppe innstillinger</a>
                 <a class="dropdown-item" href="{{ route('senvei') }}">Vedlikehold sensorer/veiledere</a>
+                <a class="dropdown-item" href="{{ route('tidligere') }}">Vedlikehold tidligere prosjekter</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="{{ route('logout') }}">Logout</a>
             </div>
@@ -26,10 +28,11 @@
                 Meny
             </button>
             <div class="dropdown-menu">
+                <a class="dropdown-item" href="{{ route('group_dashboard') }}">dashboard</a>
                 <a class="dropdown-item" href="{{ route('group') }}">Gruppe innstillinger</a>
                 <a class="dropdown-item" href="{{ route('lastOppS') }}">Last opp statusrapport</a>
                 <a class="dropdown-item" href="{{ route('lastOppP') }}">Last opp prosjektskisse</a>
-                <a class="dropdown-item" href="{{ route('Last') }}">Last opp url</a>
+                <a class="dropdown-item" href="{{ route('Last') }}">Last opp link til hjemmeside</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="{{ route('logout') }}">Logout</a>
             </div>

@@ -40,7 +40,7 @@ Route::get('/vgruppe', 'GruppeController@vedlikehold_gruppe')->name('group');
 Route::post('/vgruppe', 'GruppeController@lag_gruppe');
 Route::put('/vgruppe', 'GruppeController@sett_leder');
 Route::delete('/vgruppe', 'GruppeController@fjern_student');
-Route::post('', 'GruppeController@meld_inn');
+Route::post('gg', 'GruppeController@meld_inn');
 Route::get('/lastOppUrl', 'GruppeController@lastOppUrlView')->name('Last');
 Route::post('/lastOppUrl', 'GruppeController@lastOppUrl');
 
@@ -48,9 +48,9 @@ Route::get('/les_dokumenter', 'LesDokumenterController@les_dokumenter')->name('d
 Route::put('/les_dokumenter', 'LesDokumenterController@rediger_dokument');
 
 //dashboard
-Route::get('/dashboard/student', 'DashboardController@Admin'); //disse skal kun vise dashboard i urlen -ivo
-Route::get('/dashboard/admin', 'DashboardController@Student'); //disse skal kun vise dashboard i urlen -ivo
-Route::get('/dashboard/group', 'DashboardController@Group');
+//Route::get('/dashboard/student', 'DashboardController@Admin'); //disse skal kun vise dashboard i urlen -ivo
+Route::get('/dashboard/admin', 'DashboardController@Admin')->name('admin'); //disse skal kun vise dashboard i urlen -ivo
+Route::get('/dashboard/group', 'DashboardController@Group')->name('group_dashboard');
 
 //Opplasting av dokumenter
 Route::get('/lastOppStatus', 'GruppeController@showUploadFormS')->name('lastOppS');
@@ -64,6 +64,10 @@ Route::post('/datoEndring', 'Admin\DateController@editDate');
 
 Route::get('/studentVedlikehold', 'Admin\AdminController@studentVedlikehold')->name('student');
 Route::get('/vedlikeholdAvSensorOgVeileder', 'Admin\AdminController@vedlikeholdSensorVeileder')->name('senvei');
+
+Route::get('/vedlikehold_tidligere_prosjekter', 'Tidligere_prosjekterController@tidligere_prosjekter')->name('tidligere');
+Route::post('/t', 'Tidligere_prosjekterController@opprett_html_sider');
+Route::post('/tt', 'Tidligere_prosjekterController@showTidligereProsjekter');
 
 Route::post('/', 'Admin\AdminController@importerStud');
 Route::post('/s', 'Admin\AdminController@regSensorVeileder');
