@@ -20,8 +20,6 @@ class SimulerController extends Controller
         {
             return redirect('/')->with('error', 'Du er ikke admin og har ikke tilgang');
         }
-
-        
     }
 
     //simulerer en student
@@ -34,7 +32,7 @@ class SimulerController extends Controller
         Session(['navn' => $request->student]);
         Session(['levell' => "1"]);
         $title = "Simuler Student";
-        return redirect('/simuler');
+        return redirect('/')->with('success', 'Du simulerer nå: '.$request->student);
     }
 
     //ender simuleringen og setter deg til den gammle
@@ -43,6 +41,6 @@ class SimulerController extends Controller
         Session(['navn' => $request->inn_navn]);
         Session(['levell' => $request->inn_level]);
         $title = "Simuler Student";
-        return redirect('/simuler');
+        return redirect('/simuler')->with('success', 'Simulering stoppet');
     }
 }
