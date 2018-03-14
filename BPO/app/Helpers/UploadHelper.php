@@ -22,18 +22,17 @@ Class UploadHelper
 
         if($request->hasFile('dok'))
         {
-            $filenameWithExt = $request->file('dok')->getClientOriginalName();
-            $extension = $request->file('dok')->getClientOriginalExtension();
-
-            if($request->input('type') == 'statusrapport') 
+            if ($request->input('type') == 'prosjektforslag')
             {
-                $filenameToStore = $year.'_gr'.$groupNumber.'_Statusrapport.'.$extension;
-                $path = $request->file('dok')->storeAs('public/filer/statusrapporter', $filenameToStore);
+                $filenameToStore = $request->file('dok')->getClientOriginalName();
+                $path = $request->file('dok')->storeAs('public/filer/'.$request->input('type'), $filenameToStore);
+                return 'Dokument opplastet';
             }
-            elseif($request->input('type') == 'prosjektskisse') 
+            else
             {
-                $filenameToStore = $year.'_gr'.$groupNumber.'_Prosjektskisse.'.$extension;
-                $path = $request->file('dok')->storeAs('public/filer/prosjektskisser', $filenameToStore);
+                $extension = $request->file('dok')->getClientOriginalExtension();
+                $filenameToStore = $year.'_gr'.$groupNumber.'_'.$request->input('type').'.'.$extension;
+                $path = $request->file('dok')->storeAs('public/filer/'.$request->input('type'), $filenameToStore);
             }
         }
         $dok = new Document;
@@ -41,7 +40,6 @@ Class UploadHelper
         $dok->documents_year = $year;
         $dok->file_name = $filenameToStore;
         $dok->title = $request->input('type');
-        
         $dok->save();
         return 'Dokument opplastet';
     }
@@ -59,18 +57,11 @@ Class UploadHelper
         $year = DB::table('groups')->where('group_number', '=', $groupNumber)->value('year');
         $year = (int)$year;
 
-        if($request->hasFile('dok')){
-            if($request->input('type') == 'statusrapport') {
-                $filenameToStore = DB::select('SELECT documents.file_name FROM documents WHERE documents.documents_groups_number LIKE :grNumber 
-                AND documents.documents_year LIKE :year', ['grNumber' => $groupNumber, 'year' => $year]);
-                $path = $request->file('dok')->storeAs('public/filer/statusrapporter', $filenameToStore[0]->file_name);
-            }
-            elseif($request->input('type') == 'prosjektskisse') {
-
-                $filenameToStore = DB::select('SELECT documents.file_name FROM documents WHERE documents.documents_groups_number LIKE :grNumber 
-                AND documents.documents_year LIKE :year', ['grNumber' => $groupNumber, 'year' => $year]);
-                $path = $request->file('dok')->storeAs('public/filer/prosjektskisser', $filenameToStore[0]->file_name);
-            }
+        if($request->hasFile('dok'))
+        {
+            $filenameToStore = DB::select('SELECT documents.file_name FROM documents WHERE documents.documents_groups_number LIKE :grNumber 
+            AND documents.documents_year LIKE :year AND documents.title LIKE :title', ['grNumber' => $groupNumber, 'year' => $year, 'title' => $request->input('type')]);
+            $path = $request->file('dok')->storeAs('public/filer/'.$request->input('type'), $filenameToStore[0]->file_name);
         }
         return 'Dokument oppdatert';
     }

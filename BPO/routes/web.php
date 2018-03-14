@@ -79,3 +79,9 @@ Route::delete('/', 'Admin\AdminController@slettSenvei');
 Route::resource('room', 'RoomController');
 
 
+
+
+//Prosjektforslag
+Route::get('/vedlikehold_Prosjektforslag', 'ProsjektforslagController@showUploadForm')->name('Pforslag');
+Route::post('/lastOppPf', 'ProsjektforslagController@uploadFile');
+Route::delete('/slettPf', 'ProsjektforslagController@destroy');
