@@ -46,7 +46,7 @@
      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-4">
         <div class="card">
             <div class="card-body">
-                <a class="nav-link" href="{{ route('logout') }}"><h4 class="card-title">Send E-post</h4></a>
+                <a class="nav-link" href="{{ route('epost') }}"><h4 class="card-title">Send E-post</h4></a>
                 <p class="card-text">Her kan du sende e-post til alle studentene.</p>
             </div>
         </div>
