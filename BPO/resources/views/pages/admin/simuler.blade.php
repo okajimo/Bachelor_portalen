@@ -15,16 +15,6 @@
                 {{Form::hidden('inn_level',session('level'))}}
                 {{Form::submit('Start Simulering', ['class'=>'btn btn-primary'])}}   
             {!! Form::close() !!}
-            
-            lagret: <br>
-            {{session('orginal_navn')}} <br>
-            {{session('orginal_level')}}
-            
-            <br><br>
-
-            Nåværende: <br>
-            Navn: {{session('navn')}} <br>
-            Level: {{session('level')}}
         </div>
     </div>
 @endsection

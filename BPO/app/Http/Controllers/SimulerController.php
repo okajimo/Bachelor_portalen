@@ -41,6 +41,6 @@ class SimulerController extends Controller
         Session(['navn' => $request->inn_navn]);
         Session(['levell' => $request->inn_level]);
         $title = "Simuler Student";
-        return redirect('/simuler')->with('success', 'Simulering stoppet');
+        return redirect('/simuler')->with('error', 'Simulering stoppet');
     }
 }
