@@ -1,8 +1,6 @@
-<h3>Passordet ditt for OsloMET har blitt opprettet.</h3>
-<div>
-    Passordet ditt er: {{$passord}}
-</div>
-<p> Sent fra {{$fra}}</p>
+<h3>{{$subject}}</h3>
+
+<p>{{$bodymessage}}</p>
 
 <table cellpadding="0" cellspacing="0" border="0" style="background: none; border-width: 0px; border: 0px; margin: 0; padding: 0;">
 <tr><td colspan="2" style="padding-bottom: 5px; color: #F7751F; font-size: 18px; font-family: Arial, Helvetica, sans-serif;">Stian Eriksen</td></tr>

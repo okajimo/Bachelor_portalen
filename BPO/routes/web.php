@@ -61,6 +61,10 @@ Route::get('/dato', 'Admin\DateController@showDateMaintenance')->name('dato');
 Route::post('/datoOpprett', 'Admin\DateController@createDate');
 Route::post('/datoEndring', 'Admin\DateController@editDate');
 
+Route::get('/epostView', 'Admin\EpostController@epostView')->name('epost');
+Route::post('/1', 'Admin\EpostController@sendEpostAlleStud');
+Route::post('/2','Admin\EpostController@sendEpostSensorVeileder');
+
 Route::get('/studentVedlikehold', 'Admin\AdminController@studentVedlikehold')->name('student');
 Route::get('/vedlikeholdAvSensorOgVeileder', 'Admin\AdminController@vedlikeholdSensorVeileder')->name('senvei');
 
@@ -73,7 +77,10 @@ Route::post('/s', 'Admin\AdminController@regSensorVeileder');
 Route::post('/d', 'Admin\AdminController@endreStudPoeng');
 Route::delete('/', 'Admin\AdminController@slettSenvei');
 
-
+//simuler student
+Route::get('/simuler', 'SimulerController@index')->name('simuler');
+Route::post('/simuler', 'SimulerController@simuler');
+Route::post('/', 'SimulerController@avsimuler');
 
 //room
 Route::resource('room', 'RoomController');

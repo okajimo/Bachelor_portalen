@@ -3,7 +3,17 @@
 @section('content')
     <div class="row text-center">
         <div class="col-12">
-            <h2>Gruppe nummer: {{$nummer[0]->student_groups_number}}</h2>
+            <h2>Gruppe nummer:<?php 
+                    if($nummer)
+                    {
+                        echo " ".$nummer[0]->student_groups_number;
+                    }
+                    else 
+                    {
+                        echo " du er ikke medlem av gruppe";
+                    }
+                ?>
+            </h2>
             <div class="py-3 d-inline-block"></div>
         </div>
     </div>
