@@ -4,6 +4,7 @@ namespace App\Helpers;
 
 use Illuminate\Support\Facades\DB;
 use App\document;
+use App\Models\Prosjektforslag;
 
 Class UploadHelper
 {
@@ -26,6 +27,11 @@ Class UploadHelper
             {
                 $filenameToStore = $request->file('dok')->getClientOriginalName();
                 $path = $request->file('dok')->storeAs('public/filer/'.$request->input('type'), $filenameToStore);
+
+                $dok = new Prosjektforslag;
+                $dok->date_added = \Carbon\Carbon::now('Europe/Oslo')->format('d.m');;
+                $dok->file_name = $filenameToStore;
+                $dok->save();
                 return 'Dokument opplastet';
             }
             else

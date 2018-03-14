@@ -3,29 +3,31 @@
     <div class="jumbotron">
         <div class="container">
             {!! Form::open(['action' => 'ProsjektforslagController@uploadFile', 'method' => 'POST', 'files' => true]) !!}  
-                {{Form::label('dok', 'Velg fil for opplastning. Kun PDF godkjent.')}} 
-                {{Form::hidden('type', 'prosjektforslag')}}
+                {{Form::hidden('type', 'prosjektforslag')}}    
+                {{Form::label('dok', 'Velg fil, kun PDF godkjent')}} 
                 <div class="form-group form-inline">
                     {{Form::file('dok')}}
                 </div>
-                {{Form::submit('Last opp', ['class'=>'btn btn-primary'])}}    
+                {{Form::submit('Publiser', ['class'=>'btn btn-primary'])}}    
             {!! Form::close() !!}
-        </div></br>
+        </div></br></br>
         <div>
-            @if ($documents)
+            @if ($documents->count() != 0)
+                <h4>Oversikt over publiserte prosjektforslag</h4>
                 <table class="table table-responsive">
                     <tr>
-                        <td>Dokument</td>
-                        <td>Type</td>
-                        <td>Slett</td>
+                        <th>Dato lagt til</th>
+                        <th>Dokument</th>
+                        <th>Slett</th>
                     </tr>
                     @foreach ($documents as $doc)
                         <tr>
-                            <td><a href="{{ asset('storage/filer/prosjektforslag/'.$doc)}}">{{ $doc}}</a></td>
-                            <td>prosjektforslag</td>
+                            <td>{{ $doc->date_added }}</td>
+                            <td><a href="{{ asset('storage/filer/prosjektforslag/'.$doc->file_name)}}">{{ $doc->file_name }}</a></td>
                             <td>
                                 {!! Form::open(['action' => 'ProsjektforslagController@destroy', 'method' => 'POST'])!!}
-                                    {{form::hidden('file', $doc)}}
+                                    {{form::hidden('file', $doc->file_name)}}
+                                    {{form::hidden('id', $doc->id)}}
                                     {{form::hidden('_method', 'DELETE')}}
                                     {{Form::submit('Slett', ['class'=>'btn btn-danger'])}}
                                 {!! Form::close() !!}

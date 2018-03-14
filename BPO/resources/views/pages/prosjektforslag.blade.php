@@ -2,11 +2,24 @@
 @section('content')
     <div class="jumbotron">
         <div class="container">
-            <h1>Hello, world!</h1>
-            <p>Contents ...</p>
-            <p>
-                <a class="btn btn-info btn-lg">Learn more</a>
-            </p>
+            @if ($documents->count() != 0)
+                <table class="table table-responsive table-striped ">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>Dato lagt til</th>
+                            <th>Dokument</th>
+                        </tr>
+                    </thead>
+                    @foreach ($documents as $doc)
+                        <tr>
+                            <td>{{ $doc->date_added }}</td>
+                            <td><a href="{{ asset('storage/filer/prosjektforslag/'.$doc->file_name)}}">{{ $doc->file_name }}</a></td>
+                        </tr>
+                    @endforeach
+                </table>
+            @else
+                <h4>Ingen prosjektforslag er publisert ennå</h4>    
+            @endif
         </div>
     </div>
 @endsection

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Input;
+use App\Models\Prosjektforslag;
 
 class ProsjektforslagController extends Controller
 {
@@ -14,13 +15,8 @@ class ProsjektforslagController extends Controller
         if(session('levell') >= 2)
         {
             $title = "Prosjektforslag vedlikehold";
-            $files = Storage::allFiles('/public/filer/prosjektforslag');
-            foreach ($files as $file)
-            {
-                 $documents[] = basename($file);
-            }
-            //return dd($documents);
-            return view('pages.admin.vedlikeholdProsjektforslag')->with(['title' => $title, 'documents' => $documents]);
+            $documents = Prosjektforslag::get();
+            return view('pages.admin.vedlikeholdProsjektforslag')->with(['title' => $title, 'documents' =>$documents]);
         }
         else
         {
@@ -40,7 +36,8 @@ class ProsjektforslagController extends Controller
 
     public function destroy(request $request)
     {
-        Storage::delete('/public/filer/prosjektforslag/'.$request->file);
+        DB::delete('DELETE FROM prosjektforslag WHERE id = :id', ['id' => $request->input('id')]);
+        Storage::delete('/public/filer/prosjektforslag/'.$request->input('file'));
         return redirect('/vedlikehold_Prosjektforslag')->with('success', 'Fil Fjernet');
     }
 }

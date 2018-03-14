@@ -164,9 +164,9 @@ class CreateSeedsTable extends Migration
 		Schema::create('prosjektforslag', function(Blueprint $table) {
 			$table->engine = 'InnoDB';
 
-			$table->integer('id');
-			$table->string('dato', 10);
-			$table->string('filnavn', 45);
+			$table->increments('id');
+			$table->string('date_added', 10);
+			$table->string('file_name', 45);
 
 			$table->primary('id');
 		});

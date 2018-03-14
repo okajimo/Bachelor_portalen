@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Prosjektforslag;
 
 class PagesController extends Controller
 {
@@ -34,7 +35,9 @@ class PagesController extends Controller
 
     public function prosjektforslag(){
         $title = "Prosjektforslag";
-        return view('pages.prosjektforslag')->with('title', $title);
+        $documents = Prosjektforslag::get();
+        //return dd($documents);
+        return view('pages.prosjektforslag')->with(['title' => $title, 'documents' =>$documents]);
     }
 
     public function tidligere_prosjekter(){
