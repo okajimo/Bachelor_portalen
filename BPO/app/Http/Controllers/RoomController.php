@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 
 class RoomController extends Controller
 {
+    //vis View
     public function index()
     {
         $Room = Room::all();
@@ -15,6 +16,8 @@ class RoomController extends Controller
         return view('rooms.administrate')->with(['title' => $title, 'Room' => $Room]);
     }
 
+
+    //lagre rom
     public function store(Request $request)
     {
         $this->validate($request, [
@@ -25,12 +28,13 @@ class RoomController extends Controller
         $rom_finnes = DB::select('SELECT * FROM room WHERE room = :request', ['request' => $request->Rom]);
         if(!$rom_finnes){
             DB::insert('INSERT INTO ROOM (room) VALUES (:request)',['request' => $request->Rom]);
-            return redirect('/room')->with('success', 'Rom lagt til');
+            return redirect('/room')->with('success', 'Rom registrert');
         }   
         else
             return redirect('/room')->with('error', 'Rom finnes alt');
     }
 
+    //slett rom
     public function destroy($id)
     {
         DB::delete('DELETE FROM room WHERE room = :id', ['id' => $id]);

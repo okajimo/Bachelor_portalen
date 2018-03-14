@@ -3,15 +3,15 @@
     <div class="jumbotron">
         <div class="container">
                 {!! Form::open(['action' => 'RoomController@store', 'class' => 'form-inline', 'method' => 'POST']) !!}
-                <div class="form-group">
-                    {{Form::text('Rom', '', ['class' => 'form-control', 'placeholder' => 'Rom navn'])}}
-                </div>
-                {{Form::submit('Submit', ['class' => 'btn btn-primary'])}}
-            {!! Form::close() !!}
+                    <div class="form-group">
+                        {{Form::text('Rom', '', ['class' => 'form-control', 'placeholder' => 'Rom navn'])}}
+                    </div>
+                    {{Form::submit('Registrer Rom', ['class' => 'btn btn-primary'])}}
+                {!! Form::close() !!}
             <br><br>
         
             @if(count($Room) > 0)
-                <table class="table ">
+                <table class="table">
                     <thead class="thead-light">
                         <tr>
                             <th>Grupperom:</th>
@@ -19,7 +19,6 @@
                         </tr>
                     </thead>
                     @foreach($Room as $Rooms)
-                        
                         <tbody>
                         <tr>
                             <td>{{$Rooms->room}}</td>

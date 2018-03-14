@@ -10035,6 +10035,10 @@ body {
   display: inline !important;
 }
 
+.alert {
+  margin-bottom: 0 !important;
+}
+
 .nav-header-info {
   border: #0096C0 1.5px solid !important;
   color: black !important;
@@ -10044,8 +10048,9 @@ body {
 }
 
 .spacing_header {
-  margin-top: 1em;
-  margin-bottom: 4em;
+  margin: 0;
+  padding: 0;
+  min-height: 3.5em;
 }
 
 .btn-nice {

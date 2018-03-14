@@ -20,8 +20,10 @@
             <h3 style="visibility:hidden">hidden</h3>
         @endif
 
-        <div class="spacing_header"></div>
-        @include('inc.feilmld')
+        <div class="spacing_header">
+                @include('inc.feilmld')
+        </div>
+        
         @yield('content')
     </div>
     <script src="{{asset('js/app.js')}}"></script>
