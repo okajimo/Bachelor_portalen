@@ -150,7 +150,7 @@ class GruppeController extends Controller
             }
             else
             {
-                return redirect('/')->with('error', 'Du er ikke medlem av en gruppe');
+                return redirect('/dashboard/group')->with('error', 'Du er ikke medlem av en gruppe');
             }
         }
         else
@@ -173,7 +173,7 @@ class GruppeController extends Controller
             }
             else
             {
-            return redirect('/')->with('error', 'Du er ikke medlem av en gruppe');
+            return redirect('/dashboard/group')->with('error', 'Du er ikke medlem av en gruppe');
             }
         }
         else
@@ -247,12 +247,12 @@ class GruppeController extends Controller
             }
             else
             {
-                return redirect('/')->with('error', 'Du er ikke medlem av en gruppe');
+                return redirect('/dashboard/group')->with('error', 'Du er ikke medlem av en gruppe');
             }
         }
         else
         {
-            return redirect('/login')->with('error', 'Du er ikke admin og har ikke tilgang');
+            return redirect('/login')->with('error', 'Du er ikke logget inn');
         }
     }
 

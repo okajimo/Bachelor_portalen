@@ -5,8 +5,6 @@
             <div class="row">
                 <div class="col-lg-offset-3 col-lg-6">
 
-                    @include('inc.feilmld')
-
                     <form class="form-horizontal" action="{{route('login')}}" method="post">
                     {{csrf_field()}}
                     <fieldset>

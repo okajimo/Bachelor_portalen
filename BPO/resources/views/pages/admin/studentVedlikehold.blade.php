@@ -2,7 +2,7 @@
 @section('content')
     <div class="jumbotron">
         <div class="container">
-            {!! Form::open(['action' => 'Admin\AdminController@importerStud', 'method' => 'POST', 'files' => true]) !!}  
+            {!! Form::open(['action' => 'Admin\AdminController@importerStud', 'method' => 'POST']) !!}  
                 <div class="form-group">  
                     {{Form::label('dok', 'Velg fil for opplastning av studenter.')}}
                     </br>
@@ -11,7 +11,7 @@
                 {{Form::submit('Importer studenter', ['class'=>'btn btn-primary'])}}    
             {!! Form::close() !!}
             <hr>
-            {!! Form::open(['action' => 'Admin\AdminController@endreStudPoeng', 'method' => 'POST', 'files' => true]) !!}  
+            {!! Form::open(['action' => 'Admin\AdminController@endreStudPoeng', 'method' => 'POST']) !!}  
                 <div class="form-group">  
                     {{Form::label('dok', 'Velg student for endring av poeng.')}}
                 </br>
