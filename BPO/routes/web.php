@@ -73,7 +73,10 @@ Route::post('/s', 'Admin\AdminController@regSensorVeileder');
 Route::post('/d', 'Admin\AdminController@endreStudPoeng');
 Route::delete('/', 'Admin\AdminController@slettSenvei');
 
-
+//simuler student
+Route::get('/simuler', 'SimulerController@index')->name('simuler');
+Route::post('/simuler', 'SimulerController@simuler');
+Route::post('/', 'SimulerController@avsimuler');
 
 //room
 Route::resource('room', 'RoomController');

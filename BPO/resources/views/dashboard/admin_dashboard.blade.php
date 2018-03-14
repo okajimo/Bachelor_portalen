@@ -7,9 +7,6 @@
             <div class="py-3 d-inline-block"></div>
         </div>
     </div>
-    
-
-
    <div class="row">
         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-4">
             <div class="card">
@@ -30,7 +27,7 @@
      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-4">
         <div class="card">
             <div class="card-body">
-                <a class="nav-link" href="{{ route('logout') }}"><h4 class="card-title">Simuler student</h4></a>
+                <a class="nav-link" href="{{ route('simuler') }}"><h4 class="card-title">Simuler student</h4></a>
                 <p class="card-text">Her kan du simulere student bruker.</p>
             </div>
         </div>

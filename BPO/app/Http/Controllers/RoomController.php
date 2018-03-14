@@ -11,9 +11,16 @@ class RoomController extends Controller
     //vis View
     public function index()
     {
-        $Room = Room::all();
-        $title = "Administrer rom";
-        return view('rooms.administrate')->with(['title' => $title, 'Room' => $Room]);
+        if(session('levell') >= 2)
+        {
+            $Room = Room::all();
+            $title = "Administrer rom";
+            return view('rooms.administrate')->with(['title' => $title, 'Room' => $Room]);
+        }
+        else
+        {
+            return redirect('/')->with('error', 'Du er ikke admin og har ikke tilgang');
+        } 
     }
 
 
