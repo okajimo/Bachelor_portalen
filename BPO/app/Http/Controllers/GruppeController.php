@@ -198,12 +198,12 @@ class GruppeController extends Controller
         //Sjekker om gruppen har lastet opp et dokument tidligere og kun skal gjøre en oppdatering av innhold
         if ($gruppeHarLastetOpp)
         {
-            if ($gruppeHarLastetOpp[0]->title == 'statusrapport')
+            if ($gruppeHarLastetOpp[0]->title == 'statusrapporter')
             {
                 $upload = \UploadHelper::instance()->updateDocument($request);
                 return redirect('/lastOppStatus')->with('success', $upload);
             }
-            elseif ($gruppeHarLastetOpp[0]->title == 'prosjektskisse')
+            elseif ($gruppeHarLastetOpp[0]->title == 'prosjektskisser')
             {
                 $upload = \UploadHelper::instance()->updateDocument($request);
                 return redirect('/lastOppSkisse')->with('success', $upload);                
@@ -211,12 +211,12 @@ class GruppeController extends Controller
         }
         else
         {
-            if ($request->input('type') == 'statusrapport')
+            if ($request->input('type') == 'statusrapporter')
             {
                 $upload = \UploadHelper::instance()->upload($request);
                 return redirect('/lastOppStatus')->with('success', $upload);
             }
-            elseif ($request->input('type') == 'prosjektskisse')
+            elseif ($request->input('type') == 'prosjektskisser')
             {
                 $upload = \UploadHelper::instance()->upload($request);
                 return redirect('/lastOppSkisse')->with('success', $upload);

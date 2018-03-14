@@ -32,7 +32,7 @@
                     <div class="form-group form-inline">   
                         {{Form::text('pres_end', '', ['placeholder' => 'DD.MM.ÅÅÅÅ', 'class'=>'form-control'])}}
                     </div>
-                {{Form::submit('Lagre datoer', ['placeholder' => 'DD.MM.ÅÅÅÅ', 'class'=>'btn btn-primary'])}}    
+                {{Form::submit('Lagre datoer', ['class'=>'btn btn-primary'])}}    
             {!! Form::close() !!}
         </div>
     </div>
