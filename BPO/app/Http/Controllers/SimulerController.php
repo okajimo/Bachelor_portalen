@@ -35,12 +35,12 @@ class SimulerController extends Controller
         return redirect('/')->with('success', 'Du simulerer nå: '.$request->student);
     }
 
-    //ender simuleringen og setter deg til den gammle
+    //avslutter simulering av student og sender deg tilbake til admin dashboard
     public function avsimuler(request $request)
     {
         Session(['navn' => $request->inn_navn]);
         Session(['levell' => $request->inn_level]);
         $title = "Simuler Student";
-        return redirect('/simuler')->with('error', 'Simulering stoppet');
+        return redirect('/dashboard/admin')->with('error', 'Simulering stoppet');
     }
 }
