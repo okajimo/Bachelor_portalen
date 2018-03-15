@@ -10048,6 +10048,10 @@ body {
           box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
+.card > a {
+  padding: 0;
+}
+
 .nav-header-info {
   border: #0096C0 1.5px solid !important;
   color: black !important;

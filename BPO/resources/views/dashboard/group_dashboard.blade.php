@@ -21,40 +21,40 @@
      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-4">
        <div class="card">
          <a class="nav-link" href="{{ route('group') }}">
-         <div class="card-body">
-            <h4 class="card-title">Gruppe innstillinger</h4>
-            <p class="card-text">Her kan du registere en gruppe, melde deg inn i en gruppe, sette deg selv som leder i gruppen eller forlate gruppen.</p>
-         </div>
+            <h4 class="card-header">Gruppe innstillinger</h4>
+            <div class="card-body">
+                <p class="card-text">Her kan du registere en gruppe, melde deg inn i en gruppe, sette deg selv som leder i gruppen eller forlate gruppen.</p>
+            </div>
          </a>
        </div>
      </div>
      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-4">
         <div class="card">
             <a class="nav-link" href="{{ route('lastOppS') }}">
-            <div class="card-body">
-                <h4 class="card-title">Last opp statusrapport</h4>
-                <p class="card-text">Her kan du laste opp statusrapport for bachelor prosjektet.</p>
-            </div>
+                <h4 class="card-header">Last opp statusrapport</h4>
+                <div class="card-body">
+                    <p class="card-text">Her kan du laste opp statusrapport for bachelor prosjektet.</p>
+                </div>
             </a>
         </div>
      </div>
      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-4">
         <div class="card">
             <a class="nav-link"  href="{{ route('lastOppP') }}">
-            <div class="card-body">
-                <h4 class="card-title">Last opp prosjektskisse</h4>
-                <p class="card-text">Her kan du laste opp prosjektskisse for bachelor prosjektet.</p>
-            </div>
+                <h4 class="card-header">Last opp prosjektskisse</h4>
+                <div class="card-body">
+                    <p class="card-text">Her kan du laste opp prosjektskisse for bachelor prosjektet.</p>
+                </div>
             </a>
         </div>
     </div>
     <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-4">
         <div class="card">
             <a class="nav-link" href="{{ route('Last') }}">
-            <div class="card-body">
-                <h4 class="card-title">Last opp link til hjemmeside</h4>
-                <p class="card-text">Her kan du laste opp link til hjemmeside for bachelor prosjektet.</p>
-            </div>
+                <h4 class="card-header">Last opp link til hjemmeside</h4>
+                <div class="card-body">
+                    <p class="card-text">Her kan du laste opp link til hjemmeside for bachelor prosjektet.</p>
+                </div>
             </a>
         </div>
     </div>
