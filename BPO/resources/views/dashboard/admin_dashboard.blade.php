@@ -60,7 +60,7 @@
      </div>
      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-4">
         <div class="card">
-            <a class="nav-link" href="{{ route('logout') }}">
+            <a class="nav-link" href="{{ route('Pforslag') }}">
                 <h4 class="card-header">Vedlikehold prosjektforslag</h4>
                 <div class="card-body">
                     <p class="card-text">Her kan du laste opp prosjektforslag eller slette dem.</p>

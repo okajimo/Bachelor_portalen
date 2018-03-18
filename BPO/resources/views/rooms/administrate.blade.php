@@ -23,7 +23,7 @@
                         <tr>
                             <td>{{$Rooms->room}}</td>
                             <td>
-                                {!! Form::open(['action' => ['RoomController@destroy', $Rooms->room], 'method' => 'POST']) !!}
+                                {!! Form::open(['action' => ['RoomController@destroy', $Rooms->room], 'method' => 'POST', 'onsubmit' => 'return ConfirmDelete()']) !!}
                                     {{Form::hidden('_method', 'DELETE')}}
                                     {{Form::submit('Fjern Rom', ['class' => 'btn btn-danger float-right'])}}
                                 {!!Form::close()!!}
