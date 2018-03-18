@@ -13,7 +13,7 @@
                     @foreach ($documents as $doc)
                         <tr>
                             <td>{{ $doc->date_added }}</td>
-                            <td><a href="{{ asset('storage/filer/prosjektforslag/'.$doc->file_name)}}">{{ $doc->file_name }}</a></td>
+                            <td><a target='_blank' href="{{ asset('storage/filer/prosjektforslag/'.$doc->file_name)}}">{{ $doc->file_name }}</a></td>
                         </tr>
                     @endforeach
                 </table>
