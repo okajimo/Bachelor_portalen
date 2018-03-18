@@ -57,7 +57,6 @@
                         <th>Gruppe</th>
                         <th>Prosjektside</th>
                         <th>Studenter</th>
-                        <th>E-postadresse</th>
                         <th>Veileder</th>
                         @if($iGruppe == null)
                         <th>Meld deg inn</th>
@@ -90,17 +89,6 @@
                                             @else
                                                 {{$students->student}}</br>
                                             @endif
-                                        @endforeach
-                                    </td>
-    <!-- Lagt til av stian, Ivo fiks css -->   <td>
-                                        <?php $email = DB::select('select users.email from users, student, student_groups, groups where users.username = student.username 
-                                        and student.username = student_groups.student and student_groups.student_groups_number = groups.group_number 
-                                        AND student_groups.student_groups_year = groups.year AND student_groups.student_groups_number LIKE :number 
-                                        and student_groups.student_groups_year LIKE :year',['number' => $group->group_number, 'year' => $group->year]); ?>
-                                        @foreach($email as $emails)
-                                            
-                                            {{$emails->email}} </br>
-
                                         @endforeach
                                     </td>
     <!-- Lagt til av stian, Ivo fiks css -->   <td >{{ $group->supervisor }}</td>

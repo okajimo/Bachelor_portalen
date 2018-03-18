@@ -3,8 +3,8 @@
     <div class="jumbotron">
         <div class="container">
             @if ($documents->count() != 0)
-                <table class="table table-responsive table-striped ">
-                    <thead class="thead-dark">
+                <table class="table table-responsive table-striped">
+                    <thead class="thead-light">
                         <tr>
                             <th>Dato lagt til</th>
                             <th>Dokument</th>

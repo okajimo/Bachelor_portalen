@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Prosjektforslag;
+use App\Group;
+use Illuminate\Support\Facades\DB;
 
 class PagesController extends Controller
 {
@@ -37,7 +39,8 @@ class PagesController extends Controller
 
     public function grupper(){
         $title = "Grupper";
-        return view('pages.grupper')->with('title', $title);
+        $groups = Group::get();
+        return view('pages.grupper')->with(['title' => $title, 'groups' => $groups]);
     }
 
     public function kontakt_info(){
