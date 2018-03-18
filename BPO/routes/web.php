@@ -82,10 +82,10 @@ Route::post('/tt', 'Tidligere_prosjekterController@showTidligereProsjekter');
 Route::post('/ttt', 'Tidligere_prosjekterController@publiserPresentasjonsplan');
 Route::get('/presentasjonsplanView', 'Tidligere_prosjekterController@hvisPresentasjonsplan')->name('presentasjonsplan');
 
-Route::post('/', 'Admin\AdminController@importerStud');
+Route::post('/gge', 'Admin\AdminController@importerStud');
 Route::post('/s', 'Admin\AdminController@regSensorVeileder');
 Route::post('/d', 'Admin\AdminController@endreStudPoeng');
-Route::delete('/', 'Admin\AdminController@slettSenvei');
+Route::delete('/ggse', 'Admin\AdminController@slettSenvei');
 
 //simuler student
 Route::get('/simuler', 'SimulerController@index')->name('simuler');

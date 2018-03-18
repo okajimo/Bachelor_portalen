@@ -6,10 +6,16 @@
                 Meny
             </button>
             <div class="dropdown-menu">
-                <a class="dropdown-item" href="{{ route('admin') }}">Dashboard</a>
-                <a class="dropdown-item" href="{{ route('simuler') }}">Simuler student</a>
-                <a class="dropdown-item" href="{{ route('epost') }}">E-post</a>
-                <a class="dropdown-item" href="{{ route('Pforslag') }}">Vedlikehold av prosjektforslag</a>  
+                    <a class="dropdown-item" href="{{ route('admin') }}">Dashboard</a>
+                    <a class="dropdown-item" href="{{ route('student') }}">Vedlikehold studenter</a>
+                    <a class="dropdown-item" href="{{ route('simuler') }}">Simuler student</a>
+                    <a class="dropdown-item" href="{{ route('dokumenter') }}">Les dokumenter</a>
+                    <a class="dropdown-item" href="{{ route('epost') }}">Send E-post</a>  
+                    <a class="dropdown-item" href="{{ route('Pforslag') }}">Vedlikehold prosjektforslag</a>  
+                    <a class="dropdown-item" href="{{ route('dato') }}">Datoer</a>  
+                    <a class="dropdown-item" href="{{ route('Pforslag') }}">Gruppe innstillinger</a>  
+                    <a class="dropdown-item" href="{{ route('senvei') }}">Vedlikehold sensorer/veildere</a>  
+                    <a class="dropdown-item" href="{{ route('tidligere') }}">Vedlikehold tidligere prosjekter</a> 
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="{{ route('logout') }}">Logout</a>
             </div>
