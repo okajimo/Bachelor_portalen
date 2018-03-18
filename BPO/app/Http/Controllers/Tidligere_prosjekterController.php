@@ -27,15 +27,22 @@ class Tidligere_prosjekterController extends Controller
     {
         $sjekk = DB::select('SELECT presentation.presentation_group_number FROM presentation ORDER BY presentation.start');
         if($sjekk)
-        {
+        {   
             $date = date('Y');
             $finnes = Storage::exists('/public/filer/tidligere_prosjekter_sluttrapport/'.$date);
+            $finnesfil = Storage::exists('/public/filer/tidligere_prosjekter_sluttrapport/'.$date.'/'.$date);
             if($finnes == false)
             {
                 Storage::makeDirectory('/public/filer/tidligere_prosjekter_sluttrapport/'.$date);
+            }
+            if($finnesfil == true)
+            {
+                Storage::delete('/public/filer/tidligere_prosjekter_sluttrapport/'.$date.'/'.$date.'.txt');
+            }
+            else
+            {
                 Storage::put('/public/filer/tidligere_prosjekter_sluttrapport/'.$date.'/'.$date.'.txt', "");
             }
-            $finnes2 = Storage::exists('/public/filer/tidligere_prosjekter_sluttrapport/'.$date.'/'.$date.'.txt');
 
             $dato = DB::select('SELECT presentation.start FROM presentation ORDER BY presentation.start');
             foreach($dato as $Dato)
