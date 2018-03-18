@@ -44,7 +44,7 @@ class Tidligere_prosjekterController extends Controller
             }
             $kunDato = array_unique($nyDato);
 
-            $gjort = $nyDato[0];
+            //$gjort = $nyDato[0];
 
             foreach($kunDato as $dat)
             {
@@ -73,24 +73,19 @@ class Tidligere_prosjekterController extends Controller
                 {
                     $sjekk = \Carbon\Carbon::parse($grupper->start)->format('d');
                     $ar = $grupper->presentation_group_number;
-                    $files = Storage::allFiles('/public/filer/tidligere_prosjekter/'.$date.'/'.$ar);
+                    //$files = Storage::allFiles('/public/filer/tidligere_prosjekter/'.$date.'/'.$ar);
                     $studenter = DB::select('SELECT student FROM student_groups WHERE student_groups.student_groups_number = :nummer AND student_groups.student_groups_year = :ar',['nummer'=>$grupper->presentation_group_number,'ar'=>$grupper->presentation_year]);
                     $veileder = DB::select('SELECT supervisor FROM groups WHERE groups.group_number = :nummer AND groups.year = :ar',['nummer'=>$grupper->presentation_group_number,'ar'=>$grupper->presentation_year]);
                     if($sjekk == $dat)
                     {
+                        $ulr = "http://student.cs.hioa.no/hovedprosjekter/data/".$date."/".$ar."/";
                         $html .= "
                             <tr>
                             <tbody>
                                 <td>".$grupper->start."</td>
-                                <td>".$grupper->presentation_group_number."</td>";
-                                if($files)
-                                {
-                                    $html .= "<td><a href='".asset('storage/filer/tidligere_prosjekter/'.$grupper->presentation_year.'/'.$grupper->presentation_group_number.'/'.basename($files[0]))."'>Sluttrapport</a></td>";
-                                }
-                                else
-                                {
-                                    $html .= "<td>Mangler fil</td>"; 
-                                }
+                                <td>".$grupper->presentation_group_number."</td>
+                                <td><a href='".$ulr."'>Sluttrapport</a></td>"
+                                ;
                         $html .= "<td>";
                                 foreach($studenter as $stud)
                                 {
@@ -105,107 +100,43 @@ class Tidligere_prosjekterController extends Controller
                         ";
                     }
                 }
-                $file = 'storage/filer/tidligere_prosjekter_sluttrapport/2018/2018.txt';
+                $file = "storage/filer/tidligere_prosjekter_sluttrapport/".$date."/".$date.".txt";
                 $current = file_get_contents($file);
                 $current .= $html;
                 $current .= "</table>";
                 file_put_contents($file, $current);
-                /*$datotittel = $dat;
-                $grupper = DB::select('SELECT * FROM presentation');
-                $lik = "ny";
-                $gruppedato = "ny";
-                foreach ($grupper as $grupp)
+
+                $finnes2 = Storage::exists('/public/filer/presentasjonsplan/false.txt');
+                $finnes3 = Storage::exists('/public/filer/presentasjonsplan/true.txt');
+
+                if($finnes2 == true)
                 {
-                    $ny = \Carbon\Carbon::parse($grupp->start)->format('d');
-                    if($ny !== $gruppedato)
+                    $file = "storage/filer/presentasjonsplan/false.txt";
+                    $current = file_get_contents($file);
+                    $current .= $html;
+                    $current .= "</table>";
+                    file_put_contents($file, $current);
+                }
+                else
+                {
+                    if($finnes3 == true)
                     {
-                        $file = 'storage/filer/tidligere_prosjekter_sluttrapport/2018/2018.txt';
+                        $file = "storage/filer/presentasjonsplan/true.txt";
                         $current = file_get_contents($file);
+                        $current .= $html;
                         $current .= "</table>";
                         file_put_contents($file, $current);
                     }
-                    $gruppedato = \Carbon\Carbon::parse($grupp->start)->format('d');
-                    if($datotittel == $gruppedato)
+                    else
                     {
-                        $studenter = DB::select('SELECT student FROM student_groups WHERE student_groups.student_groups_number = :nummer AND student_groups.student_groups_year = :ar',['nummer'=>$grupp->presentation_group_number,'ar'=>$grupp->presentation_year]);
-                        $veileder = DB::select('SELECT supervisor FROM groups WHERE groups.group_number = :nummer AND groups.year = :ar',['nummer'=>$grupp->presentation_group_number,'ar'=>$grupp->presentation_year]);
-                        $ar = $grupp->presentation_group_number;
-                        $files = Storage::allFiles('/public/filer/tidligere_prosjekter/'.$date.'/'.$ar);
-                        if($lik == "ny")
-                        {
-                            $html = "
-                            <h3>".\Carbon\Carbon::parse($grupp->start)->format('D.d.M')." - Sensor: ".$grupp->sensor." - Rom: ".$grupp->presentation_room."</h3>
-                            <table class='table table-responsive'>
-                            <thead class='thead-light'>
-                                <tr>
-                                    <th>Tid</th>
-                                    <th>Gruppe</th>
-                                    <th>Dokumentasjon</th>
-                                    <th>Studenter</th>
-                                    <th>Veileder</th>
-                                </tr>
-                                </thead>
-                                <tr>
-                                <tbody>
-                                    <td>".$grupp->start."</td>
-                                    <td>".$grupp->presentation_group_number."</td>";
-                                    if($files)
-                                    {
-                                        $html .= "<td><a href='".asset('storage/filer/tidligere_prosjekter/'.$grupp->presentation_year.'/'.$grupp->presentation_group_number.'/'.basename($files[0]))."'>Sluttrapport</a></td><td>";
-                                    }
-                                    else
-                                    {
-                                        $html .= "<td>Mangler fil</td><td>"; 
-                                    }
-                                    foreach($studenter as $stud)
-                                            {
-                                                $html .= $stud->student."</br>";
-                                            }
-                                    $html .=
-                                    "</td>
-                                    <td>".$veileder[0]->supervisor."</td>
-                                </tr>
-                                </tbody>
-                            ";
-
-                            $file = 'storage/filer/tidligere_prosjekter_sluttrapport/2018/2018.txt';
-                            $current = file_get_contents($file);
-                            $current .= $html;
-                            file_put_contents($file, $current);
-                            //echo $html;
-                            $lik = "gammel";
-                        }
-                        else
-                        {
-                            $html = "
-                                <tr>
-                                    <td>".$grupp->start."</td>
-                                    <td>".$grupp->presentation_group_number."</td>";
-                                    if($files)
-                                    {
-                                        $html .= "<td><a href='".asset('storage/filer/tidligere_prosjekter/'.$grupp->presentation_year.'/'.$grupp->presentation_group_number.'/'.basename($files[0]))."'>Sluttrapport</a></td><td>";
-                                    }
-                                    else
-                                    {
-                                        $html .= "<td>Mangler fil</td><td>"; 
-                                    }
-                                    foreach($studenter as $stud)
-                                            {
-                                                $html .= $stud->student."</br>";
-                                            }
-                                    $html .=
-                                    "</td>
-                                    <td>".$veileder[0]->supervisor."</td>
-                                </tr>";
-
-                            //echo $html;
-                            $file = 'storage/filer/tidligere_prosjekter_sluttrapport/2018/2018.txt';
-                            $current = file_get_contents($file);
-                            $current .= $html;
-                            file_put_contents($file, $current);
-                        }
+                        Storage::put('/public/filer/presentasjonsplan/false.txt', "");
+                        $file = "storage/filer/presentasjonsplan/false.txt";
+                        $current = file_get_contents($file);
+                        $current .= $html;
+                        $current .= "</table>";
+                        file_put_contents($file, $current);
                     }
-                }*/
+                }
             }
             return redirect('/tidligere_prosjekter');
         }
