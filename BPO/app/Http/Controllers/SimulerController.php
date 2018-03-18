@@ -12,7 +12,12 @@ class SimulerController extends Controller
     {
         if(session('levell') >= 2)
         {
-            $student = DB::select('SELECT * FROM student WHERE student_points >= 100 ORDER BY username ASC');
+            $student = DB::select('SELECT users.username, users.lastname, users.firstname, student.student_points 
+            FROM users, student 
+            WHERE users.username = student.username 
+            AND student.student_points >= 100 
+            ORDER BY users.username ASC');
+
             $title = "Simuler Student";
             return view('pages.admin.simuler')->with(['title' => $title, 'student' =>$student]);
         }

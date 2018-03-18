@@ -7,7 +7,7 @@
                     <select required class="custom-select" name="student">
                         <option hidden disabled selected>Simuler Student</option>
                         @foreach($student as $students)
-                            <option value={{$students->username}}>{{$students->username}}</option>
+                            <option value={{$students->username}}>{{$students->username.' ------- '.$students->firstname.' '.$students->lastname}}</option>
                         @endforeach
                     </select>
                 </div>
