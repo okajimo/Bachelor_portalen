@@ -34,7 +34,7 @@
                                             <td>{{$group->year}}</td>
                                             <td>
                                                 @foreach($dokumenter as $dok)
-                                                    <a href="{{ asset('storage/filer/prosjektskisser/'.$dok->file_name)}}">{{$dok->file_name}}</a></br>
+                                                    <a target='_blank' href="{{ asset('storage/filer/prosjektskisser/'.$dok->file_name)}}">{{$dok->file_name}}</a></br>
                                                 @endforeach
                                             </td>
                                             <td>
