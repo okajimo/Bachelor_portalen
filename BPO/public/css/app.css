@@ -10039,6 +10039,11 @@ body {
   margin-bottom: 0 !important;
 }
 
+.card-header {
+  min-height: 3.5em !important;
+  text-align: center;
+}
+
 .card-body {
   min-height: 15em !important;
 }
