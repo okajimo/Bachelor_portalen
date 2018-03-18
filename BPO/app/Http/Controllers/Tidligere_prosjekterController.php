@@ -14,7 +14,7 @@ class Tidligere_prosjekterController extends Controller
     {
         if(session('levell') >= 2)
         {
-            $title = "Importer tidligere prosjekter";
+            $title = "Generer html fil for tidligere prosjekter/presentasjonsplan";
             return view('pages.admin.vedlikehold_tidligere_prosjekter')->with('title', $title);
         }
         else
@@ -46,6 +46,16 @@ class Tidligere_prosjekterController extends Controller
 
             //$gjort = $nyDato[0];
 
+            $finnes2 = Storage::exists('/public/filer/presentasjonsplan/false.txt');
+            $finnes3 = Storage::exists('/public/filer/presentasjonsplan/true.txt');
+            if($finnes == true)
+            {
+                Storage::delete('/public/filer/presentasjonsplan/false.txt');
+            }
+            if($finnes == true)
+            {
+                Storage::delete('/public/filer/presentasjonsplan/true.txt');
+            }
             foreach($kunDato as $dat)
             {
                 $finnDato = DB::select('SELECT * FROM presentation');
@@ -157,6 +167,41 @@ class Tidligere_prosjekterController extends Controller
             fclose($fileHandle);
 
             return redirect('/tidligere_prosjekter')->with('hvis',$hvis);
+        }
+    }
+
+    public function publiserPresentasjonsplan()
+    {
+        if(session('levell') >= 2)
+        {
+            $finnes2 = Storage::exists('/public/filer/presentasjonsplan/false.txt');
+            $finnes3 = Storage::exists('/public/filer/presentasjonsplan/true.txt');
+            if($finnes2 == true)
+            {
+                Storage::move('/public/filer/presentasjonsplan/false.txt', '/public/filer/presentasjonsplan/true.txt');
+            }
+            if($finnes3 == true)
+            {
+                Storage::move('/public/filer/presentasjonsplan/true.txt', '/public/filer/presentasjonsplan/false.txt');
+            }
+            return redirect('/vedlikehold_tidligere_prosjekter');
+        }
+        else
+        {
+            return redirect('/login')->with('error', 'Du er ikke admin og har ikke tilgang');
+        }
+    }
+
+    public function hvisPresentasjonsplan()
+    {
+        if(session('levell') >= 1)
+        {
+            $title = "Presentasjonsplan";
+            return view('admin.hvisPresentasjonsplan')->with('title' , $title);
+        }
+        else
+        {
+            return redirect('/login')->with('error', 'Du er ikke admin og har ikke tilgang');
         }
     }
 }

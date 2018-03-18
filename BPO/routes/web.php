@@ -71,6 +71,8 @@ Route::get('/vedlikeholdAvSensorOgVeileder', 'Admin\AdminController@vedlikeholdS
 Route::get('/vedlikehold_tidligere_prosjekter', 'Tidligere_prosjekterController@tidligere_prosjekter')->name('tidligere');
 Route::post('/t', 'Tidligere_prosjekterController@opprett_html_sider');
 Route::post('/tt', 'Tidligere_prosjekterController@showTidligereProsjekter');
+Route::post('/ttt', 'Tidligere_prosjekterController@publiserPresentasjonsplan');
+Route::get('/presentasjonsplanView', 'Tidligere_prosjekterController@hvisPresentasjonsplan')->name('presentasjonsplan');
 
 Route::post('/', 'Admin\AdminController@importerStud');
 Route::post('/s', 'Admin\AdminController@regSensorVeileder');

@@ -108,5 +108,18 @@
                 </a>
             </div>
         </div>
+        <?php $finnes3 = Storage::exists('/public/filer/presentasjonsplan/true.txt'); ?>
+        @if($finnes3 == true)
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-4">
+                <div class="card">
+                    <a class="nav-link"  href="{{ route('presentasjonsplan') }}">
+                        <h4 class="card-header">Presentasjonsplan</h4>
+                        <div class="card-body">
+                            <p class="card-text">Her kan du se presentasjonsplanen til gruppen din.</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        @endif
    </div>
 @endsection
