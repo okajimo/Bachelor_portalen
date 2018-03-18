@@ -166,9 +166,9 @@ class CreateSeedsTable extends Migration
 
 			$table->increments('id');
 			$table->string('date_added', 10);
-			$table->string('file_name', 45);
+			$table->string('file_name', 127);
 
-			$table->primary('id');
+			//$table->primary('id');
 		});
 
 
@@ -192,6 +192,7 @@ class CreateSeedsTable extends Migration
 		Schema::drop('groups');
 		Schema::drop('users');
 		Schema::drop('accesslevel');
+		Schema::drop('prosjektforslag');
 
     }
 }

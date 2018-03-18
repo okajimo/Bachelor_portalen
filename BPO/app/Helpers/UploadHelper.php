@@ -25,7 +25,8 @@ Class UploadHelper
         {
             if ($request->input('type') == 'prosjektforslag')
             {
-                $filenameToStore = $request->file('dok')->getClientOriginalName();
+                $extension = $request->file('dok')->getClientOriginalExtension();
+                $filenameToStore = $request->input('file_name').'.'.$extension;
                 $path = $request->file('dok')->storeAs('public/filer/'.$request->input('type'), $filenameToStore);
 
                 $dok = new Prosjektforslag;

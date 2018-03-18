@@ -4,6 +4,10 @@
         <div class="container">
             {!! Form::open(['action' => 'ProsjektforslagController@uploadFile', 'method' => 'POST', 'files' => true]) !!}  
                 {{Form::hidden('type', 'prosjektforslag')}}    
+                {{Form::label('file_name', 'Skriv inn filnavn (ikke .pdf)')}}
+                <div class="form-group form-inline">
+                    {{Form::text('file_name', '', ['class'=>'form-control'])}}
+                </div>
                 {{Form::label('dok', 'Velg fil, kun PDF godkjent')}} 
                 <div class="form-group form-inline">
                     {{Form::file('dok')}}

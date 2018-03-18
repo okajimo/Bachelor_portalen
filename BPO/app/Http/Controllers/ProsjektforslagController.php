@@ -27,7 +27,8 @@ class ProsjektforslagController extends Controller
     public function uploadFile (request $request)
     {
         $this->validate($request, [
-            'dok' => 'required|mimes:pdf|max:1999'
+            'dok' => 'required|mimes:pdf|max:1999',
+            'file_name' => 'required'
         ]);
 
         $upload = \UploadHelper::instance()->upload($request);
