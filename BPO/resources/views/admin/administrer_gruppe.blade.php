@@ -41,12 +41,12 @@
                                                 @endforeach
                                             </select>
                                             {{Form::hidden('group', $groups->group_number)}} 
-                                            {{Form::submit('Sett Veileder', ['class'=>'btn btn-primary'])}}   
+                                            {{Form::submit('Sett Veileder', ['class'=>'btn btn-primary margin-fix'])}}   
                                         {!! Form::close() !!}
 
                                         {!! Form::open(['action' => ['VeilederController@destroy', $groups->group_number], 'method' => 'POST', 'class' => 'float-left', 'onsubmit' => 'return ConfirmDelete()']) !!}
                                             {{Form::hidden('_method', 'DELETE')}} 
-                                            {{Form::submit('Slett Gruppe', ['class'=>'btn btn-danger margin-fix'])}}   
+                                            {{Form::submit('Slett Gruppe', ['class'=>'btn btn-danger'])}}   
                                         {!! Form::close() !!} 
                                     </td>
                                 </tr>
