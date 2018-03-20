@@ -95,9 +95,6 @@ Route::post('/', 'SimulerController@avsimuler');
 //room
 Route::resource('room', 'RoomController');
 
-
-
-
 //Prosjektforslag
 Route::get('/vedlikehold_Prosjektforslag', 'ProsjektforslagController@showUploadForm')->name('Pforslag');
 Route::post('/lastOppPf', 'ProsjektforslagController@uploadFile');
@@ -106,3 +103,4 @@ Route::delete('/slettPf', 'ProsjektforslagController@destroy');
 //Tildel veileder 
 Route::get('/administrer_gruppe', 'VeilederController@index');
 Route::post('/administrer_gruppe', 'VeilederController@store');
+Route::delete('/administrer_gruppe/{id}', 'VeilederController@destroy');

@@ -40,6 +40,12 @@ class VeilederController extends Controller
 
     public function destroy($id)
     {
-        //
+        DB::delete("DELETE FROM student_groups
+        WHERE student_groups_number = :id", ['id' => $id]);
+
+        DB::update("UPDATE groups
+        SET groups.leader='', groups.title='', groups.url='', groups.supervisor=''
+        WHERE group_number = :id", ['id' => $id]);
+        return redirect('/administrer_gruppe')->with('error', 'Gruppe fjernet');
     }
 }
