@@ -27,8 +27,7 @@
         @yield('content')
     </div>
     <script src="{{asset('js/app.js')}}"></script>
-    <script type="text/javascript" src="{{ URL::asset('js/_custom.js') }}"></script>
     <!--Confirm delete-->
-    <script>function ConfirmDelete(){ var x = confirm("Are you sure you want to delete?"); if (x) return true; else return false;}</script>
+    <script>function ConfirmDelete(){ var x = confirm("Bekreft sletting"); if (x) return true; else return false;}</script>
 </body>
 </html>

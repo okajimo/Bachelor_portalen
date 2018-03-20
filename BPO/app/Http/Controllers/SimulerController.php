@@ -12,10 +12,12 @@ class SimulerController extends Controller
     {
         if(session('levell') >= 2)
         {
+            //NB endre setningen til å i tillegg sjekke access level
             $student = DB::select('SELECT users.username, users.lastname, users.firstname, student.student_points 
             FROM users, student 
             WHERE users.username = student.username 
-            AND student.student_points >= 100 
+            AND student.student_points >= 100
+            AND users.level = 1 
             ORDER BY users.username ASC');
 
             $title = "Simuler Student";
@@ -37,7 +39,7 @@ class SimulerController extends Controller
         Session(['navn' => $request->student]);
         Session(['levell' => "1"]);
         $title = "Simuler Student";
-        return redirect('/')->with('success', 'Du simulerer nå: '.$request->student);
+        return redirect('/dashboard/group')->with('success', 'Du simulerer nå: '.$request->student);
     }
 
     //avslutter simulering av student og sender deg tilbake til admin dashboard
