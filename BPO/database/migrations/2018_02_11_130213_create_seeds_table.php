@@ -17,7 +17,7 @@ class CreateSeedsTable extends Migration
 		    $table->engine = 'InnoDB';
 		
 		    $table->integer('level');
-		    $table->enum('type', ['superadmin',  'admin',  'assistant',  'student']);
+		    $table->enum('type', ['superadmin',  'admin',  'assistant',  'student', 'ingenTilgang']);
 		    
 		    $table->primary('level');
 		

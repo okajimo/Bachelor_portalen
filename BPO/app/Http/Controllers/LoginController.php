@@ -62,6 +62,10 @@ class LoginController extends Controller
                 Session(['levell' => $lvl]);
                 return redirect('/dashboard/admin');
             }
+            elseif($level == "0")
+            {
+                return redirect('/login')->with('error', 'Du har ikke tilgang til innlogging');
+            }
         }
         else
         {
