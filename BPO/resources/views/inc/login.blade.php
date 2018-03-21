@@ -13,9 +13,10 @@
                     <a class="dropdown-item" href="{{ route('epost') }}">Send E-post</a>  
                     <a class="dropdown-item" href="{{ route('Pforslag') }}">Vedlikehold prosjektforslag</a>  
                     <a class="dropdown-item" href="{{ route('dato') }}">Datoer</a>  
-                    <a class="dropdown-item" href="{{ route('Pforslag') }}">Gruppe innstillinger</a>  
+                    <a class="dropdown-item" href="{{ route('Agruppe') }}">Administrer grupper</a>
+                    <a class="dropdown-item" href="/room">Administrer grupperom</a>
                     <a class="dropdown-item" href="{{ route('senvei') }}">Vedlikehold sensorer/veildere</a>  
-                    <a class="dropdown-item" href="{{ route('tidligere') }}">Vedlikehold tidligere prosjekter</a> 
+                    <a class="dropdown-item" href="{{ route('tidligere') }}">Generer presentasjonsplan</a> 
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="{{ route('logout') }}">Logout</a>
             </div>

@@ -18,7 +18,6 @@
             <?php 
                 $brukerS = DB::select('SELECT student_groups.student FROM student_groups WHERE student_groups.student LIKE :bruker',['bruker' => $bruker]);
             ?>
-            <!--prøv denne-->
             
 
             @foreach($brukerS as $brukerF)
@@ -51,7 +50,7 @@
                 {!! Form::close() !!}
             </div>
                 @endif
-            <table class="table"> <!-- Ivo fiks mobil vennlig. -->
+            <table class="table">
                     <thead class="thead-light">
                     <tr>
                         <th>Gruppe</th>
@@ -69,10 +68,10 @@
                             @if($group->year >= date('Y'))
                             <tbody>
                             <tr>
-    <!-- Lagt til av stian, Ivo fiks css -->   <td>{{ $group->group_number }}
+                                <td>{{ $group->group_number }}
                                                </td>
-    <!-- Lagt til av stian, Ivo fiks css -->   <td><a href="http://{{ $group->url }}" target='_blank'>{{ $group->title }}</a></td>
-    <!-- Lagt til av stian, Ivo fiks css -->   <td>
+                                <td><a href="http://{{ $group->url }}" target='_blank'>{{ $group->title }}</a></td>
+                                <td>
 
                                         <?php $student = DB::select('select student_groups.student from student_groups, groups 
                                         where groups.group_number = student_groups.student_groups_number and groups.year = student_groups_year 
@@ -91,7 +90,7 @@
                                             @endif
                                         @endforeach
                                     </td>
-    <!-- Lagt til av stian, Ivo fiks css -->   <td >{{ $group->supervisor }}</td>
+                                <td >{{ $group->supervisor }}</td>
                                                  @if($iGruppe == null)
                                                     <td style=" text-align: center;">
                                                         {!! Form::open(['action' => 'GruppeController@meld_inn', 'method' => 'POST'])!!}

@@ -92,7 +92,7 @@
         </div>
         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-4">
             <div class="card">
-                <a class="nav-link" href="{{ route('logout') }}">
+                <a class="nav-link" href="{{ route('senvei') }}">
                     <h4 class="card-header">Vedlikehold sensorer/veildere</h4>
                     <div class="card-body">  
                         <p class="card-text">Her kan du registrere sensor eller veileder, samt slette dem.</p>
