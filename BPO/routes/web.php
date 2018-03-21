@@ -104,3 +104,6 @@ Route::delete('/slettPf', 'ProsjektforslagController@destroy');
 Route::get('/administrer_gruppe', 'VeilederController@index');
 Route::post('/administrer_gruppe', 'VeilederController@store');
 Route::delete('/administrer_gruppe/{id}', 'VeilederController@destroy');
+
+//presentasjonsplan
+Route::get('/presentasjonsplan', 'PresentasjonController@index');

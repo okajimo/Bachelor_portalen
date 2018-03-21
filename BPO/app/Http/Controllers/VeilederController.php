@@ -14,13 +14,12 @@ class VeilederController extends Controller
     {
         if(session('levell') >= 2)
         {
-            $group = DB::select("SELECT * FROM sensors_supervisors, groups 
-            WHERE groups.supervisor = sensors_supervisors.email 
-            ORDER BY groups.group_number ASC");
+            $group = DB::select("SELECT * FROM groups");
             $student = DB::select("SELECT * FROM student_groups");
             $user = DB::select("SELECT * FROM users");
             $supervisors = DB::select("SELECT * FROM sensors_supervisors
             WHERE status = 'veileder'");
+            
             $title = "Administrer gruppe";
             return view('admin.administrer_gruppe')->with(['title' => $title, 'group' => $group, 'student' => $student, 'user' => $user, 'supervisors' => $supervisors]);
         }
@@ -33,11 +32,16 @@ class VeilederController extends Controller
 
     public function store(Request $request)
     {
+        $sensor = DB::select("SELECT sensors_supervisors.firstname, sensors_supervisors.lastname 
+        FROM sensors_supervisors, groups 
+        WHERE groups.supervisor = sensors_supervisors.email 
+        AND group_number = 1");
+
         DB::update("UPDATE groups
         SET supervisor = :veileder
         WHERE group_number = :gruppe_number", 
         ['veileder' => $request->supervisor, 'gruppe_number' => $request->group]);
-        return redirect('/administrer_gruppe')->with('success', 'Gruppe '.$request->group.' har blitt tildelt '.$request->firstname.' '.$request->lastname.' som veileder');
+        return redirect('/administrer_gruppe')->with('success', 'Gruppe '.$request->group.' har blitt tildelt '.$sensor[0]->firstname.' '.$sensor[0]->lastname.' som veileder');
     }
 
     public function destroy($id)

@@ -32,18 +32,18 @@
                                     </td>
                                     <td>
                                         {!! Form::open(['action' => 'VeilederController@store', 'method' => 'POST', 'class' => 'float-left']) !!}  
+                                            
                                             <select name="supervisor" style="width: 8.5em; border: 1px solid black;" class="btn">
-                                                <option value={{$groups->supervisor}}  selected="">{{$groups->firstname.' '.$groups->lastname}}</option>
-                                                @foreach($supervisors as $supervisor)
-                                                    @if($supervisor->email != $groups->supervisor)
-                                                        <option value={{$supervisor->email}}>{{$supervisor->firstname.' '.$supervisor->lastname}}</option>
-                                                    @endif
-                                                @endforeach
+                                                    @foreach($supervisors as $supervisor)
+                                                        @if($groups->supervisor == $supervisor->email)
+                                                            <option value={{$groups->supervisor}}  selected="">{{$supervisor->firstname.''.$supervisor->lastname}}</option>
+                                                        @else
+                                                            <option value={{$supervisor->email}}>{{$supervisor->firstname.' '.$supervisor->lastname}}</option>
+                                                        @endif
+                                                    @endforeach
                                             </select>
                                             {{Form::hidden('group', $groups->group_number)}}
-                                            {{Form::hidden('firstname', $groups->firstname)}}
-                                            {{Form::hidden('lastname', $groups->lastname)}}
-                                            {{Form::submit('Sett Veileder', ['class'=>'btn btn-primary margin-fix'])}}   
+                                            {{Form::submit('Sett Veileder', ['class'=>'btn btn-success margin-fix'])}}   
                                         {!! Form::close() !!}
 
                                         {!! Form::open(['action' => ['VeilederController@destroy', $groups->group_number], 'method' => 'POST', 'class' => 'float-left', 'onsubmit' => 'return ConfirmDelete()']) !!}
