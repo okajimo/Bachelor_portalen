@@ -6,7 +6,7 @@
 <nav style="padding:0; background:#FFFFFF !important;" class="nav-adjust navbar navbar-expand-lg navbar-light">
     <span class="nav-header-info navbar-toggler navbar-toggler-right" style="width:100%; " data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
         <section class="d-inline-block float-left farge">Innhold</section>
-        <h2><i class="fa fa-angle-down d-inline-block float-right farge" aria-hidden="true"></i></h2>
+        <h2><i class="fa fa-angle-down d-inline-block float-right farge" style="margin-top:0.05em"aria-hidden="true"></i></h2>
         <div class="clearfix"></div>
     </span>  
     <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
