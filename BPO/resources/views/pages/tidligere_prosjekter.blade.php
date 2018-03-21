@@ -7,6 +7,9 @@
                     <tr>
                         <td>
                             <?php
+                            $rapport = Storage::exists('/public/filer/tidligere_prosjekter_sluttrapport');
+                            if($rapport)
+                            {
                                 $file = scandir('storage/filer/tidligere_prosjekter_sluttrapport/'); 
                                 foreach($file as $f)
                                 {
@@ -39,6 +42,11 @@
                                         }
                                    }
                                 }
+                            }
+                            else 
+                            {
+                                echo "Ingen tidligere prosjekter tilgjengelig.";    
+                            }
                            ?>
                         </td>
                         <td>
