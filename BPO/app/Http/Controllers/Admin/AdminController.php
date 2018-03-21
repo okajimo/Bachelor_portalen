@@ -124,6 +124,23 @@ class AdminController extends Controller
                     DB::insert('INSERT INTO student (username, student_points, program) VALUES 
                     (:en, :atte, :ni)',['en'=>$row[0],'atte'=>$row[7],'ni'=>$row[8]]);
                 }
+                else
+                {
+                    if($row[7] >= 100)
+                    {
+                        $passord = str_random(8);
+                    }
+                    else
+                    {
+                        $passord = "";
+                    }
+
+                    DB::update('UPDATE users SET level = :to, password = :seks 
+                    WHERE username = :en',['en'=>$row[0],'to' => $row[1], 'seks' => $passord]);
+
+                    DB::insert('INSERT INTO student (username, student_points, program) VALUES 
+                    (:en, :atte, :ni)',['en'=>$row[0],'atte'=>$row[7],'ni'=>$row[8]]);
+                }
             }
             fclose($fileHandle);
             return redirect('/studentVedlikehold')->with('success','Importering av studenter vellykket');

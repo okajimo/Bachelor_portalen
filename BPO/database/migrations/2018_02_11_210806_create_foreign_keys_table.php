@@ -24,6 +24,12 @@ class CreateForeignKeysTable extends Migration
 		        ->references('username')->on('users');
         });
 
+        Schema::table('groups', function (Blueprint $table) {
+
+            $table->foreign('supervisor')
+		        ->references('email')->on('sensors_supervisors');
+        });
+
         Schema::table('student_groups', function (Blueprint $table) {
 
             $table->foreign('student')
@@ -46,7 +52,10 @@ class CreateForeignKeysTable extends Migration
                 ->references(['group_number','year'])->on('groups');
 		
 		    $table->foreign('presentation_room')
-		        ->references('room')->on('room');
+                ->references('room')->on('room');
+                
+            $table->foreign('sensor')
+		        ->references('email')->on('sensors_supervisors');
         });
 
     }
