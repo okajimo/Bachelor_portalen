@@ -76,7 +76,7 @@ Route::post('/2','Admin\EpostController@sendEpostSensorVeileder');
 Route::get('/studentVedlikehold', 'Admin\AdminController@studentVedlikehold')->name('student');
 Route::get('/vedlikeholdAvSensorOgVeileder', 'Admin\AdminController@vedlikeholdSensorVeileder')->name('senvei');
 
-Route::get('/vedlikehold_tidligere_prosjekter', 'Tidligere_prosjekterController@tidligere_prosjekter')->name('tidligere');
+Route::get('/generer_presentasjonsplan', 'Tidligere_prosjekterController@generer_presentasjonsplanView')->name('tidligere');
 Route::post('/t', 'Tidligere_prosjekterController@opprett_html_sider');
 Route::post('/tt', 'Tidligere_prosjekterController@showTidligereProsjekter');
 Route::post('/ttt', 'Tidligere_prosjekterController@publiserPresentasjonsplan');
@@ -101,7 +101,7 @@ Route::post('/lastOppPf', 'ProsjektforslagController@uploadFile');
 Route::delete('/slettPf', 'ProsjektforslagController@destroy');
 
 //Tildel veileder 
-Route::get('/administrer_gruppe', 'VeilederController@index');
+Route::get('/administrer_gruppe', 'VeilederController@index')->name('Agruppe');
 Route::post('/administrer_gruppe', 'VeilederController@store');
 Route::delete('/administrer_gruppe/{id}', 'VeilederController@destroy');
 

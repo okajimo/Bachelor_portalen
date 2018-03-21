@@ -10,12 +10,12 @@ use Illuminate\Support\Facades\Input;
 
 class Tidligere_prosjekterController extends Controller
 {
-    public function tidligere_prosjekter()
+    public function generer_presentasjonsplanView()
     {
         if(session('levell') >= 2)
         {
             $title = "Generer html fil for tidligere prosjekter/presentasjonsplan";
-            return view('pages.admin.vedlikehold_tidligere_prosjekter')->with('title', $title);
+            return view('pages.admin.generer_presentasjonsplan')->with('title', $title);
         }
         else
         {
@@ -159,7 +159,7 @@ class Tidligere_prosjekterController extends Controller
         }
         else
         {
-            return redirect('/vedlikehold_tidligere_prosjekter')->with('error', 'Det er ingen data å hente.');
+            return redirect('/generer_presentasjonsplan')->with('error', 'Det er ingen data å hente.');
         }
     }
 
@@ -191,7 +191,7 @@ class Tidligere_prosjekterController extends Controller
             {
                 Storage::move('/public/filer/presentasjonsplan/true.txt', '/public/filer/presentasjonsplan/false.txt');
             }
-            return redirect('/vedlikehold_tidligere_prosjekter');
+            return redirect('/generer_presentasjonsplan');
         }
         else
         {
