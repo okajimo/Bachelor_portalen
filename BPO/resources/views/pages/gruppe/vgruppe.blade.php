@@ -71,7 +71,7 @@
                             <tr>
     <!-- Lagt til av stian, Ivo fiks css -->   <td>{{ $group->group_number }}
                                                </td>
-    <!-- Lagt til av stian, Ivo fiks css -->   <td><a href="http://{{ $group->url }}" >{{ $group->title }}</a></td>
+    <!-- Lagt til av stian, Ivo fiks css -->   <td><a href="http://{{ $group->url }}" target='_blank'>{{ $group->title }}</a></td>
     <!-- Lagt til av stian, Ivo fiks css -->   <td>
 
                                         <?php $student = DB::select('select student_groups.student from student_groups, groups 

@@ -46,7 +46,7 @@ class GruppeController extends Controller
                     if($med->student == $student)
                     {
                         DB::DELETE('DELETE FROM student_groups WHERE student_groups.student = :student',['student' => $student]);
-                        $endre_tom = "";
+                        //$endre_tom = "";
                     }
                     else
                     {
@@ -56,11 +56,13 @@ class GruppeController extends Controller
                 }
                 if($counter > 0)
                 {
-                    DB::UPDATE('UPDATE groups SET leader = :leader WHERE groups.group_number = :gruppe AND groups.year = :year',['leader' =>$endre_student,'gruppe' =>$groups->group_number,'year' => $groups->year]);
+                    DB::UPDATE('UPDATE groups SET leader = :leader 
+                    WHERE groups.group_number = :gruppe AND groups.year = :year',['leader' =>$endre_student,'gruppe' =>$groups->group_number,'year' => $groups->year]);
                 }
                 else
                 {
-                    DB::UPDATE('UPDATE groups SET leader = :leader, title = "", url = "", supervisor = "" WHERE groups.group_number = :gruppe AND groups.year = :year',['leader' =>$endre_tom,'gruppe' =>$groups->group_number,'year' => $groups->year]);
+                    DB::UPDATE('UPDATE groups SET leader = "", title = "", url = "", supervisor = NULL
+                    WHERE groups.group_number = :gruppe AND groups.year = :year',['gruppe' => $groups->group_number,'year' => $groups->year]);
                 }
             }
 

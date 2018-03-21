@@ -28,7 +28,7 @@
                     </tr>
                     @foreach ($documents as $doc)
                         <tr>
-                            <td><a href="{{ asset('storage/filer/statusrapporter/'.$doc->file_name)}}">{{ $doc->file_name}}</a></td>
+                            <td><a href="{{ asset('storage/filer/statusrapporter/'.$doc->file_name)}}"target='_blank'>{{ $doc->file_name}}</a></td>
                             <td>Statusrapport</td>
                         </tr>
                     @endforeach

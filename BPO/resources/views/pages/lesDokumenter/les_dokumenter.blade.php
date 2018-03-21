@@ -20,7 +20,7 @@
                                         and student_groups.student_groups_number LIKE :number and student_groups.student_groups_year LIKE :year', 
                                         ['number' => $group->group_number, 'year' => $group->year]);
 
-                                        $dokumenter = DB::select('SELECT documents.file_name FROM documents WHERE documents.documents_groups_number = :nummer 
+                                        $dokumenter = DB::select('SELECT * FROM documents WHERE documents.documents_groups_number = :nummer 
                                         AND documents.documents_year = :year',['nummer' => $group->group_number, 'year' => $group->year]);
 
                                         $titler = DB::select('SELECT documents.title FROM documents WHERE documents.documents_groups_number = :nummer 
@@ -34,7 +34,7 @@
                                             <td>{{$group->year}}</td>
                                             <td>
                                                 @foreach($dokumenter as $dok)
-                                                    <a target='_blank' href="{{ asset('storage/filer/prosjektskisser/'.$dok->file_name)}}">{{$dok->file_name}}</a></br>
+                                                    <a target='_blank' href="{{ asset('storage/filer/'.$dok->title.'/'.$dok->file_name)}}">{{$dok->file_name}}</a></br>
                                                 @endforeach
                                             </td>
                                             <td>
