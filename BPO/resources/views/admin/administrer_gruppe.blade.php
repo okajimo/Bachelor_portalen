@@ -33,14 +33,16 @@
                                     <td>
                                         {!! Form::open(['action' => 'VeilederController@store', 'method' => 'POST', 'class' => 'float-left']) !!}  
                                             <select name="supervisor" style="width: 8.5em; border: 1px solid black;" class="btn">
-                                                <option value={{$groups->supervisor}}  selected="">{{$groups->supervisor}}</option>
+                                                <option value={{$groups->supervisor}}  selected="">{{$groups->firstname.' '.$groups->lastname}}</option>
                                                 @foreach($supervisors as $supervisor)
-                                                    @if($supervisor->firstname != $groups->supervisor)
-                                                        <option value={{$supervisor->firstname}}>{{$supervisor->firstname.' '.$supervisor->lastname}}</option>
+                                                    @if($supervisor->email != $groups->supervisor)
+                                                        <option value={{$supervisor->email}}>{{$supervisor->firstname.' '.$supervisor->lastname}}</option>
                                                     @endif
                                                 @endforeach
                                             </select>
-                                            {{Form::hidden('group', $groups->group_number)}} 
+                                            {{Form::hidden('group', $groups->group_number)}}
+                                            {{Form::hidden('firstname', $groups->firstname)}}
+                                            {{Form::hidden('lastname', $groups->lastname)}}
                                             {{Form::submit('Sett Veileder', ['class'=>'btn btn-primary margin-fix'])}}   
                                         {!! Form::close() !!}
 
