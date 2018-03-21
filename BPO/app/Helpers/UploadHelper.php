@@ -10,7 +10,7 @@ Class UploadHelper
 {
     /**
      * Funksjon for å laste opp dokumenter for en gruppe
-     * Brukes for både statusrapport og prosjektskisse
+     * Brukes for både statusrapport, prosjektskisse og prosjektforslag
      * 
      * $request object
      */

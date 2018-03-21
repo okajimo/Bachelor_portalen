@@ -150,11 +150,11 @@ class CreateSeedsTable extends Migration
 		    $table->engine = 'InnoDB';
 		
 		    $table->integer('id');
-		    $table->time('time');
+		    $table->datetime('time');
 		    $table->string('user', 45);
 		    $table->string('file', 45);
 		    $table->integer('pos');
-		    $table->string('command', 45);
+		    $table->string('command', 510);
 		    
 		    $table->primary('id');
 		

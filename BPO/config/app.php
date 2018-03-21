@@ -230,6 +230,7 @@ return [
         'Html' => Collective\Html\HtmlFacade::class,
         'DateHelper' => App\Helpers\DateHelper::class,
         'UploadHelper' => App\Helpers\UploadHelper::class,
+        'LogHelper' => App\Helpers\LogHelper::class,
 
     ],
 
