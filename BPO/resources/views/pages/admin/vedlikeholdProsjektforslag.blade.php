@@ -29,7 +29,7 @@
                             <td>{{ $doc->date_added }}</td>
                             <td><a target='_blank' href="{{ asset('storage/filer/prosjektforslag/'.$doc->file_name)}}">{{ $doc->file_name }}</a></td>
                             <td>
-                                {!! Form::open(['action' => 'ProsjektforslagController@destroy', 'method' => 'POST'])!!}
+                                {!! Form::open(['action' => 'ProsjektforslagController@destroy', 'method' => 'POST','onsubmit' => 'return ConfirmDelete()'])!!}
                                     {{form::hidden('file', $doc->file_name)}}
                                     {{form::hidden('id', $doc->id)}}
                                     {{form::hidden('_method', 'DELETE')}}

@@ -101,7 +101,7 @@ class Tidligere_prosjekterController extends Controller
                             <tbody>
                                 <td>".$grupper->start."</td>
                                 <td>".$grupper->presentation_group_number."</td>
-                                <td><a href='".$ulr."'>Sluttrapport</a></td>"
+                                <td><a href='".$ulr."'target='_blank'>Sluttrapport</a></td>"
                                 ;
                         $html .= "<td>";
                                 foreach($studenter as $stud)

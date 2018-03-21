@@ -38,7 +38,7 @@
                             <td>{{$u->lastname}}</td>
                             <td>{{$u->status}}</td>
                             <td>
-                                {!! Form::open(['action' => 'Admin\AdminController@slettSenvei', 'method' => 'POST'])!!}
+                                {!! Form::open(['action' => 'Admin\AdminController@slettSenvei', 'method' => 'POST','onsubmit' => 'return ConfirmDelete()'])!!}
                                     {{form::hidden('email',$u->email)}}
                                     {{form::hidden('_method', 'DELETE')}}
                                     {{Form::submit('Slett', ['class'=>'btn btn-danger'])}}

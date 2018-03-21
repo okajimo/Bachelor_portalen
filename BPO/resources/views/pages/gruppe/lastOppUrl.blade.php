@@ -4,9 +4,10 @@
         <div class="container">
             {!! Form::open(['action' => 'GruppeController@lastOppUrl', 'method' => 'POST'])!!}
             <div class="form-group"> 
-            {{Form::label('url', 'Lim in link til hjemmeside.')}}
+            {{Form::label('url', 'Last opp link til hjemmeside her.')}}
             </br>
-            {{Form::text('url', '')}}
+            {{Form::text('tittel', '',['placeholder' => 'Navn på link'])}} </br>
+            {{Form::text('url', '',['placeholder' => 'Lim in link her'])}}
             {{form::hidden('_method', 'post')}}
             </div>
             {{Form::submit('Last opp',['class'=>'btn btn-primary', 'name' => 'lastOpp'])}}
@@ -25,7 +26,7 @@
                     @foreach ($url as $u)
                         <tr>
                             <td>{{$u->group_number}}</td>
-                            <td><a href="{{$u->url}}">{{$u->url}}</a></td>
+                            <td><a href="{{$u->url}}" target='_blank'>{{$u->url}}</a></td>
                         </tr>
                     @endforeach
                 </table>
