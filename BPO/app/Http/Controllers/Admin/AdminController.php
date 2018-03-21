@@ -78,7 +78,7 @@ class AdminController extends Controller
                     if($row[7] >= 100)
                     {
                         $passord = str_random(8);
-                        $data = array(
+                        /*$data = array(
                             'til' => $row[4],
                             'fra' => $sender[0]->email,
                             'passord' => $passord
@@ -88,7 +88,7 @@ class AdminController extends Controller
                             $melding->from($data['fra']);
                             $melding->to($data['til']);
                             $melding->subject('Passord');
-                        });
+                        });*/
 
                         /*
                         $fra = $sender[0]->email;
@@ -151,7 +151,7 @@ class AdminController extends Controller
                 $email = DB::select('select email from users where username = :stud',['stud'=>$request->student]);
                 $sender = DB::select('select email from users where username = :stud',['stud'=>$stud]);
 
-                $data = array(
+                /*$data = array(
                     'til' => $email[0]->email,
                     'fra' => $sender[0]->email,
                     'passord' => $passord
@@ -161,7 +161,7 @@ class AdminController extends Controller
                     $melding->from($data['fra']);
                     $melding->to($data['til']);
                     $melding->subject('Passord');
-                });
+                });*/
                 return redirect('/studentVedlikehold')->with('success','Student er oppdatert.');
             }
             else

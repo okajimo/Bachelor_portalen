@@ -38,7 +38,7 @@ class EpostController extends Controller
         $studenter = DB::select('SELECT * FROM users WHERE users.level = "1"');
         foreach($studenter as $stud)
         {
-            $data = array(
+            /*$data = array(
                 'til' => $stud->email,
                 'fra' => $brukerEpost[0]->email,
                 'subject' => $request->tema,
@@ -49,7 +49,7 @@ class EpostController extends Controller
                 $melding->from($data['fra']);
                 $melding->to($data['til']);
                 $melding->subject($data['subject']);
-            });
+            });*/
 
             
             /*$fra = $brukerEpost[0]->email;
@@ -82,7 +82,7 @@ class EpostController extends Controller
             'tema' => 'required'
         ]);
 
-        $bruker = session('navn');
+        /*$bruker = session('navn');
         $brukerEpost = DB::select('SELECT email FROM users WHERE username = :bruker',['bruker'=>$bruker]);
 
         $data = array(
@@ -96,7 +96,7 @@ class EpostController extends Controller
             $melding->from($data['fra']);
             $melding->to($data['til']);
             $melding->subject($data['subject']);
-        });
+        });*/
 
         
         /*$fra = $brukerEpost[0]->email;
