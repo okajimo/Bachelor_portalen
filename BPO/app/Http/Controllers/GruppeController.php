@@ -269,7 +269,7 @@ class GruppeController extends Controller
             //$finnesUrl = DB::select('SELECT groups.url FROM groups, student_groups WHERE groups.group_number = student_groups.student_groups_number AND groups.year = student_groups.student_groups_year AND student_groups.student = :stud',['stud' => $student]);
 
             DB::update('UPDATE groups, student_groups SET groups.url = :link, groups.title = :tittel WHERE groups.group_number = student_groups.student_groups_number AND groups.year = student_groups.student_groups_year AND student_groups.student = :stud',['stud'=>$student,'link'=>$request->url,'tittel'=>$request->tittel]);
-            return redirect('/lastOppUrl');
+            return redirect('/lastOppUrl')->with('success', 'Du har lastet opp hjemmeside link');
         }
     }
 }
