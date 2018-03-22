@@ -54,13 +54,6 @@
                         </td>
                     </tr>
                 </table>
-                <?php
-                    $host = 'nexus';
-                    $user = 'nobody';
-                    $pw = '';
-                    $dbname = 'ansatte';
-                    $con1 = mysqli_connect($host, $user, $pw, $dbname);
-                ?>
         </div>
     </div>
 @endsection
