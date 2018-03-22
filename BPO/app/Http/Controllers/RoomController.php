@@ -44,7 +44,17 @@ class RoomController extends Controller
     //slett rom
     public function destroy($id)
     {
-        DB::delete('DELETE FROM room WHERE room = :id', ['id' => $id]);
-        return redirect('/room')->with('success', 'Rom Fjernet');
+        $ibruk = DB::select('SELECT presentation_room FROM presentation, room 
+        WHERE presentation.presentation_room = room.room 
+        AND presentation.presentation_room = :id', ['id' => $id]);
+
+        if ($ibruk){
+            return redirect('/room')->with('error', 'Rommet er allerede i bruk og må fjernes fra presentasjonsplanen, før det kan slettes');
+        }
+        else{
+            DB::delete('DELETE FROM room WHERE room = :id', ['id' => $id]);
+            return redirect('/room')->with('success', 'Rom Fjernet');
+        }
+        
     }
 }
