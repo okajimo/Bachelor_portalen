@@ -1,11 +1,11 @@
-//Dvs endring av bootstrap og klasser som har noe å si for hele siden
+//endring av bootstrap klasser
 
 html {
     overflow-y:scroll;
 }
 
 body{
-    background-color: #F5F5F5;
+    background-color: #F5F5F5 !important;
 }
 
 //hoved nav
@@ -65,3 +65,4 @@ body{
 .card > a {
     padding: 0;
 }
+

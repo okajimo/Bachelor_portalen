@@ -149,14 +149,11 @@ class CreateSeedsTable extends Migration
 		Schema::create('log', function(Blueprint $table) {
 		    $table->engine = 'InnoDB';
 		
-		    $table->integer('id');
+		    $table->increments('id');
 		    $table->datetime('time');
 		    $table->string('user', 45);
 		    $table->string('file', 45);
-		    $table->integer('pos');
 		    $table->string('command', 510);
-		    
-		    $table->primary('id');
 		
 		
 		});
@@ -168,7 +165,7 @@ class CreateSeedsTable extends Migration
 			$table->string('date_added', 10);
 			$table->string('file_name', 127);
 
-			//$table->primary('id');
+			
 		});
 
 
