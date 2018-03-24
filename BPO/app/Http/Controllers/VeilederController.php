@@ -32,16 +32,22 @@ class VeilederController extends Controller
 
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'supervisor' => 'required',
+        ]);
+        
         $sensor = DB::select("SELECT sensors_supervisors.firstname, sensors_supervisors.lastname 
         FROM sensors_supervisors, groups 
         WHERE groups.supervisor = sensors_supervisors.email 
-        AND group_number = 1");
+        AND group_number = :id", 
+        ['id' => $request->group]); // skulle gjerne brukt denne for tilbakemelding uten error
 
         DB::update("UPDATE groups
         SET supervisor = :veileder
         WHERE group_number = :gruppe_number", 
         ['veileder' => $request->supervisor, 'gruppe_number' => $request->group]);
-        return redirect('/administrer_gruppe')->with('success', 'Gruppe '.$request->group.' har blitt tildelt '.$sensor[0]->firstname.' '.$sensor[0]->lastname.' som veileder');
+
+        return redirect('/administrer_gruppe')->with('success', 'Gruppe '.$request->group.' har blitt blitt tildelt ny veileder');
     }
 
     public function destroy($id)

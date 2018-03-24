@@ -25,7 +25,7 @@
                     <div class="form-group">  
                         {{Form::label('dok', 'Publiser presentasjonsplan.')}}
                     </div>
-                    {{Form::submit('u-publiser', ['class'=>'btn btn-primary'])}}    
+                    {{Form::submit('Fjern publisering', ['class'=>'btn btn-primary'])}}    
                 {!! Form::close() !!}
             @endif
             </br>
