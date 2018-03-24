@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Input;
@@ -32,13 +33,18 @@ class ProsjektforslagController extends Controller
         ]);
 
         $upload = \UploadHelper::instance()->upload($request);
+        $queries = DB::getQueryLog();
+        $log = \LogHelper::logUpload(end($queries), 'prosjektforslagController');
         return redirect('/vedlikehold_Prosjektforslag')->with('success', $upload);
     }
 
     public function destroy(request $request)
     {
+        //Må fikses mer
+        //DB::connection()->enableQueryLog();
         DB::delete('DELETE FROM prosjektforslag WHERE id = :id', ['id' => $request->input('id')]);
         Storage::delete('/public/filer/prosjektforslag/'.$request->input('file'));
+        //return dd(DB::getQueryLog());
         return redirect('/vedlikehold_Prosjektforslag')->with('success', 'Fil Fjernet');
     }
 }

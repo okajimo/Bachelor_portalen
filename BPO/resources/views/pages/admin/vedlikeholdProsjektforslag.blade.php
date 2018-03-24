@@ -2,7 +2,7 @@
 @section('content')
     <div class="jumbotron">
         <div class="container">
-            {!! Form::open(['action' => 'ProsjektforslagController@uploadFile', 'method' => 'POST', 'files' => true]) !!}  
+            {!! Form::open(['action' => 'Admin\ProsjektforslagController@uploadFile', 'method' => 'POST', 'files' => true]) !!}  
                 {{Form::hidden('type', 'prosjektforslag')}}    
                 {{Form::label('file_name', 'Skriv inn filnavn (ikke .pdf)')}}
                 <div class="form-group form-inline">
@@ -29,7 +29,7 @@
                             <td>{{ $doc->date_added }}</td>
                             <td><a target='_blank' href="{{ asset('storage/filer/prosjektforslag/'.$doc->file_name)}}">{{ $doc->file_name }}</a></td>
                             <td>
-                                {!! Form::open(['action' => 'ProsjektforslagController@destroy', 'method' => 'POST','onsubmit' => 'return ConfirmDelete()'])!!}
+                                {!! Form::open(['action' => 'Admin\ProsjektforslagController@destroy', 'method' => 'POST','onsubmit' => 'return ConfirmDelete()'])!!}
                                     {{form::hidden('file', $doc->file_name)}}
                                     {{form::hidden('id', $doc->id)}}
                                     {{form::hidden('_method', 'DELETE')}}

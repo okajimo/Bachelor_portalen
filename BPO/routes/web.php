@@ -60,9 +60,9 @@ Route::get('/dashboard/admin', 'DashboardController@Admin')->name('admin'); //di
 Route::get('/dashboard/group', 'DashboardController@Group')->name('gruppe');
 
 //Opplasting av dokumenter
-Route::get('/lastOppStatus', 'GruppeController@showUploadFormS')->name('lastOppS');
-Route::get('/lastOppSkisse', 'GruppeController@showUploadFormP')->name('lastOppP');
-Route::post('/lastOppDok', 'GruppeController@lastOppDok');
+Route::get('/lastOppStatus', 'OpplastningController@showUploadFormS')->name('lastOppS');
+Route::get('/lastOppSkisse', 'OpplastningController@showUploadFormP')->name('lastOppP');
+Route::post('/lastOppDok', 'OpplastningController@lastOppDok');
 
 //Dato vedlikehold
 Route::get('/dato', 'Admin\DateController@showDateMaintenance')->name('dato');
@@ -96,9 +96,9 @@ Route::post('/', 'SimulerController@avsimuler');
 Route::resource('room', 'RoomController');
 
 //Prosjektforslag
-Route::get('/vedlikehold_Prosjektforslag', 'ProsjektforslagController@showUploadForm')->name('Pforslag');
-Route::post('/lastOppPf', 'ProsjektforslagController@uploadFile');
-Route::delete('/slettPf', 'ProsjektforslagController@destroy');
+Route::get('/vedlikehold_Prosjektforslag', 'Admin\ProsjektforslagController@showUploadForm')->name('Pforslag');
+Route::post('/lastOppPf', 'Admin\ProsjektforslagController@uploadFile');
+Route::delete('/slettPf', 'Admin\ProsjektforslagController@destroy');
 
 //Tildel veileder 
 Route::get('/administrer_gruppe', 'VeilederController@index')->name('Agruppe');
