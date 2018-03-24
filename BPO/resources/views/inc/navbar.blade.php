@@ -14,9 +14,11 @@
     </div>
 </nav>
 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <div class=" d-lg-none navbar-light">
-        <div class="container hover-fix">
-            @include('inc/navbar_innhold')
+    <div class=" d-lg-none">
+        <div class="jumbotron">
+            <div class="container collaps-custom">
+                @include('inc/navbar_innhold')
+            </div>
         </div>
     </div>
 </div>

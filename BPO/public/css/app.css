@@ -10001,7 +10001,7 @@ html {
 }
 
 body {
-  background-color: #F5F5F5;
+  background-color: #F5F5F5 !important;
 }
 
 .navbar {
@@ -10113,9 +10113,14 @@ body {
   color: #0096c0;
 }
 
-.hover-fix > ul li:hover {
-  background: #F5F5F5 !important;
-  border-radius: 2%;
+.collaps-custom ul li a {
+  border-bottom: 1px solid #D0D2D3;
+  padding: 12px 34px 11px;
+  font-size: 1em;
+}
+
+.collaps-custom ul li .border-extra {
+  border-top: 1px solid #D0D2D3;
 }
 
 /*!
