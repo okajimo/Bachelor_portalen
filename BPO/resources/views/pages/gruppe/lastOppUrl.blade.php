@@ -6,8 +6,12 @@
             <div class="form-group"> 
             {{Form::label('url', 'Last opp link til hjemmeside her.')}}
             </br>
-            {{Form::text('tittel', '',['placeholder' => 'Navn på link'])}} </br>
-            {{Form::text('url', '',['placeholder' => 'Lim in link her'])}}
+            <div class="form-group form-inline"> 
+            {{Form::text('tittel', '',['placeholder' => 'Navn på link...','class'=>'form-control'])}} </br>
+            </div>
+            <div class="form-group form-inline"> 
+            {{Form::text('url', '',['placeholder' => 'Lim in link her...','class'=>'form-control'])}}
+            </div>
             {{form::hidden('_method', 'post')}}
             </div>
             {{Form::submit('Last opp',['class'=>'btn btn-primary', 'name' => 'lastOpp'])}}
