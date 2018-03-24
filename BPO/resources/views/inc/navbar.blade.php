@@ -15,7 +15,7 @@
 </nav>
 <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <div class=" d-lg-none">
-        <div class="jumbotron">
+        <div class="jumbotron shadow-bottom">
             <div class="container collaps-custom">
                 @include('inc/navbar_innhold')
             </div>

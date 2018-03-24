@@ -1,3 +1,5 @@
+//Egene klasser
+
 //navbar header (EKS: informasjon -> studenter)
 .nav-header-info {
     border: #0096C0 1.5px solid !important;
@@ -60,4 +62,8 @@
 
 .collaps-custom ul li .border-extra{
     border-top: 1px solid #D0D2D3;
+}
+
+.shadow-bottom{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
