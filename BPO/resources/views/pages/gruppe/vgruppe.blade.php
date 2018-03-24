@@ -90,7 +90,14 @@
                                             @endif
                                         @endforeach
                                     </td>
-                                <td >{{ $group->supervisor }}</td>
+                                <td >
+                                    <?php 
+                                        $veileder = DB::select('select firstname, lastname from sensors_supervisors where email = :email',['email'=>$group->supervisor]);
+                                    ?>
+                                    @foreach($veileder as $vei)
+                                        {{$vei->firstname." ".$vei->lastname}}
+                                    @endforeach
+                                </td>
                                                  @if($iGruppe == null)
                                                     <td style=" text-align: center;">
                                                         {!! Form::open(['action' => 'GruppeController@meld_inn', 'method' => 'POST'])!!}
