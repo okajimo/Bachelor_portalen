@@ -69,13 +69,17 @@ class AdminController extends Controller
             $admin = session('navn');
             $sender = DB::select('select email from users where username = :admin',['admin'=>$admin]);
 
-            $fileHandle = fopen($request->dok, "r");
+            $this->validate($request, [
+                'fil' => 'required'
+            ]);
+
+            $fileHandle = fopen($request->fil, "r");
             while ( ($row = fgetcsv($fileHandle, ",")) ) 
             {
                 $finnes = DB::select('SELECT username FROM users WHERE users.username = :stud',['stud'=>$row[0]]);
                 if(!$finnes)
                 {
-                    if($row[7] >= 100)
+                    /*if($row[2] >= 100)
                     {
                         $passord = str_random(8);
                         /*$data = array(
@@ -111,35 +115,57 @@ class AdminController extends Controller
                         ';
 
                         mail($til, $emne, $melding, implode("\r\n", $headers));
-                        */
+                        
                     }
                     else
                     {
                         $passord = "";
                     }
                     //Laster inn studenter fra filen som lastes opp
-                    DB::insert('INSERT INTO users (username, level, firstname, lastname, email, password, sex) VALUES 
-                    (:en, :to, :tre, :fire, :fem, :seks, :syv)',['en'=>$row[0],'to' =>$row[1],'tre'=>$row[2],'fire'=>$row[3],'fem'=>$row[4],'seks'=>$passord,'syv'=>$row[6]]);
-
-                    DB::insert('INSERT INTO student (username, student_points, program) VALUES 
-                    (:en, :atte, :ni)',['en'=>$row[0],'atte'=>$row[7],'ni'=>$row[8]]);
-                }
-                else
-                {
-                    if($row[7] >= 100)
-                    {
-                        $passord = str_random(8);
-                    }
-                    else
-                    {
-                        $passord = "";
-                    }
-
                     DB::update('UPDATE users SET level = :to, password = :seks 
                     WHERE username = :en',['en'=>$row[0],'to' => $row[1], 'seks' => $passord]);
 
                     DB::insert('INSERT INTO student (username, student_points, program) VALUES 
-                    (:en, :atte, :ni)',['en'=>$row[0],'atte'=>$row[7],'ni'=>$row[8]]);
+                    (:en, :atte, :ni)',['en'=>$row[0],'atte'=>$row[2],'ni'=>$row[3]]);*/
+                    return redirect('/studentVedlikehold')->with('error',$row[0].' eksisterer ikke i user tabellen. Opprett user i tabellen eller fjern fra opplastningsfilen.');
+                }
+                else
+                {
+                    $finnesstud = DB::select('SELECT username FROM student WHERE student.username = :stud',['stud'=>$row[0]]);
+                    if(!$finnesstud)
+                    {
+                        if($row[2] >= 100)
+                        {
+                            $passord = str_random(8);
+                        }
+                        else
+                        {
+                            $passord = "";
+                        }
+
+                        DB::update('UPDATE users SET level = :to, password = :seks 
+                        WHERE username = :en',['en'=>$row[0],'to' => $row[1], 'seks' => $passord]);
+
+                        DB::insert('INSERT INTO student (username, student_points, program) VALUES 
+                        (:en, :atte, :ni)',['en'=>$row[0],'atte'=>$row[2],'ni'=>$row[3]]);
+                    }
+                    else
+                    {
+                        if($row[2] >= 100)
+                        {
+                            $passord = str_random(8);
+                        }
+                        else
+                        {
+                            $passord = "";
+                        }
+
+                        DB::update('UPDATE users SET level = :to, password = :seks 
+                        WHERE username = :en',['en'=>$row[0],'to' => $row[1], 'seks' => $passord]);
+
+                        DB::update('UPDATE student SET student_points = :atte, program = :ni 
+                        WHERE username = :en',['en' => $row[0],'atte'=>$row[2],'ni' => $row[3]]);
+                    }
                 }
             }
             fclose($fileHandle);

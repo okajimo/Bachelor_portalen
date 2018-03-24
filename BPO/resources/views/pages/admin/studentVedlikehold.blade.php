@@ -4,16 +4,16 @@
         <div class="container">
             {!! Form::open(['action' => 'Admin\AdminController@importerStud', 'method' => 'POST', 'files' => true]) !!}  
                 <div class="form-group">  
-                    {{Form::label('dok', 'Velg fil for opplastning av studenter.')}}
+                    {{Form::label('fil', 'Velg fil for opplastning av studenter.')}}
                     </br>
-                    {{Form::file('dok')}}
+                    {{Form::file('fil')}}
                 </div>
                 {{Form::submit('Importer studenter', ['class'=>'btn btn-primary'])}}    
             {!! Form::close() !!}
             <hr>
             {!! Form::open(['action' => 'Admin\AdminController@endreStudPoeng', 'method' => 'POST']) !!}  
                 <div class="form-group">  
-                    {{Form::label('dok', 'Velg student for endring av poeng.')}}
+                    {{Form::label('fil', 'Velg student for endring av poeng.')}}
                 </br>
                     <?php $studenter = DB::select('SELECT username FROM users WHERE level ="1"');?>
                         <select name="student">
