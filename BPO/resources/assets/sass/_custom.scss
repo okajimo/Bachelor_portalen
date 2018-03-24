@@ -51,3 +51,8 @@
 .farge{
     color: #0096c0 ;
 }
+
+.hover-fix > ul li:hover{
+    background: #F5F5F5 !important;
+    border-radius: 2%;
+}

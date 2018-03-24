@@ -10113,6 +10113,11 @@ body {
   color: #0096c0;
 }
 
+.hover-fix > ul li:hover {
+  background: #F5F5F5 !important;
+  border-radius: 2%;
+}
+
 /*!
  *  Font Awesome 4.7.0 by @davegandy - http://fontawesome.io - @fontawesome
  *  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
