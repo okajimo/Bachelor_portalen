@@ -16,12 +16,16 @@
                     {{Form::label('fil', 'Velg student for endring av poeng.')}}
                 </br>
                     <?php $studenter = DB::select('SELECT username FROM users WHERE level ="1"');?>
-                        <select name="student">
+                    <div class="form-group form-inline">
+                        <select name="student" class='form-control'>
                             @foreach($studenter as $stud)
                                 <option value={{$stud->username}}>{{$stud->username}}</option>
                             @endforeach
                         </select>
-                    {{Form::text('poeng','',['placeholder'=>'Skriv inn poeng her'])}}
+                    </div>
+                    <div class="form-group form-inline">
+                    {{Form::text('poeng','',['placeholder'=>'Skriv inn poeng her','class'=>'form-control'])}}
+                    </div>
                 </div>
                 {{Form::submit('Endre poeng', ['class'=>'btn btn-primary'])}}    
             {!! Form::close() !!}

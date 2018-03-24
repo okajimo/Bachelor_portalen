@@ -4,19 +4,30 @@
         <div class="container">
             {{Form::label('dok', 'Registrer veileder eller sensor her.')}}
         </br>
+        <div class="form-group form-inline">  
             {!! Form::open(['action' => 'Admin\AdminController@regSensorVeileder', 'method' => 'POST'])!!}
-            <div class="form-group"> 
-                {{form::text('email','',['placeholder'=>'Skriv inn epost her'])}}
+        </div>
+        <div class="form-group form-inline">  
+                {{form::text('email','',['placeholder'=>'Skriv inn epost her','class'=>'form-control'])}}
             </br>
         </br>
-                {{form::text('firstname','',['placeholder'=>'Skriv inn fornavn her'])}}
+        </div>
+        <div class="form-group form-inline">  
+                {{form::text('firstname','',['placeholder'=>'Skriv inn fornavn her','class'=>'form-control'])}}
             </br>
         </br>
-                {{form::text('lastname','',['placeholder'=>'Skriv inn etternavn her'])}}
+        </div>
+        <div class="form-group form-inline">  
+                {{form::text('lastname','',['placeholder'=>'Skriv inn etternavn her','class'=>'form-control'])}}
             </br>
         </br>
-                {{form::text('status','',['placeholder'=>'Skriv inn sensor/veileder her'])}}
-            </div>
+        </div>
+        <div class="form-group form-inline">  
+            <select name="status" class='form-control'>
+                <option value="veileder">Veileder</option>
+                <option value="sensor">Sensor</option>
+            </select>
+        </div>
             {{Form::submit('Registrer', ['class'=>'btn btn-success'])}}
             {!! Form::close() !!}
         </br>

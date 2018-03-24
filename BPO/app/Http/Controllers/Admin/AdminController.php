@@ -38,7 +38,7 @@ class AdminController extends Controller
             'email' => 'required|email',
             'firstname' => 'required|alpha',
             'lastname' => 'required|alpha',
-            'status' => 'required|alpha',
+            'status' => 'required',
         ]);
 
         DB::insert('INSERT INTO sensors_supervisors (email, firstname, lastname, status) VALUES 
