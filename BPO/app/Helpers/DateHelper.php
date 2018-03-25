@@ -57,6 +57,7 @@ Class DateHelper
      */
     public function create()
     {
+        DB::connection()->enableQueryLog();
         $array = array();
         $data = Input::except('_token');
         foreach ($data as $key => $value)
@@ -85,6 +86,7 @@ Class DateHelper
      */
     public function update($request)
     {
+        DB::connection()->enableQueryLog();
         $array = array();
         $data = Input::except('_token');
         foreach ($data as $key => $value)
@@ -93,10 +95,9 @@ Class DateHelper
             $value = $format->format('Y-m-d');
             $array[$key] = $value;
         }
-
-        DB::update('UPDATE dates SET start = :start, status_report = :status_report, project_sketch = :project_sketch, 
+        DB::update('UPDATE dates SET start = :start, status_report = :statusreport, project_sketch = :project_sketch, 
         preproject = :preproject, project_report = :project_report, pres_start = :pres_start, pres_end = :pres_end', 
-        ['start' => $array['start'], 'status_report' => $array['status_report'], 'project_sketch' => $array['project_sketch'],
+        ['start' => $array['start'], 'statusreport' => $array['status_report'], 'project_sketch' => $array['project_sketch'],
         'preproject' => $array['preproject'], 'project_report' => $array['project_report'], 'pres_start' => $array['pres_start'],
         'pres_end' => $array['pres_end']]);
 
