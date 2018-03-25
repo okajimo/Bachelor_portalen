@@ -164,11 +164,8 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
-<<<<<<< HEAD
         Unisharp\Ckeditor\ServiceProvider::class,
-=======
         
->>>>>>> dc489e9979efd47f2129bf3e1c27ded6db67e8ce
 
         /*
          * Package Service Providers...
