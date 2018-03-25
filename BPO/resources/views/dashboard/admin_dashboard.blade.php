@@ -123,6 +123,7 @@
                 </div>
             </div>
         @endif
+<<<<<<< HEAD
     <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-4">
         <div class="card">
             <a class="nav-link" href="{{ route('news') }}">
@@ -133,5 +134,17 @@
             </a>
         </div>
     </div>
+=======
+        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-4">
+            <div class="card">
+                <a class="nav-link" href="{{ route('presentasjon') }}">
+                    <h4 class="card-header">Generer Presentasjonsplan</h4>
+                    <div class="card-body"> 
+                        <p class="card-text">Opretter en random generert presentasjonsplan</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+>>>>>>> dc489e9979efd47f2129bf3e1c27ded6db67e8ce
    </div>
 @endsection

@@ -16,6 +16,7 @@ Class UploadHelper
      */
     public function upload($request)
     {
+        DB::connection()->enableQueryLog();
         $name = session('navn');
         $groupNumber = DB::table('student_groups')->where('student', '=', $name)->value('student_groups_number');
         $year = DB::table('groups')->where('group_number', '=', $groupNumber)->value('year');
@@ -33,6 +34,7 @@ Class UploadHelper
                 $dok->date_added = \Carbon\Carbon::now('Europe/Oslo')->format('d.m');;
                 $dok->file_name = $filenameToStore;
                 $dok->save();
+
                 return 'Dokument opplastet';
             }
             else

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use DB;
 
 class PresentasjonController extends Controller
 {
@@ -12,14 +13,18 @@ class PresentasjonController extends Controller
         return view('admin.Presentasjonsplan')->with('title', $title);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    //create a random created plan
     public function create()
     {
-        //
+        DB::delete('DELETE FROM presentation');
+
+        $groups = DB::select('SELECT group_number FROM groups');
+        foreach ($groups as $group){
+            DB::insert("INSERT INTO presentation (presentation.presentation_group_number, presentation.presentation_year, presentation.start, presentation.end, presentation.presentation_room)
+            VALUES (:gnum, 2018, '2018-03-14 08:30:00', '2018-03-14 09:30:00', 'PH330')", ['gnum' => $group->group_number]);
+        }
+
+        return redirect('/presentasjonsplan')->with('success', 'En presentasjonsplan har blitt generert');
     }
 
     /**

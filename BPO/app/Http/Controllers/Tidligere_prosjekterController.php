@@ -155,7 +155,7 @@ class Tidligere_prosjekterController extends Controller
                     }
                 }
             }
-            return redirect('/tidligere_prosjekter');
+            return redirect('/generer_presentasjonsplan')->with('success', 'plan opprettet, trykk på publiser for å vise til studenter');
         }
         else
         {
@@ -191,7 +191,7 @@ class Tidligere_prosjekterController extends Controller
             {
                 Storage::move('/public/filer/presentasjonsplan/true.txt', '/public/filer/presentasjonsplan/false.txt');
             }
-            return redirect('/generer_presentasjonsplan');
+            return redirect('/generer_presentasjonsplan')->with('success', 'En endring har blitt gjort for visning av presentasjonsplan');
         }
         else
         {

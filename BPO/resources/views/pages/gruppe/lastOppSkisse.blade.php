@@ -2,7 +2,7 @@
 @section('content')
     <div class="jumbotron">
         <div class="container">
-            {!! Form::open(['action' => 'GruppeController@lastOppDok', 'method' => 'POST', 'files' => true]) !!}  
+            {!! Form::open(['action' => 'OpplastningController@lastOppDok', 'method' => 'POST', 'files' => true]) !!}  
                 {{Form::hidden('type', 'prosjektskisser')}}    
                 {{Form::label('dok', 'Velg fil for opplastning. Kun PDF godkjent.')}}
                 <div class="form-group form-inline">
