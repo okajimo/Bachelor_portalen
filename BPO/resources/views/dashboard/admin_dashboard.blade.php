@@ -123,5 +123,15 @@
                 </div>
             </div>
         @endif
+    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-4">
+        <div class="card">
+            <a class="nav-link" href="{{ route('news') }}">
+                <h4 class="card-header">Nyheter</h4>
+                <div class="card-body">
+                    <p class="card-text">Her kan du lese nyheter publisert av administrator.</p>
+                </div>
+            </a>
+        </div>
+    </div>
    </div>
 @endsection
