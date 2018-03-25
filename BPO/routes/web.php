@@ -107,3 +107,4 @@ Route::delete('/administrer_gruppe/{id}', 'VeilederController@destroy');
 
 //presentasjonsplan
 Route::get('/presentasjonsplan', 'PresentasjonController@index');
+Route::post('/presentasjonsplan', 'PresentasjonController@create')->name('presentasjon');
