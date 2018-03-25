@@ -18,6 +18,19 @@
         </div>
     </div>
    <div class="row">
+    <?php $finnesNyheter = DB::select('select * from news'); ?>
+    @if($finnesNyheter)
+    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-4">
+        <div class="card">
+            <a class="nav-link" href="{{ route('news') }}">
+                <h4 class="card-header">Nyheter <i class="fa fa-info-circle" aria-hidden="true" style="color: #fa3e3e;"></i></h4>
+                <div class="card-body">
+                    <p class="card-text">Her kan du lese nyheter publisert av administrator.</p>
+                </div>
+            </a>
+        </div>
+    </div>
+    @endif
      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-4">
        <div class="card">
          <a class="nav-link" href="{{ route('group') }}">

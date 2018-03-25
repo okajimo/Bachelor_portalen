@@ -24,6 +24,12 @@ class CreateForeignKeysTable extends Migration
 		        ->references('username')->on('users');
         });
 
+        Schema::table('news', function (Blueprint $table) {
+
+            $table->foreign('user')
+		        ->references('username')->on('users');
+        });
+
         Schema::table('groups', function (Blueprint $table) {
 
             $table->foreign('supervisor')

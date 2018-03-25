@@ -238,4 +238,34 @@ class AdminController extends Controller
             return redirect('/')->with('error', 'Du er ikke admin og har ikke tilgang');
         }
     }
+
+    public function vnews()
+    {
+        if(session('levell') >= 2)
+        {
+            $nyheter = DB::select('select * from news');
+            $title = "Nyheter";
+            return view('Admin.vnews')->with(['title' => $title, 'nyheter' => $nyheter]);
+        }
+        else
+        {
+            return redirect('/')->with('error', 'Du er ikke logget inn');
+        }
+    }
+
+    public function lagNyhet(request $request)
+    {
+        $this->validate($request, [
+            'tittel' => 'required|alpha',
+            'melding' => 'required',
+        ]);
+        DB::insert('INSERT INTO news (id, user, tittel, melding) VALUES (NULL, :user, :tittel, :melding)',['user'=>session('navn'),'tittel'=>$request->tittel,'melding'=>$request->melding]);
+        return redirect('/vnews')->with('success', 'Nyhet har blitt laget');
+    }
+
+    public function slettNyhet(request $request)
+    {
+        DB::delete('delete from news where id = :id',['id'=> $request->id]);
+        return redirect('/vnews')->with('success', 'Nyhet har blitt slettet');
+    }
 }

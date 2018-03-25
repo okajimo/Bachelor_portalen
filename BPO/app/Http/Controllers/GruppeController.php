@@ -211,4 +211,18 @@ class GruppeController extends Controller
             return redirect('/lastOppUrl')->with('success', 'Du har lastet opp hjemmeside link');
         }
     }
+
+    public function news()
+    {
+        if(session('levell') >= 1)
+        {
+            $nyheter = DB::select('select * from news');
+            $title = "Nyheter";
+            return view('group.news')->with(['title' => $title, 'nyheter' => $nyheter]);
+        }
+        else
+        {
+            return redirect('/')->with('error', 'Du er ikke logget inn');
+        }
+    }
 }
