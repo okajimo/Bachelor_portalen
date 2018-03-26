@@ -125,7 +125,7 @@
         @endif
         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-4">
             <div class="card">
-                <a class="nav-link" href="{{ route('presentasjon') }}">
+                <a class="nav-link" href="{{ route('presentasjon2') }}">
                     <h4 class="card-header">Generer Presentasjonsplan</h4>
                     <div class="card-body"> 
                         <p class="card-text">Opretter en random generert presentasjonsplan</p>

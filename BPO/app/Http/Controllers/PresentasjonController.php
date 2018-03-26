@@ -21,21 +21,19 @@ class PresentasjonController extends Controller
         $groups = DB::select('SELECT group_number FROM groups');
         foreach ($groups as $group){
             DB::insert("INSERT INTO presentation (presentation.presentation_group_number, presentation.presentation_year, presentation.start, presentation.end, presentation.presentation_room)
-            VALUES (:gnum, 2018, '2018-03-14 08:30:00', '2018-03-14 09:30:00', 'PH330')", ['gnum' => $group->group_number]);
+            VALUES (:gnum, 2018, '2018/03/14 08:30:00', '2018/03/14 10:30', 'PH330')", ['gnum' => $group->group_number]);
         }
 
         return redirect('/presentasjonsplan')->with('success', 'En presentasjonsplan har blitt generert');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $string ="";
+        foreach($request["dato"] as $dato){
+            $string .= $dato.", ";
+        }
+        return redirect('/presentasjonsplan')->with('success', $string);
     }
 
     /**
