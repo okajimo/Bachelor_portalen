@@ -51,6 +51,7 @@ Route::delete('/vgruppe', 'GruppeController@fjern_student');
 Route::post('gg', 'GruppeController@meld_inn');
 Route::get('/lastOppUrl', 'GruppeController@lastOppUrlView')->name('Last');
 Route::post('/lastOppUrl', 'GruppeController@lastOppUrl');
+Route::get('/news', 'GruppeController@news')->name('news');
 
 Route::get('/les_dokumenter', 'LesDokumenterController@les_dokumenter')->name('dokumenter');
 Route::put('/les_dokumenter', 'LesDokumenterController@rediger_dokument');
@@ -86,6 +87,11 @@ Route::post('/gge', 'Admin\AdminController@importerStud');
 Route::post('/s', 'Admin\AdminController@regSensorVeileder');
 Route::post('/d', 'Admin\AdminController@endreStudPoeng');
 Route::delete('/ggse', 'Admin\AdminController@slettSenvei');
+
+//Vedlikehold nyheter
+Route::get('vnews', 'Admin\AdminController@vnews')->name('vnews');
+Route::post('/gff', 'Admin\AdminController@lagNyhet');
+Route::post('/gffgd', 'Admin\AdminController@slettNyhet');
 
 //simuler student
 Route::get('/simuler', 'SimulerController@index')->name('simuler');

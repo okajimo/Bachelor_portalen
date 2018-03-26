@@ -16,7 +16,8 @@
                     <a class="dropdown-item" href="{{ route('Agruppe') }}">Administrer grupper</a>
                     <a class="dropdown-item" href="/room">Administrer grupperom</a>
                     <a class="dropdown-item" href="{{ route('senvei') }}">Vedlikehold sensorer/veildere</a>  
-                    <a class="dropdown-item" href="{{ route('tidligere') }}">Generer presentasjonsplan</a> 
+                    <a class="dropdown-item" href="{{ route('tidligere') }}">Generer presentasjonsplan</a>
+                    <a class="dropdown-item" href="{{ route('vnews') }}">Vedlikehold nyheter</a>  
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="{{ route('logout') }}">Logout</a>
             </div>
@@ -29,9 +30,14 @@
                 Meny
             </button>
             <div class="dropdown-menu">
-                <a class="dropdown-item" href="{{ route('gruppe') }}">Dashboard Gruppe</a>
+                <a class="dropdown-item" href="{{ route('gruppe') }}">Dashboard Gruppe
+                    <?php $finnesNyheter = DB::select('select * from news'); ?>
+                    @if($finnesNyheter)
+                        <i class="fa fa-info-circle" aria-hidden="true" style="color: #fa3e3e;"></i>
+                    @endif
+                </a>
                 <a class="dropdown-item" href="{{ route('group') }}">Gruppe innstillinger</a>
-                <a class="dropdown-item" href="{{ route('lastOppS') }}">Last opp statusrapport</a>
+                <a class="dropdown-item" href="{{ route('lastOppS') }}">Last opp statusrapport</i></a>
                 <a class="dropdown-item" href="{{ route('lastOppP') }}">Last opp prosjektskisse</a>
                 <a class="dropdown-item" href="{{ route('Last') }}">Last opp link til hjemmeside</a>
                 <div class="dropdown-divider"></div>

@@ -87,15 +87,15 @@ class OpplastningController extends Controller
             if ($request->input('type') == 'statusrapporter')
             {
                 $upload = \UploadHelper::instance()->upload($request);
-                $queries = DB::getQueryLog();
-                $log = \LogHelper::logUpload(end($queries), 'OpplastningController');
+                $query = DB::getQueryLog();
+                $log = \LogHelper::logModel(end($query), 'OpplastningController');
                 return redirect('/lastOppStatus')->with('success', $upload);
             }
             elseif ($request->input('type') == 'prosjektskisser')
             {
                 $upload = \UploadHelper::instance()->upload($request);
-                $queries = DB::getQueryLog();
-                $log = \LogHelper::logUpload(end($queries), 'OpplastningController');
+                $query = DB::getQueryLog();
+                $log = \LogHelper::logModel(end($query), 'OpplastningController');
                 return redirect('/lastOppSkisse')->with('success', $upload);
             }
         }

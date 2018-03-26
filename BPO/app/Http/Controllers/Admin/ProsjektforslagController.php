@@ -11,6 +11,11 @@ use App\Models\Prosjektforslag;
 
 class ProsjektforslagController extends Controller
 {
+    public function __construct()
+    {
+        DB::connection()->enableQueryLog();
+    }
+    
     public function showUploadForm ()
     {
         if(session('levell') >= 2)
@@ -33,18 +38,17 @@ class ProsjektforslagController extends Controller
         ]);
 
         $upload = \UploadHelper::instance()->upload($request);
-        $queries = DB::getQueryLog();
-        $log = \LogHelper::logUpload(end($queries), 'prosjektforslagController');
+        $query = DB::getQueryLog();
+        $log = \LogHelper::logModel(end($query), 'prosjektforslagController');
         return redirect('/vedlikehold_Prosjektforslag')->with('success', $upload);
     }
 
     public function destroy(request $request)
     {
-        //Må fikses mer
-        //DB::connection()->enableQueryLog();
         DB::delete('DELETE FROM prosjektforslag WHERE id = :id', ['id' => $request->input('id')]);
         Storage::delete('/public/filer/prosjektforslag/'.$request->input('file'));
-        //return dd(DB::getQueryLog());
+        $query = DB::getQueryLog();
+        $log = \LogHelper::logSql(end($query), 'prosjektforslagController');
         return redirect('/vedlikehold_Prosjektforslag')->with('success', 'Fil Fjernet');
     }
 }
