@@ -105,8 +105,8 @@ class Tidligere_prosjekterController extends Controller
                         $html .= "
                             <tr>
                             <tbody>
-                                <td>".$grupper->start."</td>
-                                <td>".$grupper->presentation_year."-".$grupper->presentation_group_number."</td>
+                                <td>".\Carbon\Carbon::parse($grupper->start)->format('h:i')." - ".\Carbon\Carbon::parse($grupper->end)->format('h:i')."</td>
+                                <td>".\Carbon\Carbon::parse($grupper->presentation_year)->format('y')."-".$grupper->presentation_group_number."</td>
                                 <td><a href='".$ulr."'target='_blank'>Sluttrapport</a></td>"
                                 ;
                         $html .= "<td>";
