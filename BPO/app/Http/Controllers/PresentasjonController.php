@@ -18,22 +18,44 @@ class PresentasjonController extends Controller
     {
         DB::delete('DELETE FROM presentation');
 
-        $groups = DB::select('SELECT group_number FROM groups');
-        foreach ($groups as $group){
-            DB::insert("INSERT INTO presentation (presentation.presentation_group_number, presentation.presentation_year, presentation.start, presentation.end, presentation.presentation_room)
-            VALUES (:gnum, 2018, '2018/03/14 08:30:00', '2018/03/14 10:30', 'PH330')", ['gnum' => $group->group_number]);
-        }
-
-        return redirect('/presentasjonsplan')->with('success', 'En presentasjonsplan har blitt generert');
+        return redirect('/presentasjonsplan')->with('error', 'Prestasjonsplaner er slettet');
     }
 
     public function store(Request $request)
     {
-        $string ="";
+        //Hvor mange presentasjoner som blir registrert perr dag
+        $antall_perr_dag = 2;
+        $groups = DB::select('SELECT group_number FROM groups');
+
         foreach($request["dato"] as $dato){
-            $string .= $dato.", ";
+            $antall = 0;
+
+            $tid= 10;
+            $tid2= 30;
+            
+            $exists = DB::select('SELECT groups.group_number 
+            FROM groups 
+            WHERE group_number 
+            NOT IN (SELECT presentation.presentation_group_number FROM presentation)');
+
+            foreach($exists as $exist){
+                if ($antall < $antall_perr_dag){
+        
+                    $time=mktime($tid, $tid2);
+                    $start = date("h:i", $time);
+                    $start = $dato." ".$start;
+
+                    DB::insert("INSERT INTO presentation (presentation.presentation_group_number, presentation.presentation_year, presentation.start, presentation.end, presentation.presentation_room)
+                    VALUES (:gnum, 2018, :starts, '2018/03/14 10:30', 'PH330')", ['gnum' => $exist->group_number, 'starts' => $start]);
+                    
+                    $tid +=2;
+                    $tid2 +=30;
+                    
+                }
+                $antall++;
+            }      
         }
-        return redirect('/presentasjonsplan')->with('success', $string);
+        return redirect('/presentasjonsplan')->with('success', "Presentasjonsplan oppdatert");
     }
 
     /**

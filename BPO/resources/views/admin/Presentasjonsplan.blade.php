@@ -3,13 +3,13 @@
     <div class="container">
         <div class="row">
             {!! Form::open(['action' => ['PresentasjonController@create'], 'method' => 'POST', 'class' => 'col-2', 'style' => ' padding-left:0']) !!}
-                {{Form::submit('Generer plan', ['class'=>'btn btn-success margin-fix'])}}
+                {{Form::submit('Slett Prestasjonsplan', ['class'=>'btn btn-danger margin-fix'])}}
             {!! Form::close() !!}
         </div>
         <br> 
         <form class="row form-group">
             <div style="padding:0;" class="col-3 margin-fix">
-                <input placeholder="Antall rom" name="num" type="number" min="1" class="form-control" required>
+                <input placeholder="Antall rom" name="num" type="number" min="1" max="10" class="form-control" required>
             </div>
             <div style="padding:0;" class="col-3 margin-fix" >
                 <input type="submit" value="Antall dager" class="btn btn-success">
@@ -34,9 +34,6 @@
                     </div>
                 </div>
             {!! Form::close() !!}
-            <?php
-                $fredrik = array();
-            ?>
         @endif
     </div>
 @endsection
