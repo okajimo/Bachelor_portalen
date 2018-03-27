@@ -90,9 +90,15 @@ class Tidligere_prosjekterController extends Controller
                 {
                     $sjekk = \Carbon\Carbon::parse($grupper->start)->format('d');
                     $ar = $grupper->presentation_group_number;
-                    //$files = Storage::allFiles('/public/filer/tidligere_prosjekter/'.$date.'/'.$ar);
+                    if($ar < 10)
+                    {
+                        $ar = "0".$ar;
+                    }
                     $studenter = DB::select('SELECT student FROM student_groups WHERE student_groups.student_groups_number = :nummer AND student_groups.student_groups_year = :ar',['nummer'=>$grupper->presentation_group_number,'ar'=>$grupper->presentation_year]);
-                    $veileder = DB::select('SELECT supervisor FROM groups WHERE groups.group_number = :nummer AND groups.year = :ar',['nummer'=>$grupper->presentation_group_number,'ar'=>$grupper->presentation_year]);
+                    $sensor = DB::select('SELECT firstname, lastname FROM sensors_supervisors WHERE email = :sensor',['sensor'=>$grupper->sensor]);
+                    $veileder = DB::select('SELECT firstname, lastname FROM groups, presentation, sensors_supervisors WHERE 
+                    presentation.presentation_group_number = groups.group_number AND presentation.presentation_year = groups.year AND
+                    groups.supervisor = sensors_supervisors.email AND presentation.presentation_group_number = :gruppe',['gruppe'=>$ar]);
                     if($sjekk == $dat)
                     {
                         $ulr = "http://student.cs.hioa.no/hovedprosjekter/data/".$date."/".$ar."/";
@@ -100,18 +106,19 @@ class Tidligere_prosjekterController extends Controller
                             <tr>
                             <tbody>
                                 <td>".$grupper->start."</td>
-                                <td>".$grupper->presentation_group_number."</td>
+                                <td>".$grupper->presentation_year."-".$grupper->presentation_group_number."</td>
                                 <td><a href='".$ulr."'target='_blank'>Sluttrapport</a></td>"
                                 ;
                         $html .= "<td>";
                                 foreach($studenter as $stud)
                                 {
-                                    $html .= $stud->student."</br>";
+                                    $studNavn = DB::select('SELECT firstname, lastname FROM users WHERE username = :name',['name'=>$stud->student]);
+                                    $html .= $studNavn[0]->firstname." ".$studNavn[0]->lastname."</br>";
                                 }
                         $html .="
                                 </td>
-                                <td>".$veileder[0]->supervisor."</td>
-                                <td>".$grupper->sensor."</td>
+                                <td>".$veileder[0]->firstname." ".$veileder[0]->lastname."</td>
+                                <td>".$sensor[0]->firstname." ".$sensor[0]->lastname."</td>
                             </tr>
                             </tbody>
                         ";
