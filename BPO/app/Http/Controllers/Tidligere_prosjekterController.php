@@ -162,11 +162,11 @@ class Tidligere_prosjekterController extends Controller
                     }
                 }
             }
-            return redirect('/generer_presentasjonsplan')->with('success', 'plan opprettet, trykk på publiser for å vise til studenter');
+            return redirect('/presentasjonsplan')->with('success', 'plan opprettet, trykk på publiser for å vise til studenter');
         }
         else
         {
-            return redirect('/generer_presentasjonsplan')->with('error', 'Det er ingen data å hente.');
+            return redirect('/presentasjonsplan')->with('error', 'Det er ingen data å hente.');
         }
     }
 
@@ -198,7 +198,7 @@ class Tidligere_prosjekterController extends Controller
             {
                 Storage::move('/public/filer/presentasjonsplan/true.txt', '/public/filer/presentasjonsplan/false.txt');
             }
-            return redirect('/generer_presentasjonsplan')->with('success', 'En endring har blitt gjort for visning av presentasjonsplan');
+            return redirect('/presentasjonsplan')->with('success', 'En endring har blitt gjort for visning av presentasjonsplan');
         }
         else
         {

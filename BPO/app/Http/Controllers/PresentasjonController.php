@@ -27,7 +27,7 @@ class PresentasjonController extends Controller
     public function store(Request $request)
     {
         //Hvor mange presentasjoner som blir registrert perr dag
-        $antall_perr_dag = 2;
+        $antall_perr_dag = 11;
         $groups = DB::select('SELECT group_number FROM groups');
         foreach($request["dato"] as $dato){
             foreach($request["room"] as $room){
@@ -36,17 +36,14 @@ class PresentasjonController extends Controller
                 $dt = new DateTime('09:00', new DateTimezone('Europe/Oslo'));
                 $dt2 = new DateTime('09:30', new DateTimezone('Europe/Oslo'));
 
-                
                 $exists = DB::select('SELECT groups.group_number 
                 FROM groups 
-                WHERE group_number 
-                NOT IN (SELECT presentation.presentation_group_number FROM presentation)');
+                WHERE group_number NOT IN (SELECT presentation.presentation_group_number FROM presentation)');
 
                 foreach($exists as $exist){
                     if ($antall < $antall_perr_dag){
                                 
                         $start = $dato." ".$dt->format('H:i');
-                        
                         $slutt = $dato." ".$dt2->format('H:i');
 
                         DB::insert("INSERT INTO presentation (presentation.presentation_group_number, presentation.presentation_year, presentation.start, presentation.end, presentation.presentation_room)
@@ -63,46 +60,21 @@ class PresentasjonController extends Controller
         return redirect('/presentasjonsplan')->with('success', "Presentasjonsplan oppdatert");
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         //
