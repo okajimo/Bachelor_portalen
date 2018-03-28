@@ -12,25 +12,28 @@
                 <input placeholder="Antall rom" name="num" type="number" min="1" max="10" class="form-control" required>
             </div>
             <div style="padding:0;" class="col-3 margin-fix" >
-                <input type="submit" value="Antall dager" class="btn btn-success">
+                <input type="submit" value="Antall Rom" class="btn btn-success">
             </div>
         </form>
         @if(isset($_REQUEST["num"]))
-            <div class="row" style="margin-top:2em">
-                <h4>Antall dager:</h4>
-            </div>
-            {!! Form::open(['action' => 'PresentasjonController@store', 'method' => 'POST', 'style' => 'margin-top:0.5em;']) !!}
-                <div class="row form-group">
+            {!! Form::open(['action' => 'PresentasjonController@store', 'method' => 'POST', 'class' => 'row', 'style' => 'margin-top:0.5em;']) !!}
+                <div class="col form-group" style="padding:0;">
                     <div class="col-3 margin-fix" style="padding:0;">
                         <?php $num= $_REQUEST["num"]; ?>
                         @for($i=0; $i<$num; $i++)
-                            <input style="margin-bottom:0.6em"type="date" name={{"dato[".$i."]"}} class="form-control" required>
+                            <h4 style="margin-top:1em">Rom {{$i+1}}:</h4>
+                            <input type="date" name={{"dato[".$i."]"}} class="form-control" required> <br>
+                            <select required class="custom-select" name={{"room[".$i."]"}}>
+                                @foreach($rooms as $room)
+                                    <option value={{$room->room}}>{{$room->room}}</option>
+                                @endforeach
+                            </select>
                         @endfor
                     </div>
                 </div>
-                <div class="row">
+                <div class="col-12" style="padding:0; margin-top:0.6em">
                     <div style="padding:0;" class="col-3" >
-                        {{Form::submit('send inn datoer', ['class'=>'btn btn-success float-left', 'style' => 'width:100%'])}}
+                        {{Form::submit('Oppdater', ['class'=>'btn btn-success float-left', 'style' => 'width:100%'])}}
                     </div>
                 </div>
             {!! Form::close() !!}
