@@ -46,11 +46,9 @@
                                                         @endif
                                                     @endforeach
                                             </select>
-
                                             {{Form::hidden('group', $groups->group_number)}}
                                             {{Form::submit('Sett Veileder', ['class'=>'btn btn-success margin-fix'])}}
                                         {!! Form::close() !!}
-
                                         {!! Form::open(['action' => ['VeilederController@destroy', $groups->group_number], 'method' => 'POST', 'class' => 'float-left', 'onsubmit' => 'return ConfirmDelete()']) !!}
                                             {{Form::hidden('_method', 'DELETE')}}
                                             {{Form::submit('Slett Gruppe', ['class'=>'btn btn-danger'])}}
