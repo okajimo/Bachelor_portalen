@@ -10109,6 +10109,14 @@ body {
   margin-right: 3.8px;
 }
 
+.margin-fix-top {
+  margin-top: 0.5em;
+}
+
+.margin-fix-bottom {
+  margin-bottom: 0.5em;
+}
+
 .farge {
   color: #0096c0;
 }

@@ -102,10 +102,10 @@
         </div>
         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-4">
             <div class="card">
-                <a class="nav-link" href="{{ route('tidligere') }}">
-                    <h4 class="card-header">Vedlikehold tidligere prosjekter</h4>
+                <a class="nav-link" href="{{ route('presentasjon2') }}">
+                    <h4 class="card-header">Generer Presentasjonsplan</h4>
                     <div class="card-body"> 
-                        <p class="card-text">Her kan du generere html sider for tidligere prosjekter</p>
+                        <p class="card-text">Opretter en random generert presentasjonsplan</p>
                     </div>
                 </a>
             </div>
@@ -123,22 +123,12 @@
                 </div>
             </div>
         @endif
-    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-4">
-        <div class="card">
-            <a class="nav-link" href="{{ route('news') }}">
-                <h4 class="card-header">Nyheter</h4>
-                <div class="card-body">
-                    <p class="card-text">Her kan du lese nyheter publisert av administrator.</p>
-                </div>
-            </a>
-        </div>
-    </div>
         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-4">
             <div class="card">
-                <a class="nav-link" href="{{ route('presentasjon2') }}">
-                    <h4 class="card-header">Generer Presentasjonsplan</h4>
-                    <div class="card-body"> 
-                        <p class="card-text">Opretter en random generert presentasjonsplan</p>
+                <a class="nav-link" href="{{ route('news') }}">
+                    <h4 class="card-header">Nyheter</h4>
+                    <div class="card-body">
+                        <p class="card-text">Her kan du lese nyheter publisert av administrator.</p>
                     </div>
                 </a>
             </div>

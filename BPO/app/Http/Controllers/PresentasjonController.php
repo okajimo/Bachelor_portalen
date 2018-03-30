@@ -16,44 +16,47 @@ class PresentasjonController extends Controller
         return view('admin.Presentasjonsplan')->with(['title' => $title, 'rooms' => $rooms]);
     }
 
-    //create a random created plan
-    public function create()
+    //sletter presentasjonsplan
+    public function delete()
     {
         DB::delete('DELETE FROM presentation');
-
         return redirect('/presentasjonsplan')->with('error', 'Prestasjonsplaner er slettet');
     }
 
+    //oppretter presentasjonsplanen
     public function store(Request $request)
     {
         //Hvor mange presentasjoner som blir registrert perr dag
-        $antall_perr_dag = 11;
-        $groups = DB::select('SELECT group_number FROM groups');
-        foreach($request["dato"] as $dato){
-            foreach($request["room"] as $room){
-                $antall = 0;
+        $antall_perr_dag = $request->perr_dag;
 
+        $aar = date("Y");
+        $groups = DB::select('SELECT group_number FROM groups');
+        foreach($request["dato"] as $dato){ 
+            $antall = 0;
+
+            foreach($request["room"] as $room){  
                 $dt = new DateTime('09:00', new DateTimezone('Europe/Oslo'));
                 $dt2 = new DateTime('09:30', new DateTimezone('Europe/Oslo'));
 
-                $exists = DB::select('SELECT groups.group_number 
+                $exists = DB::select('SELECT * 
                 FROM groups 
-                WHERE group_number NOT IN (SELECT presentation.presentation_group_number FROM presentation)');
+                WHERE group_number NOT IN (SELECT presentation.presentation_group_number FROM presentation)
+                AND supervisor IS NOT NULL');
 
                 foreach($exists as $exist){
-                    if ($antall < $antall_perr_dag){
+                    if ($antall < $antall_perr_dag ){
                                 
                         $start = $dato." ".$dt->format('H:i');
                         $slutt = $dato." ".$dt2->format('H:i');
 
                         DB::insert("INSERT INTO presentation (presentation.presentation_group_number, presentation.presentation_year, presentation.start, presentation.end, presentation.presentation_room)
-                        VALUES (:gnum, 2018, :starts, :slutts, :room)", ['gnum' => $exist->group_number, 'starts' => $start, 'slutts' => $slutt, 'room' => $room]);
+                        VALUES (:gnum, :aar, :starts, :slutts, :room)", ['gnum' => $exist->group_number, 'starts' => $start, 'slutts' => $slutt, 'room' => $room, 'aar' =>$aar]);
                         
                         $dt->modify('+30 minutes');
                         $dt2->modify('+30 minutes');
-                        
-                    }
-                    $antall++;
+
+                        $antall++;
+                    }           
                 }      
             }
         }
