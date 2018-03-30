@@ -41,10 +41,18 @@
                         <?php $num= $_REQUEST["num"]; ?>
                         @for($i=0; $i<$num; $i++)
                             <h4 style="margin-top:1em">Dag {{$i+1}}:</h4>
-                            <input type="date" name={{"dato[".$i."]"}} class="form-control" required> <br>
+                            <input style="width:60%"type="date" name={{"dato[".$i."]"}} class="form-control d-inline-block" required>
+                            <input style="width:38.3%"type="time" name={{"time[".$i."]"}} class="form-control d-inline-block" required> <br>
                             <select required class="custom-select" name={{"room[".$i."]"}}>
+                                <option disabled value="" selected >Velg Rom</option>
                                 @foreach($rooms as $room)
                                     <option value={{$room->room}}>{{$room->room}}</option>
+                                @endforeach
+                            </select>
+                            <select required class="custom-select" name={{"sensor[".$i."]"}}>
+                                <option disabled value="" selected >Sensor</option>
+                                @foreach($supervisors as $supervisor)
+                                    <option value={{$supervisor->email}}>{{$supervisor->firstname." ".$supervisor->lastname}}</option>
                                 @endforeach
                             </select>
                         @endfor
