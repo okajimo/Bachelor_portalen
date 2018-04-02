@@ -25,46 +25,32 @@
             </br>
         </div>
         <br>
-
-        <form class="row form-group" style="margin-top:0.5em;">
-            <div style="padding:0;" class="col-3 margin-fix">
-                <input placeholder="Antall Dager" name="num" type="number" min="1" max="10" class="form-control" required>
-            </div>
-            <div style="padding:0;" class="col-3 margin-fix" >
-                <input type="submit" value="Antall Dager" class="btn btn-primary">
-            </div>
-        </form>
-        @if(isset($_REQUEST["num"]))
-            {!! Form::open(['action' => 'PresentasjonController@store', 'method' => 'POST', 'class' => 'row', 'style' => 'margin-top:0.5em;']) !!}
-                <div class="col form-group" style="padding:0;">
-                    <div class="col-3 margin-fix" style="padding:0;">
-                        <?php $num= $_REQUEST["num"]; ?>
-                        @for($i=0; $i<$num; $i++)
-                            <h4 style="margin-top:1em">Dag {{$i+1}}:</h4>
-                            <input style="width:60%"type="date" name={{"dato[".$i."]"}} class="form-control d-inline-block" required>
-                            <input style="width:38.3%"type="time" name={{"time[".$i."]"}} class="form-control d-inline-block" required> <br>
-                            <select required class="custom-select" name={{"room[".$i."]"}}>
-                                <option disabled value="" selected >Velg Rom</option>
-                                @foreach($rooms as $room)
-                                    <option value={{$room->room}}>{{$room->room}}</option>
-                                @endforeach
-                            </select>
-                            <select required class="custom-select" name={{"sensor[".$i."]"}}>
-                                <option disabled value="" selected >Sensor</option>
-                                @foreach($supervisors as $supervisor)
-                                    <option value={{$supervisor->email}}>{{$supervisor->firstname." ".$supervisor->lastname}}</option>
-                                @endforeach
-                            </select>
-                        @endfor
-                    </div>
+        {!! Form::open(['action' => 'PresentasjonController@store', 'method' => 'POST', 'class' => 'row', 'style' => 'margin-top:0.5em;']) !!}
+            <div class="col form-group" style="padding:0;">
+                <div class="col-3 margin-fix" style="padding:0;">
+                    <h4 style="margin-top:1em">Dag:</h4>
+                    <input style="width:60%"type="date" name="dates" class="form-control d-inline-block" required>
+                    <input style="width:38.3%"type="time" name="time" class="form-control d-inline-block" required> <br>
+                    <select required class="custom-select" name="room">
+                        <option disabled value="" selected >Velg Rom</option>
+                        @foreach($rooms as $room)
+                            <option value={{$room->room}}>{{$room->room}}</option>
+                        @endforeach
+                    </select>
+                    <select required class="custom-select" name={{"sensor"}}>
+                        <option disabled value="" selected >Sensor</option>
+                        @foreach($supervisors as $supervisor)
+                            <option value={{$supervisor->email}}>{{$supervisor->firstname." ".$supervisor->lastname}}</option>
+                        @endforeach
+                    </select>
                 </div>
-                <div class="col-12" style="padding:0; margin-top:0.6em">
-                    <div style="padding:0;" class="col-3" >
-                        <input type="number" name="perr_dag" min="1" placeholder="Antall presentasjoner perr dag" class="form-control margin-fix-bottom" value="11" required>
-                        {{Form::submit('Oppdater', ['class'=>'btn btn-success float-left', 'style' => 'width:100%'])}}
-                    </div>
+            </div>
+            <div class="col-12" style="padding:0; margin-top:0.6em">
+                <div style="padding:0;" class="col-3" >
+                    <input type="number" name="perr_dag" min="1" placeholder="Antall presentasjoner perr dag" class="form-control margin-fix-bottom" value="11" required>
+                    {{Form::submit('Oppdater', ['class'=>'btn btn-success float-left', 'style' => 'width:100%'])}}
                 </div>
-            {!! Form::close() !!}
-        @endif
+            </div>
+        {!! Form::close() !!}
     </div>
 @endsection

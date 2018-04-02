@@ -29,41 +29,39 @@ class PresentasjonController extends Controller
     {
         //Hvor mange presentasjoner som blir registrert perr dag
         $antall_perr_dag = $request->perr_dag;
-        $tt= 0;
         $aar = date("Y");
-        foreach($request["dato"] as $dato){ 
-            $antall = 0;
+        $dato = $request->dates;
+        $antall = 0;
 
-            $time_start = $request["time"][$tt];
-            $sensor = $request["sensor"][$tt];
-            $room = $request["room"][$tt];
+        $time_start = $request->time;
+        $sensor = $request->sensor;
+        $room = $request->room;
 
-            $dt = new DateTime($time_start, new DateTimezone('Europe/Oslo'));
-            $dt2 = new DateTime($time_start, new DateTimezone('Europe/Oslo'));
-            $dt2->modify('+30 minutes');
+        $dt = new DateTime($time_start, new DateTimezone('Europe/Oslo'));
+        $dt2 = new DateTime($time_start, new DateTimezone('Europe/Oslo'));
+        $dt2->modify('+30 minutes');
 
-            $exists = DB::select('SELECT * 
-            FROM groups 
-            WHERE group_number NOT IN (SELECT presentation.presentation_group_number FROM presentation)
-            AND supervisor IS NOT NULL');
-            
-            foreach($exists as $exist){
-                if ($antall < $antall_perr_dag ){
-                            
-                    $start = $dato." ".$dt->format('H:i');
-                    $slutt = $dato." ".$dt2->format('H:i');
+        $exists = DB::select('SELECT * 
+        FROM groups 
+        WHERE group_number NOT IN (SELECT presentation.presentation_group_number FROM presentation)
+        AND supervisor IS NOT NULL');
+        
+        foreach($exists as $exist){
+            if ($antall < $antall_perr_dag ){
+                        
+                $start = $dato." ".$dt->format('H:i');
+                $slutt = $dato." ".$dt2->format('H:i');
 
-                    DB::insert("INSERT INTO presentation (presentation.presentation_group_number, presentation.presentation_year, presentation.start, presentation.end, presentation.presentation_room, presentation.sensor)
-                    VALUES (:gnum, :aar, :starts, :slutts, :room, :sensor)", ['gnum' => $exist->group_number, 'starts' => $start, 'slutts' => $slutt, 'room' => $room, 'aar' =>$aar, 'sensor' => $sensor]);
-                    
-                    $dt->modify('+30 minutes');
-                    $dt2->modify('+30 minutes');
+                DB::insert("INSERT INTO presentation (presentation.presentation_group_number, presentation.presentation_year, presentation.start, presentation.end, presentation.presentation_room, presentation.sensor)
+                VALUES (:gnum, :aar, :starts, :slutts, :room, :sensor)", ['gnum' => $exist->group_number, 'starts' => $start, 'slutts' => $slutt, 'room' => $room, 'aar' =>$aar, 'sensor' => $sensor]);
+                
+                $dt->modify('+30 minutes');
+                $dt2->modify('+30 minutes');
 
-                    $antall++;
-                }          
-            }     
-            $tt++;
-        }
+                $antall++;
+            }          
+        }     
+
         return redirect('/presentasjonsplan')->with('success', "Presentasjonsplan oppdatert");
     }
 
