@@ -10041,6 +10041,12 @@ body {
   margin-bottom: 0 !important;
 }
 
+.btn-lg,
+.btn-group-lg > .btn {
+  height: 4em;
+  font-weight: bolder;
+}
+
 .card-header {
   min-height: 3.5em !important;
   text-align: center;
@@ -10110,11 +10116,19 @@ body {
 }
 
 .margin-fix-top {
-  margin-top: 0.5em;
+  margin-top: 0.25em;
 }
 
 .margin-fix-bottom {
-  margin-bottom: 0.5em;
+  margin-bottom: 0.25em;
+}
+
+.no-margin-left {
+  margin-left: 0;
+}
+
+.no-padding-left {
+  padding-left: 0;
 }
 
 .farge {
