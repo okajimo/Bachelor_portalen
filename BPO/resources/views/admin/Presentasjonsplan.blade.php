@@ -29,8 +29,8 @@
             <div class="col form-group" style="padding:0;">
                 <div class="col-3 margin-fix" style="padding:0;">
                     <h4 style="margin-top:1em">Dag:</h4>
-                    <input style="width:60%"type="date" name="dates" class="form-control d-inline-block" required>
-                    <input style="width:38.3%"type="time" name="time" class="form-control d-inline-block" required> <br>
+                    <input type="date" name="dates" class="form-control d-inline-block" required>
+                    <input type="time" name="time" class="form-control d-inline-block" required> <br>
                     <select required class="custom-select" name="room">
                         <option disabled value="" selected >Velg Rom</option>
                         @foreach($rooms as $room)

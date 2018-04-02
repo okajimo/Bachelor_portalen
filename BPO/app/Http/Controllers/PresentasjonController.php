@@ -13,8 +13,13 @@ class PresentasjonController extends Controller
     {
         $rooms = DB::select('SELECT * FROM room');
         $supervisors = DB::select("SELECT * FROM sensors_supervisors WHERE status = 'sensor'");
+        $groups = DB::select('SELECT * 
+        FROM groups 
+        WHERE group_number NOT IN (SELECT presentation.presentation_group_number FROM presentation)
+        AND supervisor IS NOT NULL');
+
         $title = "Presentasjonsplan";
-        return view('admin.Presentasjonsplan')->with(['title' => $title, 'rooms' => $rooms, 'supervisors' => $supervisors]);
+        return view('admin.Presentasjonsplan')->with(['title' => $title, 'rooms' => $rooms, 'supervisors' => $supervisors, 'groups' => $groups]);
     }
 
     //sletter presentasjonsplan
@@ -51,6 +56,8 @@ class PresentasjonController extends Controller
                         
                 $start = $dato." ".$dt->format('H:i');
                 $slutt = $dato." ".$dt2->format('H:i');
+                $dt->modify('+5 minutes');
+                $dt2->modify('+5 minutes');
 
                 DB::insert("INSERT INTO presentation (presentation.presentation_group_number, presentation.presentation_year, presentation.start, presentation.end, presentation.presentation_room, presentation.sensor)
                 VALUES (:gnum, :aar, :starts, :slutts, :room, :sensor)", ['gnum' => $exist->group_number, 'starts' => $start, 'slutts' => $slutt, 'room' => $room, 'aar' =>$aar, 'sensor' => $sensor]);
