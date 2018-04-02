@@ -27,7 +27,7 @@ class PresentasjonController extends Controller
     public function store(Request $request)
     {
         //Hvor mange presentasjoner som blir registrert perr dag
-        $antall_perr_dag = 11;
+        $antall_perr_dag = 2;
         $groups = DB::select('SELECT group_number FROM groups');
         foreach($request["dato"] as $dato){
             foreach($request["room"] as $room){
