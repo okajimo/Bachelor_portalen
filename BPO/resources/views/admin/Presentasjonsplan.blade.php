@@ -25,7 +25,7 @@
             </br>
         </div>
         <br>
-        <div style="max-width:15em;"class="no-padding-left col">
+        <div style="max-width:17em;"class="no-padding-left col">
             {!! Form::open(['action' => 'PresentasjonController@store', 'method' => 'POST', 'class' => 'row form-group']) !!}
                 <h4 class="no-padding-left col-12">Dag:</h4>
                 <input type="date" class="col-8 form-control" name="dates" required>
