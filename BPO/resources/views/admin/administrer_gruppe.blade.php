@@ -32,7 +32,6 @@
                                     </td>
                                     <td>
                                         {!! Form::open(['action' => ['VeilederController@store'], 'method' => 'POST', 'class' => 'float-left']) !!}
-
                                             <select name="supervisor" style="width: 8.5em; border: 1px solid black;" class="btn">
                                                     @if($groups->supervisor == "")
                                                         <option value=""></option>
