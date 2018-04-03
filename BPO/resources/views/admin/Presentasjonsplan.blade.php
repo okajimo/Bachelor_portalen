@@ -2,7 +2,7 @@
 @section('content')
     <div class="container">
         <div class="row">
-            {!! Form::open(['action' => 'Tidligere_prosjekterController@opprett_html_sider', 'method' => 'POST', 'class' => 'col-xs-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 no-padding-left margin-fix-bottom']) !!}  
+            {!! Form::open(['action' => 'Tidligere_prosjekterController@opprett_html_sider', 'method' => 'POST', 'class' => 'col-xs-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 no-padding-left no-padding-right margin-fix-bottom']) !!}  
                 {{Form::submit('Generer plan', ['class'=>'btn btn-lg width-fill btn-success'])}}    
             {!! Form::close() !!}
             </br>
@@ -10,19 +10,19 @@
             <?php $finnes2 = Storage::exists('/public/filer/presentasjonsplan/false.txt');
             $finnes3 = Storage::exists('/public/filer/presentasjonsplan/true.txt'); ?>
             @if($finnes2 == true)
-                {!! Form::open(['action' => 'Tidligere_prosjekterController@publiserPresentasjonsplan', 'method' => 'POST', 'class' => 'col-xs-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 no-padding-left margin-fix-bottom']) !!}  
+                {!! Form::open(['action' => 'Tidligere_prosjekterController@publiserPresentasjonsplan', 'method' => 'POST', 'class' => 'col-xs-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 no-padding-left no-padding-right margin-fix-bottom']) !!}  
                     {{Form::submit('Publiser plan', ['class'=>'btn btn-lg width-fill btn-success'])}}    
                 {!! Form::close() !!}
             @endif
             @if($finnes3 == true)
-                {!! Form::open(['action' => 'Tidligere_prosjekterController@publiserPresentasjonsplan', 'method' => 'POST', 'class' => 'col-xs-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 no-padding-left margin-fix-bottom']) !!}  
+                {!! Form::open(['action' => 'Tidligere_prosjekterController@publiserPresentasjonsplan', 'method' => 'POST', 'class' => 'col-xs-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 no-padding-left no-padding-right margin-fix-bottom']) !!}  
                     {{Form::submit('Fjern Publisering', ['class'=>'btn btn-lg width-fill btn-danger'])}}    
                 {!! Form::close() !!}
             @endif
-            {!! Form::open(['action' => ['PresentasjonController@delete'], 'method' => 'POST', 'class' => 'col-xs-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 no-padding-left margin-fix-bottom']) !!}
+            {!! Form::open(['action' => ['PresentasjonController@delete'], 'method' => 'POST', 'class' => 'col-xs-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 no-padding-left no-padding-right margin-fix-bottom']) !!}
                 {{Form::submit('Slett Prestasjonsplan', ['class'=>'btn btn-lg width-fill btn-danger margin-fix'])}}
             {!! Form::close() !!}
-            {!! Form::open(['action' => 'PresentasjonController@show', 'method' => 'POST', 'class' => 'col-xs-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 no-padding-left margin-fix-bottom']) !!}
+            {!! Form::open(['action' => 'PresentasjonController@show', 'method' => 'POST', 'class' => 'col-xs-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 no-padding-left no-padding-right margin-fix-bottom']) !!}
                 {{Form::submit('Endre Prestasjonsplan', ['class'=>'btn btn-lg width-fill btn-warning margin-fix', 'style' => 'color:#FFF'])}}
             {!! Form::close() !!}
             </br>

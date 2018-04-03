@@ -10131,6 +10131,10 @@ body {
   padding-left: 0;
 }
 
+.no-padding-right {
+  padding-right: 0;
+}
+
 .farge {
   color: #0096c0;
 }
@@ -10151,7 +10155,7 @@ body {
 }
 
 .width-fill {
-  width: 100%;
+  width: 98%;
 }
 
 /*!
