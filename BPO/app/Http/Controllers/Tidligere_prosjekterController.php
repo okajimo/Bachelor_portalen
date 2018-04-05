@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Input;
+use DateTime;
+use DateTimezone;
 
 
 class Tidligere_prosjekterController extends Controller
@@ -100,13 +102,13 @@ class Tidligere_prosjekterController extends Controller
                     presentation.presentation_group_number = groups.group_number AND presentation.presentation_year = groups.year AND
                     groups.supervisor = sensors_supervisors.email AND presentation.presentation_group_number = :gruppe',['gruppe'=>$ar]);
                     if($sjekk == $dat)
-                    {
+                    {   
                         $ulr = "http://student.cs.hioa.no/hovedprosjekter/data/".$date."/".$ar."/";
                         $html .= "
                             <tr>
                             <tbody>
-                                <td>".\Carbon\Carbon::parse($grupper->start)->format('h:i')." - ".\Carbon\Carbon::parse($grupper->end)->format('h:i')."</td>
-                                <td>".\Carbon\Carbon::parse($grupper->presentation_year)->format('y')."-".$grupper->presentation_group_number."</td>
+                                <td>".\Carbon\Carbon::parse($grupper->start)->format('H:i')." - ".\Carbon\Carbon::parse($grupper->end)->format('H:i')."</td>
+                                <td>".$grupper->presentation_group_number."</td>
                                 <td><a href='".$ulr."'target='_blank'>Sluttrapport</a></td>"
                                 ;
                         $html .= "<td>";

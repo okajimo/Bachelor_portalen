@@ -17,7 +17,8 @@
                     <a class="dropdown-item" href="/room">Administrer grupperom</a>
                     <a class="dropdown-item" href="{{ route('senvei') }}">Vedlikehold sensorer/veildere</a>  
                     <a class="dropdown-item" href="{{ route('presentasjon2') }}">Generer presentasjonsplan</a>
-                    <a class="dropdown-item" href="{{ route('vnews') }}">Vedlikehold nyheter</a>  
+                    <a class="dropdown-item" href="{{ route('vnews') }}">Vedlikehold nyheter</a>
+                    <a class="dropdown-item" href="{{ route('presentasjonsplan') }}">Presentasjonsplan</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="{{ route('logout') }}">Logout</a>
             </div>

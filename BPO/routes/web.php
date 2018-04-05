@@ -77,7 +77,6 @@ Route::post('/2','Admin\EpostController@sendEpostSensorVeileder');
 Route::get('/studentVedlikehold', 'Admin\AdminController@studentVedlikehold')->name('student');
 Route::get('/vedlikeholdAvSensorOgVeileder', 'Admin\AdminController@vedlikeholdSensorVeileder')->name('senvei');
 
-Route::get('/generer_presentasjonsplan', 'Tidligere_prosjekterController@generer_presentasjonsplanView')->name('tidligere');
 Route::post('/t', 'Tidligere_prosjekterController@opprett_html_sider');
 Route::post('/tt', 'Tidligere_prosjekterController@showTidligereProsjekter');
 Route::post('/ttt', 'Tidligere_prosjekterController@publiserPresentasjonsplan');
