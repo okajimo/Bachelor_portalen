@@ -73,7 +73,32 @@ class Tidligere_prosjekterController extends Controller
                     $sjekk = \Carbon\Carbon::parse($Dato->start)->format('d');
                     if($sjekk == $dat)
                     {
-                        $html = "<h3>".\Carbon\Carbon::parse($Dato->start)->format('D.d.M')." - Rom: ".$Dato->presentation_room."</h3>
+                        $dag = \Carbon\Carbon::parse($Dato->start)->format('D');
+                        switch($dag)
+                        {
+                            case "Mon";
+                                $Ndag = "Man";
+                                break;
+                            case "Tue";
+                                $Ndag = "Tir";
+                                break;
+                            case "Wed";
+                                $Ndag = "Ons";
+                                break;
+                            case "Thu";
+                                $Ndag = "Tor";
+                                break;
+                            case "Fri";
+                                $Ndag = "Fre";
+                                break;
+                            case "Sat";
+                                $Ndag = "Lør";
+                                break;
+                            case "Sun";
+                                $Ndag = "Søn";
+                                break;
+                        }
+                        $html = "<h3>".$Ndag.".".\Carbon\Carbon::parse($Dato->start)->format('d.M')." - Rom: ".$Dato->presentation_room."</h3>
                             <table class='table table-responsive'>
                             <thead class='thead-light'>
                             <tr>
