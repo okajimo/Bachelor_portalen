@@ -73,7 +73,7 @@
                                     @endforeach
                                     @if(!$groups)
                                         <tr>
-                                            <td>alle gruppene ligger i presentasjonsplanen</td>
+                                            <td>alle gruppene ligger i presentasjonsplanen</td><td></td><td></td>
                                         </tr>
                                     @endif
                                 </tbody>

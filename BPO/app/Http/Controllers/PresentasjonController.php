@@ -72,23 +72,14 @@ class PresentasjonController extends Controller
         return redirect('/presentasjonsplan')->with('success', "Presentasjonsplan oppdatert");
     }
 
-    public function show($id)
+    public function show()
     {
-        //
-    }
+        $presentasjoner = DB::select('SELECT presentation.presentation_group_number, presentation.presentation_year, presentation.start, presentation.end, presentation.presentation_room, sensors_supervisors.firstname, sensors_supervisors.lastname 
+        FROM presentation, sensors_supervisors 
+        WHERE presentation.sensor = sensors_supervisors.email
+        ORDER BY presentation.start');
 
-    public function edit($id)
-    {
-        //
-    }
-
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    public function destroy($id)
-    {
-        //
+        $title = "Endre Presentasjonsplan";
+        return view('admin.EndrePresentasjonsplan')->with(['title' => $title, 'presentasjoner' => $presentasjoner]);
     }
 }
