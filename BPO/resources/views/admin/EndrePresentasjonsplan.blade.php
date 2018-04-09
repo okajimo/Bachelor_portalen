@@ -26,4 +26,14 @@
             </tbody>
         </table>
     </div>
+    <a href="#" data-toggle="lightbox">
+        <img src="https://unsplash.it/600.jpg?image=251" class="img-fluid">
+    </a>
+    
+    <script>
+        $(document).on('click', '[data-toggle="lightbox"]', function(event) {
+                event.preventDefault();
+                $(this).ekkoLightbox();
+            });
+    </script>
 @endsection
