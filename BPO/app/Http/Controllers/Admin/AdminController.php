@@ -256,8 +256,8 @@ class AdminController extends Controller
     public function lagNyhet(request $request)
     {
         $this->validate($request, [
-            'tittel' => 'required|alpha',
-            'melding' => 'required',
+            'tittel' => 'required|regex:/(^[A-Za-z0-9 ÅØÆåøæ!?.:]+$)/',
+            'melding' => 'required|regex:/(^[A-Za-z0-9 ÅØÆåøæ!?.:\\/<>]+$)/',
         ]);
         DB::insert('INSERT INTO news (id, user, tittel, melding) VALUES (NULL, :user, :tittel, :melding)',['user'=>session('navn'),'tittel'=>$request->tittel,'melding'=>$request->melding]);
         return redirect('/vnews')->with('success', 'Nyhet har blitt laget');

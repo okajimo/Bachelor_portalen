@@ -69,7 +69,7 @@ class LoginController extends Controller
         }
         else
         {
-            return redirect('/login');
+            return redirect('/login')->with('error', 'Brukernavn eller passord er feil');
         }
     }
 
