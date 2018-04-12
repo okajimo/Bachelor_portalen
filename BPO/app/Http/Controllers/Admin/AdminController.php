@@ -12,11 +12,6 @@ use App\Models\Date;
 
 class AdminController extends Controller
 {
-    public function __construct()
-    {
-        DB::connection()->enableQueryLog();
-    }
-    
     public function vedlikeholdSensorVeileder()
     {
         if(session('levell') >= 2)
@@ -34,8 +29,6 @@ class AdminController extends Controller
     public function slettSenvei(request $request)
     {
         DB::DELETE('DELETE FROM sensors_supervisors WHERE email = :email',['email'=>$request->email]);
-        $query = DB::getQueryLog();
-        $log = \LogHelper::logSql(end($query), 'AdminController');
         return redirect('/vedlikeholdAvSensorOgVeileder')->with('success','Sletting av sensor/veileder var vellykket.');
     }
 
@@ -50,8 +43,6 @@ class AdminController extends Controller
         DB::insert('INSERT INTO sensors_supervisors (email, firstname, lastname, status) VALUES 
         (:email, :firstname, :lastname, :status)',
         ['email'=>$request->email,'firstname'=>$request->firstname,'lastname'=>$request->lastname,'status'=>$request->status]);
-        $query = DB::getQueryLog();
-        $log = \LogHelper::logSql(end($query), 'AdminController');
         return redirect('/vedlikeholdAvSensorOgVeileder')->with('success','Registrering av sensor/veileder er vellykket.');
 
     }
@@ -152,12 +143,9 @@ class AdminController extends Controller
 
                         DB::update('UPDATE users SET level = :to, password = :seks 
                         WHERE username = :en',['en'=>$row[0],'to' => $row[1], 'seks' => $passord]);
-                        $query = DB::getQueryLog();
-                        $log = \LogHelper::logSql(end($query), 'AdminController');
 
                         DB::insert('INSERT INTO student (username, student_points, program) VALUES 
                         (:en, :atte, :ni)',['en'=>$row[0],'atte'=>$row[2],'ni'=>$row[3]]);
-                        $log = \LogHelper::logSql(end($query), 'AdminController');
                     }
                     else
                     {
@@ -173,11 +161,9 @@ class AdminController extends Controller
                         DB::update('UPDATE users SET level = :to, password = :seks 
                         WHERE username = :en',['en'=>$row[0],'to' => $row[1], 'seks' => $passord]);
                         $query = DB::getQueryLog();
-                        $log = \LogHelper::logSql(end($query), 'AdminController');
 
                         DB::update('UPDATE student SET student_points = :atte, program = :ni 
                         WHERE username = :en',['en' => $row[0],'atte'=>$row[2],'ni' => $row[3]]);
-                        $log = \LogHelper::logSql(end($query), 'AdminController');
                     }
                 }
             }
@@ -203,10 +189,8 @@ class AdminController extends Controller
                 $stud = session('navn');
                 $passord = str_random(8);
                 DB::update('UPDATE student SET student_points = :poeng WHERE student.username = :stud',['poeng'=>$request->poeng,'stud'=>$request->student]);
-                $query = DB::getQueryLog();
-                $log = \LogHelper::logSql(end($query), 'AdminController');
+
                 DB::update('UPDATE users SET password = :pass WHERE username = :stud',['pass'=>$passord,'stud'=>$request->student]);
-                $log = \LogHelper::logSql(end($query), 'AdminController');
                 $email = DB::select('select email from users where username = :stud',['stud'=>$request->student]);
                 $sender = DB::select('select email from users where username = :stud',['stud'=>$stud]);
 
@@ -226,10 +210,7 @@ class AdminController extends Controller
             else
             {
                 DB::update('UPDATE student SET student_points = :poeng WHERE student.username = :stud',['poeng'=>$request->poeng,'stud'=>$request->student]);
-                $query = DB::getQueryLog();
-                $log = \LogHelper::logSql(end($query), 'AdminController');
                 DB::update('UPDATE users SET password = "" WHERE username = :stud',['stud'=>$request->student]);
-                $log = \LogHelper::logSql(end($query), 'AdminController');
                 return redirect('/studentVedlikehold')->with('success','Student er oppdatert.');
             }
         }

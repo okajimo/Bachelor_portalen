@@ -4,60 +4,41 @@ namespace App\Helpers;
 
 use Illuminate\Support\Facades\DB;
 use App\Models\Log;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Input;
+use DateTime;
+use DateTimezone;
 
 class LogHelper
 {
-    /**
-     * Funksjon for å logge SQL kommandoer til DB
-     * 
-     * $request object
-     */
-    public static function logModel ($command, $path)
+    public static function Log($melding, $type)
     {
-        $commandToSql = $command["query"];
-        foreach ($command["bindings"] as $value)
+        switch($type)
         {
-            $from = '?';
-            $from = '/'.preg_quote($from, '/').'/';
-            $commandToSql = preg_replace($from, $value, $commandToSql, 1);
+            case "1";
+                $typ = "<span style='color: blue;'> Info </span>";
+                break;
+            case "2";
+                $typ= "<div style='color: orange;'> Warning </div>";
+                break;
+            case "3";
+                $typ= "<div style='color: red;'> Error </div>";
+                break;
         }
+        $dato = date('d.m.Y H:i');
+        $level = session('levell');
+        $username = session('navn');
+        $html = "<b>User</b>: ".$username." <b>Level</b>: ".$level." <b>Loglevel</b>: ".$typ." <b>Handling</b>: ".$melding." <b>Dato</b> ".$dato."</br> \r\n";
 
-        $log = new Log;
-        $log->time = date('Y-m-d H:i:s');
-        $log->user = session('navn');
-        $log->file = $path;
-        $log->command = $commandToSql;
-        $log->save();
-    }
-
-    public static function logSql ($command, $path)
-    {
-        $i = 0;
-        $commandToSql = $command["query"];
-        $keys = array_keys($command["bindings"]);
-        foreach ($command["bindings"] as $value)
+        $finnes = Storage::exists('/public/filer/logger/1.txt');
+        if($finnes == false)
         {
-            $from = ':'.$keys[$i];
-            $commandToSql = str_replace($from, $value, $commandToSql);
-            $i++;
+            Storage::put('/public/filer/logger/1.txt', "");
         }
-
-        $log = new Log;
-        $log->time = date('Y-m-d H:i:s');
-        $log->user = session('navn');
-        $log->file = $path;
-        $log->command = $commandToSql;
-        $log->save();
+        $file = "storage/filer/logger/1.txt";
+        $current = file_get_contents($file);
+        $current .= $html;
+        file_put_contents($file, $current);
     }
-
-    /**
-     * Må kalles for å kunne aksessere funksjonene
-     * 
-     * Kalles på denne måten: \LogHelper::instance()->funksjon();
-     */
-    /*public static function instanceLog()
-    {
-        return new UploadHelper();
-    }*/
 }
 ?>

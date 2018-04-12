@@ -8,11 +8,6 @@ use Illuminate\Support\Facades\DB;
 
 class RoomController extends Controller
 {
-    public function __construct()
-    {
-        DB::connection()->enableQueryLog();
-    }
-
     //vis View
     public function index()
     {
@@ -38,10 +33,12 @@ class RoomController extends Controller
         
         //legg til rom
         $rom_finnes = DB::select('SELECT * FROM room WHERE room = :request', ['request' => $request->Rom]);
-        if(!$rom_finnes){
+        if(!$rom_finnes)
+        {
             DB::insert('INSERT INTO ROOM (room) VALUES (:request)',['request' => $request->Rom]);
-            $query = DB::getQueryLog();
-            $log = \LogHelper::logSql(end($query), 'RoomController');
+
+            \LogHelper::Log("Rom: ".$request->Rom, "1");
+
             return redirect('/room')->with('success', 'Rom registrert');
         }   
         else
@@ -60,8 +57,6 @@ class RoomController extends Controller
         }
         else{
             DB::delete('DELETE FROM room WHERE room = :id', ['id' => $id]);
-            $query = DB::getQueryLog();
-            $log = \LogHelper::logSql(end($query), 'RoomController');
             return redirect('/room')->with('success', 'Rom Fjernet');
         }
         

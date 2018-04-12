@@ -35,6 +35,15 @@
             @else
                 <p>Ingen rom er registrert</p>
             @endif
+            <?php $finnes3 = Storage::exists('/public/filer/logger/1.txt'); ?>
+            @if($finnes3 == true)
+                <?php 
+                    $fileHandle = fopen('storage/filer/logger/1.txt' , "r");
+                    $hvis =  fread($fileHandle,filesize("storage/filer/logger/1.txt"));
+                    fclose($fileHandle);
+                    echo $hvis;
+                ?>
+            @endif
         </div>
     </div>
 @endsection

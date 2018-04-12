@@ -44,8 +44,6 @@ class DateController extends Controller
         ]);
 
         $create = \DateHelper::instance()->create();
-        $query = DB::getQueryLog();
-        $log = \LogHelper::logModel(end($query), 'DateController');
         return redirect('/dato')->with('success', $create);
     }
 
@@ -62,8 +60,6 @@ class DateController extends Controller
         ]);
         
         $update = \DateHelper::instance()->update($request);
-        $query = DB::getQueryLog();
-        $log = \LogHelper::logSql(end($query), 'DateController');
         return redirect('/dato')->with('success', $update);
     }
 }
