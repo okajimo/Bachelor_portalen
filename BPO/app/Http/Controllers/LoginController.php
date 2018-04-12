@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 use Illuminate\Support\Facades\DB;
+use Monolog\Logger;
+use Monolog\Handler\StreamHandler;
 
 class LoginController extends Controller
 {
@@ -61,6 +63,13 @@ class LoginController extends Controller
                 $lvl=$level;
                 Session(['levell' => $lvl]);
                 return redirect('/dashboard/admin');
+
+                $bruker = session('navn');
+                $log = new Logger($bruker);
+                $log->pushHandler(new StreamHandler('/public/filer/logger/your.log', Logger::INFO));
+
+                // add records to the log
+                $log->info('Bruker: '.$bruker." logget inn.");
             }
             elseif($level == "0")
             {
