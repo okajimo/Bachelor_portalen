@@ -1,0 +1,26 @@
+{
+  "name": "bpo",
+  "description": "Bachelor Portalen OSLOMET",
+  "main": "",
+  "authors": [
+    "ivo",
+    "martin",
+    "stian"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "glyphicons": "^0.0.2",
+    "jt.timepicker": "timepicker#^1.11.13",
+    "datepicker": "*",
+    "jquery": "^3.3.1"
+  }
+}

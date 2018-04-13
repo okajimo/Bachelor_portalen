@@ -25,5 +25,15 @@
                 @endforeach
             </tbody>
         </table>
+        <div id="hei">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum ea itaque quo. Officia aspernatur delectus perferendis alias nisi saepe optio magnam assumenda similique porro et voluptas, veniam mollitia, beatae adipisci?
+        </div>
     </div>
+@endsection
+@section('extra')
+    <script>
+        $(function(){
+            $("#hei").hide(200);
+        });
+    </script>
 @endsection
