@@ -4,7 +4,7 @@
         <div class="container">
                 {!! Form::open(['action' => 'RoomController@store', 'class' => 'form-inline', 'method' => 'POST']) !!}
                     <div class="form-group">
-                        {{Form::text('Rom', '', ['class' => 'form-control', 'placeholder' => 'Rom navn'])}}
+                        {{Form::text('Rom', '', ['class' => 'form-control', 'placeholder' => 'Rom navn','required'])}}
                     </div>
                     {{Form::submit('Registrer Rom', ['class' => 'btn btn-primary'])}}
                 {!! Form::close() !!}

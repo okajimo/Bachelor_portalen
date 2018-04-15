@@ -1,28 +1,29 @@
 <?php
 $path = "/xampp/htdocs/Bachelor portal met/BPO/public/storage/filer/logger/";
 $logg = '/xampp/htdocs/Bachelor portal met/BPO/public/storage/filer/logger/1.txt';
+
 if (!file_exists($logg)) 
 {
-    fopen("/xampp/htdocs/Bachelor portal met/BPO/public/storage/filer/logger/1.txt", "w");
+    fopen($path."1.txt", "w");
 }
 if (file_exists($logg)) 
 {
-    $logg = '/xampp/htdocs/Bachelor portal met/BPO/public/storage/filer/logger/2.txt';
+    $logg = $path.'2.txt';
     if (file_exists($logg)) 
     {
-        $logg = '/xampp/htdocs/Bachelor portal met/BPO/public/storage/filer/logger/3.txt';
+        $logg = $path.'3.txt';
         if (file_exists($logg)) 
         {
-            $logg = '/xampp/htdocs/Bachelor portal met/BPO/public/storage/filer/logger/4.txt';
+            $logg = $path.'4.txt';
             if (file_exists($logg)) 
             {
-                $logg = '/xampp/htdocs/Bachelor portal met/BPO/public/storage/filer/logger/5.txt';
+                $logg = $path.'5.txt';
                 if (file_exists($logg)) 
                 {
-                    $logg = '/xampp/htdocs/Bachelor portal met/BPO/public/storage/filer/logger/6.txt';
+                    $logg = $path.'6.txt';
                     if (file_exists($logg)) 
                     {
-                        $logg = '/xampp/htdocs/Bachelor portal met/BPO/public/storage/filer/logger/7.txt';
+                        $logg = $path.'7.txt';
                         if (file_exists($logg)) 
                         {
                             unlink($path."7.txt");
