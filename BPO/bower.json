@@ -19,8 +19,7 @@
   ],
   "dependencies": {
     "glyphicons": "^0.0.2",
-    "jt.timepicker": "timepicker#^1.11.13",
-    "datepicker": "*",
-    "jquery": "^3.3.1"
+    "jquery": "^3.3.1",
+    "bootstrap-datepicker": "^1.8.0"
   }
 }

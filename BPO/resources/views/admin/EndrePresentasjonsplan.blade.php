@@ -25,15 +25,24 @@
                 @endforeach
             </tbody>
         </table>
-        <div id="hei">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum ea itaque quo. Officia aspernatur delectus perferendis alias nisi saepe optio magnam assumenda similique porro et voluptas, veniam mollitia, beatae adipisci?
+    </div>
+    <div class="row">
+            <div class="col-3">
+                <div class="input-group date" data-provide="datepicker">
+                    <input type="text" class="form-control margin-fix">
+                    <div class="btn btn-dark input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 @endsection
 @section('extra')
     <script>
         $(function(){
-            $("#hei").hide(200);
+            $('.datepicker').datepicker();
+
         });
     </script>
 @endsection

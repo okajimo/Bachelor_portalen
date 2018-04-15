@@ -32,44 +32,43 @@ class PresentasjonController extends Controller
     //oppretter presentasjonsplanen
     public function store(Request $request)
     {
-        //Hvor mange presentasjoner som blir registrert perr dag
-        $antall_perr_dag = $request->perr_dag;
-        $aar = date("Y");
-        $dato = $request->dates;
-        $antall = 0;
+        if ($request->gruppe != "") {
+            $antall_perr_dag = count($request->gruppe);
+            $groups = $request->gruppe;
 
-        $time_start = $request->time;
-        $sensor = $request->sensor;
-        $room = $request->room;
+            $aar = date("Y");
+            $dato = $request->dates;
+            $antall = 0;
 
-        $dt = new DateTime($time_start, new DateTimezone('Europe/Oslo'));
-        $dt2 = new DateTime($time_start, new DateTimezone('Europe/Oslo'));
-        $dt2->modify('+30 minutes');
+            $time_start = $request->time;
+            $sensor = $request->sensor;
+            $room = $request->room;
 
-        $exists = DB::select('SELECT * 
-        FROM groups 
-        WHERE group_number NOT IN (SELECT presentation.presentation_group_number FROM presentation)
-        AND supervisor IS NOT NULL');
-        
-        foreach($exists as $exist){
-            if ($antall < $antall_perr_dag ){
-                        
-                $start = $dato." ".$dt->format('H:i');
-                $slutt = $dato." ".$dt2->format('H:i');
-                $dt->modify('+5 minutes');
-                $dt2->modify('+5 minutes');
+            $dt = new DateTime($time_start, new DateTimezone('Europe/Oslo'));
+            $dt2 = new DateTime($time_start, new DateTimezone('Europe/Oslo'));
+            $dt2->modify('+30 minutes');
+            
+            foreach($groups as $exist){
+                if ($antall < $antall_perr_dag ){
+                            
+                    $start = $dato." ".$dt->format('H:i');
+                    $slutt = $dato." ".$dt2->format('H:i');
+                    $dt->modify('+5 minutes');
+                    $dt2->modify('+5 minutes');
 
-                DB::insert("INSERT INTO presentation (presentation.presentation_group_number, presentation.presentation_year, presentation.start, presentation.end, presentation.presentation_room, presentation.sensor)
-                VALUES (:gnum, :aar, :starts, :slutts, :room, :sensor)", ['gnum' => $exist->group_number, 'starts' => $start, 'slutts' => $slutt, 'room' => $room, 'aar' =>$aar, 'sensor' => $sensor]);
-                
-                $dt->modify('+30 minutes');
-                $dt2->modify('+30 minutes');
+                    DB::insert("INSERT INTO presentation (presentation.presentation_group_number, presentation.presentation_year, presentation.start, presentation.end, presentation.presentation_room, presentation.sensor)
+                    VALUES (:gnum, :aar, :starts, :slutts, :room, :sensor)", ['gnum' => $exist, 'starts' => $start, 'slutts' => $slutt, 'room' => $room, 'aar' =>$aar, 'sensor' => $sensor]);
+                    
+                    $dt->modify('+30 minutes');
+                    $dt2->modify('+30 minutes');
 
-                $antall++;
-            }          
-        }     
-
-        return redirect('/presentasjonsplan')->with('success', "Presentasjonsplan oppdatert");
+                    $antall++;
+                }          
+            }     
+            return redirect('/presentasjonsplan')->with('success', "Presentasjonsplan oppdatert");
+        }
+        else
+            return redirect('/presentasjonsplan')->with('error', "du må hvertfall velge en gruppe");
     }
 
     public function show()
