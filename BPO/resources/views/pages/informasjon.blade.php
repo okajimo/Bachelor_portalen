@@ -14,7 +14,6 @@
     <div class="jumbotron">
         <div class="container">
             <p>Her finner du nødvendig informasjon til studenter, sensorer og oppdragsgivere.</p>
-            <span class="glyphicon glyphicon-arrow-down"></span>
         </div>
     </div>
 @endsection

@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://student.hioa.no/hioa-theme/images/favicon.ico" rel="Shortcut Icon">
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
+    <link rel="stylesheet" href="{{asset('bower_components/glyphicons/styles/glyphicons.css')}}">
+    <link rel="stylesheet" href="{{asset('bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker3.css')}}">
     <title>{{config('app.name', 'BPO')}}</title>
 
     <!-- CSRF Token -->
@@ -27,11 +29,10 @@
         @yield('content')
     </div>
     <script src="{{asset('js/app.js')}}"></script>
+    <script src="{{asset('bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.js')}}"></script>
     <!--Confirm delete-->
     <script>function ConfirmDelete(){ var x = confirm("Bekreft sletting"); if (x) return true; else return false;}</script>
-    <script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
-    <script>
-        CKEDITOR.replace( 'article-ckeditor' );
-    </script>
+
+    @yield('extra')
 </body>
 </html>

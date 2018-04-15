@@ -30,11 +30,11 @@
             </div>
             <div style="margin-top: 5em;"></div>
             <div class="row">
-                {!! Form::open(['action' => 'PresentasjonController@store', 'method' => 'POST', 'class' => 'col-4 form-group']) !!}
+                {!! Form::open(['action' => 'PresentasjonController@store', 'method' => 'POST', 'id' => 'form', 'class' => 'col-4 form-group']) !!}
                     <div class="row">
                         <h4 class="no-padding-left col-12">Registrer dag og rom her:</h4>
-                        <input type="date" class="col-8 form-control form-control-lg" name="dates" required>
-                        <input type="time" class="col-4 form-control form-control-lg" name="time" required>
+                        <input type="date" class="col-8 form-control form-control-lg" value="{{date("Y")}}-06-01" name="dates" required>
+                        <input type="time" class="col-4 form-control form-control-lg" value="09:00" name="time" required>
                         <select required class="custom-select form-control form-control-lg margin-fix-top" name="room">
                             <option disabled value="" selected >Velg Rom</option>
                             @foreach($rooms as $room)
@@ -47,10 +47,11 @@
                                 <option value={{$supervisor->email}}>{{$supervisor->firstname." ".$supervisor->lastname}}</option>
                             @endforeach
                         </select>
-                        <input class="col-12 form-control form-control-lg margin-fix-top" type="number" name="perr_dag" min="1" placeholder="Antall presentasjoner perr dag" class="form-control margin-fix-bottom" value="11" required>
+                        <div class="grupper"></div>
                         {{Form::submit('Oppdater', ['class'=>'btn btn-success col-12 margin-fix-top'])}}
                     </div>
                 {!! Form::close() !!}
+                <div class="gform"></div>
                 <div class="col-4 offset-4 no-padding-right">
                     <h4>Grupper som ikke er registrerte:</h4>
                     <div class="jumbotron width-fill" style="padding:0 !important">
@@ -63,9 +64,9 @@
                                         <th>Leder</th>
                                     </tr>
                                 </thead>
-                                <tbody style="background: #F5F5F5">
+                                <tbody id="data" style="background: #F5F5F5">
                                     @foreach($groups as $group)
-                                    <tr>
+                                    <tr class="clickme">
                                         <th scope="row">{{$group->group_number}}</th>
                                         <td>{{$group->year}}</td>
                                         <td>{{$group->leader}}</td>
@@ -84,4 +85,30 @@
             </div>
         </div>
     </div>
+@endsection
+@section('extra')
+    <style>.paint{background-color: #e3f2fd}</style>
+    <script>
+        $(function(){
+            $('#data .clickme').on('click', function() {
+                $(this).toggleClass('paint');
+                var gruppe = $(this).find("th").html();
+
+                if ( $( this ).hasClass( "paint" )){
+                    $('.grupper').append('<strong id="p'+gruppe+'">Gruppe '+gruppe+' </strong>');
+                    $('.gform').append('<input type="hidden" id="g'+gruppe+'" name="gruppe[]" value="'+gruppe+'" />');
+                }
+                if (! $( this ).hasClass( "paint" )){
+                    $('.grupper #p'+gruppe).remove();
+                    $('.gform #g'+gruppe).remove();
+                }
+            });
+
+            $('#form').submit(function(eventObj) {
+                var grupper = $(".gform").html();
+                $(this).append(grupper);
+                return true;
+            });
+        });
+    </script>
 @endsection

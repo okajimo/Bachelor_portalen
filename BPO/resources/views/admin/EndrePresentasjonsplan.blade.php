@@ -26,4 +26,23 @@
             </tbody>
         </table>
     </div>
+    <div class="row">
+            <div class="col-3">
+                <div class="input-group date" data-provide="datepicker">
+                    <input type="text" class="form-control margin-fix">
+                    <div class="btn btn-dark input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection
+@section('extra')
+    <script>
+        $(function(){
+            $('.datepicker').datepicker();
+
+        });
+    </script>
 @endsection

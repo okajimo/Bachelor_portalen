@@ -12,7 +12,7 @@
                 <div class="form-group form-inline">  
                     {{Form::textarea('melding', '',['id' => 'article-ckeditor', 'class'=>'form-control'])}}
                 </div>
-                {{Form::submit('Lag nyhet', ['class'=>'btn btn-primary'])}}    
+                {{Form::submit('Lag nyhet', ['class'=>'btn btn-success'])}}    
             {!! Form::close() !!} 
             </br>
         <table class="table table-responsive">
@@ -40,4 +40,10 @@
             </table>
         </div>
     </div>
+@endsection
+@section('extra')
+    <script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
+    <script>
+        CKEDITOR.replace( 'article-ckeditor' );
+    </script>
 @endsection
