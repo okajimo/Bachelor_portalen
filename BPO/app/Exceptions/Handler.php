@@ -48,6 +48,9 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
-        return parent::render($request, $exception);
+        return redirect('http://kvartirakrasivo.ru/404/index.php');
+        //return parent::render($request, $exception);
+        //$error = 1;
+        //return redirect('/error')->with('error', $error);
     }
 }

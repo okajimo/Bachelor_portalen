@@ -115,3 +115,6 @@ Route::get('/presentasjonsplan', 'PresentasjonController@index')->name('presenta
 Route::post('/presentasjonsplan', 'PresentasjonController@delete');
 Route::post('/presentasjonsplan/dato', 'PresentasjonController@store');
 Route::post('/presentasjonsplan/endre', 'PresentasjonController@show');
+
+//Error
+Route::get('/error', 'Admin\errorController@error')->name('error');
