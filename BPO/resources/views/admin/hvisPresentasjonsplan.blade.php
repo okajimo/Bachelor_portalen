@@ -8,9 +8,10 @@
                     $fileHandle = fopen('storage/filer/presentasjonsplan/true.txt' , "r");
                     $hvis =  fread($fileHandle,filesize("storage/filer/presentasjonsplan/true.txt"));
                     fclose($fileHandle);
-                    echo $hvis;
+                    echo $hvdawis;
                 ?>
             @endif
         </div>
     </div>
 @endsection
+
