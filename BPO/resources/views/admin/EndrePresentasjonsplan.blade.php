@@ -16,10 +16,10 @@
                 @foreach($presentasjoner as $presentasjon)
                     <tr>
                         <th scope="row">{{$presentasjon->presentation_group_number}}</th>
-                        <td><input type="datetime-local" value="{{date("Y-m-d", strtotime($presentasjon->start))}}T{{date('H:i', strtotime($presentasjon->start))}}" class="form-control" name="start"></td>    
-                        <td><input type="datetime-local" value="{{date("Y-m-d", strtotime($presentasjon->end))}}T{{date('H:i', strtotime($presentasjon->end))}}" class="form-control" name="stop"></td>
+                        <td><input type="datetime-local" value="{{date("Y-m-d", strtotime($presentasjon->start))}}T{{date('H:i', strtotime($presentasjon->start))}}" class="form-control" name="start[]"></td>    
+                        <td><input type="datetime-local" value="{{date("Y-m-d", strtotime($presentasjon->end))}}T{{date('H:i', strtotime($presentasjon->end))}}" class="form-control" name="stop[]"></td>
                         <td>
-                            <select required class="form-control" name="room">
+                            <select required class="form-control" name="room[]">
                                 <option selected value={{$presentasjon->presentation_room}}>{{$presentasjon->presentation_room}}</option>
                                 @foreach($rooms as $room)
                                     @if($presentasjon->presentation_room != $room->room)
@@ -28,7 +28,7 @@
                                 @endforeach
                             </select>
                         <td>
-                            <select required class="custom-select form-control" name="sensor">
+                            <select required class="custom-select form-control" name="sensor[]">
                                 <option selected value={{$presentasjon->sensor}}>{{$presentasjon->firstname." ".$presentasjon->lastname}}</option>
                                 @foreach($supervisors as $supervisor)
                                     @if($presentasjon->sensor != $supervisor->email)
@@ -43,7 +43,7 @@
         </table>
         {!! Form::close() !!}
     </div>
-    <button id="regform"class="btn btn-success btn-big ">Registrer endring</button>
+    <button id="regform"class="btn btn-warning btn-big "style="color:#FFF">Registrer endring</button>
     <a href="/presentasjonsplan" class="btn btn-info btn-big">Presentasjonsplan</a>
     <button class="back btn btn-info btn-big">Tilbake</button>
 @endsection
