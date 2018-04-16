@@ -44,17 +44,30 @@ class PresentasjonController extends Controller
             $sensor = $request->sensor;
             $room = $request->room;
 
+            $dtCheck = new DateTime("11:00:00", new DateTimezone('Europe/Oslo'));
+            $dt2Check = new DateTime("12:00:00", new DateTimezone('Europe/Oslo'));
+
             $dt = new DateTime($time_start, new DateTimezone('Europe/Oslo'));
             $dt2 = new DateTime($time_start, new DateTimezone('Europe/Oslo'));
             $dt2->modify('+30 minutes');
             
             foreach($groups as $exist){
                 if ($antall < $antall_perr_dag ){
-                            
+                    if($dt>= $dtCheck && $dt< $dt2Check){
+                        $dt->setTime(12, 00);
+                        $dt2->setTime(12, 30);
+                    }
+
+                    if($dt2>= $dtCheck && $dt2< $dt2Check){
+                        $dt->setTime(12, 00);
+                        $dt2->setTime(12, 30);
+                    }
+
                     $start = $dato." ".$dt->format('H:i');
                     $slutt = $dato." ".$dt2->format('H:i');
                     $dt->modify('+5 minutes');
                     $dt2->modify('+5 minutes');
+
 
                     DB::insert("INSERT INTO presentation (presentation.presentation_group_number, presentation.presentation_year, presentation.start, presentation.end, presentation.presentation_room, presentation.sensor)
                     VALUES (:gnum, :aar, :starts, :slutts, :room, :sensor)", ['gnum' => $exist, 'starts' => $start, 'slutts' => $slutt, 'room' => $room, 'aar' =>$aar, 'sensor' => $sensor]);
@@ -73,12 +86,20 @@ class PresentasjonController extends Controller
 
     public function show()
     {
-        $presentasjoner = DB::select('SELECT presentation.presentation_group_number, presentation.presentation_year, presentation.start, presentation.end, presentation.presentation_room, sensors_supervisors.firstname, sensors_supervisors.lastname 
+        $presentasjoner = DB::select('SELECT presentation.presentation_group_number, presentation.presentation_year, presentation.start, presentation.end, presentation.presentation_room, presentation.sensor, sensors_supervisors.firstname, sensors_supervisors.lastname 
         FROM presentation, sensors_supervisors 
         WHERE presentation.sensor = sensors_supervisors.email
         ORDER BY presentation.start');
 
+        $rooms = DB::select('SELECT * FROM room');
+        $supervisors = DB::select("SELECT * FROM sensors_supervisors WHERE status = 'sensor'");
+
         $title = "Endre Presentasjonsplan";
-        return view('admin.EndrePresentasjonsplan')->with(['title' => $title, 'presentasjoner' => $presentasjoner]);
+        return view('admin.EndrePresentasjonsplan')->with(['title' => $title, 'presentasjoner' => $presentasjoner, 'rooms' => $rooms, 'supervisors' => $supervisors]);
+    }
+
+    public function edit(Request $request)
+    {
+        return $request;
     }
 }

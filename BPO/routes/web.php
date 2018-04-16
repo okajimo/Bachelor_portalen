@@ -115,3 +115,4 @@ Route::get('/presentasjonsplan', 'PresentasjonController@index')->name('presenta
 Route::post('/presentasjonsplan', 'PresentasjonController@delete');
 Route::post('/presentasjonsplan/dato', 'PresentasjonController@store');
 Route::post('/presentasjonsplan/endre', 'PresentasjonController@show');
+Route::post('/presentasjonsplan/edit', 'PresentasjonController@edit');
