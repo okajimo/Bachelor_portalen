@@ -45,12 +45,18 @@
     </div>
     <button id="regform"class="btn btn-success btn-big ">Registrer endring</button>
     <a href="/presentasjonsplan" class="btn btn-info btn-big">Presentasjonsplan</a>
+    <button class="back btn btn-info btn-big">Tilbake</button>
 @endsection
 @section('extra')
     <script>
         $(function(){
             $("#regform").on('click', function(){
                 $("#form1").submit();
+            });
+
+            $('.back').click(function(){
+                parent.history.back();
+                return false;
             });
         });
     </script>
