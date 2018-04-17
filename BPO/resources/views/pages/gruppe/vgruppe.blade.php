@@ -73,14 +73,16 @@
                                 <td><a href="http://{{ $group->url }}" target='_blank'>{{ $group->title }}</a></td>
                                 <td>
 
-                                        <?php $student = DB::select('select student_groups.student from student_groups, groups 
+                                        <?php /*$student = DB::select('select student_groups.student from student_groups, groups 
                                         where groups.group_number = student_groups.student_groups_number and groups.year = student_groups_year 
                                         and student_groups.student_groups_number LIKE :number and student_groups.student_groups_year LIKE :year', 
-                                        ['number' => $group->group_number, 'year' => $group->year]);
+                                        ['number' => $group->group_number, 'year' => $group->year]);*/
                                         
                                         $leader = DB::SELECT('SELECT groups.leader FROM student, student_groups, groups WHERE student.username = student_groups.student 
                                         AND student_groups.student_groups_number = groups.group_number 
                                         AND student_groups.student_groups_year = groups.year AND student.username = groups.leader');
+                                        
+                                        $student = \DBHelper::studenterIGruppe($group->group_number, $group->year);
                                         ?>
                                         @foreach($student as $students)
                                             @if($students->student == $group->leader)

@@ -8,7 +8,7 @@
                     $fileHandle = fopen('storage/filer/presentasjonsplan/true.txt' , "r");
                     $hvis =  fread($fileHandle,filesize("storage/filer/presentasjonsplan/true.txt"));
                     fclose($fileHandle);
-                    echo $hvdawis;
+                    echo $hvis;
                 ?>
             @endif
         </div>
