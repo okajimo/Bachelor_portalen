@@ -1,6 +1,6 @@
 <ul class="navbar-nav mr-auto">
     <li class="nav-item">
-        <a class="nav-link" href="/informasjon">Informasjon <span class="sr-only">(current)</span>
+    <a class="nav-link" href={{ route('info') }}>Informasjon <span class="sr-only">(current)</span>
             <i class="fa fa-arrow-circle-o-right float-right d-lg-none" aria-hidden="true"></i>
             <!--<i class="fa fa-angle-right" style="border: solid black 1.8px; border-radius: 100%; padding: 0 5px 0 5px; font-size: 1em;" aria-hidden="true"></i>-->
         </a>
