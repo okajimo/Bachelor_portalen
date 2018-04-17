@@ -40,7 +40,7 @@ class LogHelper
         $current .= $html;
         file_put_contents($file, $current);
     }
-    /*public static function studenterIGruppe($number, $year)
+    public static function studIGruppe($number, $year)
     {
         $student = DB::select('select student_groups.student from student_groups, groups 
         where groups.group_number = student_groups.student_groups_number and groups.year = student_groups_year 
@@ -48,6 +48,6 @@ class LogHelper
         ['number' => $number, 'year' => $year]);
 
         return $student;
-    }*/
+    }
 }
 ?>
