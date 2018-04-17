@@ -29,6 +29,7 @@ class AdminController extends Controller
     public function slettSenvei(request $request)
     {
         DB::DELETE('DELETE FROM sensors_supervisors WHERE email = :email',['email'=>$request->email]);
+        \LogHelper::Log("Slettet sensor/veileder: ".$request->email, "1"); 
         return redirect('/vedlikeholdAvSensorOgVeileder')->with('success','Sletting av sensor/veileder var vellykket.');
     }
 
@@ -77,54 +78,6 @@ class AdminController extends Controller
                 $finnes = DB::select('SELECT username FROM users WHERE users.username = :stud',['stud'=>$row[0]]);
                 if(!$finnes)
                 {
-                    /*if($row[2] >= 100)
-                    {
-                        $passord = str_random(8);
-                        /*$data = array(
-                            'til' => $row[4],
-                            'fra' => $sender[0]->email,
-                            'passord' => $passord
-                        );
-                        mail::send('emails.contact', $data, function($melding) use ($data)
-                        {
-                            $melding->from($data['fra']);
-                            $melding->to($data['til']);
-                            $melding->subject('Passord');
-                        });*/
-
-                        /*
-                        $fra = $sender[0]->email;
-                        $til = $row[4];
-
-                        $headers[] = 'MIME-Version: 1.0';
-                        $headers[] = 'Content-type: text/html; charset=UTF-8';
-                        $headers[] = 'From: OsloMET Admin <'.$fra.'>';
-
-                        $emne = 'OsloMET bachelor portal';
-
-                        $melding = '
-                        <html>
-                            <body>
-                                <p>Passord til OsloMET bachelor portal er opprettet</p>
-                                <b>Passordet er: '.$passord.'</b>
-                                <p>Sent fra: '.$fra.'</p>
-                            </body>
-                        </html>
-                        ';
-
-                        mail($til, $emne, $melding, implode("\r\n", $headers));
-                        
-                    }
-                    else
-                    {
-                        $passord = "";
-                    }
-                    //Laster inn studenter fra filen som lastes opp
-                    DB::update('UPDATE users SET level = :to, password = :seks 
-                    WHERE username = :en',['en'=>$row[0],'to' => $row[1], 'seks' => $passord]);
-
-                    DB::insert('INSERT INTO student (username, student_points, program) VALUES 
-                    (:en, :atte, :ni)',['en'=>$row[0],'atte'=>$row[2],'ni'=>$row[3]]);*/
                     return redirect('/studentVedlikehold')->with('error',$row[0].' eksisterer ikke i user tabellen. Opprett user i tabellen eller fjern fra opplastningsfilen.');
                 }
                 else

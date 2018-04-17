@@ -18,8 +18,6 @@
             <?php 
                 $brukerS = DB::select('SELECT student_groups.student FROM student_groups WHERE student_groups.student LIKE :bruker',['bruker' => $bruker]);
             ?>
-            
-
             @foreach($brukerS as $brukerF)
                 @if($brukerF->student == $bruker)
                 <?php $break = 0; ?>
@@ -52,31 +50,29 @@
                 @endif
             <table class="table">
                     <thead class="thead-light">
-                    <tr>
-                        <th>Gruppe</th>
-                        <th>Prosjektside</th>
-                        <th>Studenter</th>
-                        <th>Veileder</th>
-                        @if($iGruppe == null)
-                        <th>Meld deg inn</th>
-                        @endif
-                    </tr>
+                        <tr>
+                            <th>Gruppe</th>
+                            <th>Prosjektside</th>
+                            <th>Studenter</th>
+                            <th>Veileder</th>
+                            @if($iGruppe == null)
+                            <th>Meld deg inn</th>
+                            @endif
+                        </tr>
                     </thead>
                         @foreach ($groups as $group)
-                        @if($group->leader ==! "")
-                            <?php $date = date('Y'); ?>
-                            @if($group->year >= date('Y'))
-                            <tbody>
-                            <tr>
-                                <td>{{ $group->group_number }}
-                                               </td>
-                                <td><a href="http://{{ $group->url }}" target='_blank'>{{ $group->title }}</a></td>
-                                <td>
-
-                                        <?php $student = DB::select('select student_groups.student from student_groups, groups 
+                            @if($group->leader ==! "")
+                                <?php $date = date('Y'); ?>
+                                @if($group->year >= date('Y'))
+                                <tbody>
+                                <tr>
+                                    <td>{{ $group->group_number }}</td>
+                                    <td><a href="http://{{ $group->url }}" target='_blank'>{{ $group->title }}</a></td>
+                                    <td>
+                                        <?php /*$student = DB::select('select student_groups.student from student_groups, groups 
                                         where groups.group_number = student_groups.student_groups_number and groups.year = student_groups_year 
                                         and student_groups.student_groups_number LIKE :number and student_groups.student_groups_year LIKE :year', 
-                                        ['number' => $group->group_number, 'year' => $group->year]);
+                                        ['number' => $group->group_number, 'year' => $group->year]);*/
                                         
                                         $leader = DB::SELECT('SELECT groups.leader FROM student, student_groups, groups WHERE student.username = student_groups.student 
                                         AND student_groups.student_groups_number = groups.group_number 
@@ -90,29 +86,28 @@
                                             @endif
                                         @endforeach
                                     </td>
-                                <td >
-                                    <?php 
-                                        $veileder = DB::select('select firstname, lastname from sensors_supervisors where email = :email',['email'=>$group->supervisor]);
-                                    ?>
-                                    @foreach($veileder as $vei)
-                                        {{$vei->firstname." ".$vei->lastname}}
-                                    @endforeach
-                                </td>
-                                                 @if($iGruppe == null)
-                                                    <td style=" text-align: center;">
-                                                        {!! Form::open(['action' => 'GruppeController@meld_inn', 'method' => 'POST'])!!}
-                                                        {{Form::hidden('number', $group->group_number)}}
-                                                        {{Form::hidden('year', $group->year)}}
-                                                        {{form::hidden('_method', 'post')}}
-                                                        {{Form::submit('Bli med',['class'=>'btn btn-success btn-nice', 'name' => 'meld'])}}
-                                                        {!! Form::close() !!}
-                                                    </td>
-                                                @endif
-                                </tr> 
-                                </tbody>
+                                    <td >
+                                        <?php 
+                                            $veileder = DB::select('select firstname, lastname from sensors_supervisors where email = :email',['email'=>$group->supervisor]);
+                                        ?>
+                                        @foreach($veileder as $vei)
+                                            {{$vei->firstname." ".$vei->lastname}}
+                                        @endforeach
+                                    </td>
+                                        @if($iGruppe == null)
+                                            <td style=" text-align: center;">
+                                                {!! Form::open(['action' => 'GruppeController@meld_inn', 'method' => 'POST'])!!}
+                                                {{Form::hidden('number', $group->group_number)}}
+                                                {{Form::hidden('year', $group->year)}}
+                                                {{form::hidden('_method', 'post')}}
+                                                {{Form::submit('Bli med',['class'=>'btn btn-success btn-nice', 'name' => 'meld'])}}
+                                                {!! Form::close() !!}
+                                            </td>
+                                        @endif
+                                    </tr> 
+                                    </tbody>
+                                @endif
                             @endif
-                        
-                        @endif
                         @endforeach    
                 </table>
         </div>
