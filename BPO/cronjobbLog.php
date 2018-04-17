@@ -1,6 +1,6 @@
 <?php
-$path = "/xampp/htdocs/Bachelor portal met/BPO/public/storage/filer/logger/";
-$logg = '/xampp/htdocs/Bachelor portal met/BPO/public/storage/filer/logger/1.txt';
+$path = "/xampp/htdocs/ltayn/Bachelor_portalen/BPO/public/storage/filer/logger/";
+$logg = '/xampp/htdocs/ltayn/Bachelor_portalen/BPO/public/storage/filer/logger/1.txt';
 
 if (!file_exists($logg)) 
 {

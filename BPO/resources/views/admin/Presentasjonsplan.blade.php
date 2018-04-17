@@ -23,18 +23,18 @@
                 {!! Form::open(['action' => ['PresentasjonController@delete'], 'method' => 'POST', 'class' => 'col-xs-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 no-padding-left no-padding-right margin-fix-bottom']) !!}
                     {{Form::submit('Slett Prestasjonsplan', ['class'=>'btn btn-lg width-fill btn-danger margin-fix'])}}
                 {!! Form::close() !!}
-                {!! Form::open(['action' => 'PresentasjonController@show', 'method' => 'POST', 'class' => 'col-xs-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 no-padding-left no-padding-right margin-fix-bottom']) !!}
-                    {{Form::submit('Endre Prestasjonsplan', ['class'=>'btn btn-lg width-fill btn-warning margin-fix', 'style' => 'color:#FFF'])}}
-                {!! Form::close() !!}
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 no-padding-left no-padding-right margin-fix-bottom">
+                    <a href="/presentasjonsplan/endre" class="btn btn-lg width-fill btn-info" style="line-height: 3.1em;">Endre Prestasjonsplan</a>
+                </div>
                 </br>
             </div>
             <div style="margin-top: 5em;"></div>
             <div class="row">
-                {!! Form::open(['action' => 'PresentasjonController@store', 'method' => 'POST', 'id' => 'form', 'class' => 'col-4 form-group']) !!}
+                {!! Form::open(['action' => 'PresentasjonController@store', 'method' => 'POST', 'id' => 'form', 'class' => 'col-xs-12 col-sm-12 col-md-10 of col-lg-5 col-xl-5 offset-md-1 offset-lg-0 form-group']) !!}
                     <div class="row">
-                        <h4 class="no-padding-left col-12">Registrer dag og rom her:</h4>
-                        <input type="date" class="col-8 form-control form-control-lg" value="{{date("Y")}}-06-01" name="dates" required>
-                        <input type="time" class="col-4 form-control form-control-lg" value="09:00" name="time" required>
+                        <h4 class="no-padding-left col-12 bigger">Registrer dag og rom her:</h4>
+                        <input type="date" class="col-xs-12 col-sm-8 form-control form-control-lg" value="{{date("Y")}}-06-01" name="dates" required>
+                        <input type="time" class="col-xs-12 col-sm-4 form-control form-control-lg" value="09:00" name="time" required>
                         <select required class="custom-select form-control form-control-lg margin-fix-top" name="room">
                             <option disabled value="" selected >Velg Rom</option>
                             @foreach($rooms as $room)
@@ -48,12 +48,12 @@
                             @endforeach
                         </select>
                         <div class="grupper"></div>
-                        {{Form::submit('Oppdater', ['class'=>'btn btn-success col-12 margin-fix-top'])}}
+                        {{Form::submit('Send inn plan', ['class'=>'btn btn-success col-12 margin-fix-top'])}}
                     </div>
                 {!! Form::close() !!}
                 <div class="gform"></div>
-                <div class="col-4 offset-4 no-padding-right">
-                    <h4>Grupper som ikke er registrerte:</h4>
+                <div class="col-xs-12 col-sm-12 col-md-10 of col-lg-5 col-xl-5 offset-md-1 offset-lg-2 no-padding-right">
+                    <h4 class="col-12 no-padding-left bigger">Trykk på gruppene for å legge dem inn i dagens plan:</h4>
                     <div class="jumbotron width-fill" style="padding:0 !important">
                         <div class="table-responsive">
                             <table class="table">
@@ -64,7 +64,7 @@
                                         <th>Leder</th>
                                     </tr>
                                 </thead>
-                                <tbody id="data" style="background: #F5F5F5">
+                                <tbody class="table-over" id="data" style="background: #F5F5F5">
                                     @foreach($groups as $group)
                                     <tr class="clickme">
                                         <th scope="row">{{$group->group_number}}</th>
@@ -74,7 +74,10 @@
                                     @endforeach
                                     @if(!$groups)
                                         <tr>
-                                            <td>alle gruppene ligger i presentasjonsplanen</td><td></td><td></td>
+                                            <td colspan="3">
+                                                <p>Alle gruppene ligger i presentasjonsplanen</p>
+                                                <p>Grupper uten veileder vil ikke bli vist i denne listen</p>
+                                            </td>
                                         </tr>
                                     @endif
                                 </tbody>
@@ -87,7 +90,7 @@
     </div>
 @endsection
 @section('extra')
-    <style>.paint{background-color: #e3f2fd}</style>
+    <style>.paint{background-color: #e3f2fd;} .bigger{min-height: 2.3em;}</style>
     <script>
         $(function(){
             $('#data .clickme').on('click', function() {
@@ -109,6 +112,8 @@
                 $(this).append(grupper);
                 return true;
             });
+
+            $('.clickme').css('cursor', 'pointer');
         });
     </script>
 @endsection
