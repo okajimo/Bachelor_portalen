@@ -16,19 +16,19 @@ class LogHelper
         switch($type)
         {
             case "1";
-                $typ = "<span style='color: blue;'> Info </span>";
+                $typ = " Info";
                 break;
             case "2";
-                $typ= "<div style='color: orange;'> Warning </div>";
+                $typ= " Warning";
                 break;
             case "3";
-                $typ= "<div style='color: red;'> Error </div>";
+                $typ= " Error";
                 break;
         }
         $dato = date('d.m.Y H:i');
         $level = session('levell');
         $username = session('navn');
-        $html = "<b>User</b>: ".$username." <b>Level</b>: ".$level." <b>Loglevel</b>: ".$typ." <b>Handling</b>: ".$melding." <b>Dato</b> ".$dato."</br> \r\n";
+        $html = "User: ".$username." Level: ".$level." Loglevel: ".$typ." Handling: ".$melding." Dato ".$dato." \r\n";
 
         $finnes = Storage::exists('/public/filer/logger/1.txt');
         if($finnes == false)

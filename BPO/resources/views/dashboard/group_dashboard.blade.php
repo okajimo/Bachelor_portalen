@@ -23,9 +23,14 @@
     <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-4">
         <div class="card">
             <a class="nav-link" href="{{ route('news') }}">
-                <h4 class="card-header">Nyheter <i class="fa fa-info-circle" aria-hidden="true" style="color: #fa3e3e;"></i></h4>
+                <h4 class="card-header">Nyheter </h4>
                 <div class="card-body">
-                    <p class="card-text">Her kan du lese nyheter publisert av administrator.</p>
+                    <?php $nyheter = DB::select('select tittel from news order by id DESC'); ?>
+                    <p class="card-text">Nyheter publisert av administrator:</br>
+                        @foreach($nyheter as $ny)
+                            <b>{{$ny->tittel }}</br></b>
+                        @endforeach
+                    </p>
                 </div>
             </a>
         </div>

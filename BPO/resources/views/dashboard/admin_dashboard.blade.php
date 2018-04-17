@@ -41,15 +41,24 @@
         </div>
         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-4">
         <div class="card">
-            <a class="nav-link" href="{{ route('student') }}">
-                <h4 class="card-header">Vedlikeholde studenter</h4>
-                <div class="card-body">
-                <p class="card-text">Her kan du importere studenter eller endre studie poeng for studenter.</p>
-                </div>
-            </a>
+                <a class="nav-link" href="{{ route('student') }}">
+                    <h4 class="card-header">Vedlikeholde studenter</h4>
+                    <div class="card-body">
+                    <p class="card-text">Her kan du importere studenter eller endre studie poeng for studenter.</p>
+                    </div>
+                </a>
+            </div>
         </div>
+        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-4">
+            <div class="card">
+                <a class="nav-link" href="{{ route('vnews') }}">
+                    <h4 class="card-header">Vedlikehold nyheter</h4>
+                    <div class="card-body">
+                        <p class="card-text">Her kan du opprette og slette nyheter.</p>
+                    </div>
+                </a>
+            </div>
         </div>
-        
         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-4">
             <div class="card">
                 <a class="nav-link" href="{{ route('dokumenter') }}">

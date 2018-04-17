@@ -31,12 +31,7 @@
                 Meny
             </button>
             <div class="dropdown-menu">
-                <a class="dropdown-item" href="{{ route('gruppe') }}">Dashboard Gruppe
-                    <?php $finnesNyheter = DB::select('select * from news'); ?>
-                    @if($finnesNyheter)
-                        <i class="fa fa-info-circle" aria-hidden="true" style="color: #fa3e3e;"></i>
-                    @endif
-                </a>
+                <a class="dropdown-item" href="{{ route('gruppe') }}">Dashboard Gruppe</a>
                 <a class="dropdown-item" href="{{ route('group') }}">Gruppe innstillinger</a>
                 <a class="dropdown-item" href="{{ route('lastOppS') }}">Last opp statusrapport</i></a>
                 <a class="dropdown-item" href="{{ route('lastOppP') }}">Last opp prosjektskisse</a>

@@ -65,8 +65,8 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
-    //'timezone' => 'Europe/Oslo',
+    //'timezone' => 'UTC',
+    'timezone' => 'Europe/Oslo',
 
     /*
     |--------------------------------------------------------------------------
