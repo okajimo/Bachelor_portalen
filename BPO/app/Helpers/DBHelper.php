@@ -16,5 +16,13 @@ Class DBHelper
 
         return $student;
     }
+    public static function lederGruppe()
+    {
+        $leader = DB::SELECT('SELECT groups.leader FROM student, student_groups, groups WHERE student.username = student_groups.student 
+        AND student_groups.student_groups_number = groups.group_number 
+        AND student_groups.student_groups_year = groups.year AND student.username = groups.leader');
+
+        return $leader;
+    }
 }
 ?>
