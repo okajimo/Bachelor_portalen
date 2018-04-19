@@ -33,6 +33,9 @@ class ProsjektforslagController extends Controller
         ]);
 
         $upload = \UploadHelper::instance()->upload($request);
+
+        \LogHelper::Log("Lastet opp prosjektforslag med navn ".$request->file_name, "1");
+
         return redirect('/vedlikehold_Prosjektforslag')->with('success', $upload);
     }
 
@@ -40,6 +43,9 @@ class ProsjektforslagController extends Controller
     {
         DB::delete('DELETE FROM prosjektforslag WHERE id = :id', ['id' => $request->input('id')]);
         Storage::delete('/public/filer/prosjektforslag/'.$request->input('file'));
+
+        \LogHelper::Log("Slettet prosjektforslag med navn ".$request->input('file'), "1");
+
         return redirect('/vedlikehold_Prosjektforslag')->with('success', 'Fil Fjernet');
     }
 }

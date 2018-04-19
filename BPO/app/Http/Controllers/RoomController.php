@@ -52,11 +52,16 @@ class RoomController extends Controller
         WHERE presentation.presentation_room = room.room 
         AND presentation.presentation_room = :id', ['id' => $id]);
 
-        if ($ibruk){
+        if ($ibruk)
+        {
             return redirect('/room')->with('error', 'Rommet er allerede i bruk og må fjernes fra presentasjonsplanen, før det kan slettes');
         }
         else{
             DB::delete('DELETE FROM room WHERE room = :id', ['id' => $id]);
+
+            $bruker = session('navn');
+            \LogHelper::Log($bruker." har slettet rom med id ".$id, "1");
+
             return redirect('/room')->with('success', 'Rom Fjernet');
         }
         
