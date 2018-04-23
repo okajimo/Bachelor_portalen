@@ -74,10 +74,11 @@
                                         and student_groups.student_groups_number LIKE :number and student_groups.student_groups_year LIKE :year', 
                                         ['number' => $group->group_number, 'year' => $group->year]);*/
                                         
-                                        $leader = DB::SELECT('SELECT groups.leader FROM student, student_groups, groups WHERE student.username = student_groups.student 
+                                        /*$leader = DB::SELECT('SELECT groups.leader FROM student, student_groups, groups WHERE student.username = student_groups.student 
                                         AND student_groups.student_groups_number = groups.group_number 
-                                        AND student_groups.student_groups_year = groups.year AND student.username = groups.leader');
-                                        
+                                        AND student_groups.student_groups_year = groups.year AND student.username = groups.leader');*/
+
+                                        $leader = \DBHelper::lederGruppe();
                                         $student = \DBHelper::studIGruppe($group->group_number, $group->year);
                                         ?>
                                         @foreach($student as $students)

@@ -36,6 +36,8 @@ class SimulerController extends Controller
         Session(['orginal_navn' => $request->inn_navn]);
         Session(['orginal_level' => $request->inn_level]);
 
+        \LogHelper::Log(session('navn')." begynte å simulere student ".$request->student, "1");
+
         Session(['navn' => $request->student]);
         Session(['levell' => "1"]);
         $title = "Simuler Student";
@@ -48,6 +50,9 @@ class SimulerController extends Controller
         Session(['navn' => $request->inn_navn]);
         Session(['levell' => $request->inn_level]);
         $title = "Simuler Student";
+
+        \LogHelper::Log(session('navn')." avsluttet simulering av student", "1");
+
         return redirect('/dashboard/admin')->with('error', 'Simulering stoppet');
     }
 }

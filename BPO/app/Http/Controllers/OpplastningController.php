@@ -74,11 +74,17 @@ class OpplastningController extends Controller
             if ($gruppeHarLastetOpp[0]->title == 'statusrapporter')
             {
                 $upload = \UploadHelper::instance()->updateDocument($request);
+
+                \LogHelper::Log("Student ".$student." har lastet opp statusrapport", "1");
+
                 return redirect('/lastOppStatus')->with('success', $upload);
             }
             elseif ($gruppeHarLastetOpp[0]->title == 'prosjektskisser')
             {
                 $upload = \UploadHelper::instance()->updateDocument($request);
+
+                \LogHelper::Log("Student ".$student." har lastet opp prosjektskisse", "1");
+
                 return redirect('/lastOppSkisse')->with('success', $upload);                
             }
         }
@@ -87,11 +93,17 @@ class OpplastningController extends Controller
             if ($request->input('type') == 'statusrapporter')
             {
                 $upload = \UploadHelper::instance()->upload($request);
+
+                \LogHelper::Log("Student ".$student." har lastet opp statusrapport", "1");
+
                 return redirect('/lastOppStatus')->with('success', $upload);
             }
             elseif ($request->input('type') == 'prosjektskisser')
             {
                 $upload = \UploadHelper::instance()->upload($request);
+
+                \LogHelper::Log("Student ".$student." har lastet opp prosjektskisse", "1");
+
                 return redirect('/lastOppSkisse')->with('success', $upload);
             }
         }

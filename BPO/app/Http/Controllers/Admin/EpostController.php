@@ -72,6 +72,9 @@ class EpostController extends Controller
             mail($til, $emne, $melding, implode("\r\n", $headers));*/
             
         }
+        
+        \LogHelper::Log("Sendte mail til alle studenter", "1");
+
         return redirect('/epostView')->with('success', 'Mail er sendt');
     }
 
@@ -116,8 +119,10 @@ class EpostController extends Controller
         </html>
         ';
 
-        mail($til, $emne, $melding, implode("\r\n", $headers));*/
+        mail($til, $emne, $melding, implode("\r\n", $headers));
         
+        \LogHelper::Log("Sendte epost til ".$request->senvei, "1");*/
+
         return redirect('/epostView')->with('success', 'Mail er sendt');
     }
 }

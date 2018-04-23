@@ -189,6 +189,10 @@ class Tidligere_prosjekterController extends Controller
                     }
                 }
             }
+
+            $bruker = session('navn');
+            \LogHelper::Log($bruker." har generert html side for presentasjonsplan og lagret den i tidligere prosjekter", "1");
+
             return redirect('/presentasjonsplan')->with('success', 'plan opprettet, trykk på publiser for å vise til studenter');
         }
         else
@@ -217,13 +221,18 @@ class Tidligere_prosjekterController extends Controller
         {
             $finnes2 = Storage::exists('/public/filer/presentasjonsplan/false.txt');
             $finnes3 = Storage::exists('/public/filer/presentasjonsplan/true.txt');
+            $bruker = session('navn');
             if($finnes2 == true)
             {
                 Storage::move('/public/filer/presentasjonsplan/false.txt', '/public/filer/presentasjonsplan/true.txt');
+
+                \LogHelper::Log($bruker." har publisert presentasjonsplan for studenter", "1");
             }
             if($finnes3 == true)
             {
                 Storage::move('/public/filer/presentasjonsplan/true.txt', '/public/filer/presentasjonsplan/false.txt');
+
+                \LogHelper::Log($bruker." har fjernet publisering av presentasjonsplan for studenter", "1");
             }
             return redirect('/presentasjonsplan')->with('success', 'En endring har blitt gjort for visning av presentasjonsplan');
         }

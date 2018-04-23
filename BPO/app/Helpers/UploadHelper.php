@@ -74,7 +74,7 @@ Class UploadHelper
         }
         return 'Dokument oppdatert';
     }
-
+    
     /**
      * Må kalles for å kunne aksessere funksjonene
      * 
