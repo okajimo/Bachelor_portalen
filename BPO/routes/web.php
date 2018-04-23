@@ -12,10 +12,10 @@
 */
 
 Route::get('/', 'PagesController@Index');
-Route::get('/kontakt_info', 'PagesController@kontakt_info');
-Route::get('/prosjektforslag', 'PagesController@prosjektforslag');
-Route::get('/tidligere_prosjekter', 'PagesController@tidligere_prosjekter');
-Route::get('/grupper', 'PagesController@grupper');
+Route::get('/kontakt_info', 'PagesController@kontakt_info')->name('kontakt_info');
+Route::get('/prosjektforslag', 'PagesController@prosjektforslag')->name('prosjektforslag');
+Route::get('/tidligere_prosjekter', 'PagesController@tidligere_prosjekter')->name('tidligere_prosjekter');
+Route::get('/grupper', 'PagesController@grupper')->name('grupper');
 Route::get('/informasjon', 'PagesController@informasjon')->name('info');
 
 // statiske sider for sensorer
