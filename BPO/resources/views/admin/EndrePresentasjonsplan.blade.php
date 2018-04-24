@@ -15,7 +15,7 @@
             <tbody>
                 @foreach($presentasjoner as $presentasjon)
                     <tr>
-                        <th scope="row">{{$presentasjon->presentation_group_number}}</th>
+                        <th scope="row">{{$presentasjon->presentation_group_number}} <input type="text" name="group[]" value={{$presentasjon->presentation_group_number}} hidden></th>
                         <td><input type="datetime-local" value="{{date("Y-m-d", strtotime($presentasjon->start))}}T{{date('H:i', strtotime($presentasjon->start))}}" class="form-control" name="start[]"></td>    
                         <td><input type="datetime-local" value="{{date("Y-m-d", strtotime($presentasjon->end))}}T{{date('H:i', strtotime($presentasjon->end))}}" class="form-control" name="stop[]"></td>
                         <td>

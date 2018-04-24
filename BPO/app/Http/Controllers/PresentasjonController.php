@@ -101,5 +101,14 @@ class PresentasjonController extends Controller
     public function edit(Request $request)
     {
         return $request;
+
+        $i = 0;
+        foreach($request->group as $group){
+            DB::update("UPDATE presentation
+            SET presentation.start = value2, presentation.end = value3, presentation.presentation_room = value4, presentation.sensor = value5
+            WHERE presentation.presentation_group_number = :group", ['group' => $group, 'start' => $request->start[$i], 'end' => $request->stop[$i], 'room' => $request->room[$i], 'sensor' => $request->sensor[$i]]);
+        }
+        
+
     }
 }
