@@ -56,11 +56,12 @@ class Handler extends ExceptionHandler
         }
         else
         {
+            \LogHelper::Log("Melding: ".$exception, "3");
             if(!$this->isHttpException($exception))
             {
                 $exception = new \Symfony\Component\HttpKernel\Exception\HttpException(500);
                 return parent::render($request, $exception);
             }
-        }  */   
+        }*/
     }
 }

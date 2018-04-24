@@ -27,7 +27,7 @@
                     <a href="/presentasjonsplan/endre" class="btn btn-lg width-fill btn-info" style="line-height: 3.1em;">Endre Prestasjonsplan</a>
                 </div>
                 </br>
-            </div>
+            </div> 
             <div style="margin-top: 5em;"></div>
             <div class="row">
                 {!! Form::open(['action' => 'PresentasjonController@store', 'method' => 'POST', 'id' => 'form', 'class' => 'col-xs-12 col-sm-12 col-md-10 of col-lg-5 col-xl-5 offset-md-1 offset-lg-0 form-group']) !!}

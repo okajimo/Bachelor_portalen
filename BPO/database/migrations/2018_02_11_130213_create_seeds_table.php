@@ -146,18 +146,6 @@ class CreateSeedsTable extends Migration
 		
 		});
 
-		Schema::create('log', function(Blueprint $table) {
-		    $table->engine = 'InnoDB';
-		
-		    $table->increments('id');
-		    $table->datetime('time');
-		    $table->string('user', 45);
-		    $table->string('file', 45);
-		    $table->string('command', 510);
-		
-		
-		});
-
 		Schema::create('news', function(Blueprint $table) {
 		    $table->engine = 'InnoDB';
 		
