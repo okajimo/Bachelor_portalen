@@ -39,24 +39,23 @@
                         </td>
                     </tr>
                 @endforeach
+                @if(!$presentasjoner)
+                    <tr>
+                        <td colspan="5"><p style="min-height: 8em;">Grupper må legges inn i presentasjonsplanen før man kan endre dem, venligst gå tilbake til forrige side</p></td>
+                    </tr>
+                @endif
             </tbody>
         </table>
         {!! Form::close() !!}
     </div>
-    <button id="regform"class="btn btn-warning btn-big "style="color:#FFF">Registrer endring</button>
+    <button id="regform" class="btn btn-warning btn-big "style="color:#FFF">Registrer endring</button>
     <a href="/presentasjonsplan" class="btn btn-info btn-big">Presentasjonsplan</a>
-    <button class="back btn btn-info btn-big">Tilbake</button>
 @endsection
 @section('extra')
     <script>
         $(function(){
             $("#regform").on('click', function(){
                 $("#form1").submit();
-            });
-
-            $('.back').click(function(){
-                parent.history.back();
-                return false;
             });
         });
     </script>

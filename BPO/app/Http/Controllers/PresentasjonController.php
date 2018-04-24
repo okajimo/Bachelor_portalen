@@ -114,15 +114,17 @@ class PresentasjonController extends Controller
 
     public function edit(Request $request)
     {
-        return $request;
+        if ($request->group == "")
+            return redirect('/presentasjonsplan/endre')->with('error', "Du kan ikke endre grupper før de har blitt lagtt inn i presentasjonsplanen");
 
         $i = 0;
         foreach($request->group as $group){
             DB::update("UPDATE presentation
-            SET presentation.start = value2, presentation.end = value3, presentation.presentation_room = value4, presentation.sensor = value5
-            WHERE presentation.presentation_group_number = :group", ['group' => $group, 'start' => $request->start[$i], 'end' => $request->stop[$i], 'room' => $request->room[$i], 'sensor' => $request->sensor[$i]]);
+            SET presentation.start = :starts, presentation.end = :ends, presentation.presentation_room = :room, presentation.sensor = :sensor
+            WHERE presentation.presentation_group_number = :group", ['group' => $group, 'starts' => $request->start[$i], 'ends' => $request->stop[$i], 'room' => $request->room[$i], 'sensor' => $request->sensor[$i]]);
+            $i++;
         }
-        
 
+        return redirect('/presentasjonsplan/endre')->with('success', "Presentasjonsplan endret");
     }
 }
