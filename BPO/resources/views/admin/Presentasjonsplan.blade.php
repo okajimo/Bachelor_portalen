@@ -97,11 +97,11 @@
                 $(this).toggleClass('paint');
                 var gruppe = $(this).find("th").html();
 
-                if ( $( this ).hasClass( "paint" )){
+                if ( $(this).hasClass( "paint" )){
                     $('.grupper').append('<strong id="p'+gruppe+'">Gruppe '+gruppe+' </strong>');
                     $('.gform').append('<input type="hidden" id="g'+gruppe+'" name="gruppe[]" value="'+gruppe+'" />');
                 }
-                if (! $( this ).hasClass( "paint" )){
+                if (! $(this).hasClass( "paint" )){
                     $('.grupper #p'+gruppe).remove();
                     $('.gform #g'+gruppe).remove();
                 }

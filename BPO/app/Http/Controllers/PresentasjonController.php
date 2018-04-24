@@ -119,9 +119,17 @@ class PresentasjonController extends Controller
 
         $i = 0;
         foreach($request->group as $group){
+            $time_start = $request->start_time[$i];
+            $date_start = $request->start_date[$i];
+
+            $dt = new DateTime($time_start, new DateTimezone('Europe/Oslo'));
+
+            $start = $date_start." ".$dt->format('H:i');
+            $dt->modify('+30 minutes');
+
             DB::update("UPDATE presentation
             SET presentation.start = :starts, presentation.end = :ends, presentation.presentation_room = :room, presentation.sensor = :sensor
-            WHERE presentation.presentation_group_number = :group", ['group' => $group, 'starts' => $request->start[$i], 'ends' => $request->stop[$i], 'room' => $request->room[$i], 'sensor' => $request->sensor[$i]]);
+            WHERE presentation.presentation_group_number = :group", ['group' => $group, 'starts' => $start, 'ends' => $dt /*$request->stop[$i]*/, 'room' => $request->room[$i], 'sensor' => $request->sensor[$i]]);
             $i++;
         }
 

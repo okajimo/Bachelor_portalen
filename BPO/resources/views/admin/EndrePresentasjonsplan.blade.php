@@ -6,6 +6,7 @@
             <thead class="thead-dark">
                 <tr>
                     <th>Gruppe</th>
+                    <th>Dato</th>
                     <th>Fra</th>
                     <th>Til</th>
                     <th>Rom</th>
@@ -16,8 +17,10 @@
                 @foreach($presentasjoner as $presentasjon)
                     <tr>
                         <th scope="row">{{$presentasjon->presentation_group_number}} <input type="text" name="group[]" value={{$presentasjon->presentation_group_number}} hidden></th>
-                        <td><input type="datetime-local" value="{{date("Y-m-d", strtotime($presentasjon->start))}}T{{date('H:i', strtotime($presentasjon->start))}}" class="form-control" name="start[]"></td>    
-                        <td><input type="datetime-local" value="{{date("Y-m-d", strtotime($presentasjon->end))}}T{{date('H:i', strtotime($presentasjon->end))}}" class="form-control" name="stop[]"></td>
+                        <!--<td><input type="datetime-local" value="{{date("Y-m-d", strtotime($presentasjon->start))}}T{{date('H:i', strtotime($presentasjon->start))}}" class="form-control" name="start[]"></td>-->
+                        <td><input type="date" value="{{date("Y-m-d", strtotime($presentasjon->start))}}" class="form-control" name="start_date[]"></td>
+                        <td><input type="time" value="{{date('H:i', strtotime($presentasjon->start))}}" class="form-control" name="start_time[]"></td>
+                        <td><p style="padding-top: 0.52em;">{{date('H:i', strtotime($presentasjon->end))}}</p></td>
                         <td>
                             <select required class="form-control" name="room[]">
                                 <option selected value={{$presentasjon->presentation_room}}>{{$presentasjon->presentation_room}}</option>
@@ -41,7 +44,7 @@
                 @endforeach
                 @if(!$presentasjoner)
                     <tr>
-                        <td colspan="5"><p style="min-height: 8em;">Grupper må legges inn i presentasjonsplanen før man kan endre dem, venligst gå tilbake til forrige side</p></td>
+                        <td colspan="6"><p style="min-height: 8em;">Grupper må legges inn i presentasjonsplanen før man kan endre dem, venligst gå tilbake til forrige side</p></td>
                     </tr>
                 @endif
             </tbody>
