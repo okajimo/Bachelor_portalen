@@ -6,22 +6,22 @@
         </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="/prosjektforslag">Prosjektforslag
+        <a class="nav-link" href={{ route('prosjektforslag') }}>Prosjektforslag
             <i class="fa fa-arrow-circle-o-right float-right d-lg-none" aria-hidden="true"></i>
         </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="/tidligere_prosjekter">Tidligere Prosjekter
+        <a class="nav-link" href={{ route('tidligere_prosjekter') }}>Tidligere Prosjekter
             <i class="fa fa-arrow-circle-o-right float-right d-lg-none" aria-hidden="true"></i>
         </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="/grupper">Grupper
+        <a class="nav-link" href={{ route('grupper') }}>Grupper
             <i class="fa fa-arrow-circle-o-right float-right d-lg-none" aria-hidden="true"></i>
         </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="/kontakt_info">Kontakt oss
+        <a class="nav-link" href={{ route('kontakt_info') }}>Kontakt oss
             <i class="fa fa-arrow-circle-o-right float-right d-lg-none" aria-hidden="true"></i>
         </a>
     </li>

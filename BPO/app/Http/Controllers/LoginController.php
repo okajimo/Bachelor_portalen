@@ -31,6 +31,7 @@ class LoginController extends Controller
         if(DB::table('users')->where('username' , $innData->username)->value('password') == $innData->password)
         {
             Session(['navn' => $innData->username]);
+            $stud = session('navn');
             $level = DB::table('users')->where('username' , $innData->username)->value('level');
 
             Session(['level' => $level]);
@@ -38,6 +39,9 @@ class LoginController extends Controller
             {
                 $lvl=1;
                 Session(['levell' => $lvl]);
+
+                \LogHelper::Log("Student ".$stud." logget inn", "1");
+
                 return redirect('/dashboard/group');
             }
             /*elseif($level == "2")
@@ -62,14 +66,10 @@ class LoginController extends Controller
             {
                 $lvl=$level;
                 Session(['levell' => $lvl]);
+
+                \LogHelper::Log("Admin ".$stud." logget inn", "1");
+
                 return redirect('/dashboard/admin');
-
-                $bruker = session('navn');
-                $log = new Logger($bruker);
-                $log->pushHandler(new StreamHandler('/public/filer/logger/your.log', Logger::INFO));
-
-                // add records to the log
-                $log->info('Bruker: '.$bruker." logget inn.");
             }
             elseif($level == "0")
             {
@@ -84,6 +84,8 @@ class LoginController extends Controller
 
     public function logout(Request $request)
     {
+        $bruker = session('navn');
+        \LogHelper::Log($bruker." logget seg ut", "1");
         $request->session()->flush();
 
         return redirect('/login');

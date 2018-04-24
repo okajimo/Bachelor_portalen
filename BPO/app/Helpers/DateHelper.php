@@ -57,7 +57,7 @@ Class DateHelper
      */
     public function create()
     {
-        DB::connection()->enableQueryLog();
+        //DB::connection()->enableQueryLog();
         $array = array();
         $data = Input::except('_token');
         foreach ($data as $key => $value)
@@ -76,6 +76,9 @@ Class DateHelper
         $date->pres_start = $array['pres_start'];
         $date->pres_end = $array['pres_end'];
         $date->save();
+
+        \LogHelper::Log("Opprettet datoen for dates tabellen", "1");
+
         return 'Datoer er lagret';
     }
 
@@ -86,7 +89,7 @@ Class DateHelper
      */
     public function update($request)
     {
-        DB::connection()->enableQueryLog();
+        //DB::connection()->enableQueryLog();
         $array = array();
         $data = Input::except('_token');
         foreach ($data as $key => $value)
@@ -100,6 +103,8 @@ Class DateHelper
         ['start' => $array['start'], 'statusreport' => $array['status_report'], 'project_sketch' => $array['project_sketch'],
         'preproject' => $array['preproject'], 'project_report' => $array['project_report'], 'pres_start' => $array['pres_start'],
         'pres_end' => $array['pres_end']]);
+
+        \LogHelper::Log("Oppdaterte datoene for dates tabellen", "1");
 
         return 'Datoer er oppdatert';
     }

@@ -26,6 +26,10 @@ class PresentasjonController extends Controller
     public function delete()
     {
         DB::delete('DELETE FROM presentation');
+
+        $bruker = session('navn');
+        \LogHelper::Log($bruker." slettet presentasjonsplan", "1");
+
         return redirect('/presentasjonsplan')->with('error', 'Prestasjonsplaner er slettet');
     }
 
@@ -76,8 +80,18 @@ class PresentasjonController extends Controller
                     $dt2->modify('+30 minutes');
 
                     $antall++;
+                    $grupperLaget[] = $exist;
                 }          
-            }     
+            }  
+            
+            $grupper = "";
+            foreach($grupperLaget as $grupp)
+            {
+                $grupper .= $grupp." ";
+            }
+            $bruker = session('navn');
+            \LogHelper::Log($bruker." har opprettet presentasjonsplan for gruppene: ".$grupper, "1"); 
+
             return redirect('/presentasjonsplan')->with('success', "Presentasjonsplan oppdatert");
         }
         else

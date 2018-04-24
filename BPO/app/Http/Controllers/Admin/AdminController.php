@@ -44,6 +44,7 @@ class AdminController extends Controller
         DB::insert('INSERT INTO sensors_supervisors (email, firstname, lastname, status) VALUES 
         (:email, :firstname, :lastname, :status)',
         ['email'=>$request->email,'firstname'=>$request->firstname,'lastname'=>$request->lastname,'status'=>$request->status]);
+        \LogHelper::Log("Opprettet ny ".$request->status.": ".$request->firstname." ".$request->lastname, "1");
         return redirect('/vedlikeholdAvSensorOgVeileder')->with('success','Registrering av sensor/veileder er vellykket.');
 
     }
@@ -97,8 +98,12 @@ class AdminController extends Controller
                         DB::update('UPDATE users SET level = :to, password = :seks 
                         WHERE username = :en',['en'=>$row[0],'to' => $row[1], 'seks' => $passord]);
 
+                        \LogHelper::Log("Oppdaterte level og passord til bruker ".$row[0], "1");
+
                         DB::insert('INSERT INTO student (username, student_points, program) VALUES 
                         (:en, :atte, :ni)',['en'=>$row[0],'atte'=>$row[2],'ni'=>$row[3]]);
+
+                        \LogHelper::Log("Opprettet student ".$row[0]." med ".$row[2]." student poeng og program ".$row[3], "1");
                     }
                     else
                     {
@@ -113,10 +118,13 @@ class AdminController extends Controller
 
                         DB::update('UPDATE users SET level = :to, password = :seks 
                         WHERE username = :en',['en'=>$row[0],'to' => $row[1], 'seks' => $passord]);
-                        $query = DB::getQueryLog();
+
+                        \LogHelper::Log("Oppdaterte level og passord til bruker ".$row[0], "1");
 
                         DB::update('UPDATE student SET student_points = :atte, program = :ni 
                         WHERE username = :en',['en' => $row[0],'atte'=>$row[2],'ni' => $row[3]]);
+
+                        \LogHelper::Log("Oppdaterte student ".$row[0]." med ".$row[2]." student poeng og program ".$row[3], "1");
                     }
                 }
             }
@@ -143,6 +151,8 @@ class AdminController extends Controller
                 $passord = str_random(8);
                 DB::update('UPDATE student SET student_points = :poeng WHERE student.username = :stud',['poeng'=>$request->poeng,'stud'=>$request->student]);
 
+                \LogHelper::Log("Oppdaterte ".$request->student." med ".$request->poeng." student poeng", "1");
+
                 DB::update('UPDATE users SET password = :pass WHERE username = :stud',['pass'=>$passord,'stud'=>$request->student]);
                 $email = DB::select('select email from users where username = :stud',['stud'=>$request->student]);
                 $sender = DB::select('select email from users where username = :stud',['stud'=>$stud]);
@@ -157,7 +167,9 @@ class AdminController extends Controller
                     $melding->from($data['fra']);
                     $melding->to($data['til']);
                     $melding->subject('Passord');
-                });*/
+                });
+                \LogHelper::Log("Oppdaterte ".$request->student." med nytt passord. Mail med passord sendt til student", "1");
+                */
                 return redirect('/studentVedlikehold')->with('success','Student er oppdatert.');
             }
             else
@@ -194,12 +206,18 @@ class AdminController extends Controller
             'melding' => 'required',
         ]);
         DB::insert('INSERT INTO news (id, user, tittel, melding) VALUES (NULL, :user, :tittel, :melding)',['user'=>session('navn'),'tittel'=>$request->tittel,'melding'=>$request->melding]);
+        
+        \LogHelper::Log("Opprettet nyhet med tittel ".$request->tittel, "1");
+        
         return redirect('/vnews')->with('success', 'Nyhet har blitt laget');
     }
 
     public function slettNyhet(request $request)
     {
         DB::delete('delete from news where id = :id',['id'=> $request->id]);
+
+        \LogHelper::Log("Slettet nyhet med id ".$request->id, "1");
+
         return redirect('/vnews')->with('success', 'Nyhet har blitt slettet');
     }
 }

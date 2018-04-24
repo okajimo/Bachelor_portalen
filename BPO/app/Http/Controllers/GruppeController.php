@@ -31,7 +31,10 @@ class GruppeController extends Controller
         $sjekk_leder = DB::SELECT('SELECT groups.leader FROM groups WHERE groups.leader = :student', ['student' => $student]);
         if(!$sjekk_leder)
         {
+            $studGrupp = DB::SELECT('SELECT student_groups.student_groups_number FROM student_groups WHERE student_groups.student = :student', ['student' => $student]);
             DB::DELETE('DELETE FROM student_groups WHERE student_groups.student = :student',['student' => $student]);
+
+            \LogHelper::Log("Fjernet student ".$student." fra gruppe ".$studGrupp[0]->student_groups_number, "1");
         }
         else
         {
@@ -45,7 +48,6 @@ class GruppeController extends Controller
                     if($med->student == $student)
                     {
                         DB::DELETE('DELETE FROM student_groups WHERE student_groups.student = :student',['student' => $student]);
-                        //$endre_tom = "";
                     }
                     else
                     {
@@ -57,11 +59,15 @@ class GruppeController extends Controller
                 {
                     DB::UPDATE('UPDATE groups SET leader = :leader 
                     WHERE groups.group_number = :gruppe AND groups.year = :year',['leader' =>$endre_student,'gruppe' =>$groups->group_number,'year' => $groups->year]);
+
+                    \LogHelper::Log("Student ".$student." har forlatt gruppen og ny leder er satt", "1");
                 }
                 else
                 {
                     DB::UPDATE('UPDATE groups SET leader = "", title = "", url = "", supervisor = NULL
                     WHERE groups.group_number = :gruppe AND groups.year = :year',['gruppe' => $groups->group_number,'year' => $groups->year]);
+
+                    \LogHelper::Log("Gruppe ".$groups->group_number." har blitt tømt", "1");
                 }
             }
 
@@ -92,6 +98,7 @@ class GruppeController extends Controller
             $gruppe->group_number = 1;
             $gruppe->save();
             DB::insert('INSERT INTO student_groups (student, student_groups_number, student_groups_year) VALUES (:Snavn, :Sgruppe, :Syear)',['Snavn' => $leder,'Sgruppe' => $gruppe->group_number,'Syear' => $gruppe->year]);
+            \LogHelper::Log("Student ".$leder." har opprettet gruppe med nummer ".$gruppe->group_number, "1");
         }
         else 
         {
@@ -100,6 +107,8 @@ class GruppeController extends Controller
             {
                 DB::update('UPDATE groups SET leader = :leder WHERE groups.group_number = :nummer AND groups.year = :ar',['leder' => $leder, 'nummer' => $tomme->group_number,'ar' => $tomme->year]);
                 DB::insert('INSERT INTO student_groups (student, student_groups_number, student_groups_year) VALUES (:Snavn, :Sgruppe, :Syear)',['Snavn' => $leder,'Sgruppe' => $tomme->group_number,'Syear' => $tomme->year]);
+                
+                \LogHelper::Log("Student ".$leder." har blitt lagt inn i gruppe med nummer ".$tomme->group_number, "1");
                 break;
             }
 
@@ -110,6 +119,8 @@ class GruppeController extends Controller
                 $gruppe->group_number = $test;
                 $gruppe->save();
                 DB::insert('INSERT INTO student_groups (student, student_groups_number, student_groups_year) VALUES (:Snavn, :Sgruppe, :Syear)',['Snavn' => $leder,'Sgruppe' => $gruppe->group_number,'Syear' => $gruppe->year]);
+
+                \LogHelper::Log("Student ".$leder." har laget gruppe med nummer ".$gruppe->group_number, "1");
             }
         }
         return redirect('/vgruppe');
@@ -121,6 +132,9 @@ class GruppeController extends Controller
         {
             $stud = session('navn');
             DB::insert('INSERT INTO student_groups (student, student_groups_number, student_groups_year) VALUES (:student, :group, :year)',['student' => $stud,'group'=> $request->number,'year' => $request->year]);
+            
+            \LogHelper::Log("Student ".$stud." meldte seg inn i gruppe ".$request->number, "1");
+
             return redirect('/vgruppe');
         }
     }
@@ -133,6 +147,9 @@ class GruppeController extends Controller
         (SELECT groups.leader FROM student, student_groups WHERE student.username = student_groups.student 
         AND student_groups.student_groups_number = groups.group_number AND student_groups.student_groups_year = groups.year AND student.username = :set_leader2)'
         , [ 'set_leader' => $set_leader, 'set_leader2' => $set_leader2]);
+
+        \LogHelper::Log("Student ".$set_leader." satt seg selv som leder i gruppen sin", "1");
+
         return redirect('/vgruppe');
     }  
 
@@ -181,6 +198,9 @@ class GruppeController extends Controller
             //$finnesUrl = DB::select('SELECT groups.url FROM groups, student_groups WHERE groups.group_number = student_groups.student_groups_number AND groups.year = student_groups.student_groups_year AND student_groups.student = :stud',['stud' => $student]);
 
             DB::update('UPDATE groups, student_groups SET groups.url = :link, groups.title = :tittel WHERE groups.group_number = student_groups.student_groups_number AND groups.year = student_groups.student_groups_year AND student_groups.student = :stud',['stud'=>$student,'link'=>$request->url,'tittel'=>$request->tittel]);
+            
+            \LogHelper::Log("Student ".$student." lastet up link til gruppens hjemmeside".$request->url, "1");
+            
             return redirect('/lastOppUrl')->with('success', 'Du har lastet opp hjemmeside link');
         }
     }

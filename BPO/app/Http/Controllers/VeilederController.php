@@ -47,6 +47,9 @@ class VeilederController extends Controller
         WHERE group_number = :gruppe_number", 
         ['veileder' => $request->supervisor, 'gruppe_number' => $request->group]);
 
+        $bruker = session('navn');
+        \LogHelper::Log($bruker." har oppdatert gruppe ".$request->group." med veileder ".$request->supervisor, "1");
+
         return redirect('/administrer_gruppe')->with('success', 'Gruppe '.$request->group.' har blitt blitt tildelt ny veileder');
     }
 
@@ -58,6 +61,10 @@ class VeilederController extends Controller
         DB::update("UPDATE groups
         SET groups.leader='', groups.title='', groups.url='', groups.supervisor = NULL
         WHERE group_number = :id", ['id' => $id]);
+
+        $bruker = session('navn');
+        \LogHelper::Log($bruker." har slettet gruppe ".$id, "1");
+
         return redirect('/administrer_gruppe')->with('error', 'Gruppe fjernet');
     }
 }
