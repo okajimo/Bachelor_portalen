@@ -9,6 +9,7 @@ use App\Order;
 use App\Mail\OrderShipped;
 use Illuminate\Support\Facades\Mail;
 use App\Models\Date;
+use Illuminate\Support\Facades\Storage;
 
 class AdminController extends Controller
 {
@@ -219,5 +220,18 @@ class AdminController extends Controller
         \LogHelper::Log("Slettet nyhet med id ".$request->id, "1");
 
         return redirect('/vnews')->with('success', 'Nyhet har blitt slettet');
+    }
+
+    public function OpprydningsView()
+    {
+        if(session('levell') >= 2)
+        {
+            $title = "Opprydning for neste semester";
+            return view('pages.admin.OpprydningsView')->with('title' , $title);
+        }
+        else
+        {
+            return redirect('/')->with('error', 'Du er ikke admin og har ikke tilgang');
+        }
     }
 }
