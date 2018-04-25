@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://student.hioa.no/hioa-theme/images/favicon.ico" rel="Shortcut Icon">
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
+    @yield('extra-head')
     <title>{{config('app.name', 'BPO')}}</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>

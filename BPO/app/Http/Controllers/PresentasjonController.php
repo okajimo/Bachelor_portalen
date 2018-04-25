@@ -98,6 +98,7 @@ class PresentasjonController extends Controller
             return redirect('/presentasjonsplan')->with('error', "du må hvertfall velge en gruppe");
     }
 
+    //Viser viewet for endre presentasjonsplan
     public function show()
     {
         $presentasjoner = DB::select('SELECT presentation.presentation_group_number, presentation.presentation_year, presentation.start, presentation.end, presentation.presentation_room, presentation.sensor, sensors_supervisors.firstname, sensors_supervisors.lastname 
@@ -112,6 +113,7 @@ class PresentasjonController extends Controller
         return view('admin.EndrePresentasjonsplan')->with(['title' => $title, 'presentasjoner' => $presentasjoner, 'rooms' => $rooms, 'supervisors' => $supervisors]);
     }
 
+    //Endrer og sletter presentasjoner som er lagt inn i databasen
     public function edit(Request $request)
     {
         if ($request->group == "")
@@ -129,8 +131,15 @@ class PresentasjonController extends Controller
 
             DB::update("UPDATE presentation
             SET presentation.start = :starts, presentation.end = :ends, presentation.presentation_room = :room, presentation.sensor = :sensor
-            WHERE presentation.presentation_group_number = :group", ['group' => $group, 'starts' => $start, 'ends' => $dt /*$request->stop[$i]*/, 'room' => $request->room[$i], 'sensor' => $request->sensor[$i]]);
+            WHERE presentation.presentation_group_number = :group", ['group' => $group, 'starts' => $start, 'ends' => $dt, 'room' => $request->room[$i], 'sensor' => $request->sensor[$i]]);
             $i++;
+        }
+
+        if($request->remove){
+            foreach($request->remove as $remove){
+                DB::delete('DELETE FROM presentation
+                WHERE presentation.presentation_group_number = :group', ['group' => $remove]);
+            }
         }
 
         return redirect('/presentasjonsplan/endre')->with('success', "Presentasjonsplan endret");
