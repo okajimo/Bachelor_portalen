@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link link-overwrite href="https://student.hioa.no/hioa-theme/images/favicon.ico" rel="Shortcut Icon">
+    <link rel="stylesheet" href="{{asset('bower_components/bootstrap/dist/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
+    <link rel="stylesheet" href="{{asset('bower_components/glyphicons/styles/glyphicons.css')}}">
     <link rel="stylesheet" href="{{asset('bower_components/Font-Awesome/web-fonts-with-css/css/fontawesome-all.css')}}">
     @yield('extra-head')
     <title>{{config('app.name', 'BPO')}}</title>
@@ -46,8 +48,10 @@
             </div>
         </div>      
     </div>
-    <script src="{{asset('js/app.js')}}"></script>
+    <script src="{{asset('bower_components/jquery/dist/jquery.min.js')}}"></script>
     <script src="{{asset('bower_components/jquery-ui/jquery-ui.js')}}"></script>
+    <script src="{{asset('bower_components/bootstrap/dist/js/bootstrap.min.js')}}"></script>
+    <script src="{{asset('js/app.js')}}"></script>
     @yield('extra')
 </body>
 </html>
