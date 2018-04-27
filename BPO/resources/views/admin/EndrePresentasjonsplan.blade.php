@@ -1,46 +1,20 @@
 @extends('layouts.app')
 @section('extra-head')
     <style>
-        table {
-            border-collapse: collapse;
-        }
-
-        td, th {
-            position: relative !important;
-            padding: 5px 10px;
-        }
-
-        tr.strikeout td:before {
-            content: " ";
-            position: absolute;
-            top: 45%;
-            left: 0;
-            border-bottom: 3px solid red;
-            width: 100%;
-        }
-
-        .none{
-            border-bottom: none;
-        }
-
-        .fa-times{
-            color: red;
-        }
-
-        .fa-undo{
-            color: #0096c0;
-        }
-
-        .fjern{
-            cursor: pointer;
-        }
+        table {border-collapse: collapse;}
+        td, th {position: relative !important; padding: 5px 10px;}
+        tr.strikeout td:before {content: " "; position: absolute; top: 45%; left: 0; border-bottom: 3px solid red; width: 100%;}
+        .none{border-bottom: none;}
+        .fa-times{color: red;}
+        .fa-undo{color: #00dc00;}
+        .fjern{cursor: pointer;}
     </style>
 @endsection
 @section('content')
     <div class="table-responsive jumbotron jumbo-none table-flow">
         {!! Form::open(['action' => 'PresentasjonController@edit', 'method' => 'POST', 'id' => 'form1']) !!}
         <table class="table">
-            <thead class="thead-dark">
+            <thead class="thead-light">
                 <tr>
                     <th>Gruppe</th>
                     <th>Dato</th>
@@ -55,7 +29,6 @@
                 @foreach($presentasjoner as $presentasjon)
                     <tr class="seksjon">
                         <td class="th" scope="row"><strong style="position: absolute; top:31%" class="gruppe">{{$presentasjon->presentation_group_number}}</strong><input type="text" name="group[]" value={{$presentasjon->presentation_group_number}} hidden></td>
-                        <!--<td><input type="datetime-local" value="{{date("Y-m-d", strtotime($presentasjon->start))}}T{{date('H:i', strtotime($presentasjon->start))}}" class="form-control" name="start[]"></td>-->
                         <td><input type="date" required value="{{date("Y-m-d", strtotime($presentasjon->start))}}" class="form-control" name="start_date[]"></td>
                         <td><input type="time" required value="{{date('H:i', strtotime($presentasjon->start))}}" class="form-control" name="start_time[]"></td>
                         <td><p style="position: absolute; top:31%">{{date('H:i', strtotime($presentasjon->end))}}</p></td>
@@ -99,7 +72,6 @@
     <div class="data"></div>
 @endsection
 @section('extra')
-    <script src="{{asset('bower_components/jquery-ui/jquery-ui.js')}}"></script>
     <script>
         $(function(){
             $(".fjern").on('click', function(){

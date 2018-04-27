@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://student.hioa.no/hioa-theme/images/favicon.ico" rel="Shortcut Icon">
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
+    <link rel="stylesheet" href="{{asset('bower_components/Font-Awesome/web-fonts-with-css/css/fontawesome-all.css')}}">
     @yield('extra-head')
     <title>{{config('app.name', 'BPO')}}</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -36,7 +37,7 @@
         </div>      
     </div>
     <script src="{{asset('js/app.js')}}"></script>
-
+    <script src="{{asset('bower_components/jquery-ui/jquery-ui.js')}}"></script>
     @yield('extra')
 </body>
 </html>

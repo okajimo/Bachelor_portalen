@@ -98,7 +98,9 @@ Route::post('/simuler', 'SimulerController@simuler');
 Route::post('/', 'SimulerController@avsimuler');
 
 //room
-Route::resource('room', 'RoomController');
+Route::get('/room', 'RoomController@index')->name('room');
+Route::post('/room/store', 'RoomController@store');
+Route::delete('/room/{id}', 'RoomController@destroy');
 
 //Prosjektforslag
 Route::get('/vedlikehold_Prosjektforslag', 'Admin\ProsjektforslagController@showUploadForm')->name('Pforslag');
@@ -114,6 +116,6 @@ Route::delete('/administrer_gruppe/{id}', 'VeilederController@destroy');
 Route::get('/presentasjonsplan', 'PresentasjonController@index')->name('presentasjon2');
 Route::post('/presentasjonsplan', 'PresentasjonController@delete');
 Route::post('/presentasjonsplan/dato', 'PresentasjonController@store');
-Route::get('/presentasjonsplan/endre', 'PresentasjonController@show');
+Route::get('/presentasjonsplan/endre', 'PresentasjonController@show')->name('endrePress');
 Route::post('/presentasjonsplan/edit', 'PresentasjonController@edit');
 

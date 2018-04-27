@@ -7,6 +7,7 @@
     <link href="https://student.hioa.no/hioa-theme/images/favicon.ico" rel="Shortcut Icon">
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
     <link rel="stylesheet" href="{{asset('bower_components/glyphicons/styles/glyphicons.css')}}">
+    <link rel="stylesheet" href="{{asset('bower_components/Font-Awesome/web-fonts-with-css/css/fontawesome-all.css')}}">
     @yield('extra-head')
     <title>{{config('app.name', 'BPO')}}</title>
 
@@ -29,9 +30,9 @@
         @yield('content')
     </div>
     <script src="{{asset('js/app.js')}}"></script>
+    <script src="{{asset('bower_components/jquery-ui/jquery-ui.js')}}"></script>
     <!--Confirm delete-->
     <script>function ConfirmDelete(){ var x = confirm("Bekreft sletting"); if (x) return true; else return false;}</script>
-
     @yield('extra')
 </body>
 </html>
