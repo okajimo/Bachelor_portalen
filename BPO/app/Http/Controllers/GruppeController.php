@@ -64,7 +64,7 @@ class GruppeController extends Controller
                 }
                 else
                 {
-                    DB::UPDATE('UPDATE groups SET leader = "", title = "", url = "", supervisor = NULL
+                    DB::UPDATE('UPDATE groups SET leader = "", title = "", url = "", supervisor = NULL, searching = ""
                     WHERE groups.group_number = :gruppe AND groups.year = :year',['gruppe' => $groups->group_number,'year' => $groups->year]);
 
                     \LogHelper::Log("Gruppe ".$groups->group_number." har blitt tømt", "1");
@@ -105,7 +105,7 @@ class GruppeController extends Controller
             $tommeGrupper = DB::select('SELECT * FROM groups WHERE groups.leader = ""');
             foreach($tommeGrupper as $tomme)
             {
-                DB::update('UPDATE groups SET leader = :leder WHERE groups.group_number = :nummer AND groups.year = :ar',['leder' => $leder, 'nummer' => $tomme->group_number,'ar' => $tomme->year]);
+                DB::update('UPDATE groups SET leader = :leder, searching = "no" WHERE groups.group_number = :nummer AND groups.year = :ar',['leder' => $leder, 'nummer' => $tomme->group_number,'ar' => $tomme->year]);
                 DB::insert('INSERT INTO student_groups (student, student_groups_number, student_groups_year) VALUES (:Snavn, :Sgruppe, :Syear)',['Snavn' => $leder,'Sgruppe' => $tomme->group_number,'Syear' => $tomme->year]);
                 
                 \LogHelper::Log("Student ".$leder." har blitt lagt inn i gruppe med nummer ".$tomme->group_number, "1");
@@ -117,6 +117,7 @@ class GruppeController extends Controller
                 $antallGrupper = DB::table('groups')->where('year', '=', $year)->count();
                 $test = $antallGrupper + 1;
                 $gruppe->group_number = $test;
+                $gruppe->searching = "no";
                 $gruppe->save();
                 DB::insert('INSERT INTO student_groups (student, student_groups_number, student_groups_year) VALUES (:Snavn, :Sgruppe, :Syear)',['Snavn' => $leder,'Sgruppe' => $gruppe->group_number,'Syear' => $gruppe->year]);
 
@@ -217,5 +218,19 @@ class GruppeController extends Controller
         {
             return redirect('/')->with('error', 'Du er ikke logget inn');
         }
+    }
+
+    public function sokMedlemmer(request $request)
+    {
+        $student = session('navn');
+        DB::update('UPDATE groups SET searching = "yes" WHERE leader = :stud',['stud'=>$student]);
+        return redirect('/vgruppe');
+    }
+
+    public function stoppSokMedlemmer(request $request)
+    {
+        $student = session('navn');
+        DB::update('UPDATE groups SET searching = "no" WHERE leader = :stud',['stud'=>$student]);
+        return redirect('/vgruppe');
     }
 }

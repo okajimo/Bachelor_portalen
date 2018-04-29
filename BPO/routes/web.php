@@ -44,6 +44,7 @@ Route::get('/login', 'LoginController@visLoggInn')->name('login');
 Route::post('/login', 'LoginController@loggInn');
 Route::get('/inc/navbar', 'LoginController@logout')->name('logout');
 
+//Gruppe side
 Route::get('/vgruppe', 'GruppeController@vedlikehold_gruppe')->name('group');
 Route::post('/vgruppe', 'GruppeController@lag_gruppe');
 Route::put('/vgruppe', 'GruppeController@sett_leder');
@@ -52,6 +53,8 @@ Route::post('gg', 'GruppeController@meld_inn');
 Route::get('/lastOppUrl', 'GruppeController@lastOppUrlView')->name('Last');
 Route::post('/lastOppUrl', 'GruppeController@lastOppUrl');
 Route::get('/news', 'GruppeController@news')->name('news');
+Route::post('/1232', 'GruppeController@sokMedlemmer');
+Route::post('/123s2', 'GruppeController@stoppSokMedlemmer');
 
 Route::get('/les_dokumenter', 'LesDokumenterController@les_dokumenter')->name('dokumenter');
 Route::put('/les_dokumenter', 'LesDokumenterController@rediger_dokument');
