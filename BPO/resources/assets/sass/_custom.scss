@@ -21,6 +21,17 @@
     display: block;
     height: 100%;
 }
+
+.btn-dashboard{
+    
+    background-color: #F1F1F2 !important; 
+    border-color: #6c757d !important;
+}
+
+.btn-dashboard a{
+    color: black !important; 
+}
+
 .tittel_tekst{
     border-bottom: 2px solid #FFE01D;
     display: inline-block;
@@ -105,4 +116,17 @@
 .table-flow{
    max-height: 40em; 
    overflow-y: auto;
+}
+
+.app-ico{
+    font-size: 4em !important;
+}
+
+.app-row div{
+    min-width: 7.8em;
+}
+
+.a_hover{
+    color: black;
+    font-family: Helvetica, Arial, sans-serif;
 }

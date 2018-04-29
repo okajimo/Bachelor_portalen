@@ -40,6 +40,7 @@
     </div>
     <script src="{{asset('bower_components/jquery/dist/jquery.min.js')}}"></script>
     <script src="{{asset('bower_components/jquery-ui/jquery-ui.js')}}"></script>
+    <script src="{{asset('bower_components/popper.js/dist/umd/popper.js')}}"></script>
     <script src="{{asset('bower_components/bootstrap/dist/js/bootstrap.min.js')}}"></script>
     <script src="{{asset('js/app.js')}}"></script>
     @yield('extra')

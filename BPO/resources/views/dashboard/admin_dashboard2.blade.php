@@ -1,29 +1,70 @@
 @extends('layouts.app')
 <style>.card{margin-bottom: 1.5em}</style>
+@section('logout')
+    <a class="float-right btn btn-danger margin-fix-top" href="{{ route('logout') }}">Logout</a>
+    <div class="clearfix"></div>
+@endsection
 @section('content')
-
-    <h2>Admin</h2>
+    <h4>Simuler</h4>
+    @include('inc.simuler')
 
     <h4>Informasjon</h4>
-    <a href="{{ route('news') }}">news</a>
-        <a href="{{ route('vnews') }}">Vedlikehold nyheter</a>
-    <a href="{{ route('dato') }}">Datoer</a>
-    <a href="{{ route('epost') }}">Send E-post</a>
-    <a href="{{ route('dokumenter') }}">Les dokumenter</a>
+    <a hidden href="{{ route('vnews') }}">Vedlikehold nyheter</a>
+
+    <section class="text-center">
+        <div class="container">
+            <div class="row app-row">
+              <div class="col-1">
+                <a href="{{ route('vnews') }}" class="a_hover"><i style="color:#3d79db" class="app-ico far fa-newspaper"></i><p>Nyheter</p></a>
+              </div>
+              <div class="col-1">
+                <a href="{{ route('dato') }}" class="a_hover"><i  class="text-warning app-ico far fa-calendar-alt"></i><p>Datoer</p></a>
+              </div>
+              <div class="col-1">
+                <a href="{{ route('epost') }}" class="a_hover"><i style="color:purple" class="app-ico far fa-envelope"></i><p>Epost</p></a>
+              </div>
+              <div class="col-1">
+                <a href="{{ route('dokumenter') }}" class="a_hover"><i style="color:#3d79db" class="app-ico fas fa-book"></i><p>Dokumenter</p></a>
+              </div>
+            </div>
+        </div>
+      </section>
+  
 
     <h4>Funksjonalitet</h4>
-    <a href="{{ route('simuler') }}">Simuler student</a>
-    <a href="/administrer_gruppe">Administrer Gruppe</a>
-    <a href="{{ route('presentasjon2') }}">Generer Presentasjonsplan</a>
-    <a  href="{{ route('presentasjonsplan') }}">Presentasjonsplan</a>
+    <section class="text-center">
+        <div class="container">
+            <div class="row app-row">
+              <div class="col-1">
+                <a href="/administrer_gruppe" class="a_hover"><i style="color:green"class="app-ico fas fa-users"></i><p>Administrer Grupper</p></a>
+              </div>
+              <div class="col-1">
+                <a href="{{ route('presentasjon2') }}" class="a_hover"><i style="color:green"class="app-ico fas fa-clipboard-list"></i><p>Generer Presentasjonsplan</p></a>
+              </div>
+              <div class="col-1">
+                <a href="{{ route('presentasjonsplan') }}" class="a_hover"><i style="color:#3d79db"class="app-ico fas fa-clipboard-list"></i><p>Presentasjonsplan</p></a>
+              </div>
+            </div>
+        </div>
+      </section>
 
     <h4>Vedlikehold</h4>
-    <a href="{{ route('senvei') }}">Vedlikehold sensorer/veildere</a>
-    <a href="{{ route('student') }}">Vedlikeholde studenter</a>
-    <a href="/room">Administrer grupperom</a>
-    <a href="{{ route('Pforslag') }}">Vedlikehold prosjektforslag</a>
-    
-    
-    
-    
+    <section class="text-center">
+        <div class="container">
+            <div class="row app-row">
+              <div class="col-1">
+                <a href="{{ route('senvei') }}" class="a_hover"><span <i class="app-ico text-warning glyphicon glyphicon-user"></span><p>Sensorer og Veildere</p></a>
+              </div>
+              <div class="col-1">
+                <a href="{{ route('student') }}" class="a_hover"><i style="color:green" class="app-ico fas fa-user-plus"></i><p>Studenter</p></a>
+              </div>
+              <div class="col-1">
+                <a href="/room" class="a_hover"><i class="app-ico text-warning far fa-building"></i><p>Grupperom</p></a>
+              </div>
+              <div class="col-1">
+                <a href="{{ route('Pforslag') }}" class="a_hover"><i class="app-ico text-warning fas fa-file-alt"></i><p>prosjektforslag</p></a>
+              </div>
+            </div>
+        </div>
+      </section>
 @endsection
