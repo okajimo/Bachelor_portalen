@@ -24,7 +24,7 @@
                     {{Form::submit('Slett Prestasjonsplan', ['class'=>'btn btn-lg width-fill btn-danger margin-fix'])}}
                 {!! Form::close() !!}
                 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 no-padding-left no-padding-right margin-fix-bottom">
-                    <a href="/presentasjonsplan/endre" class="btn btn-lg width-fill btn-info" style="line-height: 3.1em;">Endre Prestasjonsplan</a>
+                    <a href="{{route('endrePress')}}" class="btn btn-lg width-fill btn-info" style="line-height: 3.1em;">Endre Prestasjonsplan</a>
                 </div>
                 </br>
             </div> 

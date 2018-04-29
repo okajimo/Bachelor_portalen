@@ -57,7 +57,8 @@ Route::get('/les_dokumenter', 'LesDokumenterController@les_dokumenter')->name('d
 Route::put('/les_dokumenter', 'LesDokumenterController@rediger_dokument');
 
 //dashboard
-Route::get('/dashboard/admin', 'DashboardController@Admin')->name('admin'); //disse skal kun vise dashboard i urlen -ivo
+Route::get('/dashboard/admin', 'DashboardController@Admin')->name('admin');
+Route::get('/dashboard/admin2', 'DashboardController@Admin2')->name('admin2');
 Route::get('/dashboard/group', 'DashboardController@Group')->name('gruppe');
 
 //Opplasting av dokumenter
@@ -99,7 +100,9 @@ Route::post('/simuler', 'SimulerController@simuler');
 Route::post('/', 'SimulerController@avsimuler');
 
 //room
-Route::resource('room', 'RoomController');
+Route::get('/room', 'RoomController@index')->name('room');
+Route::post('/room/store', 'RoomController@store');
+Route::delete('/room/{id}', 'RoomController@destroy');
 
 //Prosjektforslag
 Route::get('/vedlikehold_Prosjektforslag', 'Admin\ProsjektforslagController@showUploadForm')->name('Pforslag');
@@ -115,6 +118,6 @@ Route::delete('/administrer_gruppe/{id}', 'VeilederController@destroy');
 Route::get('/presentasjonsplan', 'PresentasjonController@index')->name('presentasjon2');
 Route::post('/presentasjonsplan', 'PresentasjonController@delete');
 Route::post('/presentasjonsplan/dato', 'PresentasjonController@store');
-Route::get('/presentasjonsplan/endre', 'PresentasjonController@show');
+Route::get('/presentasjonsplan/endre', 'PresentasjonController@show')->name('endrePress');
 Route::post('/presentasjonsplan/edit', 'PresentasjonController@edit');
 

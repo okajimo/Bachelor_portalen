@@ -20,6 +20,19 @@ class DashboardController extends Controller
         }
     }
 
+    public function Admin2()
+    {
+        if(session('levell') >= 2)
+        {
+            $title = null;
+            return view('dashboard.admin_dashboard2')->with('title', $title);
+        }
+        else
+        {
+            return redirect('/login')->with('error', 'Du er ikke admin og har ikke tilgang');
+        }
+    }
+
     public function Group()
     {
         if(session('levell') == 1)

@@ -2,9 +2,7 @@
     <div class="dropdown open">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu4" 
             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" 
-            style="color: black; background-color: #F1F1F2; border-color: #6c757d;"> <!-- Lagt til av Stian, Ivo fiks css -->
-                Meny
-            </button>
+            style="color: black; background-color: #F1F1F2; border-color: #6c757d;">Meny</button>
             <div class="dropdown-menu">
                     <a class="dropdown-item" href="{{ route('admin') }}">Dashboard</a>
                     <a class="dropdown-item" href="{{ route('student') }}">Vedlikehold studenter</a>
