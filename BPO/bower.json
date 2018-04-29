@@ -19,7 +19,6 @@
   ],
   "dependencies": {
     "glyphicons": "^0.0.2",
-    "bootstrap-datepicker": "^1.8.0",
     "jquery-ui": "^1.12.1",
     "Font-Awesome": "font-awesome#^5.0.10",
     "jquery": "^3.3.1",
