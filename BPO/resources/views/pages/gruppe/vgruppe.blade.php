@@ -47,7 +47,26 @@
                     {{Form::submit('Forlat gruppe', ['class'=>'btn btn-danger'])}}
                 {!! Form::close() !!}
             </div>
+            <?php $leder = DB::select('SELECT * FROM groups WHERE groups.leader = :stud',['stud'=>$studentIGruppe]); ?>
+            @foreach($leder as $tt)
+                @if($tt->leader == $studentIGruppe && $tt->searching == "no" or null)
+                    <div class="btn-group btn-group-lg" role="group" aria-label="Basic example">
+                        {!! Form::open(['action' => 'GruppeController@fjern_student', 'method' => 'POST'])!!}
+                        {{form::hidden('_method', 'DELETE')}}
+                            {{Form::submit('Søk medlemmer', ['class'=>'btn btn-info'])}}
+                        {!! Form::close() !!}
+                    </div>
+                @else
+                    <div class="btn-group btn-group-lg" role="group" aria-label="Basic example">
+                        {!! Form::open(['action' => 'GruppeController@fjern_student', 'method' => 'POST'])!!}
+                        {{form::hidden('_method', 'DELETE')}}
+                            {{Form::submit('Slutt medlem søk', ['class'=>'btn btn-danger'])}}
+                        {!! Form::close() !!}
+                    </div>
                 @endif
+            @endforeach
+            @endif
+            
             <table class="table">
                     <thead class="thead-light">
                         <tr>
@@ -66,7 +85,14 @@
                                 @if($group->year >= date('Y'))
                                 <tbody>
                                 <tr>
-                                    <td>{{ $group->group_number }}</td>
+                                    <td>
+                                        {{ $group->group_number }}
+                                        </br>
+                                        </br>
+                                        @if($group->searching == "yes")
+                                            <a style="color:green">Søker medlemmer</a>
+                                        @endif
+                                    </td>
                                     <td><a href="http://{{ $group->url }}" target='_blank'>{{ $group->title }}</a></td>
                                     <td>
                                         <?php /*$student = DB::select('select student_groups.student from student_groups, groups 

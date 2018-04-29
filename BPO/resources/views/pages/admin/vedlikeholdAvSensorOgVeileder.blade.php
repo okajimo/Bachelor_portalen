@@ -31,32 +31,63 @@
                 {{Form::submit('Registrer', ['class'=>'btn btn-success'])}}
             {!! Form::close() !!}
         </br>
+        </br>
+        {{Form::label('dok', 'Sensors:')}}
             <table class="table table-responsive">
                 <thead class="thead-light">
                     <tr>
                         <th>Email</th>
                         <th>Firstname</th>
                         <th>Lastname</th>
-                        <th>Status</th>
                         <th>Slett</th>
                     </tr>
                 </thead>
                     @foreach ($senvei as $u)
-                    <tbody>
-                        <tr>
-                            <td>{{$u->email}}</td>
-                            <td>{{$u->firstname}}</td>
-                            <td>{{$u->lastname}}</td>
-                            <td>{{$u->status}}</td>
-                            <td>
-                                {!! Form::open(['action' => 'Admin\AdminController@slettSenvei', 'method' => 'POST','onsubmit' => 'return ConfirmDelete()'])!!}
-                                    {{form::hidden('email',$u->email)}}
-                                    {{form::hidden('_method', 'DELETE')}}
-                                    {{Form::submit('Slett', ['class'=>'btn btn-danger'])}}
-                                {!! Form::close() !!}
-                            </td>
-                        </tr>
-                    </tbody>
+                    @if($u->status == "sensor")
+                            <tbody>
+                                <tr>
+                                    <td>{{$u->email}}</td>
+                                    <td>{{$u->firstname}}</td>
+                                    <td>{{$u->lastname}}</td>
+                                    <td>
+                                        {!! Form::open(['action' => 'Admin\AdminController@slettSenvei', 'method' => 'POST','onsubmit' => 'return ConfirmDelete()'])!!}
+                                            {{form::hidden('email',$u->email)}}
+                                            {{form::hidden('_method', 'DELETE')}}
+                                            {{Form::submit('Slett', ['class'=>'btn btn-danger'])}}
+                                        {!! Form::close() !!}
+                                    </td>
+                                </tr>
+                            </tbody>
+                        @endif
+                    @endforeach
+            </table>
+            {{Form::label('dok', 'Veileder:')}}
+            <table class="table table-responsive">
+                <thead class="thead-light">
+                    <tr>
+                        <th>Email</th>
+                        <th>Firstname</th>
+                        <th>Lastname</th>
+                        <th>Slett</th>
+                    </tr>
+                </thead>
+                    @foreach ($senvei as $u)
+                        @if($u->status == "veileder")
+                            <tbody>
+                                <tr>
+                                    <td>{{$u->email}}</td>
+                                    <td>{{$u->firstname}}</td>
+                                    <td>{{$u->lastname}}</td>
+                                    <td>
+                                        {!! Form::open(['action' => 'Admin\AdminController@slettSenvei', 'method' => 'POST','onsubmit' => 'return ConfirmDelete()'])!!}
+                                            {{form::hidden('email',$u->email)}}
+                                            {{form::hidden('_method', 'DELETE')}}
+                                            {{Form::submit('Slett', ['class'=>'btn btn-danger'])}}
+                                        {!! Form::close() !!}
+                                    </td>
+                                </tr>
+                            </tbody>
+                        @endif
                     @endforeach
             </table>
         </div>

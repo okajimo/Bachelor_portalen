@@ -9,6 +9,7 @@ use App\Order;
 use App\Mail\OrderShipped;
 use Illuminate\Support\Facades\Mail;
 use App\Models\Date;
+use Illuminate\Support\Facades\Input;
 
 
 class EpostController extends Controller
@@ -18,7 +19,8 @@ class EpostController extends Controller
         if(session('levell') >= 2)
         {
             $title = "Send e-post";
-            return view('pages.admin.epostView')->with('title' , $title);
+            $ver = "s";
+            return view('pages.admin.epostView')->with(['title' => $title,'verdi' => $ver]);
         }
         else
         {
@@ -119,10 +121,41 @@ class EpostController extends Controller
         </html>
         ';
 
-        mail($til, $emne, $melding, implode("\r\n", $headers));
+        mail($til, $emne, $melding, implode("\r\n", $headers));*/
         
-        \LogHelper::Log("Sendte epost til ".$request->senvei, "1");*/
+        \LogHelper::Log("Sendte epost til ".$request->senvei, "1");
 
         return redirect('/epostView')->with('success', 'Mail er sendt');
+    }
+
+    public function velgEpost(request $request)
+    {
+        /*if($request->verdi == "stud")
+        {
+            $valgte = "sant";
+            return redirect('/epostView')->with('valgte', $valgte);
+            return $request->verdi;
+        }
+        else
+        {
+            $valgte2 = "sant";
+            return redirect('/epostView')->with('valgte2', $valgte2);
+            return $request->verdi;
+        }*/
+
+        if(Input::get('sub'))
+        {
+            $verdi = $request->verdi;
+            if($verdi == "senvei")
+            {
+                $l = "l";
+                return redirect('/epostView')->with(['valgte2' => $verdi, 'l' => $l]);
+            }
+            else
+            {
+                $i = "l";
+                return redirect('/epostView')->with(['valgte' => $verdi, 'i' => $i]);
+            }
+        }
     }
 }
