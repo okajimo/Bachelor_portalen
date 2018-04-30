@@ -20,9 +20,12 @@
               <div class="col-1">
                 <a href="{{ route('dato') }}" class="a_hover"><i  class="text-warning app-ico far fa-calendar-alt"></i><p>Datoer</p></a>
               </div>
-              <div class="col-1">
+              <!--<div class="col-1">
                 <a href="{{ route('epost') }}" class="a_hover"><i style="color:purple" class="app-ico far fa-envelope"></i><p>Epost</p></a>
-              </div>
+              </div>-->
+              <div class="col-1">
+                  <a href="{{ route('epost') }}" class="a_hover" data-toggle="modal" data-target="#exampleModal4"><i style="color:purple" class="app-ico far fa-envelope"></i><p>Epost Lightbox</p></a>
+                </div>
               <div class="col-1">
                 <a href="{{ route('dokumenter') }}" class="a_hover"><i style="color:#3d79db" class="app-ico fas fa-book"></i><p>Dokumenter</p></a>
               </div>
@@ -67,4 +70,12 @@
             </div>
         </div>
       </section>
+  <div id="div1"></div>
+@endsection
+@section('extra')
+  <script>
+    $(function(){
+      $("#div1").load("/epostView");
+    });
+  </script>
 @endsection

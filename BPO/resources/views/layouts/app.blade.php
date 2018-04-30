@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://student.hioa.no/hioa-theme/images/favicon.ico" rel="Shortcut Icon">
+    <link href="{{asset('img/oslometlogo.png')}} " rel="Shortcut Icon">
     <link rel="stylesheet" href="{{asset('bower_components/bootstrap/dist/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset('bower_components/glyphicons/styles/glyphicons.css')}}">
     <link rel="stylesheet" href="{{asset('bower_components/Font-Awesome/web-fonts-with-css/css/fontawesome-all.min.css')}}">
@@ -19,7 +19,7 @@
     @include('inc.navbar')
     <div class="container">
         <div>
-                @if ($title != null)
+             @if ($title != null)
                 <h3 class="tittel_tekst">{{$title}}</h3>
              @else
                  <h3 style="visibility:hidden">hidden</h3>
