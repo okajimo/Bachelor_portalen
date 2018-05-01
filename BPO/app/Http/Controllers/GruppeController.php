@@ -191,7 +191,7 @@ class GruppeController extends Controller
         if(Input::get('lastOpp'))
         {
             $this->validate($request, [
-                'url' => 'required|url',
+                'url' => 'required|url|max:127',
                 'tittel' => 'required|alpha|max:45'
             ]);
             
