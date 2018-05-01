@@ -1,5 +1,5 @@
 <?php
-if(date('d.m') == "1.07")
+if(date('d.m') >= "1.07")
 {
     $host = '127.0.0.1';
     $user = 'root';
@@ -15,6 +15,7 @@ if(date('d.m') == "1.07")
     $sql5 = "DELETE FROM student";
     $sql6 = "DELETE FROM news";
     $sql7 = "DELETE FROM prosjektforslag";
+    $sql8 = "UPDATE users SET level = 0, password = '' WHERE level = '1'";
 
     mysqli_query($con1, $sql1);
     mysqli_query($con1, $sql2);
@@ -23,6 +24,7 @@ if(date('d.m') == "1.07")
     mysqli_query($con1, $sql5);
     mysqli_query($con1, $sql6);
     mysqli_query($con1, $sql7);
+    mysqli_query($con1, $sql8);
 
     $file = "/xampp/htdocs/BachelorPortal/BPO/public/storage/filer";
     if(is_dir($file))
