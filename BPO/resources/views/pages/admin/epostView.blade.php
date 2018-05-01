@@ -41,10 +41,10 @@
                         </select>
                     </div>
                     <div class="form-group form-inline">  
-                        {{Form::text('tema', '',['placeholder'=>'Skriv in emne her...','class'=>'form-control'])}}
+                        {{Form::text('tema', '',['placeholder'=>'Skriv in emne her...','class'=>'form-control', 'required', 'pattern' => '[A-Za-z0-9 øæåØÆÅ.!:-]*', 'title' => 'Emne må være av bokser, tall, punktum, utropstegn, kolonn eller bindestrek'])}}
                     </div>
                     <div class="form-group form-inline">  
-                        {{Form::textarea('melding', '',['placeholder'=>'Skriv in melding her...','class'=>'form-control'])}}
+                        {{Form::textarea('melding', '',['placeholder'=>'Skriv in melding her...','class'=>'form-control', 'required', 'pattern' => '[A-Za-z0-9 øæåØÆÅ.!:-]*', 'title' => 'Emne må være av bokser, tall, punktum, utropstegn, kolonn eller bindestrek'])}}
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

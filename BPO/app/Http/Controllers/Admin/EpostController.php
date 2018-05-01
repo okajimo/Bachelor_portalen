@@ -18,9 +18,8 @@ class EpostController extends Controller
     {
         if(session('levell') >= 2)
         {
-            $title= "penis";
             $ver = "s";
-            return view('pages.admin.epostView')->with(['verdi' => $ver, 'title'=>$title]);
+            return view('pages.admin.epostView')->with(['verdi' => $ver]);
         }
         else
         {
@@ -31,8 +30,8 @@ class EpostController extends Controller
     public function sendEpostAlleStud(request $request)
     {
         $this->validate($request, [
-            'melding' => 'required',
-            'tema' => 'required'
+            'melding' => 'required|regex:/(^[A-Za-z0-9 øæåØÆÅ.!:-]+$)/',
+            'tema' => 'required|regex:/(^[A-Za-z0-9 øæåØÆÅ.!:-]+$)/'
         ]);
 
         $bruker = session('navn');
