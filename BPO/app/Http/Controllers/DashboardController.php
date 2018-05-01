@@ -24,8 +24,15 @@ class DashboardController extends Controller
     {
         if(session('levell') >= 2)
         {
-            $title = null;
-            return view('dashboard.admin_dashboard2')->with('title', $title);
+            $title = "Admin";
+            $student = DB::select('SELECT users.username, users.lastname, users.firstname, student.student_points 
+            FROM users, student 
+            WHERE users.username = student.username 
+            AND student.student_points >= 100
+            AND users.level = 1 
+            ORDER BY users.username ASC');
+
+            return view('dashboard.admin_dashboard2')->with(['title' => $title, 'student' => $student]);
         }
         else
         {

@@ -4,6 +4,7 @@
 
 body {
   background-color: #F5F5F5 !important;
+  padding: 0 !important;
 }
 
 .navbar {
@@ -66,6 +67,34 @@ body {
   padding: 0;
 }
 
+.navbar-toggle {
+  padding: 0.25rem 0.75rem;
+  font-size: 1.25rem;
+  line-height: 1;
+  background-color: transparent;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+}
+
+.navbar-toggle:hover,
+.navbar-toggle:focus {
+  text-decoration: none;
+}
+
+.navbar-toggle:not(:disabled):not(.disabled) {
+  cursor: pointer;
+}
+
+.navbar-toggle-icon {
+  display: inline-block;
+  width: 1.5em;
+  height: 1.5em;
+  vertical-align: middle;
+  content: "";
+  background: no-repeat center center;
+  background-size: 100% 100%;
+}
+
 .nav-header-info {
   border: #0096C0 1.5px solid !important;
   color: black !important;
@@ -85,6 +114,15 @@ body {
   width: 100%;
   display: block;
   height: 100%;
+}
+
+.btn-dashboard {
+  background-color: #F1F1F2 !important;
+  border-color: #6c757d !important;
+}
+
+.btn-dashboard a {
+  color: black !important;
 }
 
 .tittel_tekst {
@@ -172,5 +210,18 @@ body {
 .table-flow {
   max-height: 40em;
   overflow-y: auto;
+}
+
+.app-ico {
+  font-size: 4em !important;
+}
+
+.app-row div {
+  min-width: 7.8em;
+}
+
+.a_hover {
+  color: black;
+  font-family: Helvetica, Arial, sans-serif;
 }
 

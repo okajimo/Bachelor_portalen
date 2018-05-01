@@ -18,8 +18,9 @@ class EpostController extends Controller
     {
         if(session('levell') >= 2)
         {
+            $title = "Send e-post";
             $ver = "s";
-            return view('pages.admin.epostView')->with(['verdi' => $ver]);
+            return view('pages.admin.epostView')->with(['title' => $title,'verdi' => $ver]);
         }
         else
         {
@@ -76,7 +77,7 @@ class EpostController extends Controller
         
         \LogHelper::Log("Sendte mail til alle studenter", "1");
 
-        return redirect('/dashboard/admin')->with('success', 'Mail er sendt, til studenter');
+        return redirect('/epostView')->with('success', 'Mail er sendt');
     }
 
     public function sendEpostSensorVeileder(request $request)
@@ -124,7 +125,7 @@ class EpostController extends Controller
         
         \LogHelper::Log("Sendte epost til ".$request->senvei, "1");
 
-        return redirect('/dashboard/admin')->with('success', 'Mail er sendt til veileder');
+        return redirect('/epostView')->with('success', 'Mail er sendt');
     }
 
     public function velgEpost(request $request)

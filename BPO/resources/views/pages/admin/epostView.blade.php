@@ -1,28 +1,44 @@
-@extends('layouts.app')
-@section('content')
-    <div class="jumbotron">
-        <div class="container">
-                @if(!Session::get('i') && !Session::get('l'))
-                    {{Form::label('dok', 'Velg mottaker')}}
-                @endif
-            <div class="row">
-                @if(!Session::get('i'))
-                    {!! Form::open(['action' => 'Admin\EpostController@velgEpost', 'method' => 'POST', 'class' => 'col-xs-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 no-padding-left no-padding-right margin-fix-bottom']) !!}  
-                        {{Form::hidden('verdi', "stud")}} 
-                        {{Form::submit('Alle studenter', ['class'=>'btn btn-lg width-fill btn-info','name' => 'sub'])}}   
-                    {!! Form::close() !!}
-                @endif
-                @if(!Session::get('l'))
-                    {!! Form::open(['action' => 'Admin\EpostController@velgEpost', 'method' => 'POST', 'class' => 'col-xs-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 no-padding-left no-padding-right margin-fix-bottom']) !!}  
-                        {{Form::hidden('verdi', "senvei")}}
-                        {{Form::submit('Sensor/veileder', ['class'=>'btn btn-lg width-fill btn-info','name' => 'sub'])}} 
-                    {!! Form::close() !!}
-                @endif
+<style>
+    #student{display: none;}
+    #stud{display: none;}
+    #sensor{display: block;}
+    #sens{display: block;}
+</style>
+<div class="modal" id="exampleModal4" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <!--Sensorer-->
+                <h5 class="modal-title" id="sens"> Send epost til sensor/veileder</h5>
+                <!--Studenter-->
+                <h5 class="modal-title" id="stud"> Send epost til studentene</h5>
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>  
             </div>
-                @if(Session::get('valgte') == "stud")
-                    {!! Form::open(['action' => 'Admin\EpostController@sendEpostAlleStud', 'method' => 'POST']) !!}  
-                    <div class="form-group">  
-                        {{Form::label('dok', 'Send epost til studentene')}}
+            <div class="modal-body">
+                <div class="form-group form-inline">
+                    <select class="form-control" name="" id="epost">
+                        <option value="" required hidden>Velg mottaker</option>
+                        <!--Studenter-->
+                        <option value="student">Studenter</option>
+                        <!--Sensorer-->
+                        <option value="sensor" >Sensor og veileder</option>
+                    </select>
+                </div>
+
+                <!--Sensorer-->
+                {!! Form::open(['action' => 'Admin\EpostController@sendEpostSensorVeileder', 'method' => 'POST', 'id' => 'sensor']) !!} 
+                    <div class="form-group form-inline">  
+                        <?php $senvei= DB::select('SELECT * FROM sensors_supervisors');?>
+                        <select name="senvei" class='form-control'>
+                            @foreach($senvei as $sen)
+                                <?php $navn = $sen->firstname." ".$sen->lastname; ?>
+                                <option hidden disabled selected>Navn</option>
+                                <option value={{$sen->email}}>{{$navn}}</option>
+                            @endforeach
+                        </select>
                     </div>
                     <div class="form-group form-inline">  
                         {{Form::text('tema', '',['placeholder'=>'Skriv in emne her...','class'=>'form-control'])}}
@@ -30,34 +46,46 @@
                     <div class="form-group form-inline">  
                         {{Form::textarea('melding', '',['placeholder'=>'Skriv in melding her...','class'=>'form-control'])}}
                     </div>
-                    {{Form::submit('Send epost', ['class'=>'btn btn-info'])}}    
-                {!! Form::close() !!} 
-                @endif
-               
-                @if(Session::get('valgte2') == "senvei")  
-                    {!! Form::open(['action' => 'Admin\EpostController@sendEpostSensorVeileder', 'method' => 'POST']) !!}  
-                        <div class="form-group">  
-                            {{Form::label('dok', 'Send epost til sensor/veileder')}}
-                        </div>
-                        <div class="form-group form-inline">  
-                            <?php $senvei= DB::select('SELECT * FROM sensors_supervisors');?>
-                            <select name="senvei" class='form-control'>
-                                @foreach($senvei as $sen)
-                                    <?php $navn = $sen->firstname." ".$sen->lastname; ?>
-                                    <option hidden disabled selected>Navn</option>
-                                    <option value={{$sen->email}}>{{$navn}}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="form-group form-inline">  
-                            {{Form::text('tema', '',['placeholder'=>'Skriv in emne her...','class'=>'form-control'])}}
-                        </div>
-                        <div class="form-group form-inline">  
-                            {{Form::textarea('melding', '',['placeholder'=>'Skriv in melding her...','class'=>'form-control'])}}
-                        </div>
-                        {{Form::submit('Send epost', ['class'=>'btn btn-info'])}}    
-                    {!! Form::close() !!}  
-                @endif
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        {{Form::submit('Send epost', ['class'=>'btn btn-info'])}}
+                    </div>
+                {!! Form::close() !!}
+
+                <!--studenter-->
+                {!! Form::open(['action' => 'Admin\EpostController@sendEpostAlleStud', 'method' => 'POST', 'id' => 'student']) !!}  
+                    <div class="form-group form-inline">  
+                        {{Form::text('tema', '',['placeholder'=>'Skriv in emne her...','class'=>'form-control'])}}
+                    </div>
+                    <div class="form-group form-inline">  
+                        {{Form::textarea('melding', '',['placeholder'=>'Skriv in melding her...','class'=>'form-control'])}}
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        {{Form::submit('Send epost', ['class'=>'btn btn-info'])}}  
+                    </div>  
+                {!! Form::close() !!}
+            </div>
         </div>
     </div>
-@endsection
+</div>
+
+<script>
+    $(function(){
+        $('#epost').on('change', function() {
+            var value = $(this).val();
+            if (value == 'student'){
+                $('#sensor').fadeOut(0);
+                $('#student').fadeIn(0);
+                $('#sens').fadeOut(0);
+                $('#stud').fadeIn(0);
+            }
+            if (value == 'sensor'){
+                $('#student').fadeOut(0);
+                $('#sensor').fadeIn(0);
+                $('#stud').fadeOut(0);
+                $('#sens').fadeIn(0);
+            }
+        });   
+    });
+</script>

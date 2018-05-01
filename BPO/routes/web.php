@@ -60,8 +60,8 @@ Route::get('/les_dokumenter', 'LesDokumenterController@les_dokumenter')->name('d
 Route::put('/les_dokumenter', 'LesDokumenterController@rediger_dokument');
 
 //dashboard
-Route::get('/dashboard/admin', 'DashboardController@Admin')->name('admin');
-Route::get('/dashboard/admin2', 'DashboardController@Admin2')->name('admin2');
+//Route::get('/dashboard/admin', 'DashboardController@Admin')->name('admin');
+Route::get('/dashboard/admin', 'DashboardController@Admin2')->name('admin2');
 Route::get('/dashboard/group', 'DashboardController@Group')->name('gruppe');
 
 //Opplasting av dokumenter

@@ -1,26 +1,5 @@
 @if(session('levell') > 1)
-    <div class="dropdown open">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu4" 
-            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" 
-            style="color: black; background-color: #F1F1F2; border-color: #6c757d;">Meny</button>
-            <div class="dropdown-menu">
-                    <a class="dropdown-item" href="{{ route('admin') }}">Dashboard</a>
-                    <a class="dropdown-item" href="{{ route('student') }}">Vedlikehold studenter</a>
-                    <a class="dropdown-item" href="{{ route('simuler') }}">Simuler student</a>
-                    <a class="dropdown-item" href="{{ route('dokumenter') }}">Les dokumenter</a>
-                    <a class="dropdown-item" href="{{ route('epost') }}">Send E-post</a>  
-                    <a class="dropdown-item" href="{{ route('Pforslag') }}">Vedlikehold prosjektforslag</a>  
-                    <a class="dropdown-item" href="{{ route('dato') }}">Datoer</a>  
-                    <a class="dropdown-item" href="{{ route('Agruppe') }}">Administrer grupper</a>
-                    <a class="dropdown-item" href="/room">Administrer grupperom</a>
-                    <a class="dropdown-item" href="{{ route('senvei') }}">Vedlikehold sensorer/veildere</a>  
-                    <a class="dropdown-item" href="{{ route('presentasjon2') }}">Generer presentasjonsplan</a>
-                    <a class="dropdown-item" href="{{ route('vnews') }}">Vedlikehold nyheter</a>
-                    <a class="dropdown-item" href="{{ route('presentasjonsplan') }}">Presentasjonsplan</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="{{ route('logout') }}">Logout</a>
-            </div>
-    </div>
+    <button class="btn btn-secondary btn-dashboard"><a href="{{ route('admin2') }}">Dashboard</a></button>
     @elseif(session('levell') == 1)
         <div class="dropdown open">
             <button class="btn btn-secondary dropdown-toggle"

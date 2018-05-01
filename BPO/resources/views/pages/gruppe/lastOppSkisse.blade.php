@@ -8,7 +8,7 @@
                 <div class="form-group form-inline">
                     {{Form::file('dok')}}
                 </div>
-                {{Form::submit('Last opp dokument', ['class'=>'btn btn-primary'])}}    
+                {{Form::submit('Last opp', ['class'=>'btn btn-primary'])}}    
             {!! Form::close() !!}
         </div>
         <div>
