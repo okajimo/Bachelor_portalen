@@ -26,6 +26,9 @@
                 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 no-padding-left no-padding-right margin-fix-bottom">
                     <a href="{{route('endrePress')}}" class="btn btn-lg width-fill btn-info" style="line-height: 3.1em;">Endre Prestasjonsplan</a>
                 </div>
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 no-padding-left no-padding-right margin-fix-bottom">
+                    <a href="{{ route('presentasjonsplan') }}" class="btn btn-lg width-fill btn-info" style="line-height: 3.1em;">Vis Prestasjonsplan</a>
+                </div>
                 </br>
             </div> 
             <div style="margin-top: 5em;"></div>

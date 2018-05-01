@@ -1,6 +1,6 @@
 {!! Form::open(['action' => 'SimulerController@simuler', 'method' => 'POST']) !!}
     <div class="row">
-        <div style="padding-right:0.8px !important;" class="col-5">
+        <div style="padding-right:0.8px !important" class="col-5">
             <input pattern="[s]{1}[0-9]{6}" title="må skrives på dette formatet s000000" class="form-control"placeholder="Simuler student" type="search" name="student" list="students" required>
             <datalist id="students">
                 @foreach($student as $students)

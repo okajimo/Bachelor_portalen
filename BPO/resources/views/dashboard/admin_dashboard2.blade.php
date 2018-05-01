@@ -18,9 +18,6 @@
                 <a href="{{ route('vnews') }}" class="a_hover"><i style="color:#3d79db" class="app-ico far fa-newspaper"></i><p>Nyheter</p></a>
               </div>
               <div class="col-1">
-                <a href="{{ route('dato') }}" class="a_hover"><i  class="text-warning app-ico far fa-calendar-alt"></i><p>Datoer</p></a>
-              </div>
-              <div class="col-1">
                   <a href="{{ route('epost') }}" class="a_hover" data-toggle="modal" data-target="#exampleModal4"><i style="color:purple" class="app-ico far fa-envelope"></i><p>Epost</p></a>
                 </div>
               <div class="col-1">
@@ -38,11 +35,14 @@
               <div class="col-1">
                 <a href="/administrer_gruppe" class="a_hover"><i style="color:green"class="app-ico fas fa-users"></i><p>Administrer Grupper</p></a>
               </div>
-              <div class="col-1">
-                <a href="{{ route('presentasjon2') }}" class="a_hover"><i style="color:green"class="app-ico fas fa-clipboard-list"></i><p>Generer Presentasjonsplan</p></a>
+              <div class="col-1" style="min-width: 9em;">
+                <a href="{{ route('presentasjon2') }}" class="a_hover"><i style="color:green"class="app-ico fas fa-clipboard-list"></i><p>Presentasjonsplan</p></a>
               </div>
-              <div class="col-1">
+              <!--<div class="col-1" style="min-width: 9em;">
                 <a href="{{ route('presentasjonsplan') }}" class="a_hover"><i style="color:#3d79db"class="app-ico fas fa-clipboard-list"></i><p>Presentasjonsplan</p></a>
+              </div>-->
+              <div class="col-1">
+                <a href="{{ route('Pforslag') }}" class="a_hover"><i style="color:green" class="app-ico fas fa-file-alt"></i><p>prosjektforslag</p></a>
               </div>
             </div>
         </div>
@@ -62,7 +62,7 @@
                 <a href="/room" class="a_hover"><i class="app-ico text-warning far fa-building"></i><p>Grupperom</p></a>
               </div>
               <div class="col-1">
-                <a href="{{ route('Pforslag') }}" class="a_hover"><i class="app-ico text-warning fas fa-file-alt"></i><p>prosjektforslag</p></a>
+                <a href="{{ route('dato') }}" class="a_hover"><i  class="text-warning app-ico far fa-calendar-alt"></i><p>Datoer</p></a>
               </div>
             </div>
         </div>
