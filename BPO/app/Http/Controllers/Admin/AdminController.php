@@ -37,9 +37,9 @@ class AdminController extends Controller
     public function regSensorVeileder(request $request)
     {
         $this->validate($request, [
-            'email' => 'required|email',
-            'firstname' => 'required|alpha',
-            'lastname' => 'required|alpha',
+            'email' => 'required|email|max:45',
+            'firstname' => 'required|alpha|max:45',
+            'lastname' => 'required|alpha|max:45',
             'status' => 'required',
         ]);
         DB::insert('INSERT INTO sensors_supervisors (email, firstname, lastname, status) VALUES 

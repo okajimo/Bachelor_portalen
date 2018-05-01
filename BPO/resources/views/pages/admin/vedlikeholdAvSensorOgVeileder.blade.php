@@ -8,17 +8,17 @@
                     {!! Form::open(['action' => 'Admin\AdminController@regSensorVeileder', 'method' => 'POST'])!!}
                 </div>
                 <div class="form-group form-inline">  
-                        {{form::text('email','',['placeholder'=>'Skriv inn epost her','class'=>'form-control'])}}
+                        {{form::text('email','',['placeholder'=>'Skriv inn epost her','class'=>'form-control', 'required', 'maxlength' => '45','pattern' => '((?!;).)*', 'title' => 'Eposten må fylles ut riktig'])}}
                     </br>
                 </br>
                 </div>
                 <div class="form-group form-inline">  
-                        {{form::text('firstname','',['placeholder'=>'Skriv inn fornavn her','class'=>'form-control'])}}
+                        {{form::text('firstname','',['placeholder'=>'Skriv inn fornavn her','class'=>'form-control', 'required', 'maxlength' => '45', 'pattern' => '[a-zA-z øæåØÆÅ]*', 'title' => 'Navn kan kun bestå av bokstaver'])}}
                     </br>
                 </br>
                 </div>
                 <div class="form-group form-inline">  
-                        {{form::text('lastname','',['placeholder'=>'Skriv inn etternavn her','class'=>'form-control'])}}
+                        {{form::text('lastname','',['placeholder'=>'Skriv inn etternavn her','class'=>'form-control', 'required', 'maxlength' => '45','pattern' => '[a-zA-z øæåØÆÅ]*', 'title' => 'Navn kan kun bestå av bokstaver'])}}
                     </br>
                 </br>
                 </div>
