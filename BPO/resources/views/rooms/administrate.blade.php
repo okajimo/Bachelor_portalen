@@ -4,7 +4,7 @@
         <div class="container">
                 {!! Form::open(['action' => 'RoomController@store', 'class' => 'form-inline', 'method' => 'POST']) !!}
                     <div class="form-group">
-                        {{Form::text('Rom', '', ['class' => 'form-control', 'placeholder' => 'Rom navn','required'])}}
+                        {{Form::text('Rom', '', ['class' => 'form-control', 'placeholder' => 'Rom navn', 'required', 'maxlength' => '45', 'pattern' => '[a-zA-z0-9 øæåØÆÅ]*', 'title' => 'Rom kan kun bestå av tall og bokstaver'])}}
                     </div>
                     {{Form::submit('Registrer Rom', ['class' => 'btn btn-primary'])}}
                 {!! Form::close() !!}
