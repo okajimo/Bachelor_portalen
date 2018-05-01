@@ -12,7 +12,7 @@
                 <div class="container row-margin-bottom">
                     <div class="row">
                         <div class="col-xs-3 col-sm-3 col-md-3 col-lg-2 col-xl-2">
-                            <img height="80" width="80" src="{{asset('img/admin/Nyheter.PNG')}}" alt="">
+                            <img height="90" width="90" src="{{asset('img/admin/Nyheter.PNG')}}" alt="">
                         </div>
                         <div class="col-xs-9 col-sm-9 col-md-9 col-lg-10 col-xl-10">
                             <ul>
@@ -23,7 +23,7 @@
                     </div>
                     <div class="row">
                         <div class="col-xs-3 col-sm-3 col-md-3 col-lg-2 col-xl-2">
-                            <img height="80" width="80" src="{{asset('img/admin/Epost.PNG')}}" alt="">
+                            <img height="90" width="90" src="{{asset('img/admin/Epost.PNG')}}" alt="">
                         </div>
                         <div class="col-xs-9 col-sm-9 col-md-9 col-lg-10 col-xl-10">
                             <ul>
@@ -34,7 +34,7 @@
                     </div>
                     <div class="row">
                         <div class="col-xs-3 col-sm-3 col-md-3 col-lg-2 col-xl-2">
-                            <img height="80" width="80" src="{{asset('img/admin/dokumenter.PNG')}}" alt="">
+                            <img height="90" width="90" src="{{asset('img/admin/dokumenter.PNG')}}" alt="">
                         </div>
                         <div class="col-xs-9 col-sm-9 col-md-9 col-lg-10 col-xl-10">
                             <ul>
@@ -45,7 +45,7 @@
                     </div>
                     <div class="row">
                         <div class="col-xs-3 col-sm-3 col-md-3 col-lg-2 col-xl-2">
-                            <img height="80" width="80" src="{{asset('img/admin/administrerGruppe.PNG')}}" alt="">
+                            <img height="90" width="90" src="{{asset('img/admin/administrerGruppe.PNG')}}" alt="">
                         </div>
                         <div class="col-xs-9 col-sm-9 col-md-9 col-lg-10 col-xl-10">
                             <ul>
@@ -56,7 +56,7 @@
                     </div>
                     <div class="row">
                         <div class="col-xs-3 col-sm-3 col-md-3 col-lg-2 col-xl-2">
-                            <img height="80" width="80" src="{{asset('img/admin/presentasjonsplan.PNG')}}" alt="">
+                            <img height="90" width="90" src="{{asset('img/admin/presentasjonsplan.PNG')}}" alt="">
                         </div>
                         <div class="col-xs-9 col-sm-9 col-md-9 col-lg-10 col-xl-10">
                             <ul>
@@ -70,7 +70,7 @@
                     </div>
                     <div class="row">
                         <div class="col-xs-3 col-sm-3 col-md-3 col-lg-2 col-xl-2">
-                            <img height="80" width="80" src="{{asset('img/admin/prosjektforslag.PNG')}}" alt="">
+                            <img height="90" width="90" src="{{asset('img/admin/prosjektforslag.PNG')}}" alt="">
                         </div>
                         <div class="col-xs-9 col-sm-9 col-md-9 col-lg-10 col-xl-10">
                             <ul>
@@ -81,7 +81,7 @@
                     </div>
                     <div class="row">
                         <div class="col-xs-3 col-sm-3 col-md-3 col-lg-2 col-xl-2">
-                            <img height="80" width="80" src="{{asset('img/admin/sensorVeileder.PNG')}}" alt="">
+                            <img height="90" width="90" src="{{asset('img/admin/sensorVeileder.PNG')}}" alt="">
                         </div>
                         <div class="col-xs-9 col-sm-9 col-md-9 col-lg-10 col-xl-10">
                             <ul>
@@ -93,7 +93,7 @@
                     </div>
                     <div class="row">
                         <div class="col-xs-3 col-sm-3 col-md-3 col-lg-2 col-xl-2">
-                            <img height="80" width="80" src="{{asset('img/admin/studenter.PNG')}}" alt="">
+                            <img height="90" width="90" src="{{asset('img/admin/studenter.PNG')}}" alt="">
                         </div>
                         <div class="col-xs-9 col-sm-9 col-md-9 col-lg-10 col-xl-10">
                             <ul>
@@ -104,7 +104,7 @@
                     </div>
                     <div class="row">
                         <div class="col-xs-3 col-sm-3 col-md-3 col-lg-2 col-xl-2">
-                            <img height="80" width="80" src="{{asset('img/admin/grupperom.PNG')}}" alt="">
+                            <img height="90" width="90" src="{{asset('img/admin/grupperom.PNG')}}" alt="">
                         </div>
                         <div class="col-xs-9 col-sm-9 col-md-9 col-lg-10 col-xl-10">
                             <ul>
@@ -115,7 +115,7 @@
                     </div>
                     <div class="row">
                         <div class="col-xs-3 col-sm-3 col-md-3 col-lg-2 col-xl-2">
-                            <img height="80" width="80" src="{{asset('img/admin/datoer.PNG')}}" alt="">
+                            <img height="90" width="90" src="{{asset('img/admin/datoer.PNG')}}" alt="">
                         </div>
                         <div class="col-xs-9 col-sm-9 col-md-9 col-lg-10 col-xl-10">
                             <ul>
