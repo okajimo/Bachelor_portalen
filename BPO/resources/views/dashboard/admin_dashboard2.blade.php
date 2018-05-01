@@ -15,11 +15,12 @@
       <div class="container">
           <div class="row app-row">
             <div class="col-1">
-              <a href="{{ route('vnews') }}" class="a_hover"><i style="color:#3d79db" class="app-ico far fa-newspaper"></i><p>Nyheter</p></a>
-            </div>
-            <div class="col-1">
               <span class="a_hover" data-toggle="modal" data-target="#exampleModal4"><i style="color:purple" class="app-ico far fa-envelope"></i><p>Epost</p></span>
             </div>
+            <div class="col-1">
+              <a href="{{ route('vnews') }}" class="a_hover"><i style="color:#3d79db" class="app-ico far fa-newspaper"></i><p>Nyheter</p></a>
+            </div>
+            
             <div class="col-1">
               <a href="{{ route('dokumenter') }}" class="a_hover"><i style="color:#3d79db" class="app-ico fas fa-book"></i><p>Dokumenter</p></a>
             </div>

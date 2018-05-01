@@ -12,7 +12,7 @@
                 <div class="container row-margin-bottom">
                     <div class="row">
                         <div class="col-xs-3 col-sm-3 col-md-3 col-lg-2 col-xl-2">
-                            <img height="90" width="90" src="{{asset('img/admin/Nyheter.PNG')}}" alt="">
+                            <img height="90" width="90" src="{{asset('img/admin/Nyheter.PNG')}}" alt="Nyheter.PNG">
                         </div>
                         <div class="col-xs-9 col-sm-9 col-md-9 col-lg-10 col-xl-10">
                             <ul>
@@ -23,7 +23,7 @@
                     </div>
                     <div class="row">
                         <div class="col-xs-3 col-sm-3 col-md-3 col-lg-2 col-xl-2">
-                            <img height="90" width="90" src="{{asset('img/admin/Epost.PNG')}}" alt="">
+                            <img height="90" width="90" src="{{asset('img/admin/Epost.PNG')}}" alt="Epost.PNG">
                         </div>
                         <div class="col-xs-9 col-sm-9 col-md-9 col-lg-10 col-xl-10">
                             <ul>
@@ -34,35 +34,36 @@
                     </div>
                     <div class="row">
                         <div class="col-xs-3 col-sm-3 col-md-3 col-lg-2 col-xl-2">
-                            <img height="90" width="90" src="{{asset('img/admin/dokumenter.PNG')}}" alt="">
+                            <img height="90" width="90" src="{{asset('img/admin/dokumenter.PNG')}}" alt="dokumenter.PNG">
                         </div>
                         <div class="col-xs-9 col-sm-9 col-md-9 col-lg-10 col-xl-10">
                             <ul>
-                                <li>lese statusrapport</li>
-                                <li>les projektkisse</li>
+                                <li>Lese statusrapport</li>
+                                <li>Les projektkisse</li>
                             </ul>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-xs-3 col-sm-3 col-md-3 col-lg-2 col-xl-2">
-                            <img height="90" width="90" src="{{asset('img/admin/administrerGruppe.PNG')}}" alt="">
+                            <img height="90" width="90" src="{{asset('img/admin/administrerGruppe.PNG')}}" alt="administrerGruppe.PNG">
                         </div>
                         <div class="col-xs-9 col-sm-9 col-md-9 col-lg-10 col-xl-10">
                             <ul>
                                 <li>Gi gruppe veileder</li>
+                                <li>Endre veileder</li>
                                 <li>Slette gruppe</li>
                             </ul>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-xs-3 col-sm-3 col-md-3 col-lg-2 col-xl-2">
-                            <img height="90" width="90" src="{{asset('img/admin/presentasjonsplan.PNG')}}" alt="">
+                            <img height="90" width="90" src="{{asset('img/admin/presentasjonsplan.PNG')}}" alt="presentasjonsplan.PNG">
                         </div>
                         <div class="col-xs-9 col-sm-9 col-md-9 col-lg-10 col-xl-10">
                             <ul>
-                                <li>generere plan</li>
-                                <li>slette plan</li>
-                                <li>publisere/upublisere plan</li>
+                                <li>Generere plan</li>
+                                <li>Slette plan</li>
+                                <li>Publisere/upublisere plan</li>
                                 <li>Se studentenes presentasjonsplan</li>
                                 <li>Gjøre endringer og slette individuelle planer</li>
                             </ul>
@@ -70,7 +71,7 @@
                     </div>
                     <div class="row">
                         <div class="col-xs-3 col-sm-3 col-md-3 col-lg-2 col-xl-2">
-                            <img height="90" width="90" src="{{asset('img/admin/prosjektforslag.PNG')}}" alt="">
+                            <img height="90" width="90" src="{{asset('img/admin/prosjektforslag.PNG')}}" alt="prosjektforslag.PNG">
                         </div>
                         <div class="col-xs-9 col-sm-9 col-md-9 col-lg-10 col-xl-10">
                             <ul>
@@ -81,7 +82,7 @@
                     </div>
                     <div class="row">
                         <div class="col-xs-3 col-sm-3 col-md-3 col-lg-2 col-xl-2">
-                            <img height="90" width="90" src="{{asset('img/admin/sensorVeileder.PNG')}}" alt="">
+                            <img height="90" width="90" src="{{asset('img/admin/sensorVeileder.PNG')}}" alt="sensorVeileder.PNG">
                         </div>
                         <div class="col-xs-9 col-sm-9 col-md-9 col-lg-10 col-xl-10">
                             <ul>
@@ -93,33 +94,37 @@
                     </div>
                     <div class="row">
                         <div class="col-xs-3 col-sm-3 col-md-3 col-lg-2 col-xl-2">
-                            <img height="90" width="90" src="{{asset('img/admin/studenter.PNG')}}" alt="">
+                            <img height="90" width="90" src="{{asset('img/admin/studenter.PNG')}}" alt="studenter.PNG">
                         </div>
                         <div class="col-xs-9 col-sm-9 col-md-9 col-lg-10 col-xl-10">
                             <ul>
                                 <li>Importer liste med studenter</li>
-                                <li>Endre poeng på studentene (under 100 poeng mister tilgang)</li>
+                                <li>Endre poeng på studentene
+                                    <ul>
+                                        <li>(under 100 poeng mister tilgang)</li>
+                                    </ul>
+                                </li>
                             </ul>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-xs-3 col-sm-3 col-md-3 col-lg-2 col-xl-2">
-                            <img height="90" width="90" src="{{asset('img/admin/grupperom.PNG')}}" alt="">
+                            <img height="90" width="90" src="{{asset('img/admin/grupperom.PNG')}}" alt="grupperom.PNG">
                         </div>
                         <div class="col-xs-9 col-sm-9 col-md-9 col-lg-10 col-xl-10">
                             <ul>
-                                <li>legg til rom</li>
-                                <li>slett rom</li>
+                                <li>Legg til rom</li>
+                                <li>Slett rom</li>
                             </ul>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-xs-3 col-sm-3 col-md-3 col-lg-2 col-xl-2">
-                            <img height="90" width="90" src="{{asset('img/admin/datoer.PNG')}}" alt="">
+                            <img height="90" width="90" src="{{asset('img/admin/datoer.PNG')}}" alt="datoer.PNG">
                         </div>
                         <div class="col-xs-9 col-sm-9 col-md-9 col-lg-10 col-xl-10">
                             <ul>
-                                <li>administrere viktige datoer</li>
+                                <li>Administrere viktige datoer</li>
                             </ul>
                         </div>
                     </div>

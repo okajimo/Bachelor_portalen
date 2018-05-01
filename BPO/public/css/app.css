@@ -198,6 +198,11 @@ body {
   cursor: pointer;
 }
 
+.a_hover:hover {
+  color: #0096c0 !important;
+  text-decoration: underline;
+}
+
 .row-margin-bottom .row {
   margin-bottom: 0.5em;
 }
