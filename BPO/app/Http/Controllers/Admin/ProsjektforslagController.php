@@ -29,7 +29,7 @@ class ProsjektforslagController extends Controller
     {
         $this->validate($request, [
             'dok' => 'required|mimes:pdf|max:1999',
-            'file_name' => 'required'
+            'file_name' => 'required|regex:/(^[A-Za-z0-9 ÅØÆåøæ-.]+$)/'
         ]);
 
         $upload = \UploadHelper::instance()->upload($request);
