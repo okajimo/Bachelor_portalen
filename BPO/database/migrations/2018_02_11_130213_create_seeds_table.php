@@ -48,7 +48,8 @@ class CreateSeedsTable extends Migration
 		    $table->string('leader', 45);
 		    $table->string('title', 127)->nullable();
 		    $table->string('url', 127)->nullable();
-		    $table->string('supervisor', 45)->nullable();
+			$table->string('supervisor', 45)->nullable();
+			$table->string('searching', 45)->nullable();
 		    
 		    $table->primary(['group_number', 'year']);
 		
