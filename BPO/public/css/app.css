@@ -195,5 +195,14 @@ body {
 .a_hover {
   color: black;
   font-family: Helvetica, Arial, sans-serif;
+  cursor: pointer;
 }
+
+.row-margin-bottom .row {
+  margin-bottom: 0.5em;
+}
+
+/*#exampleModal{
+    max-height: 45em;
+}*/
 
