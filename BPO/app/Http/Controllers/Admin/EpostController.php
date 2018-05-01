@@ -77,7 +77,7 @@ class EpostController extends Controller
         
         \LogHelper::Log("Sendte mail til alle studenter", "1");
 
-        return redirect('/')->with('success', 'Mail er sendt, til studenter');
+        return redirect('/dashboard/admin')->with('success', 'Mail er sendt, til studenter');
     }
 
     public function sendEpostSensorVeileder(request $request)
@@ -142,20 +142,5 @@ class EpostController extends Controller
             return redirect('/epostView')->with('valgte2', $valgte2);
             return $request->verdi;
         }*/
-
-        if(Input::get('sub'))
-        {
-            $verdi = $request->verdi;
-            if($verdi == "senvei")
-            {
-                $l = "l";
-                return redirect('/epostView')->with(['valgte2' => $verdi, 'l' => $l]);
-            }
-            else
-            {
-                $i = "l";
-                return redirect('/epostView')->with(['valgte' => $verdi, 'i' => $i]);
-            }
-        }
     }
 }
