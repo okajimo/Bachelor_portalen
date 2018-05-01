@@ -24,7 +24,7 @@
                         </select>
                     </div>
                     <div class="form-group form-inline">
-                    {{Form::text('poeng','',['placeholder'=>'Skriv inn poeng her','class'=>'form-control'])}}
+                    {{Form::text('poeng','',['placeholder'=>'Skriv inn poeng her','class'=>'form-control', 'required', 'maxlength' => '15', 'pattern' => '[0-9]*', 'title' => 'Poeng må bestå av kun tall'])}}
                     </div>
                 </div>
                 {{Form::submit('Endre poeng', ['class'=>'btn btn-primary'])}}    
