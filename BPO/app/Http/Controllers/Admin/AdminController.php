@@ -204,7 +204,7 @@ class AdminController extends Controller
     {
         $this->validate($request, [
             'tittel' => 'required|regex:/(^[A-Za-z0-9 ÅØÆåøæ!?.:]+$)/',
-            'melding' => 'required',
+            'melding' => 'required|regex:/(^((?!;).)*+$)/',
         ]);
         DB::insert('INSERT INTO news (id, user, tittel, melding) VALUES (NULL, :user, :tittel, :melding)',['user'=>session('navn'),'tittel'=>$request->tittel,'melding'=>$request->melding]);
         

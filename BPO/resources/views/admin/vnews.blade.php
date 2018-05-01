@@ -7,10 +7,10 @@
                     {{Form::label('post', 'Nyheter vil automatisk bli visst på nyhetsiden.')}}
                 </div>
                 <div class="form-group form-inline">  
-                    {{Form::text('tittel', '',['placeholder'=>'Skriv in tittel her...','class'=>'form-control'])}}
+                    {{Form::text('tittel', '',['placeholder'=>'Skriv in tittel her...','class'=>'form-control', 'pattern' => '[A-Za-z0-9 ÅØÆåøæ!?.:]{1,45}'])}}
                 </div>
                 <div class="form-group form-inline">  
-                    {{Form::textarea('melding', '',['id' => 'article-ckeditor', 'class'=>'form-control'])}}
+                    {{Form::textarea('melding', '',['id' => 'article-ckeditor', 'class'=>'form-control', 'required'])}}
                 </div>
                 {{Form::submit('Lag nyhet', ['class'=>'btn btn-success'])}}    
             {!! Form::close() !!} 
