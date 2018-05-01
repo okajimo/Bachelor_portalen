@@ -36,11 +36,11 @@
                 <a href="/administrer_gruppe" class="a_hover"><i style="color:green"class="app-ico fas fa-users"></i><p>Administrer Grupper</p></a>
               </div>
               <div class="col-1" style="min-width: 9em;">
-                <a href="{{ route('presentasjon2') }}" class="a_hover"><i style="color:green"class="app-ico fas fa-clipboard-list"></i><p>Generer Presentasjonsplan</p></a>
+                <a href="{{ route('presentasjon2') }}" class="a_hover"><i style="color:green"class="app-ico fas fa-clipboard-list"></i><p>Presentasjonsplan</p></a>
               </div>
-              <div class="col-1" style="min-width: 9em;">
+              <!--<div class="col-1" style="min-width: 9em;">
                 <a href="{{ route('presentasjonsplan') }}" class="a_hover"><i style="color:#3d79db"class="app-ico fas fa-clipboard-list"></i><p>Presentasjonsplan</p></a>
-              </div>
+              </div>-->
               <div class="col-1">
                 <a href="{{ route('Pforslag') }}" class="a_hover"><i style="color:green" class="app-ico fas fa-file-alt"></i><p>prosjektforslag</p></a>
               </div>
