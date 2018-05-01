@@ -1,5 +1,5 @@
 @if(session('levell') > 1)
-    <button class="btn btn-secondary btn-dashboard"><a href="{{ route('admin2') }}">Dashboard</a></button>
+    <a class="btn btn-secondary btn-dashboard" style="color:black"href="{{ route('admin2') }}">Dashboard</a>
     @elseif(session('levell') == 1)
         <div class="dropdown open">
             <button class="btn btn-secondary dropdown-toggle"
