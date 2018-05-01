@@ -18,12 +18,13 @@ class EpostController extends Controller
     {
         if(session('levell') >= 2)
         {
+            $title= "penis";
             $ver = "s";
-            return view('pages.admin.epostView')->with(['verdi' => $ver]);
+            return view('pages.admin.epostView')->with(['verdi' => $ver, 'title'=>$title]);
         }
         else
         {
-            return redirect('/')->with('error', 'Du er ikke admin og har ikke tilgang');
+            return redirect('/epostView')->with('error', 'Du er ikke admin og har ikke tilgang');
         }
     }
 
@@ -76,7 +77,7 @@ class EpostController extends Controller
         
         \LogHelper::Log("Sendte mail til alle studenter", "1");
 
-        return redirect('/dashboard/admin')->with('success', 'Mail er sendt, til studenter');
+        return redirect('/')->with('success', 'Mail er sendt, til studenter');
     }
 
     public function sendEpostSensorVeileder(request $request)
