@@ -24,7 +24,9 @@
                         <!--Studenter-->
                         <option value="student">Studenter</option>
                         <!--Sensorer-->
-                        <option value="sensor" >Sensor og veileder</option>
+                        <option value="sensor" >Sensor</option>
+                        <!--Veildere-->
+                        <option value="veileder" >Veileder</option>
                     </select>
                 </div>
 
