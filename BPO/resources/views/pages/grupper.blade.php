@@ -1,8 +1,8 @@
 @extends('layouts.app')
 @section('content')
-    <div class="jumbotron">
-        <div class="container">
-            <table class="table table-responsive table-striped">
+    <div class="container container-no-padding">
+        <table class="table">
+            <div class="table-responsive">
                 <thead class="thead-light">
                     <tr>
                         <th>Gruppe</th>
@@ -10,6 +10,8 @@
                         <th>Studenter</th>
                         <th>Veileder</th>
                     </tr>
+                </thead>
+                <tbody class="bg-light">
                     @foreach ($groups as $group)
                         @if($group->leader != "")
                             <tr>
@@ -42,8 +44,8 @@
                             </tr>
                         @endif
                     @endforeach
-                </thead>
-            </table>
-        </div>
+                </div>
+            <tbody>
+        </table> 
     </div>
 @endsection
