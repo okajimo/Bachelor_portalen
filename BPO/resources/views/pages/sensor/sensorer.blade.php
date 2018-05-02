@@ -1,4 +1,13 @@
 @extends('layouts.app')
+@section('crumb')
+    <div class="crumb tittel_tekst" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ route('info') }} ">Informasjon</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('sensor') }} ">Sensorer</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{$title2}}</li>
+        </ol>
+    </div>
+@endsection
 @section('content')
 <?php $side_nav = "annet"; ?>
     @include('inc.nav_header')

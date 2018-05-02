@@ -21,7 +21,7 @@ class PagesController extends Controller
         {
             $year = array('year' => 'mangler', 'year1' => 'mangler');
         }
-        $title = "Informasjon";
+        $title = null;
         return view('pages.informasjon')->with(['title' => $title, 'year' => $year]);
     }
 
@@ -54,11 +54,11 @@ class PagesController extends Controller
         $year = \DateHelper::instance()->year();
         if ($year == 'årstall mangler')
         {
-            $title = "Huskeliste for studenter '". $year."'";
+            $title = "Huskeliste for '". $year."'";
         }
         else
         {
-            $title = "Huskeliste for studenter ". $year['year'] ."/". $year['year1'];
+            $title = "Huskeliste for ". $year['year'] ."/". $year['year1'];
         }
         return view('pages.student.studenter')->with('title', $title);
     }
@@ -111,8 +111,9 @@ class PagesController extends Controller
         {
             $year = array('year' => 'mangler', 'year1' => 'mangler');
         }
-        $title = "Informasjon for sensorer ". $year['year'] ."/". $year['year1'];
-        return view('pages.sensor.sensorer')->with('title', $title);
+        $title = null;
+        $title2 = "Informasjon for sensorer ". $year['year'] ."/". $year['year1'];
+        return view('pages.sensor.sensorer')->with(['title' => $title, 'title2' => $title2]);
     }
 
     //Statiske sider for oppdragsgivere

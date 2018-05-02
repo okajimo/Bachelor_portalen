@@ -1,22 +1,17 @@
 @extends('layouts.app')
 <style>.card{margin-bottom: 1.5em}</style>
+@section('crumb')
+<div class="crumb tittel_tekst" aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        @if($nummer)
+            <li class="breadcrumb-item active" aria-current="page">Gruppe nummer: {{$nummer[0]->student_groups_number}}</li>
+        @else
+            <li class="breadcrumb-item active" aria-current="page">du er ikke medlem av gruppe</li>
+        @endif
+    </ol>
+</div>
+@endsection
 @section('content')
-    <div class="row text-center">
-        <div class="col-12">
-            <h2>Gruppe nummer:<?php 
-                    if($nummer)
-                    {
-                        echo " ".$nummer[0]->student_groups_number;
-                    }
-                    else 
-                    {
-                        echo " du er ikke medlem av gruppe";
-                    }
-                ?>
-            </h2>
-            <div class="py-3 d-inline-block"></div>
-        </div>
-    </div>
    <div class="row">
     <?php $finnesNyheter = DB::select('select * from news'); ?>
     @if($finnesNyheter)

@@ -18,9 +18,13 @@
     @include('inc.navbar')
     <div class="container">
         @if ($title != null)
-        <h3 class="tittel_tekst">{{$title}}</h3>
-        @else
-            <h3 style="visibility:hidden">hidden</h3>
+            <div class="crumb tittel_tekst" aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{{ route('info') }} ">Informasjon</a></li>
+                    <li class="breadcrumb-item"><a href="{{ route('oppdrag') }} ">Oppdragsgivere</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">{{$title}}</li>
+                </ol>
+            </div>
         @endif
         <div class="spacing_header"></div>
             <div class="row">

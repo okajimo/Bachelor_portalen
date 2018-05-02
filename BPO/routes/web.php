@@ -19,10 +19,10 @@ Route::get('/grupper', 'PagesController@grupper')->name('grupper');
 Route::get('/informasjon', 'PagesController@informasjon')->name('info');
 
 // statiske sider for sensorer
-Route::get('/sensorer', 'PagesController@sensorer');
+Route::get('/sensorer', 'PagesController@sensorer')->name('sensor');
 
 // statiske sider for studenter
-Route::get('/studenter', 'PagesController@studenter');
+Route::get('/studenter', 'PagesController@studenter')->name('huske');
 Route::get('/dokumentasjon', 'PagesController@dokumentasjon');
 Route::get('/lastNed/{file}', 'PagesController@lastNed');
 Route::get('/veiledning', 'PagesController@veiledning');
@@ -33,7 +33,7 @@ Route::get('/statusrapport', 'PagesController@statusrapport');
 Route::get('/prosjektskisse', 'PagesController@prosjektskisse');
 
 // statiske sider for oppdragsgivere
-Route::get('/oppdragsgivere', 'PagesController@oppdragsgivere');
+Route::get('/oppdragsgivere', 'PagesController@oppdragsgivere')->name('oppdrag');
 Route::get('/oppdragProsjekt', 'PagesController@oppdragProsjekt');
 Route::get('/oppdragStudent', 'PagesController@oppdragStudent');
 Route::get('/oppdragSammarbeid', 'PagesController@oppdragSammarbeid');

@@ -2,7 +2,6 @@
 @section('content') 
     <div class="jumbotron">
         <div class="container">
-            <h2>Informasjon for oppdragsgivere</h2>
             <h2>Studieåret {{ $year['year'] }}/{{ $year['year1'] }}</h2>
             <h3>Prosjektet</h3>
                 Datastudiene (dataingeniør, informasjonsteknologi og anvendt datateknologi) ved
