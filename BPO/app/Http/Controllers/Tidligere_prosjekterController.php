@@ -196,7 +196,7 @@ class Tidligere_prosjekterController extends Controller
             $bruker = session('navn');
             \LogHelper::Log($bruker." har generert html side for presentasjonsplan og lagret den i tidligere prosjekter", "1");
 
-            return redirect('/presentasjonsplan')->with('success', 'plan opprettet, trykk på publiser for å vise til studenter');
+            return redirect('/presentasjonsplan')->with('success', 'Plan opprettet, trykk publiser for å gi studentene tillgang');
         }
         else
         {
