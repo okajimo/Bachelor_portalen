@@ -98,7 +98,7 @@ class Tidligere_prosjekterController extends Controller
                                 $Ndag = "Søn";
                                 break;
                         }
-                        $html = "<h3>".$Ndag.".".\Carbon\Carbon::parse($Dato->start)->format('d.M')." - Rom: ".$Dato->presentation_room."</h3>
+                        $html = "<h3>".$Ndag.".".\Carbon\Carbon::parse($Dato->start)->format('d.M')."</h3>
                             <table class='table'>
                             <div class='table-responsive'>
                             <thead class='thead-light'>
@@ -109,6 +109,7 @@ class Tidligere_prosjekterController extends Controller
                                 <th>Studenter</th>
                                 <th>Veileder</th>
                                 <th>Sensor</th>
+                                <th>Rom</th>
                             </tr>
                             </thead>
                         ";
@@ -147,6 +148,7 @@ class Tidligere_prosjekterController extends Controller
                                 </td>
                                 <td>".$veileder[0]->firstname." ".$veileder[0]->lastname."</td>
                                 <td>".$sensor[0]->firstname." ".$sensor[0]->lastname."</td>
+                                <td>".$grupper->presentation_room."</td>
                             </tr>
                             </tbody>
                         ";
