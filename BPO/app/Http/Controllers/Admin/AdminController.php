@@ -143,7 +143,7 @@ class AdminController extends Controller
         if(session('levell') >= 2)
         {
             $this->validate($request, [
-                'poeng' => 'required|numeric|max:15'
+                'poeng' => 'required|numeric|max:10000'
             ]);
 
             if($request->poeng >= 100)

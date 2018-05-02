@@ -48,9 +48,9 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
-        \LogHelper::Log("Melding: ".$exception, "3");
-        return parent::render($request, $exception);
-        /*if($exception instanceof \Illuminate\Validation\ValidationException)
+        //\LogHelper::Log("Melding: ".$exception, "3");
+        //return parent::render($request, $exception);
+        if($exception instanceof \Illuminate\Validation\ValidationException)
         {
             return parent::render($request, $exception);
         }
@@ -62,6 +62,6 @@ class Handler extends ExceptionHandler
                 $exception = new \Symfony\Component\HttpKernel\Exception\HttpException(500);
                 return parent::render($request, $exception);
             }
-        }*/
+        }
     }
 }
