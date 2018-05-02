@@ -31,17 +31,21 @@
                 </div>
 
                 <!--Sensorer-->
-                {!! Form::open(['action' => 'Admin\EpostController@sendEpostSensorVeileder', 'method' => 'POST', 'id' => 'sensor']) !!} 
+                {!! Form::open(['action' => 'Admin\EpostController@sendEpostSensor', 'method' => 'POST', 'id' => 'sensor']) !!} 
                     <div class="form-group form-inline">  
-                        <?php $senvei= DB::select('SELECT * FROM sensors_supervisors');?>
-                        <select name="senvei" class='form-control'>
-                            @foreach($senvei as $sen)
-                                <?php $navn = $sen->firstname." ".$sen->lastname; ?>
-                                <option hidden disabled selected>Navn</option>
-                                <option value={{$sen->email}}>{{$navn}}</option>
-                            @endforeach
-                        </select>
+                        {{Form::text('tema', '',['placeholder'=>'Skriv in emne her...','class'=>'form-control', 'required', 'pattern' => '[A-Za-z0-9 øæåØÆÅ.!:-]*', 'title' => 'Emne må være av bokser, tall, punktum, utropstegn, kolonn eller bindestrek'])}}
                     </div>
+                    <div class="form-group form-inline">  
+                        {{Form::textarea('melding', '',['placeholder'=>'Skriv in melding her...','class'=>'form-control', 'required', 'pattern' => '[A-Za-z0-9 øæåØÆÅ.!:-]*', 'title' => 'Emne må være av bokser, tall, punktum, utropstegn, kolonn eller bindestrek'])}}
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        {{Form::submit('Send epost', ['class'=>'btn btn-info'])}}
+                    </div>
+                {!! Form::close() !!}
+
+                <!--Veildere-->
+                {!! Form::open(['action' => 'Admin\EpostController@sendEpostVeileder', 'method' => 'POST', 'id' => 'veileder']) !!} 
                     <div class="form-group form-inline">  
                         {{Form::text('tema', '',['placeholder'=>'Skriv in emne her...','class'=>'form-control', 'required', 'pattern' => '[A-Za-z0-9 øæåØÆÅ.!:-]*', 'title' => 'Emne må være av bokser, tall, punktum, utropstegn, kolonn eller bindestrek'])}}
                     </div>
