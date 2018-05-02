@@ -1,6 +1,6 @@
 {!! Form::open(['action' => 'SimulerController@simuler', 'method' => 'POST']) !!}
     <div class="row">
-        <div style="padding-right:0.8px !important" class="col-5">
+        <div class="col-8 col-sm-7 col-md-6 col-lg-5 col-xl-4 margin-fix no-padding-right">
             <input pattern="[s]{1}[0-9]{6}" title="må skrives på dette formatet s000000" class="form-control"placeholder="Simuler student" type="search" name="student" list="students" required>
             <datalist id="students">
                 @foreach($student as $students)
@@ -10,7 +10,7 @@
         </div>
         {{Form::hidden('inn_navn',session('navn'))}}
         {{Form::hidden('inn_level',session('level'))}}
-        <div style="padding-left:0 !important" class="col-1">
+        <div >
             <button class="btn btn-success"><i style="font-size:1.4em;"class="fas fa-power-off"></i></button>
         </div>
     </div>

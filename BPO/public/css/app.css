@@ -5,6 +5,7 @@
 body {
   background-color: #F5F5F5 !important;
   padding: 0 !important;
+  min-width: 300px;
 }
 
 .navbar {

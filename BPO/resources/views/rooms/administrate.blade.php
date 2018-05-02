@@ -3,7 +3,7 @@
     <div class="crumb" aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{ route('admin2') }} ">Dashboard</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Gruppe Rom</li>
+            <li class="breadcrumb-item active" aria-current="page">Grupperom</li>
         </ol>
     </div>
 @endsection
@@ -13,7 +13,7 @@
             <div class="form-group">
                 {{Form::text('Rom', '', ['class' => 'form-control margin-fix-right', 'placeholder' => 'Rom navn', 'required', 'maxlength' => '45', 'pattern' => '[a-zA-z0-9 øæåØÆÅ]*', 'title' => 'Rom kan kun bestå av tall og bokstaver'])}}
             </div>
-            {{Form::submit('Registrer Rom', ['class' => 'btn btn-primary'])}}
+            {{Form::submit('Registrer Rom', ['class' => 'btn btn-success'])}}
         {!! Form::close() !!}
         <br><br>
     

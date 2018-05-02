@@ -131,7 +131,7 @@ class Tidligere_prosjekterController extends Controller
                         $ulr = "http://student.cs.hioa.no/hovedprosjekter/data/".$date."/".$ar."/";
                         $html .= "
                             <tr>
-                            <tbody>
+                            <tbody class='bg-light'>
                                 <td>".\Carbon\Carbon::parse($grupper->start)->format('H:i')." - ".\Carbon\Carbon::parse($grupper->end)->format('H:i')."</td>
                                 <td>".$grupper->presentation_group_number."</td>
                                 <td><a href='".$ulr."'target='_blank'>Sluttrapport</a></td>"
