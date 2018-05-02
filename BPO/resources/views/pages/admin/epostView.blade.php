@@ -92,6 +92,12 @@
                 $('#stud').fadeOut(0);
                 $('#sens').fadeIn(0);
             }
+            if (value == 'veileder'){
+                $('#student').fadeOut(0);
+                $('#sensor').fadeIn(0);
+                $('#stud').fadeOut(0);
+                $('#sens').fadeIn(0);
+            }
         });   
     });
 </script>

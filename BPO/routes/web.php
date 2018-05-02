@@ -74,10 +74,11 @@ Route::get('/dato', 'Admin\DateController@showDateMaintenance')->name('dato');
 Route::post('/datoOpprett', 'Admin\DateController@createDate');
 Route::post('/datoEndring', 'Admin\DateController@editDate');
 
+//Epost
 Route::get('/epostView', 'Admin\EpostController@epostView')->name('epost');
 Route::post('/1', 'Admin\EpostController@sendEpostAlleStud');
-Route::post('/2','Admin\EpostController@sendEpostSensorVeileder');
-Route::post('/3','Admin\EpostController@velgEpost');
+Route::post('/2','Admin\EpostController@sendEpostVeileder');
+Route::post('/22','Admin\EpostController@sendEpostSensor');
 
 Route::get('/studentVedlikehold', 'Admin\AdminController@studentVedlikehold')->name('student');
 Route::get('/vedlikeholdAvSensorOgVeileder', 'Admin\AdminController@vedlikeholdSensorVeileder')->name('senvei');
