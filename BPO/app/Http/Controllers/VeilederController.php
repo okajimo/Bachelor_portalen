@@ -32,39 +32,53 @@ class VeilederController extends Controller
 
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'supervisor' => 'required',
-        ]);
-        
-        $sensor = DB::select("SELECT sensors_supervisors.firstname, sensors_supervisors.lastname 
-        FROM sensors_supervisors, groups 
-        WHERE groups.supervisor = sensors_supervisors.email 
-        AND group_number = :id", 
-        ['id' => $request->group]); // skulle gjerne brukt denne for tilbakemelding uten error
-
-        DB::update("UPDATE groups
-        SET supervisor = :veileder
-        WHERE group_number = :gruppe_number", 
-        ['veileder' => $request->supervisor, 'gruppe_number' => $request->group]);
-
-        $bruker = session('navn');
-        \LogHelper::Log($bruker." har oppdatert gruppe ".$request->group." med veileder ".$request->supervisor, "1");
-
-        return redirect('/administrer_gruppe')->with('success', 'Gruppe '.$request->group.' har blitt blitt tildelt ny veileder');
+        if(session('levell') >= 2)
+        {
+            $this->validate($request, [
+                'supervisor' => 'required',
+            ]);
+            
+            $sensor = DB::select("SELECT sensors_supervisors.firstname, sensors_supervisors.lastname 
+            FROM sensors_supervisors, groups 
+            WHERE groups.supervisor = sensors_supervisors.email 
+            AND group_number = :id", 
+            ['id' => $request->group]); // skulle gjerne brukt denne for tilbakemelding uten error
+    
+            DB::update("UPDATE groups
+            SET supervisor = :veileder
+            WHERE group_number = :gruppe_number", 
+            ['veileder' => $request->supervisor, 'gruppe_number' => $request->group]);
+    
+            $bruker = session('navn');
+            \LogHelper::Log($bruker." har oppdatert gruppe ".$request->group." med veileder ".$request->supervisor, "1");
+    
+            return redirect('/administrer_gruppe')->with('success', 'Gruppe '.$request->group.' har blitt blitt tildelt ny veileder');
+        }
+        else
+        {
+            return redirect('/login')->with('error', 'Du er ikke admin og har ikke tilgang');
+        }
     }
 
     public function destroy($id)
     {
-        DB::delete("DELETE FROM student_groups
-        WHERE student_groups_number = :id", ['id' => $id]);
+        if(session('levell') >= 2)
+        {
+            DB::delete("DELETE FROM student_groups
+            WHERE student_groups_number = :id", ['id' => $id]);
 
-        DB::update("UPDATE groups
-        SET groups.leader='', groups.title='', groups.url='', groups.supervisor = NULL
-        WHERE group_number = :id", ['id' => $id]);
+            DB::update("UPDATE groups
+            SET groups.leader='', groups.title='', groups.url='', groups.supervisor = NULL
+            WHERE group_number = :id", ['id' => $id]);
 
-        $bruker = session('navn');
-        \LogHelper::Log($bruker." har slettet gruppe ".$id, "1");
+            $bruker = session('navn');
+            \LogHelper::Log($bruker." har slettet gruppe ".$id, "1");
 
-        return redirect('/administrer_gruppe')->with('error', 'Gruppe fjernet');
+            return redirect('/administrer_gruppe')->with('error', 'Gruppe fjernet');
+        }
+        else
+        {
+            return redirect('/login')->with('error', 'Du er ikke admin og har ikke tilgang');
+        }
     }
 }
