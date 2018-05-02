@@ -86,6 +86,7 @@ Route::get('/vedlikeholdAvSensorOgVeileder', 'Admin\AdminController@vedlikeholdS
 Route::post('/t', 'Tidligere_prosjekterController@opprett_html_sider');
 Route::post('/tt', 'Tidligere_prosjekterController@showTidligereProsjekter');
 Route::post('/ttt', 'Tidligere_prosjekterController@publiserPresentasjonsplan');
+Route::post('/tttt', 'Tidligere_prosjekterController@Opprett_publiser');
 Route::get('/presentasjonsplanView', 'Tidligere_prosjekterController@hvisPresentasjonsplan')->name('presentasjonsplan');
 
 Route::post('/gge', 'Admin\AdminController@importerStud');

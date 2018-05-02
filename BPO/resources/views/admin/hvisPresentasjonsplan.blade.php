@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    @if(session('level') >= 1)
+    @if(session('levell') >= 2)
         @include('inc.press_nav')
     @endif
 
