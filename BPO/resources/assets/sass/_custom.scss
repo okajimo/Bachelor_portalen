@@ -22,6 +22,11 @@
     height: 100%;
 }
 
+.container-no-padding{
+    padding-left: 0;
+    padding-right: 0;
+}
+
 .btn-dashboard{
     
     background-color: #F1F1F2 !important; 
@@ -58,6 +63,10 @@
 }
 
 .margin-fix{
+    margin-right: 3.8px;
+}
+
+.margin-fix-right{
     margin-right: 3.8px;
 }
 
@@ -139,6 +148,23 @@
 
 .row-margin-bottom .row{
     margin-bottom: 0.5em;
+}
+
+.breadcrumb{
+    background: #F5F5F5;
+    padding-left: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 1.5em;
+    
+}
+
+.breadcrumb-item a{
+    color: #0096c0;
+}
+
+.breadcrumb .active{
+    color: black !important;
 }
 
 /*#exampleModal{

@@ -15,7 +15,7 @@ class LesDokumenterController extends Controller
         if(session('levell') > 1)
         {
             $groups = DB::table('groups')->get();
-            $title = "Les dokumenter";
+            $title = null;
             return view('pages.lesDokumenter.les_dokumenter')->with(['title' => $title, 'groups' =>$groups]);
         }
         else

@@ -22,7 +22,7 @@
              @if ($title != null)
                 <h3 class="tittel_tekst">{{$title}}</h3>
              @else
-                 <h3 style="visibility:hidden">hidden</h3>
+                @yield("crumb")
              @endif
              
              @yield('logout')

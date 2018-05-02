@@ -14,7 +14,7 @@ class RoomController extends Controller
         if(session('levell') >= 2)
         {
             $Room = Room::all();
-            $title = "Administrer rom";
+            $title = null;
             return view('rooms.administrate')->with(['title' => $title, 'Room' => $Room]);
         }
         else
