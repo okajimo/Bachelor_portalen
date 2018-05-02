@@ -99,7 +99,8 @@ class Tidligere_prosjekterController extends Controller
                                 break;
                         }
                         $html = "<h3>".$Ndag.".".\Carbon\Carbon::parse($Dato->start)->format('d.M')." - Rom: ".$Dato->presentation_room."</h3>
-                            <table class='table table-responsive'>
+                            <table class='table'>
+                            <div class='table-responsive'>
                             <thead class='thead-light'>
                             <tr>
                                 <th>Tid</th>
@@ -154,7 +155,7 @@ class Tidligere_prosjekterController extends Controller
                 $file = "storage/filer/tidligere_prosjekter_sluttrapport/".$date."/".$date.".txt";
                 $current = file_get_contents($file);
                 $current .= $html;
-                $current .= "</table>";
+                $current .= "</div></table>";
                 file_put_contents($file, $current);
 
                 $finnes2 = Storage::exists('/public/filer/presentasjonsplan/false.txt');
@@ -165,7 +166,7 @@ class Tidligere_prosjekterController extends Controller
                     $file = "storage/filer/presentasjonsplan/false.txt";
                     $current = file_get_contents($file);
                     $current .= $html;
-                    $current .= "</table>";
+                    $current .= "</div></table>";
                     file_put_contents($file, $current);
                 }
                 else
@@ -175,7 +176,7 @@ class Tidligere_prosjekterController extends Controller
                         $file = "storage/filer/presentasjonsplan/true.txt";
                         $current = file_get_contents($file);
                         $current .= $html;
-                        $current .= "</table>";
+                        $current .= "</div></table>";
                         file_put_contents($file, $current);
                     }
                     else
@@ -184,7 +185,7 @@ class Tidligere_prosjekterController extends Controller
                         $file = "storage/filer/presentasjonsplan/false.txt";
                         $current = file_get_contents($file);
                         $current .= $html;
-                        $current .= "</table>";
+                        $current .= "</div></table>";
                         file_put_contents($file, $current);
                     }
                 }

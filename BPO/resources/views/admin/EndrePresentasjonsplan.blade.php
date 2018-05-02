@@ -69,7 +69,6 @@
         {!! Form::close() !!}
     </div>
     <button id="regform" class="btn btn-warning btn-big "style="color:#FFF">Registrer endring</button>
-    <a href="/presentasjonsplan" class="btn btn-info btn-big">Presentasjonsplan</a>
     <div class="data"></div>
 @endsection
 @section('extra')
