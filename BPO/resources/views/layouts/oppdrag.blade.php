@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link link-overwrite href="https://student.hioa.no/hioa-theme/images/favicon.ico" rel="Shortcut Icon">
+    <link href="{{asset('img/oslometlogo.png')}} " rel="Shortcut Icon">
     <link rel="stylesheet" href="{{asset('bower_components/bootstrap/dist/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
     <link rel="stylesheet" href="{{asset('bower_components/glyphicons/styles/glyphicons.css')}}">

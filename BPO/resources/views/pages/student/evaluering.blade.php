@@ -2,6 +2,7 @@
 @section('content')
     <div class="jumbotron">
         <div class="container">
+            <h3>{{$title}} </h3>
             <p>
                 Prosjektarbeidet deles opp i de fire delene produkt/resultat, prosess, dokumentasjon
                 og presentasjon. Sluttkarakteren blir gitt på grunnlag av en totalvurdering der de fire delene inngår.

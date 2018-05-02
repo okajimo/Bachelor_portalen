@@ -9,13 +9,13 @@
             <div class="container" style="margin-left:0.55em">
                 <ul class="navbar-nav mr-auto mt-2 mt-md-0">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{route('presentasjon2')}}">Generer presentasjonsplan</a>
+                        <a class="nav-link tittel_tekst2" href="{{route('presentasjon2')}}">Generer presentasjonsplan</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{route('endrePress')}}"> Endre Presentasjonsplan</a>
+                        <a class="nav-link tittel_tekst2" href="{{route('endrePress')}}"> Endre Presentasjonsplan</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('presentasjonsplan') }}">Vis Presentasjonsplan</a>
+                        <a class="nav-link tittel_tekst2" href="{{ route('presentasjonsplan') }}">Vis Presentasjonsplan</a>
                     </li>
                 </ul>
             </div>
