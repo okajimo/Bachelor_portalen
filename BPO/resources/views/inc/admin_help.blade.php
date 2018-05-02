@@ -61,11 +61,25 @@
                         </div>
                         <div class="col-xs-9 col-sm-9 col-md-9 col-lg-10 col-xl-10">
                             <ul>
-                                <li>Generere plan</li>
-                                <li>Slette plan</li>
-                                <li>Publisere/upublisere plan</li>
-                                <li>Se studentenes presentasjonsplan</li>
-                                <li>Gjøre endringer og slette individuelle planer</li>
+                                <li>Generer presentasjonsplan
+                                    <ul>
+                                        <li>Generere plan</li>
+                                        <li>Slette plan</li>
+                                        <li>Publisere/upublisere plan</li>
+                                    </ul>
+                                </li>
+                                <li>Endre Presentasjonsplan
+                                    <ul>
+                                        <li>Endre Dato/tid</li>
+                                        <li>Endre Rom</li>
+                                        <li>Endre Sensor</li>
+                                    </ul>
+                                </li>
+                                <li>Vis Presentasjonsplan
+                                    <ul>
+                                        <li>Se studentenes Presentasjonsplan</li>
+                                    </ul>
+                                </li>
                             </ul>
                         </div>
                     </div>
