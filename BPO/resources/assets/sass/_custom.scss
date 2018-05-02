@@ -28,7 +28,6 @@
 }
 
 .btn-dashboard{
-    
     background-color: #F1F1F2 !important; 
     border-color: #6c757d !important;
 }
@@ -42,6 +41,21 @@
     display: inline-block;
     padding-bottom: 2px;
     margin-bottom: 0.3em;
+}
+
+.tittel_tekst2{
+    border-bottom: 2px solid #FFE01D;
+    font-family: Helvetica, Arial, sans-serif;
+    display: inline-block;
+    padding-bottom: 1px;
+    margin-bottom: 0.8em;
+    margin-right: 20px !important;
+    padding-left: 0 !important;
+}
+
+.tittel_tekst2 li a{
+    padding-left: 0 !important;
+    margin-left: 0 !important;
 }
 
 .underline_link{
@@ -115,13 +129,6 @@
 
 .jumbo-none{
     padding: 0 !important;
-}
-
-.jumbo-fix-vert{
-    padding-top: 0 !important;
-    padding-bottom: 0 !important;
-    margin-top: 0 !important;
-    margin-bottom: 0 !important;
 }
 
 .btn-big{
