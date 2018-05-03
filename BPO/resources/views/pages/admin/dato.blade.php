@@ -5,7 +5,7 @@
             <p>Fyll inn feltene under for å lagre datoer i databsen</p>
             @if ($dates == 'mangler')    
                 {!! Form::open(['action' => 'Admin\DateController@createDate', 'method' => 'POST']) !!}  
-                    <h3 class="dato">Start dato!</h3>
+                    <h3 class="dato">Start dato</h3>
                     <div class="form-group form-inline">
                         {{Form::date('start', '', ['placeholder' => 'DD.MM.ÅÅÅÅ', 'class'=>'form-control'])}}
                     </div>
@@ -13,7 +13,7 @@
                     <div class="form-group form-inline">   
                         {{Form::date('status_report', '', ['placeholder' => 'DD.MM.ÅÅÅÅ', 'class'=>'form-control'])}}
                     </div>
-                    <h3 class="dato">Dato for prosjektskisse innlevering::</h3>
+                    <h3 class="dato">Dato for prosjektskisse innlevering:</h3>
                     <div class="form-group form-inline">   
                         {{Form::date('project_sketch', '', ['placeholder' => 'DD.MM.ÅÅÅÅ', 'class'=>'form-control'])}}
                     </div>
@@ -36,8 +36,8 @@
                     {{Form::submit('Lagre datoer', ['class'=>'btn btn-primary'])}}    
                 {!! Form::close() !!}
             @else
-                {!! Form::open(['action' => 'Admin\DateController@createDate', 'method' => 'POST']) !!}  
-                    <h3 class="dato">Start dato?</h3>
+                {!! Form::open(['action' => 'Admin\DateController@editDate', 'method' => 'POST']) !!}  
+                    <h3 class="dato">Start dato</h3>
                     <div class="form-group form-inline">
                         {{Form::date('start', $dates[0]->date, ['placeholder' => 'DD.MM.ÅÅÅÅ', 'class'=>'form-control'])}}
                     </div>
@@ -45,7 +45,7 @@
                     <div class="form-group form-inline">   
                         {{Form::date('status_report', $dates[1]->date, ['placeholder' => 'DD.MM.ÅÅÅÅ', 'class'=>'form-control'])}}
                     </div>
-                    <h3 class="dato">Dato for prosjektskisse innlevering::</h3>
+                    <h3 class="dato">Dato for prosjektskisse innlevering:</h3>
                     <div class="form-group form-inline">   
                         {{Form::date('project_sketch', $dates[2]->date, ['placeholder' => 'DD.MM.ÅÅÅÅ', 'class'=>'form-control'])}}
                     </div>

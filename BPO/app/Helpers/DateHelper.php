@@ -59,7 +59,7 @@ Class DateHelper
         $data = Input::except('_token');
         foreach ($data as $key => $value)
         {
-            DB::insert('INSERT INTO dato (name, date) VALUES (:name, :date)', ['name' => $key, 'date' => $value]);
+            DB::insert('INSERT INTO dates (name, date) VALUES (:name, :date)', ['name' => $key, 'date' => $value]);
         }
         \LogHelper::Log("Opprettet datoen for dates tabellen", "1");
         return 'Datoer er lagret';
