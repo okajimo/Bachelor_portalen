@@ -192,7 +192,7 @@ class GruppeController extends Controller
         {
             $this->validate($request, [
                 'url' => 'required|url|max:127',
-                'tittel' => 'required|alpha|max:45'
+                'tittel' => 'required|max:45|regex:/(^[A-Za-z æøåÆØÅ]+$)/'
             ]);
             
             $student = session('navn');

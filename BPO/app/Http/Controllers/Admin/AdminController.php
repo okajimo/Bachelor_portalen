@@ -186,6 +186,31 @@ class AdminController extends Controller
         }
     }
 
+    public function resetPassword(request $request)
+    {
+        $stud = session('navn');
+        $passord = str_random(8);
+        DB::update('UPDATE users SET password = :pass WHERE username = :stud',['pass'=>$passord,'stud'=>$request->student]);
+        \LogHelper::Log("Oppdaterte ".$request->student." med nytt passord og sendte mail", "1");
+
+        $email = DB::select('select email from users where username = :stud',['stud'=>$request->student]);
+        $sender = DB::select('select email from users where username = :stud',['stud'=>$stud]);
+        /*$data = array(
+            'til' => $email[0]->email,
+            'fra' => $sender[0]->email,
+            'passord' => $passord
+        );
+        mail::send('emails.contact', $data, function($melding) use ($data)
+        {
+            $melding->from($data['fra']);
+            $melding->to($data['til']);
+            $melding->subject('Passord');
+        });
+        \LogHelper::Log("Oppdaterte ".$request->student." med nytt passord. Mail med passord sendt til student", "1");
+        */        
+        return redirect('/studentVedlikehold')->with('success','Student er oppdatert.');
+    }
+
     public function vnews()
     {
         if(session('levell') >= 2)
