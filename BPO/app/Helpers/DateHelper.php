@@ -18,17 +18,16 @@ Class DateHelper
     
     public function date($data)
     {
-        $date = DB::table('dates')->get();
-        if ($date->count() == 0)
+        $date = DB::select('SELECT date FROM dates WHERE name = :name', ['name' => $data]);
+        if ($date[0]->date == '0000-00-00')
         {
             return "dato mangler";
         }
         else
         {
-            $date = \Carbon\Carbon::parse($date[0]->$data)->format('d.m.Y');
+            $date = \Carbon\Carbon::parse($date[0]->date)->format('d.m.Y');
             return $date;
         }
-
     }
 
     /**
@@ -37,14 +36,14 @@ Class DateHelper
      */
     public function year()
     {
-        $getYear = DB::table('dates')->get();
-        if ($getYear->count() == 0)
+        $getYear = DB::select('SELECT date FROM dates WHERE name = :name', ['name' => 'start']);
+        if ($getYear[0]->date == '0000-00-00')
         {
             return "årstall mangler"; 
         }
         else
         {
-            $getYear = \Carbon\Carbon::parse($getYear[0]->start)->format('Y');
+            $getYear = \Carbon\Carbon::parse($getYear[0]->date)->format('Y');
             $year = array('year' => $getYear, 'year1' => $getYear + 1); 
             return $year;
         }
@@ -57,28 +56,12 @@ Class DateHelper
      */
     public function create()
     {
-        //DB::connection()->enableQueryLog();
-        $array = array();
         $data = Input::except('_token');
         foreach ($data as $key => $value)
         {
-            $format = \Carbon\Carbon::createFromFormat('d.m.Y', $value);
-            $value = $format->format('Y-m-d');
-            $array[$key] = $value;
+            DB::insert('INSERT INTO dato (name, date) VALUES (:name, :date)', ['name' => $key, 'date' => $value]);
         }
-        
-        $date = new Date;
-        $date->start = $array['start'];
-        $date->status_report = $array['status_report'];
-        $date->project_sketch = $array['project_sketch'];
-        $date->preproject = $array['preproject'];
-        $date->project_report = $array['project_report'];
-        $date->pres_start = $array['pres_start'];
-        $date->pres_end = $array['pres_end'];
-        $date->save();
-
         \LogHelper::Log("Opprettet datoen for dates tabellen", "1");
-
         return 'Datoer er lagret';
     }
 
@@ -89,23 +72,12 @@ Class DateHelper
      */
     public function update($request)
     {
-        //DB::connection()->enableQueryLog();
-        $array = array();
         $data = Input::except('_token');
         foreach ($data as $key => $value)
         {
-            $format = \Carbon\Carbon::createFromFormat('d.m.Y', $value);
-            $value = $format->format('Y-m-d');
-            $array[$key] = $value;
+            DB::update('UPDATE dates SET date = :date WHERE name = :name', ['date' => $value, 'name' => $key]);
         }
-        DB::update('UPDATE dates SET start = :start, status_report = :statusreport, project_sketch = :project_sketch, 
-        preproject = :preproject, project_report = :project_report, pres_start = :pres_start, pres_end = :pres_end', 
-        ['start' => $array['start'], 'statusreport' => $array['status_report'], 'project_sketch' => $array['project_sketch'],
-        'preproject' => $array['preproject'], 'project_report' => $array['project_report'], 'pres_start' => $array['pres_start'],
-        'pres_end' => $array['pres_end']]);
-
         \LogHelper::Log("Oppdaterte datoene for dates tabellen", "1");
-
         return 'Datoer er oppdatert';
     }
 
