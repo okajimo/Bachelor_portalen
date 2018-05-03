@@ -75,7 +75,7 @@
                                         <li>Endre Sensor</li>
                                     </ul>
                                 </li>
-                                <li>Vis Presentasjonsplan
+                                <li>Presentasjonsplan
                                     <ul>
                                         <li>Se studentenes Presentasjonsplan</li>
                                     </ul>

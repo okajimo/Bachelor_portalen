@@ -20,7 +20,7 @@ class PresentasjonController extends Controller
             WHERE group_number NOT IN (SELECT presentation.presentation_group_number FROM presentation)
             AND supervisor IS NOT NULL');
 
-            $title = "Presentasjonsplan";
+            $title = "Generer Presentasjonsplan";
             return view('admin.Presentasjonsplan')->with(['title' => $title, 'rooms' => $rooms, 'supervisors' => $supervisors, 'groups' => $groups]);
         }
         else

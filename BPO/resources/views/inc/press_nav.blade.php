@@ -15,7 +15,7 @@
                         <a class="nav-link tittel_tekst2" href="{{route('endrePress')}}"> Endre Presentasjonsplan</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link tittel_tekst2" href="{{ route('presentasjonsplan') }}">Vis Presentasjonsplan</a>
+                        <a class="nav-link tittel_tekst2" href="{{ route('presentasjonsplan') }}">Presentasjonsplan</a>
                     </li>
                 </ul>
             </div>
