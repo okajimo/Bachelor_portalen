@@ -110,7 +110,7 @@ class PresentasjonController extends Controller
                 $bruker = session('navn');
                 \LogHelper::Log($bruker." har opprettet presentasjonsplan for gruppene: ".$grupper, "1"); 
     
-                return redirect('/presentasjonsplan')->with('success', "Presentasjonsplan oppdatert");
+                return redirect('/presentasjonsplan')->with('success', "Presentasjonsplan oppdatert, husk å generere og publisere planen for studentene");
             }
             else
                 return redirect('/presentasjonsplan')->with('error', "du må hvertfall velge en gruppe");
