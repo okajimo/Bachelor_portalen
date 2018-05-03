@@ -19,7 +19,7 @@ Class DateHelper
     public function date($data)
     {
         $date = DB::select('SELECT date FROM dates WHERE name = :name', ['name' => $data]);
-        if ($date[0]->date == '0000-00-00')
+        if (empty($date))
         {
             return "dato mangler";
         }
@@ -37,7 +37,7 @@ Class DateHelper
     public function year()
     {
         $getYear = DB::select('SELECT date FROM dates WHERE name = :name', ['name' => 'start']);
-        if ($getYear[0]->date == '0000-00-00')
+        if (empty($getYear))
         {
             return "årstall mangler"; 
         }
