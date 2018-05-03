@@ -95,7 +95,7 @@
                                         <a style="color:green">Søker medlemmer</a>
                                     @endif
                                 </td>
-                                <td><a href="http://{{ $group->url }}" target='_blank'>{{ $group->title }}</a></td>
+                                <td><a href="{{ $group->url }}" target='_blank'>{{ $group->title }}</a></td>
                                 <td>
                                     <?php /*$student = DB::select('select student_groups.student from student_groups, groups 
                                     where groups.group_number = student_groups.student_groups_number and groups.year = student_groups_year 
