@@ -9,8 +9,6 @@
     @include('inc.simuler')
 
     <h4>Informasjon</h4>
-    <a hidden href="{{ route('vnews') }}">Vedlikehold nyheter</a>
-
     <section class="text-center">
       <div class="container">
           <div class="row app-row">

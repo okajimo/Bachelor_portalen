@@ -235,7 +235,7 @@ class AdminController extends Controller
         
         \LogHelper::Log("Opprettet nyhet med tittel ".$request->tittel, "1");
         
-        return redirect('/vnews')->with('success', 'Nyhet har blitt laget');
+        return redirect('/vnews')->with('success', 'Nyhet har blitt opprettet, og ligger nå i vis Nyheter for studentene');
     }
 
     public function slettNyhet(request $request)
