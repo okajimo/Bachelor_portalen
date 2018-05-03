@@ -81,6 +81,8 @@ Route::post('/2','Admin\EpostController@sendEpostVeileder');
 Route::post('/22','Admin\EpostController@sendEpostSensor');
 
 Route::get('/studentVedlikehold', 'Admin\AdminController@studentVedlikehold')->name('student');
+Route::post('/studentt', 'Admin\AdminController@resetPassword');
+
 Route::get('/vedlikeholdAvSensorOgVeileder', 'Admin\AdminController@vedlikeholdSensorVeileder')->name('senvei');
 
 Route::post('/t', 'Tidligere_prosjekterController@opprett_html_sider');

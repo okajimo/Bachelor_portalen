@@ -7,7 +7,7 @@
             {{Form::label('url', 'Last opp link til hjemmeside her.')}}
             </br>
             <div class="form-group form-inline"> 
-            {{Form::text('tittel', '',['placeholder' => 'Navn på link...','class'=>'form-control', 'required', 'maxlength' => '45','pattern'=>'[A-Za-zæøåÆØÅ]{1,45}','title'=>'Tittel må være boksaver og kun fra 1 til 45 tegn'])}} </br>
+            {{Form::text('tittel', '',['placeholder' => 'Navn på link...','class'=>'form-control', 'required', 'maxlength' => '45','pattern'=>'[A-Za-z æøåÆØÅ]*','title'=>'Tittel må være boksaver og kun fra 1 til 45 tegn'])}} </br>
             </div>
             <div class="form-group form-inline"> 
             {{Form::text('url', '',['placeholder' => 'Lim in link her...','class'=>'form-control', 'maxlength' => '127','required', 'pattern'=>'((https?|http):\/\/)(www.)?[a-z0-9]+\.[a-z]+([/a-zA-Z0-9#]+\/?)*', 'title'=>'Full url (http(s)://www.server.com/path/)'])}}
