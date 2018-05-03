@@ -19,7 +19,7 @@ class PagesController extends Controller
         $year = \DateHelper::instance()->year();
         if ($year == 'årstall mangler')
         {
-            $year = array('year' => 'mangler', 'year1' => 'mangler');
+            $year = array('year' => 'Dato', 'year1' => 'Dato');
         }
         $title = null;
         return view('pages.informasjon')->with(['title' => $title, 'year' => $year]);
@@ -109,7 +109,7 @@ class PagesController extends Controller
         $year = \DateHelper::instance()->year();
         if ($year == 'årstall mangler')
         {
-            $year = array('year' => 'mangler', 'year1' => 'mangler');
+            $year = array('year' => 'Dato', 'year1' => 'Dato');
         }
         $title = null;
         $title2 = "Informasjon for sensorer ". $year['year'] ."/". $year['year1'];
@@ -122,7 +122,7 @@ class PagesController extends Controller
         $year = \DateHelper::instance()->year();
         if ($year == 'årstall mangler')
         {
-            $year = array('year' => 'mangler', 'year1' => 'mangler');
+            $year = array('year' => 'Dato', 'year1' => 'Dato');
         }
         $title = "Informasjon for oppdragsgivere";
         return view('pages.oppdragsgiver.oppdragsgivere')->with(['title' => $title, 'year' => $year]);
