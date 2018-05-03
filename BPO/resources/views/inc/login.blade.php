@@ -7,7 +7,7 @@
                     aria-haspopup="true" aria-expanded="false" style="color: black; background-color: #F1F1F2; border-color: #6c757d;">
                 Meny
             </button>
-            <div class="dropdown-menu dropdown-menu-right">
+            <div class="dropdown-menu dropdown-menu-right shadow">
                 <a class="dropdown-item" href="{{ route('gruppe') }}">Dashboard Gruppe</a>
                 <a class="dropdown-item" href="{{ route('group') }}">Gruppe innstillinger</a>
                 <a class="dropdown-item" href="{{ route('lastOppS') }}">Last opp statusrapport</i></a>
