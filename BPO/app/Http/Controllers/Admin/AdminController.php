@@ -29,6 +29,14 @@ class AdminController extends Controller
 
     public function slettSenvei(request $request)
     {
+        $sjekk = DB::SELECT('(SELECT groups.supervisor as senvei FROM groups ) UNION (SELECT presentation.sensor as senvei FROM presentation)');
+        foreach($sjekk as $sj)
+        {
+            if($sj->senvei == $request->email)
+            {
+                return redirect('/vedlikeholdAvSensorOgVeileder')->with('error','Kan ikke slette sensor/veileder når dem er i bruk.');
+            }
+        }
         DB::DELETE('DELETE FROM sensors_supervisors WHERE email = :email',['email'=>$request->email]);
         \LogHelper::Log("Slettet sensor/veileder: ".$request->email, "1"); 
         return redirect('/vedlikeholdAvSensorOgVeileder')->with('success','Sletting av sensor/veileder var vellykket.');
@@ -245,18 +253,5 @@ class AdminController extends Controller
         \LogHelper::Log("Slettet nyhet med id ".$request->id, "1");
 
         return redirect('/vnews')->with('success', 'Nyhet har blitt slettet');
-    }
-
-    public function OpprydningsView()
-    {
-        if(session('levell') >= 2)
-        {
-            $title = "Opprydning for neste semester";
-            return view('pages.admin.OpprydningsView')->with('title' , $title);
-        }
-        else
-        {
-            return redirect('/')->with('error', 'Du er ikke admin og har ikke tilgang');
-        }
     }
 }

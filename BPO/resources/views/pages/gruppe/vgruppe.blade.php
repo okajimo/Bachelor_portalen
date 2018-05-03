@@ -54,7 +54,7 @@
                     <div class="btn-group btn-group-lg" role="group" aria-label="Basic example">
                         {!! Form::open(['action' => 'GruppeController@sokMedlemmer', 'method' => 'POST'])!!}
                         {{form::hidden('_method', 'POST')}}
-                            {{Form::submit('Søk medlemmer', ['class'=>'btn btn-info'])}}
+                            {{Form::submit('Søk medlemmer', ['class'=>'btn btn-primary'])}}
                         {!! Form::close() !!}
                     </div>
                 @else

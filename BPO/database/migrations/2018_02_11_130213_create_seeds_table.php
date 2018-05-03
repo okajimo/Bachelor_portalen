@@ -96,14 +96,9 @@ class CreateSeedsTable extends Migration
 		Schema::create('dates', function(Blueprint $table) {
 		    $table->engine = 'InnoDB';
 		
-		    $table->date('start');
-		    $table->date('status_report');
-		    $table->date('project_sketch');
-		    $table->date('preproject');
-			$table->date('project_report');
-			$table->date('pres_start');
-			$table->date('pres_end');
-		
+		    $table->increments('id');
+		    $table->string('name', 25);
+		    $table->date('date');
 		
 		});
 
@@ -114,7 +109,6 @@ class CreateSeedsTable extends Migration
 		    $table->string('firstname', 45);
 		    $table->string('lastname', 45);
 		    $table->string('status', 45);
-		    
 		    $table->primary('email');
 		
 		
@@ -127,7 +121,6 @@ class CreateSeedsTable extends Migration
 		    
 		    $table->primary('room');
 		
-		
 		});
 
 		Schema::create('presentation', function(Blueprint $table) {
@@ -138,7 +131,6 @@ class CreateSeedsTable extends Migration
 		    $table->dateTime('start');
 		    $table->dateTime('end');
 		    $table->string('presentation_room', 45);
-			//$table->integer('sensor');
 			$table->string('sensor', 45)->nullable();
 		    
 		    $table->primary(['presentation_group_number', 'presentation_year']);
@@ -155,7 +147,6 @@ class CreateSeedsTable extends Migration
 		    $table->string('tittel', 45);
 		    $table->string('melding', 1000);
 		
-		
 		});
 
 		Schema::create('prosjektforslag', function(Blueprint $table) {
@@ -164,7 +155,6 @@ class CreateSeedsTable extends Migration
 			$table->increments('id');
 			$table->string('date_added', 10);
 			$table->string('file_name', 127);
-
 			
 		});
 
