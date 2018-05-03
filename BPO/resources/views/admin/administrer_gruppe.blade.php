@@ -31,8 +31,8 @@
                                         @endforeach
                                     </td>
                                     <td>
-                                        {!! Form::open(['action' => ['VeilederController@store'], 'method' => 'POST', 'class' => 'float-left']) !!}
-                                            <select name="supervisor" style="width: 8.5em; border: 1px solid black;" class="btn">
+                                        {!! Form::open(['action' => ['VeilederController@store'], 'method' => 'POST', 'class' => 'float-left form-inline']) !!}
+                                            <select name="supervisor" class="margin-fix-right form-control">
                                                     @if($groups->supervisor == "")
                                                         <option value=""></option>
                                                     @endif

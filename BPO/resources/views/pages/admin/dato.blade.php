@@ -33,7 +33,7 @@
                     <div class="form-group form-inline">   
                         {{Form::date('pres_end', '', ['placeholder' => 'DD.MM.ÅÅÅÅ', 'class'=>'form-control'])}}
                     </div>
-                    {{Form::submit('Lagre datoer', ['class'=>'btn btn-primary'])}}    
+                    {{Form::submit('Lagre datoer', ['class'=>'btn btn-success'])}}    
                 {!! Form::close() !!}
             @else
                 {!! Form::open(['action' => 'Admin\DateController@createDate', 'method' => 'POST']) !!}  
@@ -65,7 +65,7 @@
                     <div class="form-group form-inline">   
                         {{Form::date('pres_end', $dates[6]->date, ['placeholder' => 'DD.MM.ÅÅÅÅ', 'class'=>'form-control'])}}
                     </div>
-                    {{Form::submit('Lagre datoer', ['class'=>'btn btn-primary'])}}    
+                    {{Form::submit('Lagre datoer', ['class'=>'btn btn-success'])}}    
                 {!! Form::close() !!}
             @endif
         </div>

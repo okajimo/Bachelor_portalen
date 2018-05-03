@@ -27,9 +27,21 @@
                 {!! Form::close() !!}
                 </br>
             </div> 
-            <div style="margin-top: 5em;"></div>
+            <div style="margin-top: 3.5em;"></div>
             <div class="row">
-                {!! Form::open(['action' => 'PresentasjonController@store', 'method' => 'POST', 'id' => 'form', 'class' => 'col-xs-12 col-sm-12 col-md-10 of col-lg-5 col-xl-5 offset-md-1 offset-lg-0 form-group']) !!}
+            {!! Form::open(['action' => 'PresentasjonController@store', 'method' => 'POST', 'id' => 'form', 'class' => 'col-xs-12 col-sm-12 col-md-10 of col-lg-5 col-xl-5 offset-md-1 offset-lg-0 form-group']) !!}
+                <div class="row">
+                    <div class="col-12 no-padding-left">
+                        <h4>Lunsj</h4>
+                    </div>
+                    <div class="col-12 no-padding-left">
+                        <div class="form-inline">
+                            <input type="time" class="form-control form-control-lg" value="11:00" name="lunsj" required>
+                        </div>
+                    </div>
+                </div>
+                <div style="margin-bottom: 2em;"></div>
+                
                     <div class="row">
                         <h4 class="no-padding-left col-12 bigger">Registrer dag og rom her:</h4>
                         <input type="date" class="col-xs-12 col-sm-8 form-control form-control-lg" value="{{date("Y")}}-06-01" name="dates" required>
@@ -46,7 +58,7 @@
                                 <option value={{$supervisor->email}}>{{$supervisor->firstname." ".$supervisor->lastname}}</option>
                             @endforeach
                         </select>
-                        <div class="grupper"></div>
+                        <div id="grupper" class="grupper"></div>
                         {{Form::submit('Send inn plan', ['class'=>'btn btn-success col-12 margin-fix-top'])}}
                     </div>
                 {!! Form::close() !!}
