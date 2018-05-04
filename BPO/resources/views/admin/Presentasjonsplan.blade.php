@@ -36,14 +36,14 @@
                     </div>
                     <div class="col-12 no-padding-left">
                         <div class="form-inline">
-                            <input type="time" class="form-control form-control-lg" value="11:00" name="lunsj" required>
+                            <input type="time" class="form-control form-control-lg" name="lunsj" required>
                         </div>
                     </div>
                 </div>
                 <div style="margin-bottom: 2em;"></div>
                 
                     <div class="row">
-                        <h4 class="no-padding-left col-12 bigger">Registrer dag og rom her:</h4>
+                        <h4 class="no-padding-left col-12">Registrer dag og rom her:</h4>
                         <input type="date" class="col-xs-12 col-sm-8 form-control form-control-lg" value="{{date("Y")}}-06-01" name="dates" required>
                         <input type="time" class="col-xs-12 col-sm-4 form-control form-control-lg" value="09:00" name="time" required>
                         <select required class="custom-select form-control form-control-lg margin-fix-top" name="room">
