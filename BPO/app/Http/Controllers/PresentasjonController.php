@@ -68,6 +68,8 @@ class PresentasjonController extends Controller
                 $room = $request->room;
                 
                 $lunsj_check_start = new DateTime($lunsj, new DateTimezone('Europe/Oslo'));
+                //hvor mange minutter inn i lunsjen en presentasjon gå på overtid
+                $lunsj_check_start->modify('+10 minutes');
                 
                 $lunsj_check_slutt = new DateTime($lunsj, new DateTimezone('Europe/Oslo'));
                 $lunsj_check_slutt->modify('+60 minutes');
