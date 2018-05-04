@@ -14,16 +14,17 @@ class DateController extends Controller
         if(session('levell') >= 2)
         {
             $title = "Dato vedlikehold";
-            $date = DB::table('dates')->get();
 
-            if ($date->count() == 0)
+            $data = DB::select('SELECT * FROM dates');
+            if (empty($data))
             {
-                return view('pages.admin.datoOpprett')->with('title', $title);
+                $dates = 'mangler';
             }
             else
             {
-                return view('pages.admin.datoEndring')->with('title', $title);
+                $dates = $data;   
             }
+            return view('pages.admin.dato')->with(['title' => $title, 'dates' => $dates]);
         }
         else
         {

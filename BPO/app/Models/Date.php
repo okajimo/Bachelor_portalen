@@ -15,11 +15,4 @@ class Date extends Model
          * @var string
          */
         protected $table = 'dates';
-
-        /**
-         * Deaktiverer automatisk økning av primærnøkkel.
-         *
-         * @var bool
-         */
-        public $incrementing = false;
 }

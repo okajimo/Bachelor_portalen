@@ -70,7 +70,7 @@
                                 </li>
                                 <li>Endre Presentasjonsplan
                                     <ul>
-                                        <li>Endre Dato/tid</li>
+                                        <li>Endre Dato</li>
                                         <li>Endre Rom</li>
                                         <li>Endre Sensor</li>
                                     </ul>

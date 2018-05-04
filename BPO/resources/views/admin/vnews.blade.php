@@ -18,6 +18,7 @@
                     <tr>
                         <th>Bruker</th>
                         <th>Tittel</th>
+                        <th>Melding</th>
                         <th><div class="float-right" style="margin-right: 3.6em">Slett</div></th>
                     </tr>
                 </thead>
@@ -26,6 +27,7 @@
                     <tr>
                         <td>{{$nyh->user}}</td>
                         <td>{{$nyh->tittel}}</td>
+                        <td><?php echo $nyh->melding ?></td>
                         <td>
                             {!! Form::open(['action' => 'Admin\AdminController@slettNyhet', 'method' => 'POST','onsubmit' => 'return ConfirmDelete()']) !!}  
                                     {{Form::hidden('id',$nyh->id)}}

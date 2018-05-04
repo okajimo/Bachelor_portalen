@@ -63,39 +63,47 @@ class PresentasjonController extends Controller
                 $antall = 0;
     
                 $time_start = $request->time;
+                $lunsj = $request->lunsj;
                 $sensor = $request->sensor;
                 $room = $request->room;
-    
-                $dtCheck = new DateTime("11:00:00", new DateTimezone('Europe/Oslo'));
-                $dt2Check = new DateTime("12:00:00", new DateTimezone('Europe/Oslo'));
-    
-                $dt = new DateTime($time_start, new DateTimezone('Europe/Oslo'));
-                $dt2 = new DateTime($time_start, new DateTimezone('Europe/Oslo'));
-                $dt2->modify('+30 minutes');
+                
+                //sjekker mellom tidsromet mellom check start og check slutt
+                $lunsj_check_start = new DateTime($lunsj, new DateTimezone('Europe/Oslo'));
+                $lunsj_check_slutt = new DateTime($lunsj, new DateTimezone('Europe/Oslo'));
+                $lunsj_check_slutt->modify('+60 minutes');
+
+                //neste press slutter Eks: $lunsj_check_slutt + 30 min
+                //if for lunsj
+                $neste_press = new DateTime($lunsj, new DateTimezone('Europe/Oslo'));
+                $neste_press->modify('+90 minutes');
+
+                //hvor mange minutter inn i lunsjen en presentasjon går på overtid
+                $lunsj_check_start->modify('+10 minutes');
+
+                //start/slutt
+                $p_start = new DateTime($time_start, new DateTimezone('Europe/Oslo'));
+                $p_slutt = new DateTime($time_start, new DateTimezone('Europe/Oslo'));
+                $p_slutt->modify('+30 minutes');
                 
                 foreach($groups as $exist){
                     if ($antall < $antall_perr_dag ){
-                        if($dt>= $dtCheck && $dt< $dt2Check){
-                            $dt->setTime(12, 00);
-                            $dt2->setTime(12, 30);
+                        //lunsj
+                        if(($p_start> $lunsj_check_start && $p_start< $lunsj_check_slutt) || ($p_slutt>= $lunsj_check_start && $p_slutt< $lunsj_check_slutt)){
+                            $p_start = $lunsj_check_slutt;
+                            $p_slutt = $neste_press;
                         }
     
-                        if($dt2>= $dtCheck && $dt2< $dt2Check){
-                            $dt->setTime(12, 00);
-                            $dt2->setTime(12, 30);
-                        }
+                        $start = $dato." ".$p_start->format('H:i');
+                        $slutt = $dato." ".$p_slutt->format('H:i');
+                        $p_start->modify('+5 minutes');
+                        $p_slutt->modify('+5 minutes');
     
-                        $start = $dato." ".$dt->format('H:i');
-                        $slutt = $dato." ".$dt2->format('H:i');
-                        $dt->modify('+5 minutes');
-                        $dt2->modify('+5 minutes');
-    
-    
+                        //Genererer presentasjonsplan
                         DB::insert("INSERT INTO presentation (presentation.presentation_group_number, presentation.presentation_year, presentation.start, presentation.end, presentation.presentation_room, presentation.sensor)
                         VALUES (:gnum, :aar, :starts, :slutts, :room, :sensor)", ['gnum' => $exist, 'starts' => $start, 'slutts' => $slutt, 'room' => $room, 'aar' =>$aar, 'sensor' => $sensor]);
                         
-                        $dt->modify('+30 minutes');
-                        $dt2->modify('+30 minutes');
+                        $p_start->modify('+30 minutes');
+                        $p_slutt->modify('+30 minutes');
     
                         $antall++;
                         $grupperLaget[] = $exist;
@@ -157,14 +165,14 @@ class PresentasjonController extends Controller
                 $time_start = $request->start_time[$i];
                 $date_start = $request->start_date[$i];
 
-                $dt = new DateTime($time_start, new DateTimezone('Europe/Oslo'));
+                $p_start = new DateTime($time_start, new DateTimezone('Europe/Oslo'));
 
-                $start = $date_start." ".$dt->format('H:i');
-                $dt->modify('+30 minutes');
+                $start = $date_start." ".$p_start->format('H:i');
+                $p_start->modify('+30 minutes');
 
                 DB::update("UPDATE presentation
                 SET presentation.start = :starts, presentation.end = :ends, presentation.presentation_room = :room, presentation.sensor = :sensor
-                WHERE presentation.presentation_group_number = :group", ['group' => $group, 'starts' => $start, 'ends' => $dt, 'room' => $request->room[$i], 'sensor' => $request->sensor[$i]]);
+                WHERE presentation.presentation_group_number = :group", ['group' => $group, 'starts' => $start, 'ends' => $p_start, 'room' => $request->room[$i], 'sensor' => $request->sensor[$i]]);
                 $i++;
             }
 

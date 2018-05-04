@@ -1,18 +1,18 @@
 @extends('layouts.app')
 @section('content')
     <div class="jumbotron">
-        <div class="container">
+        <div class="container container-no-padding">
             {!! Form::open(['action' => 'Admin\ProsjektforslagController@uploadFile', 'method' => 'POST', 'files' => true]) !!}  
                 {{Form::hidden('type', 'prosjektforslag')}}    
-                {{Form::label('file_name', 'Skriv inn filnavn (ikke .pdf)')}}
+                <h5>{{Form::label('file_name', 'Skriv inn filnavn (ikke .pdf)')}}</h5>
                 <div class="form-group form-inline">
                     {{Form::text('file_name', '', ['class'=>'form-control', 'required', 'maxlength' => '45','pattern' => '[A-Za-z0-9 øæåØÆÅ.-]*', 'title' => 'Navnet må kun bestå av bokstaver, tall, punktum og bindestrek'])}}
                 </div>
-                {{Form::label('dok', 'Velg fil, kun PDF godkjent')}} 
+                <h5>{{Form::label('dok', 'Velg fil, kun PDF godkjent')}}</h5> 
                 <div class="form-group form-inline">
                     {{Form::file('dok')}}
                 </div>
-                {{Form::submit('Publiser', ['class'=>'btn btn-primary'])}}    
+                {{Form::submit('Publiser', ['class'=>'btn btn-success'])}}    
             {!! Form::close() !!}
         </div></br></br>
         <div>
