@@ -67,7 +67,7 @@ class Tidligere_prosjekterController extends Controller
             }
             foreach($kunDato as $dat)
             {
-                $finnDato = DB::select('SELECT * FROM presentation');
+                $finnDato = DB::select('SELECT * FROM presentation ORDER BY start');
                 foreach($finnDato as $Dato)
                 {
                     $sjekk = \Carbon\Carbon::parse($Dato->start)->format('d');
