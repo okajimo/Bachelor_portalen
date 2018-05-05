@@ -77,7 +77,8 @@ class PresentasjonController extends Controller
                 $neste_press = new DateTime($lunsj, new DateTimezone('Europe/Oslo'));
                 $neste_press->modify('+90 minutes');
 
-                //hvor mange minutter inn i lunsjen en presentasjon går på overtid
+                //hvor mange minutter inn i lunsjen en presentasjon går på overtid 
+                //NB:husk det er 5 min mellom hver presentasjon, 10 min vil tilsvare 5 min inn i lunsjen.
                 $lunsj_check_start->modify('+10 minutes');
 
                 //start/slutt

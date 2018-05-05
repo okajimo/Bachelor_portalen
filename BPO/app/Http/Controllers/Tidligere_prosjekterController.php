@@ -237,7 +237,7 @@ class Tidligere_prosjekterController extends Controller
 
                 \LogHelper::Log($bruker." har fjernet publisering av presentasjonsplan for studenter", "1");
             }
-            return redirect('/presentasjonsplan')->with('success', 'En endring har blitt gjort for visning av presentasjonsplan');
+            return redirect('/presentasjonsplanView')->with('success', 'En endring har blitt gjort for visning av presentasjonsplan');
         }
         else
         {

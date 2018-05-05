@@ -36,7 +36,7 @@
                     </div>
                     <div class="col-12 no-padding-left">
                         <div class="form-inline">
-                            <input type="time" class="form-control form-control-lg" name="lunsj" required>
+                            <input type="time" class="form-control form-control-lg" name="lunsj">
                         </div>
                     </div>
                 </div>
