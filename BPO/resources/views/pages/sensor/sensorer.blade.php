@@ -89,7 +89,7 @@
             <h3>Evalueringskriterier</h3>
                 Se skjemaet under. Sluttkarakteren blir et veiet gjenommsnitt av de karakterene som settes på de
                 ulike delene.<br/><br/><br/>
-            <table class="table">
+            <table class="table table-responsive">
                 <tr>
                     <th>Vurdering av</th><th>Underpunkter</th><th>Prosent</th>
                 </tr>
@@ -131,7 +131,7 @@
                 Karakterskalaen for bachelorprosjekter har tradisjonelt vært noe annerledes enn for ordinære eksamener.
                 Den har blitt en del innskrenket og forskjøvet mot venstre (A). Flg. tabell viser karalterfordelingen
                 de siste årene:<br/>Dette ønsker undervisningsmyndighetene å gjøre noe med og har derfor kommet med nye endrede krav<br/>
-            <table class="table">
+            <table class="table table-responsive">
                 <tr>
                     <th>År</th><th>A</th><th>B</th><th>C</th><th>D</th><th>E</th><th>Sum</th>
                 </tr>

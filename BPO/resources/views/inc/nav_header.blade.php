@@ -13,13 +13,13 @@
         <div class="container">
             <ul class="navbar-nav mr-auto mt-2 mt-md-0">
                 <li class="nav-item">
-                    <a class="nav-link" href="/studenter"> Studenter</a>
+                    <a class="nav-link tittel_tekst2" href="/studenter"> Studenter</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/sensorer">Sensorer</a>
+                    <a class="nav-link tittel_tekst2" href="/sensorer">Sensorer</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/oppdragsgivere">Oppdragsgivere</a>
+                    <a class="nav-link tittel_tekst2" href="/oppdragsgivere">Oppdragsgivere</a>
                 </li>
                 @if($side_nav == "student")
                     @include('inc.student_innhold_side_nav')

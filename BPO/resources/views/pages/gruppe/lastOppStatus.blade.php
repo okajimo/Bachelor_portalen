@@ -4,16 +4,20 @@
         <div class="container">
             {!! Form::open(['action' => 'OpplastningController@lastOppDok', 'method' => 'POST', 'files' => true]) !!}   
                 {{Form::hidden('type', 'statusrapporter')}}
-                {{Form::label('dok', 'Velg fil for opplastning. Kun PDF godkjent.')}}    
+                <h5>{{Form::label('dok', 'Velg fil for opplastning. Kun PDF godkjent.')}}  </h5>  
                 <div class="form-group form-inline">   
                     {{Form::file('dok')}}
                 </div>
-                {{Form::submit('Last opp', ['class'=>'btn btn-primary'])}}    
+                {{Form::submit('Last opp', ['class'=>'btn btn-success'])}}    
             {!! Form::close() !!}
         </div>
         <div>
         </br>
-            <?php 
+            
+        </div>
+    </div>
+    <div class="container container-no-padding">
+        <?php 
                 $student = session('navn');
                 $group = DB::select('SELECT groups.group_number, groups.year FROM student_groups, groups WHERE groups.group_number = student_groups.student_groups_number AND 
                 groups.year = student_groups.student_groups_year AND student_groups.student LIKE :student', ['student' => $student]);
@@ -22,18 +26,21 @@
             ?>
             @if ($documents)
                 <table class="table table-responsive">
-                    <tr>
-                        <td>Dokument</td>
-                        <td>Type</td>
-                    </tr>
-                    @foreach ($documents as $doc)
+                    <thead class="thead-light">
                         <tr>
-                            <td><a href="{{ asset('storage/filer/statusrapporter/'.$doc->file_name)}}"target='_blank'>{{ $doc->file_name}}</a></td>
-                            <td>Statusrapport</td>
+                            <th>Dokument</th>
+                            <th>Type</th>
                         </tr>
-                    @endforeach
+                    </thead>
+                    <tbody class="bg-light" >
+                        @foreach ($documents as $doc)
+                            <tr>
+                                <td><a href="{{ asset('storage/filer/statusrapporter/'.$doc->file_name)}}"target='_blank'>{{ $doc->file_name}}</a></td>
+                                <td>Statusrapport</td>
+                            </tr>
+                        @endforeach
+                    </tbody>
                 </table>
             @endif
-        </div>
     </div>
 @endsection

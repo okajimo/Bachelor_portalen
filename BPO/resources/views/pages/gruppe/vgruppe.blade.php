@@ -32,7 +32,7 @@
             <div class="btn-group btn-group-lg" role="group" aria-label="Basic example">
                 {!! Form::open(['action' => 'GruppeController@sett_leder', 'method' => 'POST'])!!}
                     {{form::hidden('_method', 'PUT')}}
-                    {{Form::submit('Sett leder', ['class'=>'btn btn-primary'])}}
+                    {{Form::submit('Bli leder', ['class'=>'btn btn-success'])}}
                 {!! Form::close() !!}
             </div>
             @endif
@@ -54,7 +54,7 @@
                     <div class="btn-group btn-group-lg" role="group" aria-label="Basic example">
                         {!! Form::open(['action' => 'GruppeController@sokMedlemmer', 'method' => 'POST'])!!}
                         {{form::hidden('_method', 'POST')}}
-                            {{Form::submit('Søk medlemmer', ['class'=>'btn btn-primary'])}}
+                            {{Form::submit('Søk medlemmer', ['class'=>'btn btn-info'])}}
                         {!! Form::close() !!}
                     </div>
                 @else
@@ -68,7 +68,7 @@
             @endforeach
         @endif
         
-        <table class="table">
+        <table class="table margin-fix-top">
             <div class="table-responsive">
                 <thead class="thead-light">
                     <tr>
