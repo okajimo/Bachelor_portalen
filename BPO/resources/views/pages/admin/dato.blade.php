@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    <div class="container container-no-padding">
+    <div class="jumbotron" style="padding-top: 1em !important">
         <h4>Nødvendige datoer som blir vist på de statiske sidene</h4><br>
         @if ($dates == 'mangler')    
             {!! Form::open(['action' => 'Admin\DateController@createDate', 'method' => 'POST']) !!}  
@@ -68,5 +68,4 @@
             {!! Form::close() !!}
         @endif
     </div>
-    <br><br><br>
 @endsection

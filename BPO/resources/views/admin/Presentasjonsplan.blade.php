@@ -1,8 +1,8 @@
 @extends('layouts.app')
 @section('content')
     @include('inc.press_nav')
-    <div class="jumbotron">
-        <div class="container">
+    <div class="jumbotron" style="padding-top: 1em !important">
+
             
             <div class="row">
                 {!! Form::open(['action' => 'Tidligere_prosjekterController@opprett_html_sider', 'method' => 'POST', 'class' => 'col-xs-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 no-padding-left no-padding-right margin-fix-bottom']) !!}  
@@ -97,7 +97,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+
     </div>
 @endsection
 @section('extra')
