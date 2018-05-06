@@ -14,16 +14,20 @@
                 </div>
                 {{Form::submit('Publiser', ['class'=>'btn btn-success'])}}    
             {!! Form::close() !!}
-        </div></br></br>
-        <div>
-            @if ($documents->count() != 0)
-                <h4>Oversikt over publiserte prosjektforslag</h4>
-                <table class="table table-responsive">
+        </div>
+    </div>
+    <div class="container container-no-padding">
+        @if ($documents->count() != 0)
+            <h4>Oversikt over publiserte prosjektforslag</h4>
+            <table class="table table-responsive">
+                <thead class="thead-light">
                     <tr>
                         <th>Dato lagt til</th>
                         <th>Dokument</th>
                         <th>Slett</th>
                     </tr>
+                </thead>
+                <tbody class="bg-light">
                     @foreach ($documents as $doc)
                         <tr>
                             <td>{{ $doc->date_added }}</td>
@@ -38,8 +42,8 @@
                             </td>
                         </tr>
                     @endforeach
-                </table>
-            @endif
-        </div>
+                </tbody>
+            </table>
+        @endif
     </div>
 @endsection
