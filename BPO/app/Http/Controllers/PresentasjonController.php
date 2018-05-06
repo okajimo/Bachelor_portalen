@@ -54,6 +54,13 @@ class PresentasjonController extends Controller
     {
         if(session('levell') >= 2)
         {
+            if($request->lunsj)
+            {
+                $this->validate($request, [
+                    'lunsj' => 'date_format:H:i',
+                ]);
+            }
+            
             if ($request->gruppe != "") {
                 $antall_perr_dag = count($request->gruppe);
                 $groups = $request->gruppe;
