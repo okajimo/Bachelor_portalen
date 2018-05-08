@@ -86,7 +86,7 @@ class PresentasjonController extends Controller
 
                 //hvor mange minutter inn i lunsjen en presentasjon går på overtid 
                 //NB:husk det er 5 min mellom hver presentasjon, 10 min vil tilsvare 5 min inn i lunsjen.
-                $lunsj_check_start->modify('+10 minutes');
+                //$lunsj_check_start->modify('+10 minutes');
 
                 //start/slutt
                 $p_start = new DateTime($time_start, new DateTimezone('Europe/Oslo'));
@@ -97,8 +97,11 @@ class PresentasjonController extends Controller
                     if ($antall < $antall_perr_dag ){
                         //lunsj
                         if(($p_start> $lunsj_check_start && $p_start< $lunsj_check_slutt) || ($p_slutt>= $lunsj_check_start && $p_slutt< $lunsj_check_slutt)){
-                            $p_start = $lunsj_check_slutt;
-                            $p_slutt = $neste_press;
+                            //$p_start = $lunsj_check_slutt;
+                            //$p_slutt = $neste_press;
+
+                            $p_start->modify('+30 minutes');
+                            $p_slutt->modify('+30 minutes');
                         }
     
                         $start = $dato." ".$p_start->format('H:i');
