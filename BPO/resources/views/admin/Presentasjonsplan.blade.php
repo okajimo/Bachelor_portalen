@@ -20,7 +20,7 @@
                     {{Form::submit('Fjern Publisering', ['class'=>'btn btn-lg width-fill btn-danger'])}}    
                 {!! Form::close() !!}
             @endif
-            {!! Form::open(['action' => ['PresentasjonController@delete'], 'method' => 'POST', 'class' => 'col-xs-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 no-padding-left no-padding-right margin-fix-bottom']) !!}
+            {!! Form::open(['action' => ['PresentasjonController@delete'], 'method' => 'POST', 'class' => 'col-xs-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 no-padding-left no-padding-right margin-fix-bottom', 'onsubmit' => 'return ConfirmDelete()']) !!}
                 {{Form::submit('Slett Prestasjonsplan', ['class'=>'btn btn-lg width-fill btn-danger margin-fix'])}}
             {!! Form::close() !!}
             </br>
@@ -56,7 +56,7 @@
                             <option value={{$supervisor->email}}>{{$supervisor->firstname." ".$supervisor->lastname}}</option>
                         @endforeach
                     </select>
-                    {{Form::submit('Send inn plan', ['class'=>'btn btn-success col-12 margin-fix-top'])}}
+                    {{Form::submit('Registrer', ['class'=>'btn btn-success btn-awesome col-12 margin-fix-top'])}}
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-10 of col-lg-5 col-xl-5 offset-md-1 offset-lg-2 no-padding-right">

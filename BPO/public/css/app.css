@@ -59,6 +59,10 @@ body {
   margin-bottom: 0 !important;
 }
 
+.btn-warning {
+  color: #FFF;
+}
+
 .btn-lg {
   height: 4em;
   font-weight: bolder;
@@ -121,6 +125,12 @@ body {
   width: 100%;
   display: block;
   height: 100%;
+}
+
+.btn-awesome {
+  font-weight: bold;
+  font-size: 1.2em;
+  line-height: 1.5em;
 }
 
 .container-no-padding {
@@ -284,8 +294,4 @@ body {
 .breadcrumb .active {
   color: black !important;
 }
-
-/*#exampleModal{
-    max-height: 45em;
-}*/
 

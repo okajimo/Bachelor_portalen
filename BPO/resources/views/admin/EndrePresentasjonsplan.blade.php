@@ -13,7 +13,7 @@
 @section('content')
     @include('inc.press_nav')
     <div class="table-responsive jumbotron jumbo-none table-flow">
-        {!! Form::open(['action' => 'PresentasjonController@edit', 'method' => 'POST', 'id' => 'form1']) !!}
+        {!! Form::open(['action' => 'PresentasjonController@edit', 'method' => 'POST', 'id' => 'form1', 'onsubmit' => 'return ConfirmEdit()']) !!}
         <table class="table">
             <thead class="thead-light">
                 <tr>

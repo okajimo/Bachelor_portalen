@@ -18,7 +18,7 @@
                     </tr>
                     <tr>
                         <td>
-                            {!! Form::open(['action' => 'Admin\AdminController@endreStudPoeng', 'method' => 'POST']) !!}  
+                            {!! Form::open(['action' => 'Admin\AdminController@endreStudPoeng', 'method' => 'POST', 'onsubmit' => 'return ConfirmEdit()']) !!}  
                                 <div class="form-group">  
                                     <h5>{{Form::label('fil', 'Velg student for endring av poeng.')}}</h5>
                                 </br>
@@ -40,7 +40,7 @@
                     </tr>
                     <tr>
                         <td>
-                            {!! Form::open(['action' => 'Admin\AdminController@resetPassword', 'method' => 'POST']) !!}  
+                            {!! Form::open(['action' => 'Admin\AdminController@resetPassword', 'method' => 'POST', 'onsubmit' => 'return ConfirmEdit()']) !!}  
                                 <div class="form-group">  
                                     <h5>{{Form::label('fil', 'Velg student for nytt passord og send mail.')}}</h5>
                                 </br>
@@ -55,7 +55,7 @@
                                     <div class="form-group form-inline">
                                     </div>
                                 </div>
-                                {{Form::submit('Nytt passord', ['class'=>'btn btn-success'])}}    
+                                {{Form::submit('Nytt passord', ['class'=>'btn btn-warning'])}}    
                             {!! Form::close() !!}
                         </td>
                     </tr>

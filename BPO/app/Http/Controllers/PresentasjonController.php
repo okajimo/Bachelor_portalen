@@ -39,7 +39,7 @@ class PresentasjonController extends Controller
             $bruker = session('navn');
             \LogHelper::Log($bruker." slettet presentasjonsplan", "1");
 
-            return redirect('/presentasjonsplan')->with('error', 'Prestasjonsplaner er slettet');
+            return redirect('/presentasjonsplan')->with('success', 'Prestasjonsplaner er slettet');
         }
         else
         {

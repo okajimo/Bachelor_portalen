@@ -43,8 +43,7 @@
     <script src="{{asset('bower_components/popper.js/dist/umd/popper.js')}}"></script>
     <script src="{{asset('bower_components/bootstrap/dist/js/bootstrap.min.js')}}"></script>
     <script src="{{asset('js/app.js')}}"></script>
-    <!--Confirm delete-->
-    <script>function ConfirmDelete(){ var x = confirm("Bekreft sletting"); if (x) return true; else return false;}</script>
+    <script src="{{asset('js/confirm.js')}} "></script>
     @yield('extra')
 </body>
 </html>
