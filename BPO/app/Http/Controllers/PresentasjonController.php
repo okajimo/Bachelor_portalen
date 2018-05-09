@@ -26,9 +26,7 @@ class PresentasjonController extends Controller
         else
         {
             return redirect('/login')->with('error', 'Du er ikke admin og har ikke tilgang');
-        }
-
-        
+        }       
     }
 
     //sletter presentasjonsplan
@@ -61,7 +59,7 @@ class PresentasjonController extends Controller
                 ]);
             }
             
-            if ($request->gruppe != "") {
+            if ($request->gruppe) {
                 $antall_perr_dag = count($request->gruppe);
                 $groups = $request->gruppe;
     
@@ -74,13 +72,15 @@ class PresentasjonController extends Controller
                 $sensor = $request->sensor;
                 $room = $request->room;
                 
-                //sjekker mellom tidsromet mellom check start og check slutt
+                
+                /*sjekker mellom tidsromet mellom check start og check slutt*/
                 $lunsj_check_start = new DateTime($lunsj, new DateTimezone('Europe/Oslo'));
                 $lunsj_check_slutt = new DateTime($lunsj, new DateTimezone('Europe/Oslo'));
                 $lunsj_check_slutt->modify('+60 minutes');
 
-                //neste press slutter Eks: $lunsj_check_slutt + 30 min
-                //if for lunsj
+                
+                /*neste press slutter Eks: $lunsj_check_slutt + 30 min
+                if for lunsj*/
                 $neste_press = new DateTime($lunsj, new DateTimezone('Europe/Oslo'));
                 $neste_press->modify('+90 minutes');
 
@@ -88,15 +88,16 @@ class PresentasjonController extends Controller
                 //NB:husk det er 5 min mellom hver presentasjon, 10 min vil tilsvare 5 min inn i lunsjen.
                 //$lunsj_check_start->modify('+10 minutes');
 
-                //start/slutt
+                /*start/slutt*/
                 $p_start = new DateTime($time_start, new DateTimezone('Europe/Oslo'));
                 $p_slutt = new DateTime($time_start, new DateTimezone('Europe/Oslo'));
                 $p_slutt->modify('+30 minutes');
                 
                 foreach($groups as $exist){
                     if ($antall < $antall_perr_dag ){
-                        //lunsj
-                        if(($p_start> $lunsj_check_start && $p_start< $lunsj_check_slutt) || ($p_slutt>= $lunsj_check_start && $p_slutt< $lunsj_check_slutt)){
+                        /*lunsj*/
+                        if(($p_start> $lunsj_check_start && $p_start< $lunsj_check_slutt) || 
+                        ($p_slutt>= $lunsj_check_start && $p_slutt< $lunsj_check_slutt)){
                             //$p_start = $lunsj_check_slutt;
                             //$p_slutt = $neste_press;
 
@@ -109,7 +110,7 @@ class PresentasjonController extends Controller
                         $p_start->modify('+5 minutes');
                         $p_slutt->modify('+5 minutes');
     
-                        //Genererer presentasjonsplan
+                        /*Genererer presentasjonsplan*/
                         DB::insert("INSERT INTO presentation (presentation.presentation_group_number, presentation.presentation_year, presentation.start, presentation.end, presentation.presentation_room, presentation.sensor)
                         VALUES (:gnum, :aar, :starts, :slutts, :room, :sensor)", ['gnum' => $exist, 'starts' => $start, 'slutts' => $slutt, 'room' => $room, 'aar' =>$aar, 'sensor' => $sensor]);
                         

@@ -26,19 +26,19 @@
             </br>
         </div> 
         <div style="margin-top: 3.5em;"></div>
-        <div class="row">
-        {!! Form::open(['action' => 'PresentasjonController@store', 'method' => 'POST', 'id' => 'form', 'class' => 'col-xs-12 col-sm-12 col-md-10 of col-lg-5 col-xl-5 offset-md-1 offset-lg-0 form-group']) !!}
-            <div class="row">
-                <div class="col-12 no-padding-left">
-                    <h4>Lunsj</h4>
-                </div>
-                <div class="col-12 no-padding-left">
-                    <div class="form-inline">
-                        <input type="time" class="form-control form-control-lg" name="lunsj">
+        {!! Form::open(['action' => 'PresentasjonController@store', 'method' => 'POST', 'id' => 'form', 'class' => 'row']) !!}
+            <div class="col-xs-12 col-sm-12 col-md-10 of col-lg-5 col-xl-5 offset-md-1 offset-lg-0 form-group">
+                <div class="row">
+                    <div class="col-12 no-padding-left">
+                        <h4>Lunsj tidligst:</h4>
+                    </div>
+                    <div class="col-12 no-padding-left">
+                        <div class="form-inline">
+                            <input type="time" class="form-control form-control-lg" name="lunsj">
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div style="margin-bottom: 2em;"></div>
+                <div style="margin-bottom: 2em;"></div>
             
                 <div class="row">
                     <h4 class="no-padding-left col-12">Registrer dag og rom her:</h4>
@@ -56,18 +56,17 @@
                             <option value={{$supervisor->email}}>{{$supervisor->firstname." ".$supervisor->lastname}}</option>
                         @endforeach
                     </select>
-                    <div id="grupper" class="grupper"></div>
                     {{Form::submit('Send inn plan', ['class'=>'btn btn-success col-12 margin-fix-top'])}}
                 </div>
-            {!! Form::close() !!}
-            <div class="gform"></div>
+            </div>
             <div class="col-xs-12 col-sm-12 col-md-10 of col-lg-5 col-xl-5 offset-md-1 offset-lg-2 no-padding-right">
                 <h4 class="col-12 no-padding-left bigger">Trykk på gruppene for å legge dem inn i dagens plan:</h4>
-                <div class="jumbotron width-fill" style="padding:0 !important">
-                    <div class="table-responsive">
-                        <table class="table">
+                <div class="jumbotron width-fill" style="padding:0 !important"> 
+                    <table class="table">
+                        <div class="table-responsive">
                             <thead class="thead-dark">
                                 <tr>
+                                    <th></th>
                                     <th>Gruppe</th>
                                     <th>År</th>
                                     <th>Leder</th>
@@ -75,7 +74,8 @@
                             </thead>
                             <tbody class="table-over" id="data" style="background: #F5F5F5">
                                 @foreach($groups as $group)
-                                <tr class="clickme">
+                                <tr class="clickme ticketTR">
+                                    <td><input id="check"type="checkbox" name="gruppe[]" onClick="this.checked=!this.checked;" value={{$group->group_number}}></td>
                                     <th scope="row">{{$group->group_number}}</th>
                                     <td>{{$group->year}}</td>
                                     <td>{{$group->leader}}</td>
@@ -83,42 +83,31 @@
                                 @endforeach
                                 @if(!$groups)
                                     <tr>
-                                        <td colspan="3">
+                                        <td colspan="4">
                                             <p>Alle gruppene ligger i presentasjonsplanen</p>
                                             <p>Grupper uten veileder vil ikke bli vist i denne listen</p>
                                         </td>
                                     </tr>
                                 @endif
                             </tbody>
-                        </table> 
-                    </div>
+                        </div>
+                    </table> 
                 </div>
             </div>
-        </div>
+        {!! Form::close() !!}
     </div>
 @endsection
 @section('extra')
-    <style>.paint{background-color: #e3f2fd;} .bigger{min-height: 2.3em;}</style>
     <script>
         $(function(){
-            $('#data .clickme').on('click', function() {
-                $(this).toggleClass('paint');
-                var gruppe = $(this).find("th").html();
-
-                if ( $(this).hasClass( "paint" )){
-                    $('.grupper').append('<strong id="p'+gruppe+'">Gruppe '+gruppe+' </strong>');
-                    $('.gform').append('<input type="hidden" id="g'+gruppe+'" name="gruppe[]" value="'+gruppe+'" />');
+            $('.clickme').on('click', function() {
+                var checked= $(this).find('input[type=checkbox]');
+                if (checked.is(":checked")){
+                    $(this).find('input[type=checkbox]').prop( "checked", false);
                 }
-                if (! $(this).hasClass( "paint" )){
-                    $('.grupper #p'+gruppe).remove();
-                    $('.gform #g'+gruppe).remove();
+                else{
+                    $(this).find('input[type=checkbox]').prop( "checked", true);
                 }
-            });
-
-            $('#form').submit(function(eventObj) {
-                var grupper = $(".gform").html();
-                $(this).append(grupper);
-                return true;
             });
 
             $('.clickme').css('cursor', 'pointer');
