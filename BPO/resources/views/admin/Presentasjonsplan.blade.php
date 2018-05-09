@@ -1,4 +1,7 @@
 @extends('layouts.app')
+@section('extra-head')
+    <style>.paint{background-color: #e3f2fd;} .bigger{min-height: 2.3em;}</style>
+@endsection
 @section('content')
     @include('inc.press_nav')
     <div class="jumbotron" style="padding-top: 1em !important">
@@ -8,8 +11,11 @@
             {!! Form::close() !!}
             </br>
 
-            <?php $finnes2 = Storage::exists('/public/filer/presentasjonsplan/false.txt');
-            $finnes3 = Storage::exists('/public/filer/presentasjonsplan/true.txt'); ?>
+            <?php 
+                $finnes2 = Storage::exists('/public/filer/presentasjonsplan/false.txt');
+                $finnes3 = Storage::exists('/public/filer/presentasjonsplan/true.txt'); 
+            ?>
+
             @if($finnes2 == true)
                 {!! Form::open(['action' => 'Tidligere_prosjekterController@publiserPresentasjonsplan', 'method' => 'POST', 'class' => 'col-xs-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 no-padding-left no-padding-right margin-fix-bottom']) !!}  
                     {{Form::submit('Publiser plan', ['class'=>'btn btn-lg width-fill btn-success'])}}    
@@ -30,9 +36,9 @@
         {!! Form::open(['action' => 'PresentasjonController@store', 'method' => 'POST', 'id' => 'form', 'class' => 'col-xs-12 col-sm-12 col-md-10 of col-lg-5 col-xl-5 offset-md-1 offset-lg-0 form-group']) !!}
             <div class="row">
                 <div class="col-12 no-padding-left">
-                    <h4>Lunsj</h4>
+                    <h4>Lunsj nærmest:</h4>
                 </div>
-                <div class="col-12 no-padding-left">
+                <div class="col-12 no-padding-left no-padding-right">
                     <div class="form-inline">
                         <input type="time" class="form-control form-control-lg" name="lunsj">
                     </div>
@@ -57,7 +63,7 @@
                         @endforeach
                     </select>
                     <div id="grupper" class="grupper"></div>
-                    {{Form::submit('Send inn plan', ['class'=>'btn btn-success col-12 margin-fix-top'])}}
+                    {{Form::submit('Registrer', ['class'=>'btn btn-success btn-awesome col-12 margin-fix-top'])}}
                 </div>
             {!! Form::close() !!}
             <div class="gform"></div>
@@ -98,7 +104,6 @@
     </div>
 @endsection
 @section('extra')
-    <style>.paint{background-color: #e3f2fd;} .bigger{min-height: 2.3em;}</style>
     <script>
         $(function(){
             $('#data .clickme').on('click', function() {
@@ -122,7 +127,6 @@
             });
 
             $('.clickme').css('cursor', 'pointer');
-            
         });
     </script>
 @endsection
