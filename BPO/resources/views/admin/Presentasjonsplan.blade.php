@@ -65,8 +65,9 @@
                     <div id="grupper" class="grupper"></div>
                     {{Form::submit('Registrer', ['class'=>'btn btn-success btn-awesome col-12 margin-fix-top'])}}
                 </div>
+                <div class="gform"></div>
             {!! Form::close() !!}
-            <div class="gform"></div>
+            
             <div class="col-xs-12 col-sm-12 col-md-10 of col-lg-5 col-xl-5 offset-md-1 offset-lg-2 no-padding-right">
                 <h4 class="col-12 no-padding-left bigger">Trykk på gruppene for å legge dem inn i dagens plan:</h4>
                 <div class="jumbotron width-fill" style="padding:0 !important">
@@ -120,11 +121,11 @@
                 }
             });
 
-            $('#form').submit(function(eventObj) {
-                var grupper = $(".gform").html();
-                $(this).append(grupper);
+            /*$('#form').submit(function(eventObj) {
+                //var grupper = $(".gform").html();
+                //$(this).append(grupper);
                 return true;
-            });
+            });*/
 
             $('.clickme').css('cursor', 'pointer');
         });
