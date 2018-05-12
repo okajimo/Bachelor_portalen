@@ -72,23 +72,13 @@ class PresentasjonController extends Controller
                 $sensor = $request->sensor;
                 $room = $request->room;
                 
-                
-                /*sjekker mellom tidsromet mellom check start og check slutt*/
+                /*Eks: si at $lunsj er klokken 10, da må det sjekkes i det 35 minutter lange tidsrommet etter klokken 10*/
                 $lunsj_check_start = new DateTime($lunsj, new DateTimezone('Europe/Oslo'));
+                $lunsj_check_start->modify('+30 minutes');
                 $lunsj_check_slutt = new DateTime($lunsj, new DateTimezone('Europe/Oslo'));
-                $lunsj_check_slutt->modify('+60 minutes');
+                $lunsj_check_slutt->modify('+65 minutes');
 
-                
-                /*neste press slutter Eks: $lunsj_check_slutt + 30 min
-                if for lunsj*/
-                $neste_press = new DateTime($lunsj, new DateTimezone('Europe/Oslo'));
-                $neste_press->modify('+90 minutes');
-
-                //hvor mange minutter inn i lunsjen en presentasjon går på overtid 
-                //NB:husk det er 5 min mellom hver presentasjon, 10 min vil tilsvare 5 min inn i lunsjen.
-                //$lunsj_check_start->modify('+10 minutes');
-
-                /*start/slutt*/
+                /*Hvor lenge en presentasjon varer*/
                 $p_start = new DateTime($time_start, new DateTimezone('Europe/Oslo'));
                 $p_slutt = new DateTime($time_start, new DateTimezone('Europe/Oslo'));
                 $p_slutt->modify('+30 minutes');
@@ -96,11 +86,8 @@ class PresentasjonController extends Controller
                 foreach($groups as $exist){
                     if ($antall < $antall_perr_dag ){
                         /*lunsj*/
-                        if(($p_start> $lunsj_check_start && $p_start< $lunsj_check_slutt) || 
-                        ($p_slutt>= $lunsj_check_start && $p_slutt< $lunsj_check_slutt)){
-                            //$p_start = $lunsj_check_slutt;
-                            //$p_slutt = $neste_press;
-
+                        if(($p_start>= $lunsj_check_start && $p_start< $lunsj_check_slutt) || 
+                        ($p_slutt> $lunsj_check_start && $p_slutt< $lunsj_check_slutt)){
                             $p_start->modify('+30 minutes');
                             $p_slutt->modify('+30 minutes');
                         }

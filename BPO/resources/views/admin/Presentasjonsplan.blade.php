@@ -33,18 +33,18 @@
         </div> 
         <div style="margin-top: 3.5em;"></div>
         <div class="row">
-        {!! Form::open(['action' => 'PresentasjonController@store', 'method' => 'POST', 'id' => 'form', 'class' => 'col-xs-12 col-sm-12 col-md-10 of col-lg-5 col-xl-5 offset-md-1 offset-lg-0 form-group']) !!}
-            <div class="row">
-                <div class="col-12 no-padding-left">
-                    <h4>Lunsj nærmest:</h4>
-                </div>
-                <div class="col-12 no-padding-left no-padding-right">
-                    <div class="form-inline">
-                        <input type="time" class="form-control form-control-lg" name="lunsj">
+            {!! Form::open(['action' => 'PresentasjonController@store', 'method' => 'POST', 'id' => 'form', 'class' => 'col-xs-12 col-sm-12 col-md-10 of col-lg-5 col-xl-5 offset-md-1 offset-lg-0 form-group']) !!}
+                <div class="row">
+                    <div class="col-12 no-padding-left">
+                        <h4>Lunsj nærmest:</h4>
+                    </div>
+                    <div class="col-12 no-padding-left no-padding-right">
+                        <div class="form-inline">
+                            <input type="time" class="form-control form-control-lg" name="lunsj">
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div style="margin-bottom: 2em;"></div>
+                <div style="margin-bottom: 2em;"></div>
             
                 <div class="row">
                     <h4 class="no-padding-left col-12">Registrer dag og rom her:</h4>
@@ -63,9 +63,10 @@
                         @endforeach
                     </select>
                     <div id="grupper" class="grupper"></div>
+                    <div id="gform" class="gform"></div>
                     {{Form::submit('Registrer', ['class'=>'btn btn-success btn-awesome col-12 margin-fix-top'])}}
                 </div>
-                <div class="gform"></div>
+                
             {!! Form::close() !!}
             
             <div class="col-xs-12 col-sm-12 col-md-10 of col-lg-5 col-xl-5 offset-md-1 offset-lg-2 no-padding-right">
@@ -112,20 +113,14 @@
                 var gruppe = $(this).find("th").html();
 
                 if ( $(this).hasClass( "paint" )){
-                    $('.grupper').append('<strong id="p'+gruppe+'">Gruppe '+gruppe+' </strong>');
-                    $('.gform').append('<input type="hidden" id="g'+gruppe+'" name="gruppe[]" value="'+gruppe+'" />');
+                    $('#grupper').append('<strong id="p'+gruppe+'">Gruppe '+gruppe+' </strong>');
+                    $('#gform').append('<input type="hidden" id="g'+gruppe+'" name="gruppe[]" value="'+gruppe+'" />');
                 }
                 if (! $(this).hasClass( "paint" )){
                     $('.grupper #p'+gruppe).remove();
                     $('.gform #g'+gruppe).remove();
                 }
             });
-
-            /*$('#form').submit(function(eventObj) {
-                //var grupper = $(".gform").html();
-                //$(this).append(grupper);
-                return true;
-            });*/
 
             $('.clickme').css('cursor', 'pointer');
         });
