@@ -83,7 +83,7 @@ class PresentasjonController extends Controller
                 $p_slutt = new DateTime($time_start, new DateTimezone('Europe/Oslo'));
                 $p_slutt->modify('+30 minutes');
                 
-                foreach($groups as $exist){
+                foreach($groups as $group){
                     if ($antall < $antall_perr_dag ){
                         /*lunsj*/
                         if(($p_start>= $lunsj_check_start && $p_start< $lunsj_check_slutt) || 
@@ -94,19 +94,20 @@ class PresentasjonController extends Controller
     
                         $start = $dato." ".$p_start->format('H:i');
                         $slutt = $dato." ".$p_slutt->format('H:i');
-                        $p_start->modify('+5 minutes');
-                        $p_slutt->modify('+5 minutes');
     
                         /*Genererer presentasjonsplan*/
                         DB::insert("INSERT INTO presentation (presentation.presentation_group_number, presentation.presentation_year, presentation.start, presentation.end, presentation.presentation_room, presentation.sensor)
-                        VALUES (:gnum, :aar, :starts, :slutts, :room, :sensor)", ['gnum' => $exist, 'starts' => $start, 'slutts' => $slutt, 'room' => $room, 'aar' =>$aar, 'sensor' => $sensor]);
+                        VALUES (:gnum, :aar, :starts, :slutts, :room, :sensor)", ['gnum' => $group, 'starts' => $start, 'slutts' => $slutt, 'room' => $room, 'aar' =>$aar, 'sensor' => $sensor]);
                         
-                        $p_start->modify('+30 minutes');
-                        $p_slutt->modify('+30 minutes');
+                        $p_start->modify('+35 minutes');
+                        $p_slutt->modify('+35 minutes');
     
                         $antall++;
-                        $grupperLaget[] = $exist;
-                    }          
+                        $grupperLaget[] = $group;
+                    }
+                    else{
+                        return redirect('/presentasjonsplan')->with('error', 'en feil oppsto for håndtering av grupper');
+                    }         
                 }  
                 
                 $grupper = "";
