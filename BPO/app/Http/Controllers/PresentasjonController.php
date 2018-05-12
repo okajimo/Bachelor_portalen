@@ -60,13 +60,10 @@ class PresentasjonController extends Controller
             }
             
             if ($request->gruppe) {
-                $antall_perr_dag = count($request->gruppe);
-                $groups = $request->gruppe;
-    
+                
                 $aar = date("Y");
                 $dato = $request->dates;
-                $antall = 0;
-    
+                $groups = $request->gruppe;
                 $time_start = $request->time;
                 $lunsj = $request->lunsj;
                 $sensor = $request->sensor;
@@ -84,30 +81,24 @@ class PresentasjonController extends Controller
                 $p_slutt->modify('+30 minutes');
                 
                 foreach($groups as $group){
-                    if ($antall < $antall_perr_dag ){
-                        /*lunsj*/
-                        if(($p_start>= $lunsj_check_start && $p_start< $lunsj_check_slutt) || 
-                        ($p_slutt> $lunsj_check_start && $p_slutt< $lunsj_check_slutt)){
-                            $p_start->modify('+30 minutes');
-                            $p_slutt->modify('+30 minutes');
-                        }
-    
-                        $start = $dato." ".$p_start->format('H:i');
-                        $slutt = $dato." ".$p_slutt->format('H:i');
-    
-                        /*Genererer presentasjonsplan*/
-                        DB::insert("INSERT INTO presentation (presentation.presentation_group_number, presentation.presentation_year, presentation.start, presentation.end, presentation.presentation_room, presentation.sensor)
-                        VALUES (:gnum, :aar, :starts, :slutts, :room, :sensor)", ['gnum' => $group, 'starts' => $start, 'slutts' => $slutt, 'room' => $room, 'aar' =>$aar, 'sensor' => $sensor]);
-                        
-                        $p_start->modify('+35 minutes');
-                        $p_slutt->modify('+35 minutes');
-    
-                        $antall++;
-                        $grupperLaget[] = $group;
+                    /*lunsj*/
+                    if(($p_start>= $lunsj_check_start && $p_start <= $lunsj_check_slutt) || 
+                    ($p_slutt>= $lunsj_check_start && $p_slutt<= $lunsj_check_slutt)){
+                        $p_start->modify('+30 minutes');
+                        $p_slutt->modify('+30 minutes');
                     }
-                    else{
-                        return redirect('/presentasjonsplan')->with('error', 'en feil oppsto for håndtering av grupper');
-                    }         
+
+                    $start = $dato." ".$p_start->format('H:i');
+                    $slutt = $dato." ".$p_slutt->format('H:i');
+
+                    /*Genererer presentasjonsplan*/
+                    DB::insert("INSERT INTO presentation (presentation.presentation_group_number, presentation.presentation_year, presentation.start, presentation.end, presentation.presentation_room, presentation.sensor)
+                    VALUES (:gnum, :aar, :starts, :slutts, :room, :sensor)", ['gnum' => $group, 'starts' => $start, 'slutts' => $slutt, 'room' => $room, 'aar' =>$aar, 'sensor' => $sensor]);
+                    
+                    $p_start->modify('+35 minutes');
+                    $p_slutt->modify('+35 minutes');
+
+                    $grupperLaget[] = $group;
                 }  
                 
                 $grupper = "";
