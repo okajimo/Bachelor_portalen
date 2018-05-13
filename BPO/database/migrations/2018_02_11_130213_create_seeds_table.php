@@ -168,7 +168,6 @@ class CreateSeedsTable extends Migration
      */
     public function down()
     {
-		Schema::drop('log');
 		Schema::drop('presentation_plan');
 		Schema::drop('room');
 		Schema::drop('sensors_supervisors');
