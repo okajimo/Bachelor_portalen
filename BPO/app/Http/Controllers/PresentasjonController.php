@@ -117,8 +117,7 @@ class PresentasjonController extends Controller
         else
         {
             return redirect('/login')->with('error', 'Du er ikke admin og har ikke tilgang');
-        }
-        
+        } 
     }
 
     //Viser viewet for endre presentasjonsplan

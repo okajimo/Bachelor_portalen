@@ -223,7 +223,7 @@ class AdminController extends Controller
     {
         if(session('levell') >= 2)
         {
-            $nyheter = DB::select('select * from news');
+            $nyheter = DB::select('select * from news ORDER BY id DESC');
             $title = "Nyheter";
             return view('Admin.vnews')->with(['title' => $title, 'nyheter' => $nyheter]);
         }
@@ -239,7 +239,8 @@ class AdminController extends Controller
             'tittel' => 'required|max:45|regex:/(^[A-Za-z0-9 ÅØÆåøæ!?.:]+$)/',
             'melding' => 'required',
         ]);
-        DB::insert('INSERT INTO news (id, user, tittel, melding) VALUES (NULL, :user, :tittel, :melding)',['user'=>session('navn'),'tittel'=>$request->tittel,'melding'=>$request->melding]);
+        DB::insert('INSERT INTO news (id, user, tittel, melding) 
+        VALUES (NULL, :user, :tittel, :melding)',['user'=>session('navn'),'tittel'=>$request->tittel,'melding'=>$request->melding]);
         
         \LogHelper::Log("Opprettet nyhet med tittel ".$request->tittel, "1");
         

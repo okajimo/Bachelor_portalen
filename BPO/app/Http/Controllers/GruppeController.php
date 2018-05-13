@@ -210,7 +210,7 @@ class GruppeController extends Controller
     {
         if(session('levell') >= 1)
         {
-            $nyheter = DB::select('select * from news');
+            $nyheter = DB::select('select * from news ORDER BY id DESC');
             $title = "Nyheter";
             return view('group.news')->with(['title' => $title, 'nyheter' => $nyheter]);
         }
