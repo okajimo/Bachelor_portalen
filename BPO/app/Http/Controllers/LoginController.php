@@ -44,24 +44,6 @@ class LoginController extends Controller
 
                 return redirect('/dashboard/group');
             }
-            /*elseif($level == "2")
-            {
-                $lvl=2;
-                Session(['levell' => $lvl]);
-                return redirect('/');
-            }
-            elseif($level == "3")
-            {
-                $lvl=3;
-                Session(['levell' => $lvl]);
-                return redirect('/');
-            }
-            elseif($level == "4")
-            {
-                $lvl=4;
-                Session(['levell' => $lvl]);
-                return redirect('/');
-            }*/
             elseif($level >= 2)
             {
                 $lvl=$level;

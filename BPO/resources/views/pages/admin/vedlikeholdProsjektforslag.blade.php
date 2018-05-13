@@ -6,7 +6,8 @@
                 {{Form::hidden('type', 'prosjektforslag')}}    
                 <h5>{{Form::label('file_name', 'Skriv inn filnavn (ikke .pdf)')}}</h5>
                 <div class="form-group form-inline">
-                    {{Form::text('file_name', '', ['class'=>'form-control', 'required', 'maxlength' => '45','pattern' => '[A-Za-z0-9 øæåØÆÅ.-]*', 'title' => 'Navnet må kun bestå av bokstaver, tall, punktum og bindestrek'])}}
+                    {{Form::text('file_name', '', ['class'=>'form-control', 'required',
+                     'maxlength' => '45','pattern' => '[A-Za-z0-9 øæåØÆÅ.-]*', 'title' => 'Navnet må kun bestå av bokstaver, tall, punktum og bindestrek'])}}
                 </div>
                 <h5>{{Form::label('dok', 'Velg fil, kun PDF godkjent')}}</h5> 
                 <div class="form-group form-inline">
