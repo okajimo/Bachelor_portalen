@@ -95,6 +95,7 @@ Route::post('/gge', 'Admin\AdminController@importerStud');
 Route::post('/s', 'Admin\AdminController@regSensorVeileder');
 Route::post('/d', 'Admin\AdminController@endreStudPoeng');
 Route::delete('/ggse', 'Admin\AdminController@slettSenvei');
+Route::post('/sss', 'Admin\AdminController@leggTilStudent');
 
 //Vedlikehold nyheter
 Route::get('/vnews', 'Admin\AdminController@vnews')->name('vnews');

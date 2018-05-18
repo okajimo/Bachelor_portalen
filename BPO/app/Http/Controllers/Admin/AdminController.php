@@ -255,4 +255,58 @@ class AdminController extends Controller
 
         return redirect('/vnews')->with('success', 'Nyhet har blitt slettet');
     }
+
+    public function leggTilStudent(request $request)
+    {
+        $this->validate($request, [
+            'poeng' => 'required|numeric|max:10000',
+            'student' => 'required|max:15|alpha_num',
+            'linje' => 'required|max:30|alpha_num',
+        ]);
+
+        $student = $request->student;
+        $poeng = $request->poeng;
+        $linje = $request->linje;
+
+        $finnesIDb = DB::select('SELECT username FROM users WHERE username = :stud',['stud'=>$request->student]);
+        $finnesSomStud = DB::select('SELECT username FROM student WHERE username = :stud',['stud'=>$request->student]);
+        
+        if($finnesIDb)
+        {
+            if(!$finnesSomStud)
+            {
+                DB::insert('INSERT INTO student (username, student_points, program) VALUES 
+                (:stud, :poeng, :program)',['stud'=>$student,'poeng'=>$poeng,'program'=>$linje]);
+
+                return redirect('/studentVedlikehold')->with('success','Student er registrert.');
+            }
+            else
+            {
+                return redirect('/studentVedlikehold')->with('error','Student '.$student.' er allerede registrert som student.');
+            }
+        }
+        else
+        {
+            return redirect('/studentVedlikehold')->with('error','Student '.$student.' finnes ikke i users tabellen.');
+        }
+
+        /*if(!$finnesIDb)
+        {
+            if(!$finnesSomStud)
+            {
+                DB::insert('INSERT INTO student (username, student_points, program) VALUES 
+                (:stud, :poeng, :program)',['stud'=>$student,'poeng'=>$poeng,'program'=>$linje]);
+
+                return redirect('/studentVedlikehold')->with('success','Student er registrert.');
+            }
+            else
+            {
+                return redirect('/studentVedlikehold')->with('danger','Student er allerede registrert som student.');
+            }
+        }
+        else
+        {
+            return redirect('/studentVedlikehold')->with('danger','Student finnes ikke i users tabellen.');
+        }*/
+    }
 }
