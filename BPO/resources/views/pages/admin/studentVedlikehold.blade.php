@@ -38,17 +38,18 @@
                     </tr>
                     <tr>
                         <td>
-                            {!! Form::open(['action' => 'Admin\AdminController@endreStudPoeng', 'method' => 'POST', 'onsubmit' => 'return ConfirmEdit()']) !!}  
+                            {!! Form::open(['action' => 'Admin\AdminController@endreStudPoeng', 'method' => 'POST']) !!}  
                                 <div class="form-group">  
                                     <h5>{{Form::label('fil', 'Velg student for endring av poeng.')}}</h5>
                                 </br>
-                                    <?php $studenter = DB::select('SELECT username FROM users WHERE level ="1"');?>
+                                    <?php $studenter = DB::select('SELECT * FROM users WHERE level ="1"');?>
                                     <div class="form-group form-inline">
-                                        <select name="student" class='form-control'>
-                                            @foreach($studenter as $stud)
-                                                <option value={{$stud->username}}>{{$stud->username}}</option>
+                                        <input pattern="[s]{1}[0-9]{6}" title="må skrives på dette formatet s000000" class="form-control"placeholder="Simuler student" type="search" name="student" list="students" required>
+                                        <datalist id="students">
+                                            @foreach($studenter as $students)
+                                                <option required value={{$students->username}}>{{$students->firstname.' '.$students->lastname}}</option>
                                             @endforeach
-                                        </select>
+                                        </datalist>
                                     </div>
                                     <div class="form-group form-inline">
                                     {{Form::text('poeng','',['placeholder'=>'Skriv inn poeng her','class'=>'form-control', 'required', 'maxlength' => '15', 'pattern' => '[0-9]*', 'title' => 'Poeng må bestå av kun tall'])}}

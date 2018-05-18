@@ -289,24 +289,5 @@ class AdminController extends Controller
         {
             return redirect('/studentVedlikehold')->with('error','Student '.$student.' finnes ikke i users tabellen.');
         }
-
-        /*if(!$finnesIDb)
-        {
-            if(!$finnesSomStud)
-            {
-                DB::insert('INSERT INTO student (username, student_points, program) VALUES 
-                (:stud, :poeng, :program)',['stud'=>$student,'poeng'=>$poeng,'program'=>$linje]);
-
-                return redirect('/studentVedlikehold')->with('success','Student er registrert.');
-            }
-            else
-            {
-                return redirect('/studentVedlikehold')->with('danger','Student er allerede registrert som student.');
-            }
-        }
-        else
-        {
-            return redirect('/studentVedlikehold')->with('danger','Student finnes ikke i users tabellen.');
-        }*/
     }
 }
