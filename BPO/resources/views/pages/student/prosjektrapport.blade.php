@@ -111,7 +111,7 @@
                         til å gjøre endringer på hjemmesiden helt frem til presentasjonsdagen, men eventuelle endringer
                         i den elektroniske versjonen av prosjektrapporten vil ikke bli tatt hensyn til under sensureringen.
                         Dokumentasjonen må være flyttet til det faste området (http://student.cs.hioa.no/hovedprosjekter/data/20yy/xx/)
-                        innen dere skal holde presentasjonen. Se dette <a href="Guide-for-innlevering.pdf">dokumentet</a> for å legge data inn på dette området.
+                        innen dere skal holde presentasjonen. Se dette <a href="{{ asset('files/Guide-for-innlevering.pdf')}}">dokumentet</a> for å legge data inn på dette området.
                     </li>
                     <li>
                         Hvis dere f.eks. bruker PowerPoint under presentasjonen, vil det være fint om dere la ut eventuelle
