@@ -44,7 +44,7 @@
                                 </br>
                                     <?php $studenter = DB::select('SELECT * FROM users WHERE level ="1"');?>
                                     <div class="form-group form-inline">
-                                        <input pattern="[s]{1}[0-9]{6}" title="må skrives på dette formatet s000000" class="form-control"placeholder="Simuler student" type="search" name="student" list="students" required>
+                                        <input pattern="[s]{1}[0-9]{6}" title="må skrives på dette formatet s000000" class="form-control"placeholder="Student" type="search" name="student" list="students" required>
                                         <datalist id="students">
                                             @foreach($studenter as $students)
                                                 <option required value={{$students->username}}>{{$students->firstname.' '.$students->lastname}}</option>
@@ -65,13 +65,14 @@
                                 <div class="form-group">  
                                     <h5>{{Form::label('fil', 'Velg student for nytt passord og send mail.')}}</h5>
                                 </br>
-                                    <?php $studenter = DB::select('SELECT username FROM users WHERE level ="1"');?>
+                                    <?php $studenter = DB::select('SELECT * FROM users WHERE level ="1"');?>
                                     <div class="form-group form-inline">
-                                        <select name="student" class='form-control'>
-                                            @foreach($studenter as $stud)
-                                                <option value={{$stud->username}}>{{$stud->username}}</option>
+                                        <input pattern="[s]{1}[0-9]{6}" title="må skrives på dette formatet s000000" class="form-control"placeholder="Student" type="search" name="student" list="students" required>
+                                        <datalist id="students">
+                                            @foreach($studenter as $students)
+                                                <option required value={{$students->username}}>{{$students->firstname.' '.$students->lastname}}</option>
                                             @endforeach
-                                        </select>
+                                        </datalist>
                                     </div>
                                     <div class="form-group form-inline">
                                     </div>

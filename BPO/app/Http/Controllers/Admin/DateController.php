@@ -13,7 +13,7 @@ class DateController extends Controller
     {
         if(session('levell') >= 2)
         {
-            $title = "Dato vedlikehold";
+            $title = "Datoer";
 
             $data = DB::select('SELECT * FROM dates');
             if (empty($data))

@@ -34,7 +34,7 @@
      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-4">
        <div class="card">
          <a class="nav-link" href="{{ route('group') }}">
-            <h4 class="card-header">Gruppe innstillinger</h4>
+            <h4 class="card-header">Gruppeinnstillinger</h4>
             <div class="card-body">
                 <p class="card-text">Her kan du registere en gruppe, melde deg inn i en gruppe, sette deg selv som leder i gruppen eller forlate gruppen.</p>
             </div>

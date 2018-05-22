@@ -18,7 +18,7 @@ class AdminController extends Controller
         if(session('levell') >= 2)
         {
             $senvei = DB::table('sensors_supervisors')->get();
-            $title = "Vedlikehold av sensorer og veiledere";
+            $title = "Sensorer og veiledere";
             return view('pages.admin.vedlikeholdAvSensorOgVeileder')->with(['title' => $title,'senvei' => $senvei]);
         }
         else
@@ -62,7 +62,7 @@ class AdminController extends Controller
     {
         if(session('levell') >= 2)
         {
-            $title = "Student vedlikehold";
+            $title = "Administrer studenter";
             return view('pages.admin.studentVedlikehold', compact('troll'))->with(['title' => $title]);
         }
         else

@@ -13,11 +13,11 @@
         <div class="modal-content">
             <div class="modal-header">
                 <!--Sensorer-->
-                <h5 class="modal-title veileder" id="sens"> Send epost til Sensor</h5>
+                <h5 class="modal-title veileder" id="sens"> Send epost til alle sensorene</h5>
                 <!--Veileder-->
-                <h5 class="modal-title sensor" id="veil"> Send epost til Veileder</h5>
+                <h5 class="modal-title sensor" id="veil"> Send epost til alle veilederene</h5>
                 <!--Studenter-->
-                <h5 class="modal-title student" id="stud"> Send epost til studentene</h5>
+                <h5 class="modal-title student" id="stud"> Send epost til alle studentene</h5>
 
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -28,11 +28,11 @@
                     <select class="form-control" name="" id="epost">
                         <option value="" required hidden>Velg mottaker</option>
                         <!--Studenter-->
-                        <option value="student">Studenter</option>
+                        <option value="student">Alle studenter</option>
                         <!--Sensorer-->
-                        <option value="sensor" >Sensor</option>
+                        <option value="sensor" >Alle sensor</option>
                         <!--Veildere-->
-                        <option value="veileder" >Veileder</option>
+                        <option value="veileder" >Alle veileder</option>
                     </select>
                 </div>
 
