@@ -247,14 +247,15 @@ class Tidligere_prosjekterController extends Controller
 
     public function hvisPresentasjonsplan()
     {
-        if(session('levell') >= 1)
+        $finnes3 = Storage::exists('/public/filer/presentasjonsplan/true.txt');
+        if($finnes3 == true)
         {
             $title = "Presentasjonsplan";
             return view('admin.hvisPresentasjonsplan')->with('title' , $title);
         }
         else
         {
-            return redirect('/login')->with('error', 'Du er ikke admin og har ikke tilgang');
+            return redirect('/presentasjonsplan');
         }
     }
 }

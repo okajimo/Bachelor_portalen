@@ -54,7 +54,7 @@
               <a href="{{ route('senvei') }}" class="a_hover"><span <i class="app-ico text-warning glyphicon glyphicon-user"></span><p>Sensorer og Veildere</p></a>
             </div>
             <div class="col-1">
-              <a href="{{ route('student') }}" class="a_hover"><i style="color:green" class="app-ico fas fa-user-plus"></i><p>Studenter</p></a>
+              <a href="{{ route('student') }}" class="a_hover"><i style="color:green" class="app-ico fas fa-user-plus"></i><p>Administrer studenter</p></a>
             </div>
             <div class="col-1">
               <a href="/room" class="a_hover"><i class="app-ico text-warning far fa-building"></i><p>Grupperom</p></a>

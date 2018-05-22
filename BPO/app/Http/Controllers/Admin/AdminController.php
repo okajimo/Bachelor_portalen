@@ -18,7 +18,7 @@ class AdminController extends Controller
         if(session('levell') >= 2)
         {
             $senvei = DB::table('sensors_supervisors')->get();
-            $title = "Vedlikehold av sensorer og veiledere";
+            $title = "Sensorer og veiledere";
             return view('pages.admin.vedlikeholdAvSensorOgVeileder')->with(['title' => $title,'senvei' => $senvei]);
         }
         else
@@ -62,7 +62,7 @@ class AdminController extends Controller
     {
         if(session('levell') >= 2)
         {
-            $title = "Student vedlikehold";
+            $title = "Administrer studenter";
             return view('pages.admin.studentVedlikehold', compact('troll'))->with(['title' => $title]);
         }
         else
@@ -216,7 +216,7 @@ class AdminController extends Controller
         });
         \LogHelper::Log("Oppdaterte ".$request->student." med nytt passord. Mail med passord sendt til student", "1");
         */        
-        return redirect('/studentVedlikehold')->with('success','Student er oppdatert.');
+        return redirect('/studentVedlikehold')->with('success','Student har fått nytt passord.');
     }
 
     public function vnews()
@@ -254,5 +254,40 @@ class AdminController extends Controller
         \LogHelper::Log("Slettet nyhet med id ".$request->id, "1");
 
         return redirect('/vnews')->with('success', 'Nyhet har blitt slettet');
+    }
+
+    public function leggTilStudent(request $request)
+    {
+        $this->validate($request, [
+            'poeng' => 'required|numeric|max:10000',
+            'student' => 'required|max:15|alpha_num',
+            'linje' => 'required|max:30|alpha_num',
+        ]);
+
+        $student = $request->student;
+        $poeng = $request->poeng;
+        $linje = $request->linje;
+
+        $finnesIDb = DB::select('SELECT username FROM users WHERE username = :stud',['stud'=>$request->student]);
+        $finnesSomStud = DB::select('SELECT username FROM student WHERE username = :stud',['stud'=>$request->student]);
+        
+        if($finnesIDb)
+        {
+            if(!$finnesSomStud)
+            {
+                DB::insert('INSERT INTO student (username, student_points, program) VALUES 
+                (:stud, :poeng, :program)',['stud'=>$student,'poeng'=>$poeng,'program'=>$linje]);
+
+                return redirect('/studentVedlikehold')->with('success','Student er registrert.');
+            }
+            else
+            {
+                return redirect('/studentVedlikehold')->with('error','Student '.$student.' er allerede registrert som student.');
+            }
+        }
+        else
+        {
+            return redirect('/studentVedlikehold')->with('error','Student '.$student.' finnes ikke i users tabellen.');
+        }
     }
 }

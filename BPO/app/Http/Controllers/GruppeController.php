@@ -15,7 +15,7 @@ class GruppeController extends Controller
 
         if(session('levell') == 1)
         {
-            $title = "Vedlikehold av gruppe";
+            $title = "Gruppeinnstillinger";
             $groups = DB::table('groups')->orderBy('group_number','ASC')->get();
             return view('pages.gruppe.vgruppe')->with(['title' => $title, 'groups' => $groups]);
         }
