@@ -216,7 +216,7 @@ class AdminController extends Controller
         });
         \LogHelper::Log("Oppdaterte ".$request->student." med nytt passord. Mail med passord sendt til student", "1");
         */        
-        return redirect('/studentVedlikehold')->with('success','Student er oppdatert.');
+        return redirect('/studentVedlikehold')->with('success','Student har fått nytt passord.');
     }
 
     public function vnews()
