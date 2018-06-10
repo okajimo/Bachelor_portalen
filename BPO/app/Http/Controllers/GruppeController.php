@@ -96,6 +96,7 @@ class GruppeController extends Controller
         if (!$grupper) 
         {
             $gruppe->group_number = 1;
+            $gruppe->searching = "no";
             $gruppe->save();
             DB::insert('INSERT INTO student_groups (student, student_groups_number, student_groups_year) VALUES (:Snavn, :Sgruppe, :Syear)',['Snavn' => $leder,'Sgruppe' => $gruppe->group_number,'Syear' => $gruppe->year]);
             \LogHelper::Log("Student ".$leder." har opprettet gruppe med nummer ".$gruppe->group_number, "1");
