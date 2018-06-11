@@ -56,4 +56,19 @@
                 </table>
         </div>
     </div>
+    <div class="jumbotron">
+        <div class="container">
+            Tidligere prosjekter fra den gamle nettsiden. </br>
+
+            <a href='http://www.cs.hioa.no/data/bachelorprosjekt/2017/' class='blaaLink'>2017</a><br/>
+            <a href='http://www.cs.hioa.no/data/bachelorprosjekt/2016/' class='blaaLink'>2016</a><br/>
+            <a href='http://www.cs.hioa.no/data/bachelorprosjekt/2015/' class='blaaLink'>2015</a><br/>
+            <a href='http://www.cs.hioa.no/data/bachelorprosjekt/2014/' class='blaaLink'>2014</a><br/>
+            <a href='http://www.cs.hioa.no/data/bachelorprosjekt/2013/' class='blaaLink'>2013</a><br/>
+            <a href="http://www.cs.hioa.no/data/bachelorprosjekt/2012/" class="blaaLink">2012</a><br/>
+            <a href="http://www.cs.hioa.no/data/bachelorprosjekt/2011/" class="blaaLink">2011</a><br/>
+            <a href="http://www.cs.hioa.no/data/bachelorprosjekt/2010/" class="blaaLink">2010</a><br/>
+            <a href="http://www.cs.hioa.no/data/bachelorprosjekt/2009/" class="blaaLink">2009</a><br/>
+        </div>
+    </div>
 @endsection
