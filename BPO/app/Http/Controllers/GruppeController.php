@@ -80,7 +80,7 @@ class GruppeController extends Controller
         $gruppe->leader = session('navn');
         $leder = session('navn');
 
-        if (date('m') >= '06') 
+        if (date('m') >= '07') 
         {
             $year = date('Y') + 1;
             $gruppe->year = $year;
