@@ -59,7 +59,7 @@ class OpplastningController extends Controller
     {
         // Validerer filen slik at kun tillatte filtyper kan lastes opp
         $this->validate($request, [
-            'dok' => 'required|mimes:pdf|max:1999'
+            'dok' => 'required|mimes:pdf|file|max:1999'
         ]);
 
         
