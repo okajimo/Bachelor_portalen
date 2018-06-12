@@ -27,7 +27,7 @@ class PagesController extends Controller
 
     public function prosjektforslag(){
         $title = "Prosjektforslag";
-        $documents = Prosjektforslag::get();
+        $documents = Prosjektforslag::orderBy('id', 'DESC')->get();
         //return dd($documents);
         return view('pages.prosjektforslag')->with(['title' => $title, 'documents' =>$documents]);
     }

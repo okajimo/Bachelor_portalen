@@ -16,7 +16,7 @@ class ProsjektforslagController extends Controller
         if(session('levell') >= 2)
         {
             $title = "Prosjektforslag";
-            $documents = Prosjektforslag::get();
+            $documents = Prosjektforslag::orderBy('id', 'DESC')->get();
             return view('pages.admin.vedlikeholdProsjektforslag')->with(['title' => $title, 'documents' =>$documents]);
         }
         else
