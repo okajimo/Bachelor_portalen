@@ -34,7 +34,7 @@
                                         {!! Form::open(['action' => ['VeilederController@store'], 'method' => 'POST', 'class' => 'float-left form-inline']) !!}
                                             <select name="supervisor" class="margin-fix-right form-control">
                                                     @if($groups->supervisor == "")
-                                                        <option value=""></option>
+                                                        <option value="" disabled selected>Velg veileder</option>
                                                     @endif
 
                                                     @foreach($supervisors as $supervisor)
