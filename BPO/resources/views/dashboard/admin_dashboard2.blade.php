@@ -34,7 +34,7 @@
       <div class="container">
           <div class="row app-row">
             <div class="col-1">
-              <a href="/administrer_gruppe" class="a_hover"><i style="color:green"class="app-ico fas fa-users"></i><p>Administrer Grupper</p></a>
+              <a href="{{ route('Agruppe') }}" class="a_hover"><i style="color:green"class="app-ico fas fa-users"></i><p>Administrer Grupper</p></a>
             </div>
             <div class="col-1" style="min-width: 9em;">
               <a href="{{ route('presentasjon2') }}" class="a_hover"><i style="color:green"class="app-ico fas fa-clipboard-list"></i><p>Presentasjonsplan</p></a>
