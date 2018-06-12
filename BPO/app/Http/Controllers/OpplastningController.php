@@ -28,7 +28,7 @@ class OpplastningController extends Controller
         }
         else
         {
-            return redirect('/login')->with('error', 'Du er ikke admin og har ikke tilgang');
+            return redirect('/login')->with('error', 'Du har ikke tilgang til denne siden.');
         }
     }
 
@@ -51,7 +51,7 @@ class OpplastningController extends Controller
         }
         else
         {
-            return redirect('/login')->with('error', 'Du er ikke admin og har ikke tilgang');
+            return redirect('/login')->with('error', 'Du har ikke tilgang til denne siden.');
         }
     }
 
@@ -59,7 +59,7 @@ class OpplastningController extends Controller
     {
         // Validerer filen slik at kun tillatte filtyper kan lastes opp
         $this->validate($request, [
-            'dok' => 'required|mimes:pdf|max:1999'
+            'dok' => 'required|mimes:pdf|file|max:1999'
         ]);
 
         

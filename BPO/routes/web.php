@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', 'PagesController@Index');
+Route::get('/', 'PagesController@Index')->name('home');
 Route::get('/kontakt_info', 'PagesController@kontakt_info')->name('kontakt_info');
 Route::get('/prosjektforslag', 'PagesController@prosjektforslag')->name('prosjektforslag');
 Route::get('/tidligere_prosjekter', 'PagesController@tidligere_prosjekter')->name('tidligere_prosjekter');

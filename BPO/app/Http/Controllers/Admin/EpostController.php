@@ -23,7 +23,7 @@ class EpostController extends Controller
         }
         else
         {
-            return redirect('/epostView')->with('error', 'Du er ikke admin og har ikke tilgang');
+            return redirect('/epostView')->with('error', 'Du har ikke tilgang til denne siden.');
         }
     }
 

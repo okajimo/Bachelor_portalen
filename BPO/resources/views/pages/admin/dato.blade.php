@@ -35,7 +35,7 @@
                 {{Form::submit('Lagre datoer', ['class'=>'btn btn-success'])}}    
             {!! Form::close() !!}
         @else
-            {!! Form::open(['action' => 'Admin\DateController@createDate', 'method' => 'POST']) !!}  
+            {!! Form::open(['action' => 'Admin\DateController@editDate', 'method' => 'POST']) !!}  
                 <h5 class="dato">Start dato</h5>
                 <div class="form-group form-inline">
                     {{Form::date('start', $dates[0]->date, ['placeholder' => 'DD.MM.ÅÅÅÅ', 'class'=>'form-control'])}}

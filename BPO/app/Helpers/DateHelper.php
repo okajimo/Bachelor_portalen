@@ -75,7 +75,7 @@ Class DateHelper
         $data = Input::except('_token');
         foreach ($data as $key => $value)
         {
-            DB::update('UPDATE dates SET date = :date WHERE name = :name', ['date' => $value, 'name' => $key]);
+            DB::update('UPDATE dates SET date = :date1 WHERE name = :name1', ['date1' => $value, 'name1' => $key]);
         }
         \LogHelper::Log("Oppdaterte datoene for dates tabellen", "1");
         return 'Datoer er oppdatert';
