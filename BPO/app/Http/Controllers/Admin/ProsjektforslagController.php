@@ -21,7 +21,7 @@ class ProsjektforslagController extends Controller
         }
         else
         {
-            return redirect('/')->with('error', 'Du er ikke admin og har ikke tilgang');
+            return redirect('/')->with('error', 'Du har ikke tilgang til denne siden.');
         }
     }
 

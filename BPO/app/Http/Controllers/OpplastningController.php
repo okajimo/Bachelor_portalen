@@ -28,7 +28,7 @@ class OpplastningController extends Controller
         }
         else
         {
-            return redirect('/login')->with('error', 'Du er ikke admin og har ikke tilgang');
+            return redirect('/login')->with('error', 'Du har ikke tilgang til denne siden.');
         }
     }
 
@@ -51,7 +51,7 @@ class OpplastningController extends Controller
         }
         else
         {
-            return redirect('/login')->with('error', 'Du er ikke admin og har ikke tilgang');
+            return redirect('/login')->with('error', 'Du har ikke tilgang til denne siden.');
         }
     }
 
