@@ -11,7 +11,7 @@
         {{Form::hidden('inn_navn',session('navn'))}}
         {{Form::hidden('inn_level',session('level'))}}
         <div >
-            <button class="btn btn-success"><i style="font-size:1.4em;"class="fas fa-power-off"></i></button>
+            <button class="btn btn-success"><i style="font-size:1.4em;"class="fas fa-play"></i></button>
         </div>
     </div>
 {!! Form::close() !!}
