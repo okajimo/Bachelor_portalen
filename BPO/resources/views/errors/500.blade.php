@@ -52,8 +52,8 @@
                 <div class="title">
                         <!--<img src="https://media.giphy.com/media/CA1PgNx8zjlm0/giphy.gif" alt="Loading" title="Loading" /> </br> -->
                         <img src="https://media.giphy.com/media/9OgCI3DVN2Jpu/giphy.gif" alt="Loading" title="Loading" /> </br>
-                    Whoops, looks like something went wrong. </br>
-                    <a class="nav-link" href="javascript:history.back()">Click here to go back!</a>
+                        Oi, ser ut som noe gikk galt. </br>
+                    <a class="nav-link" href="javascript:history.back()">Trykk her for å gå tilbake!</a>
                 </div>
             </div>
         </div>

@@ -6,7 +6,6 @@
 /vendor
 /.idea
 /.vagrant
-/app/Exceptions
 Homestead.json
 Homestead.yaml
 npm-debug.log

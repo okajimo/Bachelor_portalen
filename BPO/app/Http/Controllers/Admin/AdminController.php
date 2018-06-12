@@ -183,6 +183,50 @@ class AdminController extends Controller
             }
             else
             {
+                $student = $request->student;
+                $sjekk_leder = DB::SELECT('SELECT groups.leader FROM groups WHERE groups.leader = :student', ['student' => $student]);
+                if(!$sjekk_leder)
+                {
+                    $studGrupp = DB::SELECT('SELECT student_groups.student_groups_number FROM student_groups WHERE student_groups.student = :student', ['student' => $student]);
+                    DB::DELETE('DELETE FROM student_groups WHERE student_groups.student = :student',['student' => $student]);
+
+                    \LogHelper::Log("Fjernet student ".$student." fra gruppe ".$studGrupp[0]->student_groups_number, "1");
+                }
+                else
+                {
+                    $group = DB::SELECT('SELECT * FROM groups WHERE groups.leader = :leader',['leader' => $student]);
+                    $counter = 0;
+                    foreach($group as $groups)
+                    {
+                        $medlemmer = DB::SELECT('SELECT student_groups.student FROM student_groups WHERE  student_groups.student_groups_number = :gruppe AND student_groups.student_groups_year = :year',['gruppe' => $groups->group_number,'year' => $groups->year]);
+                        foreach($medlemmer as $med)
+                        {
+                            if($med->student == $student)
+                            {
+                                DB::DELETE('DELETE FROM student_groups WHERE student_groups.student = :student',['student' => $student]);
+                            }
+                            else
+                            {
+                                $endre_student = $med->student;
+                                $counter++;
+                            }
+                        }
+                        if($counter > 0)
+                        {
+                            DB::UPDATE('UPDATE groups SET leader = :leader 
+                            WHERE groups.group_number = :gruppe AND groups.year = :year',['leader' =>$endre_student,'gruppe' =>$groups->group_number,'year' => $groups->year]);
+
+                            \LogHelper::Log("Student ".$student." har forlatt gruppen og ny leder er satt", "1");
+                        }
+                        else
+                        {
+                            DB::UPDATE('UPDATE groups SET leader = "", title = "", url = "", supervisor = NULL, searching = ""
+                            WHERE groups.group_number = :gruppe AND groups.year = :year',['gruppe' => $groups->group_number,'year' => $groups->year]);
+
+                            \LogHelper::Log("Gruppe ".$groups->group_number." har blitt tømt", "1");
+                        }
+                    }
+                }
                 DB::update('UPDATE student SET student_points = :poeng WHERE student.username = :stud',['poeng'=>$request->poeng,'stud'=>$request->student]);
                 DB::update('UPDATE users SET password = "" WHERE username = :stud',['stud'=>$request->student]);
                 return redirect('/studentVedlikehold')->with('success','Student er oppdatert.');
